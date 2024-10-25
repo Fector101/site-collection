@@ -7,3 +7,4 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <App />
 )
+// "build": "seNODE_ENV=production node scripts/build.js"
