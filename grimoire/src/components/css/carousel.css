@@ -1,0 +1,16 @@
+.carousel-case{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.carousel-content-case{
+    background-color: rgba(248, 248, 248, 0.382);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    padding: 20px;
+}

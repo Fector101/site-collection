@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { nanoid } from "nanoid";
 import "./components/css/App.css";
 import "./components/css/responsive.css";
-// import Homepage from "./Homepage";
-import { Camera } from "lucide-react";
-import Header from "./components/js/Header";
+// import { Camera } from "lucide-react";
+import Homepage from "./components/js/Homepage";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Homepage />
       {/* <Camera color="red" size={48}/> */}
     </div>
   )

@@ -30,9 +30,9 @@ function SearchInput({placeholder}){
         </div>
     )
 }
-export default function Header(){
+export default function Header({class_}){
     return (
-        <header>
+        <header className={class_||''}>
             <p className="title">Grimoire</p>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content"></div>

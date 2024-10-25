@@ -1,42 +1,4 @@
 
 @media screen and (min-width: 370px) {
-/*   
-    body{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      background-color: rgb(157, 167, 157);
-    }
-    body > #root,.App{
-      width: 360px;
-      border-radius: 5px;
-    }
-    .controls-case{
-      padding: 15px;
-    }
-    
-    .gen-btn{
-        font-size: 9px;
-    }
-    .gen-btn > button{
-        height: 50px;
-        width:  50px;
-    }
-        
-    .gen-btn.big >button{
-        height: 100px;
-        width:  100px;
-    }
-    .gen-btn.big >p{
-        font-size: 12px;
-    }
-        
-    .gen-btn.small >button{
-        height: 25px;
-        width:  25px;
-    }
-    .gen-btn.small >p{
-        font-size: 9px;
-    } */
-  }
+
+}

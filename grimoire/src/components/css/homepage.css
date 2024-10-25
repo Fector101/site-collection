@@ -1,0 +1,21 @@
+.homepage-header{
+    position: relative;
+    z-index: 1;
+}*{
+    /* color: white; */
+}
+main{
+    background-color: cornflowerblue;
+    height: 60vh;
+    width: 98%;
+    position: absolute;
+    display: flex;
+    align-items: end;
+    margin: auto;
+    margin-top: 5px;
+    border-radius: 30px;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+
+}
