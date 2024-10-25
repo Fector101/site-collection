@@ -33,6 +33,7 @@
     "jest": "^27.4.3",
     "jest-resolve": "^27.4.2",
     "jest-watch-typeahead": "^1.0.0",
+    "lucide-react": "^0.453.0",
     "mini-css-extract-plugin": "^2.4.5",
     "mysql2": "^3.11.3",
     "nanoid": "^5.0.7",
@@ -88,10 +89,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^6.2.0",
-    "web-vitals": "^4.2.3",
-    "@babel/plugin-proposal-private-property-in-object":"^7.21.11"
-
+    "web-vitals": "^4.2.3"
   },
   "jest": {
     "roots": [

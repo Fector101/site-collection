@@ -1,6 +1,6 @@
 
 @media screen and (min-width: 370px) {
-  
+/*   
     body{
       display: flex;
       align-items: center;
@@ -38,5 +38,5 @@
     }
     .gen-btn.small >p{
         font-size: 9px;
-    }
+    } */
   }
