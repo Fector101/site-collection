@@ -1,0 +1,210 @@
+ .block {
+    display: grid;
+    /* grid-template-columns: repeat(4, 15px); */
+    position:absolute;
+    top:  4px;
+    left: 4px;
+    /* background-color: cornflowerblue; */
+    /* Variables */
+    --size:15px;
+    --gap:2px;
+    gap: var(--gap);
+}
+
+.block div {
+    width: var(--size);
+    height: var(--size);
+    background-color: #44937c;
+    /* border-radius: 2px; */
+    border: 2px solid rgba(0,0,0,.281);
+    /* border: 2px outset rgba(0,0,0,.281); */
+}
+
+/* h-line Block */
+.h-line {
+    grid-template-columns: repeat(4, var(--size));
+}
+
+/* Rotate h-line once */
+.h-line-R {
+    grid-template-rows: repeat(4, var(--size));
+    grid-template-columns: repeat(1, var(--size));
+}
+
+/* O Block */
+.cube {
+    grid-template-columns: repeat(2, var(--size));
+    grid-template-rows: repeat(2, var(--size));
+}
+
+
+/* letter-t Block */
+.letter-t {
+    grid-template-columns: repeat(3, var(--size));
+    /* grid-template-rows: repeat(2, var(--size)); */
+}
+.letter-t div:last-child {
+    margin-left: 17px;
+}
+
+/* Rotate T once */
+.letter-t-R{
+    grid-template-columns: repeat(1, var(--size));
+    width: calc((var(--size) * 2) + 2px);
+}
+.letter-t-R div{
+    margin-left: 17px;
+}
+.letter-t-R div:last-child{
+    position: absolute;
+    margin-left: 0;
+    margin-top: 17px;
+}
+
+/* Rotate T twice */
+.letter-t-R1{
+    grid-template-columns: repeat(3, var(--size));
+}
+.letter-t-R1 div{ margin-top: 17px; }
+.letter-t-R1 div:last-child{
+    position: absolute;
+    margin-left: 17px;
+    margin-top: 0;
+}
+
+/* Rotate T third */
+.letter-t-R2{
+    grid-template-columns: repeat(1, var(--size));
+    width: calc((var(--size) * 2) + 2px);
+}
+.letter-t-R2 div:last-child{
+    position: absolute;
+    margin-left: 17px;
+    margin-top: 17px;
+}
+
+/* j */
+.j{
+    grid-template-columns: repeat(1, var(--size));
+    height: calc((var(--size) * 3) +  4px);
+    width: calc((var(--size) * 2) + 2px);
+}
+.j div{
+    margin-left: 17px;
+}
+.j div:nth-child(4){
+    margin-left: 0;
+    transform: translateY(-17px);
+}
+
+/* Rotate J Once */
+.j-R{
+    grid-template-columns: repeat(3, var(--size));
+}
+.j-R div{
+    margin-top: 17px;
+}
+.j-R div:last-child{
+    position: absolute;
+    margin-top: 0;
+}
+
+/* Rotate J Twice */
+.j-R1 {
+    grid-template-columns: repeat(1, var(--size));
+    width: calc((var(--size) * 2) + 2px);
+}
+
+.j-R1 div:last-child{
+    position: absolute;
+    margin-left: 17px;
+}
+
+/* Rotate J Third */
+.j-R2 {
+    grid-template-columns: repeat(3, var(--size));
+}
+
+.j-R2 div:last-child{
+    margin-left: calc(17px * 2);
+}
+
+
+
+
+.right-arm{
+    grid-template-columns: repeat(3, var(--size));
+    padding-top: 17px;
+}
+.right-arm div:last-child{
+    position: absolute;
+    margin-left: calc(17px * 2);
+}
+
+/* Rotate Right-Arm Once */
+.right-arm-R{
+    grid-template-columns: repeat(1, var(--size));
+    width: calc((var(--size) * 2) + 2px);
+}
+.right-arm-R div:last-child{
+    position: absolute;
+    margin-top: calc(17px * 2);
+    margin-left: 17px;
+}
+
+/* Rotate Right-Arm Twice */
+.right-arm-R1{
+    grid-template-columns: repeat(3, var(--size));
+}
+
+/* Rotate Right-Arm Third */
+.right-arm-R2{
+    grid-template-columns: repeat(1, var(--size));
+    padding-left: 17px;
+}
+.right-arm-R2 div:last-child{
+    position: absolute;
+}
+
+/* shifted-cube */
+.shifted-cube{
+    grid-template-columns: repeat(2, var(--size));
+}
+.shifted-cube div:nth-child(1){margin-top: 17px;}
+.shifted-cube div:nth-child(4){margin-top: -17px;}
+
+/* Rotate Shifted-Cube Once*/
+.shifted-cube-R{
+    grid-template-columns: repeat(3, var(--size));
+}
+.shifted-cube-R div:nth-child(3){
+    position:absolute;
+    margin-left: 17px;
+    margin-top: 17px;
+}
+.shifted-cube-R div:nth-child(4){margin-top: 17px;}
+
+/* shifted-cube-1 */
+.shifted-cube-1{
+    grid-template-columns: repeat(2, var(--size));
+}
+.shifted-cube-1 div:nth-child(2){margin-top: 17px;}
+.shifted-cube-1 div:nth-child(3){margin-top: -17px;}
+
+/* Rotate Shifted-Cube-1 Once*/
+.shifted-cube-1-R{
+    grid-template-columns: repeat(3, var(--size));
+}
+.shifted-cube-1-R div:nth-child(3){
+     position:absolute;
+    margin-left: 17px;
+     margin-top: 17px; 
+}
+.shifted-cube-1-R div:nth-child(1){margin-top: 17px;}
+
+
+
+/* .block div:nth-child(1){background-color: red;} */
+/* .block div:nth-child(2){background-color: greenyellow;} */
+/* .block div:nth-child(3){background-color: skyblue;} */
+/* .block div:nth-child(4){background-color: purple;} */

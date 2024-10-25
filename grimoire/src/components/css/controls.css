@@ -1,0 +1,129 @@
+/* All Buttons Main case */
+.controls-case{
+    user-select: none;
+    height: max-content;
+    align-self: flex-end;
+    display:grid;
+    grid-template-columns:1fr 1fr; 
+    width: 100%;
+    padding: 12px;
+    padding-top: 15px;
+    font-style: italic;
+    
+    /* Variables */
+    --offset:5px;
+    
+}
+
+/* Generic Button */
+.gen-btn{
+    text-align: center;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* Variables */
+    --small-font:9px;
+    --big-font:15px;
+    
+}
+.gen-btn  > p{
+    margin-top: 3px;
+}
+.gen-btn  > .outer{
+    height: 55px;
+    width:  55px;
+    background-color: yellow;
+    border-radius: 60%;
+    background-color: rgb(201, 201, 6);
+
+    border-width: 4px;
+    display: flex;
+}
+.gen-btn  .inner{
+    align-self: center;
+    height: calc(100% - 15px);
+    width:  calc(100% - 15px);
+    margin: auto;
+    border-radius: 60%;
+    box-shadow: 5px 5px 15px rgba(100, 115, 126, 0.408);
+    
+    
+}
+.gen-btn  > .outer{
+    height: 55px;
+    width:  55px;
+    background-color: yellow;
+    border-radius: 60%;
+    border-color: yellow;
+    border-width: 4px;
+}
+.gen-btn.big >.outer{
+    height: 110px;
+    width:  110px;
+    border-width: 2px;
+}
+.gen-btn.big >p{
+    font-size: var(--big-font);
+}
+.gen-btn.small >.outer{
+    height: 23px;
+    width:  23px;
+    border-width: 2px;
+    /* border-color: rgba(100, 148, 237, 0.601); */
+    background-color: rgb(44, 118, 254);
+}
+.gen-btn.small .inner{
+    background-color: rgb(44, 118, 254);
+    box-shadow: 0 0 2px 7px rgb(44, 118, 254);
+    height: calc(100% - 13px);
+    width:  calc(100% - 13px);
+}
+.gen-btn.small >p{
+    font-size: var(--small-font);
+}
+
+/* Buttons to move Blocks */
+
+.dir-case .first,.dir-case .third{
+    position: relative;
+    left:var(--offset);
+}
+.dir-case .first{
+    top: 12px;
+}
+.dir-case .second{
+    display: flex;
+    width: calc(100% + var(--offset));
+    justify-content: space-between;
+}
+.dir-case .third{
+    bottom: 15px;
+}
+
+/* Settings Buttons */
+.settings-btns-rotate-btn-case{
+    display: flex;
+    flex-direction: column;
+}
+.settings-case{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: lightblue; */
+}
+
+/* Rotate Button */
+.rotate-btn-case{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: var(--offset);
+}
+@media screen and (min-width: 370px) {
+    body>#root{background-color: red;}
+}
