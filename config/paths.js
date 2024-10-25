@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const fs = require('fs');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
@@ -51,7 +49,6 @@ const resolveModule = (resolveFn, filePath) => {
 };
 
 // config after eject: we're in ./config/
-console.log(resolveApp('.env'))
 module.exports = {
   dotenv: resolveApp('.env'),
   // appPath: resolveApp('.'),
