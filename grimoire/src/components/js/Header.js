@@ -1,10 +1,8 @@
-import {useEffect, useState, React} from "react";
+import {useState, React} from "react";
 import "./../css/header.css"
 import { Search } from "lucide-react";
 
 
-
-  
 function SearchInput({placeholder}){
     const [isFocused, setIsFocused] = useState(false);
     const [inputValue, setInputValue] = useState('');

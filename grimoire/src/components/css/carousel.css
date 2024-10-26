@@ -5,12 +5,75 @@
     background-size: cover;
 }
 .carousel-content-case{
-    background-color: rgba(248, 248, 248, 0.382);
+    --color: rgba(61, 57, 61, 0.62);
+    background-color: var(--color);
+    /* background: linear-gradient(180deg, var(--color) 0%, transparent 50%, var(--color) 100%); */
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: end;
     justify-content: end;
-    padding: 20px;
+    padding: 2% 4%;
+}
+.carousel-content-case .texts{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Sometype Mono', monospace;
+    font-size: 17px;
+    gap: 10px;
+}
+.title{
+    font-size: 50px;
+    /* margin-bottom: 1%; */
+}
+.sub-box{
+    display: flex;
+    align-items: center;
+}
+.rating-stars {
+    /* Varibles */
+    --star-bg: yellow;
+
+    display: flex;
+    gap: 4px;
+    margin: 0 10px;    
+}
+.rating-stars svg{
+    /* box-shadow: 1px 1px 1px green; */
+    /* Leave fill empty and set color to yellow to see design */
+    /* Leave fill empty both empty to see design */
+    fill: var(--star-bg);
+    color: var(--star-bg);
+}
+.sub-box{
+    margin-left: 5px;
+}
+.description{
+    margin-left: 10px;
+}
+.carousel-content-case .btns-case{
+    display: flex;
+    gap: 30px;
+    width: max-content;
+}
+.btns-case button{
+    height:43px;
+    width: 170px;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    /* background-color: rgb(240, 196, 240); */
+    color: black;
+}
+.btns-case button p{
+    position: relative;
+    top: 1px;
+}
+.btns-case button svg{
+    fill: black;
+    height: 50%;
 }
