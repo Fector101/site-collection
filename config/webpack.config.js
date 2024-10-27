@@ -183,7 +183,7 @@ module.exports = function (webpackEnv) {
     }
     return loaders;
   };
-
+  // console.log(process.env.NODE_ENV,'123')
   return {
     target: ['browserslist'],
     // Webpack noise constrained to errors and warnings
@@ -217,7 +217,9 @@ module.exports = function (webpackEnv) {
       // webpack uses `publicPath` to determine where the app is being served from.
       // It requires a trailing slash, or the file assets will get an incorrect path.
       // We inferred the "public path" (such as / or /my-project) from homepage.
-      publicPath: '/grimoire/',
+      publicPath: process.env.NODE_ENV === 'production'? process.env.PUBLIC_URL: '/grimoire/',
+      // publicPath: '/grimoire/',
+      // Fabian Fector101
       // publicPath: paths.publicUrlOrPath,
       // Point sourcemap entries to original disk location (format as URL on Windows)
       devtoolModuleFilenameTemplate: isEnvProduction

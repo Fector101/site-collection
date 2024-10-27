@@ -35,6 +35,7 @@ const react = require(require.resolve('react', { paths: [paths.appPath] }));
 const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
+console.log(JSON.stringify(paths))
 
 // Warn and crash if required files are missing
 if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
