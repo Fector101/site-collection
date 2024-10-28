@@ -1,7 +1,6 @@
 import {useState, React} from "react";
 import "./../css/header.css"
-import { Search } from "lucide-react";
-
+import { Search, User2, ChevronDown, BellIcon } from "lucide-react"
 
 function SearchInput({placeholder}){
     const [isFocused, setIsFocused] = useState(false);
@@ -33,7 +32,18 @@ export default function Header({class_}){
         <header className={class_||''}>
             <p className="title">Grimoire</p>
             <SearchInput placeholder="Search movies and TV shows"/>
-            <div className="side-content"></div>
+            <div className="side-content">
+                <button className="subscribe-btn">Subscribe</button>
+                <button><BellIcon/></button>
+                <div className="user-menu-box">
+                    <button>
+                        <User2/>
+                    </button>
+                    <button>
+                        <ChevronDown/>
+                    </button>
+                </div>
+            </div>
         </header>
     )
 }

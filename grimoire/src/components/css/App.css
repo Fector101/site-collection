@@ -29,3 +29,5 @@ body > #root,.App{
   /*font-weight: 400;
   font-style: normal; */
 }
+button{ background-color: transparent;}
+button:hover{background-color: rgba(255, 255, 255, 0.437);}
