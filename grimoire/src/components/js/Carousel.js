@@ -39,35 +39,85 @@ function ComputedStars({rating}){
         </>
     )
 }
+function Slide({title_,class_, overview_, vote_average_, secs_,index}){
+    let translateX=''
+    if(index !== 0 && index !== 1){
+        translateX=`translateX(${-(index-1)*100}%)`
+    }
+    return (
+        <div className={'carousel-content-case'+class_} data-index={index} style={{transform: translateX}}>
+            <div className="texts">
+                <h3 className="title">{title_}</h3>
+                <div className="sub-box">
+                    <p>{toHHMMSS(secs_)} hrs</p>
+                    <div className="rating-stars"> 
+                        {<ComputedStars rating={vote_average_/2} />}
+                    </div>
+                    <p>{vote_average_}</p>
+                </div>
+                <p className="description">{overview_.split(' ').slice(0,42).join(' ')+'...'}</p>
+            </div>
+            <div className='btns-case'>
+                <CarouselBtn class_="icon watch-icon" text='watch trailer' icon={<Play/>}/>
+                <CarouselBtn class_="icon add-icon" text='add list' icon={<Plus className='plus-icon'/>}/>
+            </div>
+        </div>
+            
+    )
+}
 export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
-    let carousel_wait_time = useRef(10)
+    let carousel_wait_time = useRef(6)
     function moveSliderForward(){
-        // clearTimeout(timer.current) // Clearing Timer for when User clicks button
-        setCurrentSlideIndex(old_index=> {
-            if(old_index === data.length-1){
-                return 0
-            }else{
-                return old_index + 1
-            }
-        })
+        const current_element = document.querySelector('.current')
+        let old_index = Number(current_element.dataset.index)
+        let new_index = undefined
+        if(old_index === data.length-1){
+            new_index = 0
+        }else{
+            new_index = old_index + 1
+        }
+        setCurrentSlideIndex(new_index)
+        current_element.classList.remove('current')
+        // current_element.classList.add('move-left')
+        // current_element.style.transform = "translateX(-800%)"
+        current_element.style.transform= `translateX(${-(old_index+1)*100}%)`
+        const new_current = document.querySelector(`.carousel-content-case[data-index='${new_index}']`)
+        new_current.classList.add('current')
+        new_current.style.transform= `translateX(${-new_index*100}%)`
+        console.log(new_current)
+        console.log(`translateX(${-new_index*100}%)`)
+
+        // new_current.classList.remove('move-right')
+        
+
+
     }
     function moveSliderBackward(){
         // clearTimeout(timer.current) // Clearing Timer for when User clicks button
-        setCurrentSlideIndex(old_index=> {
-            if(old_index === 0){
-                return data.length - 1
-            }else{
-                return old_index - 1
-            }
-        })
+        const current_element = document.querySelector('.current')
+        let old_index = Number(current_element.dataset.index)
+        let new_index = undefined
+    
+        if(old_index === 0){
+            new_index = data.length - 1
+        }else{
+            new_index = old_index - 1
+        }
+        current_element.classList.remove('current')
+        current_element.classList.add('move-right')
+        const new_current = document.querySelector(`.carousel-content-case[data-index='${new_index}']`)
+
+        new_current.classList.add('current','move-right')
+        new_current.classList.remove('move-left')
     }
     function startAnimation(){
         // Start fade-out animation
         // end fade-out animation
         // change slide
         // console.log(carousel_wait_time.current)
+        // timer.current = setTimeout(moveSliderForward,carousel_wait_time.current*1000)
         timer.current = setInterval(moveSliderForward,carousel_wait_time.current*1000)
         // Start fade-in animation
         // end fade-in animation
@@ -90,30 +140,25 @@ export default function Carousel({data}){
         return stopCarouselAnimation
     // eslint-disable-next-line
     },[])
-    let {overview, title, vote_average,secs = 2000}=data[current_slide_index]
+    
+
     return (
-        // <div key={title} className="carousel-case" style={{backgroundImage: ``}}>
-        <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} key={title} className="carousel-case" style={{backgroundImage: `url(${img1})`}}>
+        <div className="carousel-case" style={{backgroundImage: ``}}>
+        {/* // <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case" style={{backgroundImage: `url(${img1})`}}> */}
             <button onClick={moveSliderBackward} className='carousel-left-btn carousel-dir-btn'><Triangle/></button>
-            <div className='carousel-content-case'>
-                <div className="texts">
-                    <h3 className="title">{title}</h3>
-                    <div className="sub-box">
-                        <p>{toHHMMSS(secs)} hrs</p>
-                        <div className="rating-stars"> 
-                            {<ComputedStars rating={vote_average/2} />}
-                        </div>
-                        <p>{vote_average}</p>
-                    </div>
-                    <p className="description">{overview.split(' ').slice(0,42).join(' ')+'...'}</p>
-                </div>
-                <div className='btns-case'>
-                    <CarouselBtn class_="icon watch-icon" text='watch trailer' icon={<Play/>}/>
-                    <CarouselBtn class_="icon add-icon" text='add list' icon={<Plus className='plus-icon'/>}/>
-                </div>
-            </div>
-            <button onClick={moveSliderForward} className='carousel-right-btn carousel-dir-btn'><Triangle/></button>
+            {data.map(({overview, title, vote_average,secs = 2000},index)=>{
+                    let class_=''
+                    if(index === 0 ){
+                        class_=' current'
+                    }else{
+                        // class_=' move-right'
+                    }
+                    const slide = <Slide index={index} class_={class_} title_={title} key={title} moveSliderBackward_={moveSliderBackward} moveSliderForward_={moveSliderForward} overview_={overview} vote_average_={vote_average} secs_={secs}/>
+                    return slide
+                })
+            }
             <Myprogress current_slide_index__={current_slide_index} number_of_slides={data.length} setSlider={setCurrentSlideIndex}/>
+            <button onClick={moveSliderForward} className='carousel-right-btn carousel-dir-btn'><Triangle/></button>
         </div>
 )
 
