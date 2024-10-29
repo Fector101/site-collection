@@ -14,10 +14,10 @@ function CarouselBtn({text,icon,class_}){
         </button>
     )
 }
-function Myprogress({current_slide_index__, number_of_slides}){
+function Myprogress({current_slide_index__, number_of_slides,setSlider}){
     return(
         <div className='carousel-progress'>
-            {[...Array(number_of_slides).keys()].map(i=><div key={i} className={i===current_slide_index__?'active':''}></div>)}
+            {[...Array(number_of_slides).keys()].map(i=><div onClick={()=>setSlider(i)} key={i} className={i===current_slide_index__?'active':''}></div>)}
         </div>
     )
 }
@@ -42,8 +42,9 @@ function ComputedStars({rating}){
 export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
+    let carousel_wait_time = useRef(10)
     function moveSliderForward(){
-        clearTimeout(timer.current) // Clearing Timer for when User clicks button
+        // clearTimeout(timer.current) // Clearing Timer for when User clicks button
         setCurrentSlideIndex(old_index=> {
             if(old_index === data.length-1){
                 return 0
@@ -53,7 +54,7 @@ export default function Carousel({data}){
         })
     }
     function moveSliderBackward(){
-        clearTimeout(timer.current) // Clearing Timer for when User clicks button
+        // clearTimeout(timer.current) // Clearing Timer for when User clicks button
         setCurrentSlideIndex(old_index=> {
             if(old_index === 0){
                 return data.length - 1
@@ -66,18 +67,33 @@ export default function Carousel({data}){
         // Start fade-out animation
         // end fade-out animation
         // change slide
-        moveSliderForward()
+        // console.log(carousel_wait_time.current)
+        timer.current = setInterval(moveSliderForward,carousel_wait_time.current*1000)
         // Start fade-in animation
         // end fade-in animation
     }
+    function stopCarouselAnimation(){clearTimeout(timer.current)}
+    function restartCarouselAnimation(){
+        stopCarouselAnimation()
+        startAnimation()
+    }
+    function increaseCarouselWaitTime(){
+        carousel_wait_time.current = 20 
+        restartCarouselAnimation()
+    }
+    function resetCarouselWaitTime(){
+        carousel_wait_time.current = 10
+        restartCarouselAnimation()
+    }
     useEffect(function(){
-        // timer.current = setTimeout(startAnimation,3*1000)
-        return ()=>clearTimeout(startAnimation)
-    },[current_slide_index])
-    let {overview, title, vote_average, image_url,secs = 2000}=data[current_slide_index]
+        startAnimation()
+        return stopCarouselAnimation
+    // eslint-disable-next-line
+    },[])
+    let {overview, title, vote_average,secs = 2000}=data[current_slide_index]
     return (
         // <div key={title} className="carousel-case" style={{backgroundImage: ``}}>
-        <div key={title} className="carousel-case" style={{backgroundImage: `url(${img1})`}}>
+        <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} key={title} className="carousel-case" style={{backgroundImage: `url(${img1})`}}>
             <button onClick={moveSliderBackward} className='carousel-left-btn carousel-dir-btn'><Triangle/></button>
             <div className='carousel-content-case'>
                 <div className="texts">
@@ -97,7 +113,7 @@ export default function Carousel({data}){
                 </div>
             </div>
             <button onClick={moveSliderForward} className='carousel-right-btn carousel-dir-btn'><Triangle/></button>
-            <Myprogress current_slide_index__={current_slide_index} number_of_slides={data.length}/>
+            <Myprogress current_slide_index__={current_slide_index} number_of_slides={data.length} setSlider={setCurrentSlideIndex}/>
         </div>
 )
 

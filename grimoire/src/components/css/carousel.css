@@ -41,13 +41,13 @@
     gap: 4px;
     margin: 0 10px;    
 }
-.rating-stars svg{
+/* .rating-stars svg{ */
     /* box-shadow: 1px 1px 1px green; */
     /* Leave fill empty and set color to yellow to see design */
     /* Leave fill empty both empty to see design */
     /* fill: var(--star-color); */
     /* color: var(--star-color); */
-}
+/* } */
 .sub-box{
     margin-left: 5px;
 }
