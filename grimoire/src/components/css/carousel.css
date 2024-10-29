@@ -3,6 +3,10 @@
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    background-color: green;
+
+
 }
 .carousel-content-case{
     --color: rgba(61, 57, 61, 0.62);
@@ -14,6 +18,7 @@
     align-items: end;
     justify-content: end;
     padding: 2% 4%;
+    padding: 3% 6%;
 }
 .carousel-content-case .texts{
     display: flex;
@@ -31,8 +36,6 @@
     align-items: center;
 }
 .rating-stars {
-    /* Varibles */
-    --star-bg: yellow;
 
     display: flex;
     gap: 4px;
@@ -42,8 +45,8 @@
     /* box-shadow: 1px 1px 1px green; */
     /* Leave fill empty and set color to yellow to see design */
     /* Leave fill empty both empty to see design */
-    fill: var(--star-bg);
-    color: var(--star-bg);
+    /* fill: var(--star-color); */
+    /* color: var(--star-color); */
 }
 .sub-box{
     margin-left: 5px;
@@ -66,7 +69,6 @@
     justify-content: center;
     gap: 10px;
     border-radius: 10px;
-    /* background-color: rgb(240, 196, 240); */
     background-color: #FFFFFF;
     color: black;
 }
@@ -77,4 +79,62 @@
 .btns-case button svg{
     fill: black;
     height: 50%;
+}
+.carousel-dir-btn{
+    /* Variables */
+    --carousel-btns-space-frm-side:20px;
+    --carousel-btns-space-frm-top:48%;
+    --size:32px;
+
+    position: absolute;
+    width: 20px;
+    height: var(--size);
+    background: rgba(145, 143, 143, 0.485);
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
+.carousel-left-btn{
+    top: var(--carousel-btns-space-frm-top);
+    left: var(--carousel-btns-space-frm-side);
+    /* fill: #525050; */
+}
+.carousel-left-btn svg{transform: rotate(-90deg);}
+
+.carousel-right-btn{
+    top: var(--carousel-btns-space-frm-top);
+    right: var(--carousel-btns-space-frm-side);
+}
+.carousel-right-btn svg{transform: rotate(90deg);}
+
+.carousel-dir-btn svg{
+    width:  15px;
+    height: 15px;
+    fill: rgba(248, 238, 238, 0.529);
+    color: transparent;
+}
+
+.carousel-progress{
+    background-color: rgba(0, 0, 0, 0.323);
+    padding: 2px 5px;
+    border-radius: 3px;
+    display: flex;
+    gap: 5px;
+    width: max-content;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.carousel-progress div{
+    --size:6px;
+    height: var(--size);
+    width: var(--size);
+    background-color: rgba(255, 255, 255, 0.538);
+    border-radius: 60%;
+    transition: background-color 0.4s;
+}
+.carousel-progress div.active{
+    background-color: white;
 }

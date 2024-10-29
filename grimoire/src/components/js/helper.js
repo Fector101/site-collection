@@ -45,5 +45,17 @@ function toHHMMSS(secs__){
 	let format = (arg)=>arg.toString().padStart(2, '0')
 	return `${format(hrs)}:${format(mins)}:${format(secs)}`
 }
-
+/**
+ * 
+ * @param {Number} decimal_number if input is 5.0 output will be 0
+ * @returns {Number} if input is 5.12 output will be 0.12
+ */
+export function parseDecimalSide(decimal_number){
+	decimal_number=decimal_number.toString()
+	if(decimal_number.includes('.')){
+		let value = decimal_number.split('.').at(-1)
+		return Number('0.'+value)
+	}
+	else{return 0}
+}
 export {isTouchDevice,returnClass,randInt, toHHMMSS}

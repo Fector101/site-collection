@@ -1,4 +1,4 @@
-{
+export const top_movies_data = {
     "api": "https://www.themoviedb.org/u/Fector101 data below",
     "api_1": "https://www.omdbapi.com/ data in screenshot on my phone can't use this to search for top movies",
     "page": 1,

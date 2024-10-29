@@ -1,8 +1,6 @@
 .homepage-header{
     position: relative;
     z-index: 1;
-}*{
-    /* color: white; */
 }
 main{
     background-color: cornflowerblue;

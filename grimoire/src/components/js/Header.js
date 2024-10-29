@@ -27,22 +27,32 @@ function SearchInput({placeholder}){
         </div>
     )
 }
-export default function Header({class_}){
+export default function Header({class_,userName}){
     return (
         <header className={class_||''}>
             <p className="title">Grimoire</p>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content">
-                <button className="subscribe-btn">Subscribe</button>
-                <button><BellIcon/></button>
-                <div className="user-menu-box">
-                    <button>
-                        <User2/>
-                    </button>
-                    <button>
-                        <ChevronDown/>
-                    </button>
-                </div>
+                {
+                userName === undefined?
+                    <>
+                    <button className="outline-black">Sign Up</button>
+                    <button className="outline-black">Sign in</button>
+                    </>
+                :
+                    <>
+                        <button className="subscribe-btn">Subscribe</button>
+                        <button className="noti-btn"><BellIcon/></button>
+                        <div className="user-menu-box">
+                            <button>
+                                <User2/>
+                            </button>
+                            <button>
+                                <ChevronDown/>
+                            </button>
+                        </div>
+                    </>
+                }
             </div>
         </header>
     )

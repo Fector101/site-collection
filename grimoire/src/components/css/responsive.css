@@ -1,4 +1,10 @@
 
-@media screen and (min-width: 370px) {
-
+@media screen and (max-width: 360px) {
+    main{
+       height: 40vh;
+       /* overflow: hidden; */
+    }
+    .App{
+        /* background-color: red; */
+    }
 }

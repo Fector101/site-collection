@@ -8,7 +8,7 @@ header {
 header .title {
     align-self: flex-start;
     font-size: 32px;
-    font-family: 'Sometype Mono', monospace;
+    font-family: var(--custom-font-style);
 }
 
 header .search-input-box {
@@ -87,9 +87,6 @@ header .search-input-box {
     align-items: center;
 }
 .side-content button{
-    height: 30px;
-    border-radius: 100%;
-    padding: 5px 2px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,4 +110,23 @@ button.subscribe-btn{
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
+}
+
+.noti-btn,.user-menu-box button{
+    height: 30px;
+    border-radius: 100%;
+    padding: 5px 2px;
+}
+
+
+.outline-black{
+    border: 1px solid white;
+    color: aliceblue;
+    width: 100px;
+    height: 32px;
+    font-size: 16px;
+    font-family: var(--custom-font-style);
+}
+.test{
+    color: red;
 }

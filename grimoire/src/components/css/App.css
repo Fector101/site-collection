@@ -17,6 +17,7 @@ body > #root,.App{
 
 .App{
   --font-style:sans-serif;
+  --custom-font-style: 'Sometype Mono', monospace;
   font-family: var(--font-style);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,6 +29,14 @@ body > #root,.App{
   background-color: rgb(39, 36, 36);
   /*font-weight: 400;
   font-style: normal; */
+
 }
-button{ background-color: transparent;}
+.svg-solid-yellow{
+  fill: yellow;
+  color: yellow;
+}
+.svg-outline-yellow{
+  color: yellow;
+}
+button{ background-color: transparent;display: flex;}
 button:hover{background-color: rgba(255, 255, 255, 0.437);}
