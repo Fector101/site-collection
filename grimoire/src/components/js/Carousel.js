@@ -68,7 +68,7 @@ function Slide({title_,class_, overview_, vote_average_, secs_,index}){
 export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
-    let carousel_wait_time = useRef(6)
+    let carousel_wait_time = useRef(5)
     function moveSliderForward(){
         const current_element = document.querySelector('.current')
         let old_index = Number(current_element.dataset.index)
@@ -80,14 +80,35 @@ export default function Carousel({data}){
         }
         setCurrentSlideIndex(new_index)
         current_element.classList.remove('current')
+        
+        const keyframes=[
+            {transform:''},
+            {transform:`translateX(${-(old_index+1)*100}%)`}
+        ]
+        const opts={
+            duration:3000,
+            easing: "ease-in-out",
+            fill:"forwards"
+        }
+        // animation.onfinish=()=>{
+            // current_element.style.transform= `translateX(${-(old_index-1)*100}%)`
+            // current_element.style.opacity='0'
+        // }
         // current_element.classList.add('move-left')
         // current_element.style.transform = "translateX(-800%)"
-        current_element.style.transform= `translateX(${-(old_index+1)*100}%)`
+        // current_element.style.transform= `translateX(${-(old_index+1)*100}%)`
+        
         const new_current = document.querySelector(`.carousel-content-case[data-index='${new_index}']`)
         new_current.classList.add('current')
-        new_current.style.transform= `translateX(${-new_index*100}%)`
-        console.log(new_current)
-        console.log(`translateX(${-new_index*100}%)`)
+        
+        const keyframes1=[
+            {transform: ''},
+            {transform:`translateX(${-new_index*100}%)`},
+        ]
+        // console.log(keyframes1)
+        const animation = current_element.animate(keyframes,opts)
+        new_current.animate(keyframes1,opts)
+        // new_current.style.transform= `translateX(${-new_index*100}%)`
 
         // new_current.classList.remove('move-right')
         

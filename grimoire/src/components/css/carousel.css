@@ -21,7 +21,7 @@
     justify-content: end;
     /* padding: 2% 4%; */
     padding: 3% 6%;
-    transition: transform 3s;    
+    /* transition: transform 3s;     */
 }
 .carousel-content-case .texts{
     display: flex;

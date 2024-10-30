@@ -4,7 +4,7 @@ import "./components/css/App.css";
 import Homepage from "./components/js/Homepage";
 import "./components/css/responsive.css"
 import { top_movies_data } from "./components/js/api_data";
-console.log(top_movies_data)
+// console.log(top_movies_data)
 function App() {
   return (
     <div className="App">
