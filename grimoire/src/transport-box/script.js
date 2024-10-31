@@ -3,6 +3,8 @@ let animation=undefined
 let animation1=undefined
 const carousel = document.querySelector('.case')
 const opts = (secs)=>({duration:secs*1000,easing:"ease-in-out",fill:"forwards"})
+const btn = document.querySelector('button')
+let timer=undefined
 
 function carouselSlider(){
     const slider = document.createElement('span')
@@ -24,16 +26,14 @@ let info={
 }
 slides.forEach((each,i,arr)=>{
     if (i !== 0 && i !== 1){
-        each.style.transform = `translateX(${-((i-1)*100)}%)`
-        info[i]=`translateX(${-((i-1)*100)}%)`
+        each.style.transform = `translateX(${(i-1)*-100}%)`
+        info[i]=`translateX(${(i-1)*-100}%)`
     }else{
         each.style.transform = `translateX(0%)`
         info[i]=`translateX(0%)`
     }
     each.querySelector('p').textContent=i
 })
-const btn = document.querySelector('button')
-let timer=undefined
 
 function promiseMoveSilentlyToRight(current_slide){
     return new Promise((resolve,reject) =>{
@@ -62,30 +62,28 @@ function promiseMoveSilentlyToRight(current_slide){
 function start(secs,slide_index){
     timer=setTimeout(()=>moveFoward(secs===0.5?slide_index:undefined),secs*1000)
 }
+function startMovingThemRight(secs,slide_index){
+    timer=setTimeout(()=>moveBackFoward(secs===0.5?slide_index:undefined),secs*1000)
+}
 // btn.addEventListener('click', function(){
 async function moveBackFoward(slide_index=undefined){
         const secs = slide_index !== undefined? 0.5 :3
         const cur_ele = document.querySelector('.current')
-        const old_slide_index = +cur_ele.dataset.index
+        const cur_slide_index = +cur_ele.dataset.index
         cur_ele.classList.remove('current')
 
         // no need to check zero
-        let percent=(old_slide_index-1)*-100
+        let percent=(cur_slide_index-1)*-100
         const keyframes=[
-            {transform: info[old_slide_index]},
+            {transform: info[cur_slide_index]},
             {transform: `translateX(${percent}%)`}
         ]
-        info[old_slide_index]=`translateX(${percent}%)`
-        info.ongoinganimation=animation
+        info[cur_slide_index]=`translateX(${percent}%)`
         animation = cur_ele.animate(keyframes,opts(secs))
-        animation.addEventListener('finish',ani0Onfinish)
-
-        function ani0Onfinish(){
-            info.ongoinganimation=''
-        }
-        let new_slide_index=old_slide_index-1
-        // no need to check for at index 0
-
+        console.log(cur_slide_index,typeof cur_slide_index)
+        // if(cur_slide_index === 3)
+        // return
+        let new_slide_index=cur_slide_index-1   // no need to check for at index 0
         const next_ele=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
         // console.log(new_slide_index,'ainmated')
         let new_percent = -new_slide_index*100
@@ -109,7 +107,7 @@ async function moveBackFoward(slide_index=undefined){
         }
         if(slide_index !== undefined && slide_index !== new_slide_index){
            // Basically saying next here 
-            start(slide_index !== undefined? 0.5 :carousel_wait_time,slide_index)
+            startMovingThemRight(slide_index !== undefined? 0.5 :carousel_wait_time,slide_index)
         }
 
 
@@ -171,7 +169,7 @@ async function moveFoward(slide_index=undefined){
         document.querySelector(`.slider button[data-slide-index="${new_slide_index}"]`).classList.add('current')
         
 }
-// timer=setTimeout(moveFoward,carousel_wait_time*1000)
+timer=setTimeout(moveFoward,carousel_wait_time*1000)
 // })
 
 carousel.addEventListener('mouseenter',function(e){
@@ -193,9 +191,11 @@ function goToSlide(slide_index){
     const cur_slider_index=+document.querySelector('div.current').dataset.index
     if(slide_index > cur_slider_index){
         moveFoward(slide_index)
+        btn.innerText='foward'
     }
     else{
         moveBackFoward(slide_index)
+        btn.innerText='back-foward'
     }
     // console.log(info[slide_index])
     // console.log(slide_index)
