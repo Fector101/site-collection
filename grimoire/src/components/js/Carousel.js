@@ -68,47 +68,90 @@ function Slide({title_,class_, overview_, vote_average_, secs_,index}){
 export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
-    let carousel_wait_time = useRef(5)
+    let carousel_wait_time = useRef(6)
+    function restSlidesPositions(){
+
+        Array.from(document.querySelectorAll('.carousel-content-case')).forEach((element,index,arr)=>{
+            if(index===0 || index ===1){
+                element.style.transition=''
+                element.style.opacity='0'
+            }
+            if(index===0){
+                element.style.translate=`translateX(100%)`
+            }else if(index === 1){
+                // element.style.translate=`translateX(0%)`
+            }
+                element.style.opacity='1'
+                element.style.transition= 'transform 3s ease-in-out'
+            return
+
+
+
+            // if(index === arr.length-1){
+            // }
+            // console.log(index)
+            // element.style.opacity='0'
+            // element.style.transition=''
+            // if(index !== 0 && index !== 1){
+            //     element.style.translate=`translateX(${-(index-1)*100}%)`
+            // }else{
+            //     if(index===0){
+            //         element.style.translate=`translateX(100%)`
+            //     }
+            // }
+            // element.style.transition= 'transform 3s ease-in-out'
+        })
+    }
     function moveSliderForward(){
         const current_element = document.querySelector('.current')
         let old_index = Number(current_element.dataset.index)
         let new_index = undefined
+        // if(old_index===data.length-1){return}
         if(old_index === data.length-1){
             new_index = 0
+        // }else if(old_index ===0){
+            
         }else{
             new_index = old_index + 1
         }
         setCurrentSlideIndex(new_index)
         current_element.classList.remove('current')
-        
-        const keyframes=[
-            {transform:''},
-            {transform:`translateX(${-(old_index+1)*100}%)`}
-        ]
-        const opts={
-            duration:3000,
-            easing: "ease-in-out",
-            fill:"forwards"
-        }
-        // animation.onfinish=()=>{
-            // current_element.style.transform= `translateX(${-(old_index-1)*100}%)`
-            // current_element.style.opacity='0'
-        // }
         // current_element.classList.add('move-left')
         // current_element.style.transform = "translateX(-800%)"
-        // current_element.style.transform= `translateX(${-(old_index+1)*100}%)`
-        
+        function resetPos(){
+            current_element.style.transition= ''
+            if(old_index === 0){
+                current_element.style.transform= `translateX(${old_index+1*100}%)`
+            }else if (old_index ===1){
+                current_element.style.translate=`translateX(0%)`
+            }else{
+                current_element.style.translate=`translateX(${-(old_index-1)*100}%)`
+            }
+            current_element.style.opacity=0
+            current_element.style.transition= 'transform 6s ease-in-out'
+        }
+        current_element.style.transform= `translateX(${-(old_index+1)*100}%)`
+        setTimeout(()=>{
+            resetPos()
+        },6000)
         const new_current = document.querySelector(`.carousel-content-case[data-index='${new_index}']`)
+        new_current.style.opacity=1
         new_current.classList.add('current')
-        
-        const keyframes1=[
-            {transform: ''},
-            {transform:`translateX(${-new_index*100}%)`},
-        ]
-        // console.log(keyframes1)
-        const animation = current_element.animate(keyframes,opts)
-        new_current.animate(keyframes1,opts)
-        // new_current.style.transform= `translateX(${-new_index*100}%)`
+        if(new_index===0){
+            new_current.style.transform= `translateX(0%)`
+        }else{
+            new_current.style.transform= `translateX(${-new_index*100}%)`
+        }
+        console.log('old ',old_index,'new ',new_index)
+        if(new_index === data.length-1){
+            // console.log(new_current)
+            restSlidesPositions()
+            // resetCarouselWaitTime()
+            // setTimeout(restSlidesPositions,2999)
+        }
+        // console.log('breathe of fresh air');
+        // console.log(new_current)
+        // console.log(`translateX(${-new_index*100}%)`)
 
         // new_current.classList.remove('move-right')
         
@@ -153,7 +196,7 @@ export default function Carousel({data}){
         restartCarouselAnimation()
     }
     function resetCarouselWaitTime(){
-        carousel_wait_time.current = 10
+        carousel_wait_time.current = 100000
         restartCarouselAnimation()
     }
     useEffect(function(){

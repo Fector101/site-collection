@@ -1,5 +1,5 @@
 .carousel-case{
-    width: 100%;
+    width: 50%;
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -21,7 +21,7 @@
     justify-content: end;
     /* padding: 2% 4%; */
     padding: 3% 6%;
-    /* transition: transform 3s;     */
+    transition: transform 6s ease-in-out;
 }
 .carousel-content-case .texts{
     display: flex;
