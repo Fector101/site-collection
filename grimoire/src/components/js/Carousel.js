@@ -40,8 +40,8 @@ function ComputedStars({rating}){
         </>
     )
 }
-function Slide({style,title_,class_, overview_, vote_average_, secs_,index}){
-    
+function Slide({style,img,title_,class_, overview_, vote_average_, secs_,index}){
+    style['backgroundImage']=`url(https://image.tmdb.org/t/p/original${img})`
     return (
         <div className={'carousel-content-case'+class_} data-index={index} data-name={'name '+index} style={style}>
             {/* <p>{index}</p> */}
@@ -173,7 +173,6 @@ export default function Carousel({data}){
         setCurrentSlideIndex(new_slide_index)
         // const next_slide=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
         const next_slide = document.querySelector(`.carousel-content-case[data-index='${new_slide_index}']`)
-
         const slide_name = next_slide.dataset.name
         let new_percent = -new_slide_index*100
         const keyframes1=[
@@ -229,10 +228,10 @@ export default function Carousel({data}){
     
 
     return (
-        // <div className="carousel-case" style={{backgroundImage: ``}}>
-        <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case" style={{backgroundImage: `url(${img1})`}}> 
+        <div className="carousel-case" style={{backgroundImage: ``}}>
+         {/* <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case" style={{backgroundImage: `url(https://image/tmdb.org/t/p/w500${backdrop_path})`}}>  */}
             <button onClick={moveSliderBackwardOnce} className='carousel-left-btn carousel-dir-btn'><Triangle/></button>
-            {data.map(({overview, title, vote_average,secs = 2000},index)=>{
+            {data.map(({overview, title, vote_average,backdrop_path,secs = 2000},index)=>{
                     let class_=''
                     if(index === 0 ){
                         class_=' current'
@@ -245,7 +244,7 @@ export default function Carousel({data}){
                         style.transform='translateX(0%)'
                         info.current['name '+index]=info.current['name '+index]||'translateX(0%)'
                     }
-                    const slide = <Slide style={style} index={index} class_={class_} title_={title} key={title} overview_={overview} vote_average_={vote_average} secs_={secs}/>
+                    const slide = <Slide style={style} index={index} img={backdrop_path} class_={class_} title_={title} key={title} overview_={overview} vote_average_={vote_average} secs_={secs}/>
                     return slide
                 })
             }

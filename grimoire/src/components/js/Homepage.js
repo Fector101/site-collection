@@ -7,7 +7,7 @@ export default function Homepage({top_movies_data__}){
         <>
             <Header class_='homepage-header'/>
             <main>
-                <Carousel data={top_movies_data__}/>
+                {top_movies_data__&&<Carousel data={top_movies_data__}/>}
             </main>
         </>
     )
