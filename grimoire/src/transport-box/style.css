@@ -15,8 +15,6 @@ div{
     height: 100px;
 }
 .case{
-    height: 100px;
-    width: 100px;
 
     height: 350px;
     margin-bottom: auto;
@@ -25,9 +23,9 @@ div{
     background-color: aliceblue;
     position: relative;
     
-    height: 100px;
+    /* height: 100px;
     width: 100px;
-    margin: auto;
+    margin: auto; */
 }
 .case > div{
     min-width: 100%;

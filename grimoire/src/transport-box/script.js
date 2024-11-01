@@ -1,4 +1,4 @@
-let carousel_wait_time = 3
+let carousel_wait_time = 6
 let animation=undefined
 let animation1=undefined
 const carousel = document.querySelector('.case')
@@ -141,7 +141,7 @@ async function moveForward(slide_index=undefined){
         let new_percent = new_slide_index !==0?-new_slide_index*100:0
 
         // console.log(new_slide_index,info[new_slide_index], `translateX(${(new_slide_index+1)*-100}%)`)
-        if(slide_index === undefined && info[new_slide_index] === `translateX(${(new_slide_index+1)*-100}%)`){
+        if(info[new_slide_index] === `translateX(${(new_slide_index+1)*-100}%)`){
             // console.log('pstt');
             await promiseMoveSilentlyToRight(next_ele)
         }
@@ -180,15 +180,15 @@ async function moveForward(slide_index=undefined){
 // })
 
 carousel.addEventListener('mouseenter',function(e){
-//   console.log('entered')
+  console.log('entered')
     clearTimeout(timer)
     // animation && animation.cancel()
     // animation1 && animation1.cancel()
 })
 
 carousel.addEventListener('mouseleave',function(e){
-    // console.log('left')
-    // start()
+    console.log('left')
+    start()
 })
 function goToSlide(slide_index){
     // if()
@@ -217,4 +217,4 @@ document.querySelector('span.slider').addEventListener('click',function(e){
     const slide_index=+target.dataset.slideIndex
     goToSlide(slide_index)
 })
-timer=setTimeout(moveForward,carousel_wait_time*1000)
+start()
