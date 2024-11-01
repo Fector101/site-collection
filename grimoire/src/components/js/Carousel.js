@@ -44,6 +44,7 @@ function Slide({style,title_,class_, overview_, vote_average_, secs_,index}){
     
     return (
         <div className={'carousel-content-case'+class_} data-index={index} data-name={'name '+index} style={style}>
+            {/* <p>{index}</p> */}
             <div className="texts">
                 <h3 className="title">{title_}</h3>
                 <div className="sub-box">
@@ -67,6 +68,7 @@ export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
     let info = useRef({})
+    const slide_through_secs=1
     let carousel_wait_time = useRef(6)
     
     function promiseMoveSilentlyToRight(current_slide){
@@ -100,8 +102,7 @@ export default function Carousel({data}){
         timer.current=setTimeout(()=>moveSlidesForward(slide_index),secs*1000)
     }
     async function moveSlidesForward(slide_index = undefined){
-        // console.log(info.current)
-        const secs = slide_index !== undefined? 0.5 :3
+        const secs = slide_index !== undefined? slide_through_secs :3
         
         const current_element = document.querySelector('.current')
         const cur_slide_name=current_element.dataset.name
@@ -143,16 +144,18 @@ export default function Carousel({data}){
         if(slide_index === undefined){
             startSlidesMovingFoward(carousel_wait_time.current)
         }else if(slide_index !== new_slide_index){  //  If it's not undefined means we stop at given slide_index
-            startSlidesMovingFoward(0.5,slide_index)
+            startSlidesMovingFoward(slide_through_secs,slide_index)
+        }else if(slide_index === new_slide_index){
+            startSlidesMovingFoward(carousel_wait_time.current) // Go back to old Flow Speed
         }
 
     }
         
     function startMovingBackForward(secs,slide_index=undefined){
-        timer.current=setTimeout(()=>moveSlidesForward(slide_index),secs*1000)
+        timer.current=setTimeout(()=>moveSlidesBackward(slide_index),secs*1000)
     }
     async function moveSlidesBackward(slide_index=undefined){
-        const secs = slide_index !== undefined? 0.5 :3
+        const secs = slide_index !== undefined? slide_through_secs :carousel_wait_time.current
         const current_slide = document.querySelector('.current')
         const cur_slide_name=current_slide.dataset.name
         const cur_slide_index = +current_slide.dataset.index
@@ -168,7 +171,9 @@ export default function Carousel({data}){
 
         let new_slide_index=cur_slide_index-1   // no need to check for at index 0
         setCurrentSlideIndex(new_slide_index)
-        const next_slide=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
+        // const next_slide=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
+        const next_slide = document.querySelector(`.carousel-content-case[data-index='${new_slide_index}']`)
+
         const slide_name = next_slide.dataset.name
         let new_percent = -new_slide_index*100
         const keyframes1=[
@@ -176,13 +181,12 @@ export default function Carousel({data}){
             {transform: `translateX(${new_percent}%)`}
         ]
         info.current[slide_name]=`translateX(${new_percent}%)`
-        next_slide.querySelector('p').textContent=new_slide_index
         next_slide.classList.add('current')
         next_slide.animate(keyframes1,opts(secs))
 
         if(slide_index !== undefined && slide_index !== new_slide_index){
            // Basically saying next here 
-            startMovingBackForward(0.5,slide_index)
+            startMovingBackForward(slide_through_secs,slide_index)
         }
     }
     function moveSliderBackwardOnce(){
@@ -205,27 +209,28 @@ export default function Carousel({data}){
     function stopCarouselAnimation(){clearTimeout(timer.current)}
     function restartCarouselAnimation(){
         stopCarouselAnimation()
-        startMovingBackForward(carousel_wait_time.current)
+        startSlidesMovingFoward(carousel_wait_time.current)
 
     }
     function increaseCarouselWaitTime(){
-        carousel_wait_time.current = 20 
+        carousel_wait_time.current = 10
+        console.log('increased')
         restartCarouselAnimation()
     }
     function resetCarouselWaitTime(){
-        carousel_wait_time.current = 10
+        carousel_wait_time.current = 6
         restartCarouselAnimation()
     }
     useEffect(function(){
-        startMovingBackForward(carousel_wait_time.current)
+        startSlidesMovingFoward(carousel_wait_time.current)
         return stopCarouselAnimation
     // eslint-disable-next-line
     },[])
     
 
     return (
-        <div className="carousel-case" style={{backgroundImage: ``}}>
-        {/* // <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case" style={{backgroundImage: `url(${img1})`}}> */}
+        // <div className="carousel-case" style={{backgroundImage: ``}}>
+        <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case" style={{backgroundImage: `url(${img1})`}}> 
             <button onClick={moveSliderBackwardOnce} className='carousel-left-btn carousel-dir-btn'><Triangle/></button>
             {data.map(({overview, title, vote_average,secs = 2000},index)=>{
                     let class_=''

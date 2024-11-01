@@ -8,7 +8,7 @@ import { top_movies_data } from "./components/js/api_data";
 function App() {
   return (
     <div className="App">
-      <Homepage top_movies_data__={top_movies_data.results.slice(0,3)}/>
+      <Homepage top_movies_data__={top_movies_data.results.slice(0,7)}/>
       {/* <Camera color="red" size={48}/> */}
     </div>
   )
