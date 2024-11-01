@@ -1,4 +1,4 @@
-let carousel_wait_time = 4
+let carousel_wait_time = 3
 let animation=undefined
 let animation1=undefined
 const carousel = document.querySelector('.case')
@@ -60,13 +60,13 @@ function promiseMoveSilentlyToRight(current_slide){
     })
 }
 function start(secs,slide_index){
-    timer=setTimeout(()=>moveFoward(secs===0.5?slide_index:undefined),secs*1000)
+    timer=setTimeout(()=>moveForward(secs===0.5?slide_index:undefined),secs*1000)
 }
 function startMovingThemRight(secs,slide_index){
-    timer=setTimeout(()=>moveBackFoward(secs===0.5?slide_index:undefined),secs*1000)
+    timer=setTimeout(()=>moveBackForward(secs===0.5?slide_index:undefined),secs*1000)
 }
 // btn.addEventListener('click', function(){
-async function moveBackFoward(slide_index=undefined){
+async function moveBackForward(slide_index=undefined){
         const secs = slide_index !== undefined? 0.5 :3
         const cur_ele = document.querySelector('.current')
         const cur_slide_index = +cur_ele.dataset.index
@@ -80,7 +80,6 @@ async function moveBackFoward(slide_index=undefined){
         ]
         info[cur_slide_index]=`translateX(${percent}%)`
         animation = cur_ele.animate(keyframes,opts(secs))
-        console.log(cur_slide_index,typeof cur_slide_index)
         // if(cur_slide_index === 3)
         // return
         let new_slide_index=cur_slide_index-1   // no need to check for at index 0
@@ -115,22 +114,20 @@ async function moveBackFoward(slide_index=undefined){
         document.querySelector(`.slider button[data-slide-index="${new_slide_index}"]`).classList.add('current')
         
 }
-async function moveFoward(slide_index=undefined){
+let you=0
+async function moveForward(slide_index=undefined){
         const secs = slide_index !== undefined? 0.5 :3
         const cur_ele = document.querySelector('.current')
-        const old_slide_index = +cur_ele.dataset.index
+        const cur_slide_index = +cur_ele.dataset.index
         cur_ele.classList.remove('current')
-        let keyframes=undefined
-        if(slide_index === undefined && info[old_slide_index] === slide_at_left[old_slide_index]){
-            console.log('pstt');
-            
-            await promiseMoveSilentlyToRight(cur_ele)
-        }
-        keyframes=[
-            {transform: info[old_slide_index]},
-            {transform: `translateX(${-(old_slide_index+1)*100}%)`}
+        
+        
+        const keyframes=[
+            {transform: info[cur_slide_index]},
+            {transform: `translateX(${(cur_slide_index+1)*-100}%)`}
         ]
-        info[old_slide_index]=`translateX(${-(old_slide_index+1)*100}%)`
+        info[cur_slide_index]=`translateX(${(cur_slide_index+1)*-100}%)`
+        // console.log(cur_slide_index,info[cur_slide_index])
         animation = cur_ele.animate(keyframes,opts(secs))
         info.ongoinganimation=animation
         animation.addEventListener('finish',ani0Onfinish)
@@ -138,10 +135,18 @@ async function moveFoward(slide_index=undefined){
         function ani0Onfinish(){
             info.ongoinganimation=''
         }
-        let new_slide_index=old_slide_index == slides.length-1?0:old_slide_index+1
+        const new_slide_index=cur_slide_index === slides.length-1?0:cur_slide_index+1
         const next_ele=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
         // console.log(new_slide_index,'ainmated')
         let new_percent = new_slide_index !==0?-new_slide_index*100:0
+
+        // console.log(new_slide_index,info[new_slide_index], `translateX(${(new_slide_index+1)*-100}%)`)
+        if(slide_index === undefined && info[new_slide_index] === `translateX(${(new_slide_index+1)*-100}%)`){
+            // console.log('pstt');
+            await promiseMoveSilentlyToRight(next_ele)
+        }
+        you++
+        // if(you===5){return}
         const keyframes1=[
             {transform: info[new_slide_index]},
             {transform: `translateX(${new_percent}%)`}
@@ -160,7 +165,10 @@ async function moveFoward(slide_index=undefined){
         // if(slide_index === new_slide_index){
             clearTimeout(timer)
         }
-        if(slide_index !== undefined && slide_index !== new_slide_index){
+  
+        if(slide_index === undefined){
+            start(slide_index !== undefined? 0.5 :carousel_wait_time,slide_index)
+        }else if(slide_index !== new_slide_index){
             start(slide_index !== undefined? 0.5 :carousel_wait_time,slide_index)
         }
 
@@ -169,7 +177,6 @@ async function moveFoward(slide_index=undefined){
         document.querySelector(`.slider button[data-slide-index="${new_slide_index}"]`).classList.add('current')
         
 }
-timer=setTimeout(moveFoward,carousel_wait_time*1000)
 // })
 
 carousel.addEventListener('mouseenter',function(e){
@@ -190,11 +197,11 @@ function goToSlide(slide_index){
     clearTimeout(timer)
     const cur_slider_index=+document.querySelector('div.current').dataset.index
     if(slide_index > cur_slider_index){
-        moveFoward(slide_index)
+        moveForward(slide_index)
         btn.innerText='foward'
     }
     else{
-        moveBackFoward(slide_index)
+        moveBackForward(slide_index)
         btn.innerText='back-foward'
     }
     // console.log(info[slide_index])
@@ -210,3 +217,4 @@ document.querySelector('span.slider').addEventListener('click',function(e){
     const slide_index=+target.dataset.slideIndex
     goToSlide(slide_index)
 })
+timer=setTimeout(moveForward,carousel_wait_time*1000)
