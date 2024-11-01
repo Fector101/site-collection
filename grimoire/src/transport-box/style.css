@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
     border: 0;
+    margin: 0;
     outline: none;
 }
 body{
@@ -11,21 +12,27 @@ body{
     overflow: hidden;
     width: 100vw;
 }
-div{
+
+/* Comment Out to see in Small 'Dev' Size */
+/* div.case{
     height: 100px;
+    width: 100px;
+    margin: auto;
 }
+span.slider{
+    bottom: -50px;
+    left: 100px;
+} */
+
+
 .case{
 
-    height: 350px;
+    height: 300px;
     margin-bottom: auto;
     width: 100%;
     display: flex;
     background-color: aliceblue;
     position: relative;
-    
-    /* height: 100px;
-    width: 100px;
-    margin: auto; */
 }
 .case > div{
     min-width: 100%;
@@ -55,16 +62,12 @@ button.start{
     position: absolute;
     margin: auto;
     height: 50px;
-    /* width: 10%; */
     display: flex;
     left: 0;
     right: 0;
     bottom: 1px;
     justify-content: center;
     /* background-color: aqua; */
-
-    bottom: -50px;
-    left: 100px;
 }
 .slider button{
     border:1px solid black;
