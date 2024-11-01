@@ -1,6 +1,4 @@
 let carousel_wait_time = 6
-let animation=undefined
-let animation1=undefined
 const carousel = document.querySelector('.case')
 const opts = (secs)=>({duration:secs*1000,easing:"ease-in-out",fill:"forwards"})
 const btn = document.querySelector('button')
