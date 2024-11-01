@@ -162,4 +162,4 @@ document.querySelector('span.slider').addEventListener('click',function(e){
     const slide_index=+target.dataset.slideIndex
     goToSlide(slide_index)
 })
-start()
+// start()
