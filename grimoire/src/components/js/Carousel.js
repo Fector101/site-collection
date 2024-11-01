@@ -42,9 +42,15 @@ function ComputedStars({rating}){
 }
 function Slide({style,img,title_,class_, overview_, vote_average_, secs_,index}){
     style['backgroundImage']=`url(https://image.tmdb.org/t/p/original${img})`
+    const clipText=(text)=>{
+        let new_text = text.split(' ').slice(0,32).join(' ')
+        if(!new_text.endsWith('.')){ new_text+='...' }
+        return new_text
+    }
     return (
         <div className={'carousel-content-case'+class_} data-index={index} data-name={'name '+index} style={style}>
             {/* <p>{index}</p> */}
+            {/* {#TODO A Big play button in the middle looks better (the btn will be round with border-radius and icon of color white)} */}
             <div className="texts">
                 <h3 className="title">{title_}</h3>
                 <div className="sub-box">
@@ -54,7 +60,7 @@ function Slide({style,img,title_,class_, overview_, vote_average_, secs_,index})
                     </div>
                     <p>{vote_average_}</p>
                 </div>
-                <p className="description">{overview_.split(' ').slice(0,42).join(' ')+'...'}</p>
+                <p className="description">{clipText(overview_)}</p>
             </div>
             <div className='btns-case'>
                 <CarouselBtn class_="icon watch-icon" text='watch trailer' icon={<Play/>}/>
@@ -189,10 +195,16 @@ export default function Carousel({data}){
         }
     }
     function moveSliderBackwardOnce(){
-
+        const current_slide = document.querySelector('.current')
+        const slide_index= Number(current_slide.dataset.index)
+        const next_index = slide_index === 0 ?  data.length-1 : slide_index-1
+        goToSlide(next_index)
     }
     function moveSliderForwardOnce(){
-
+        const current_slide = document.querySelector('.current')
+        const slide_index= Number(current_slide.dataset.index)
+        const next_index = slide_index === data.length-1?0:slide_index+1
+        goToSlide(next_index)
     }
     
     function goToSlide(slide_index){
