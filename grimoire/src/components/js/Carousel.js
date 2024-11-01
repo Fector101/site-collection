@@ -44,8 +44,7 @@ function Slide({style,title_,class_, overview_, vote_average_, secs_,index}){
     
     return (
         <div className={'carousel-content-case'+class_} data-index={index} data-name={'name '+index} style={style}>
-            <p>{index}</p>
-            {/* <div className="texts">
+            <div className="texts">
                 <h3 className="title">{title_}</h3>
                 <div className="sub-box">
                     <p>{toHHMMSS(secs_)} hrs</p>
@@ -55,11 +54,11 @@ function Slide({style,title_,class_, overview_, vote_average_, secs_,index}){
                     <p>{vote_average_}</p>
                 </div>
                 <p className="description">{overview_.split(' ').slice(0,42).join(' ')+'...'}</p>
-            </div> */}
-            {/* <div className='btns-case'>
+            </div>
+            <div className='btns-case'>
                 <CarouselBtn class_="icon watch-icon" text='watch trailer' icon={<Play/>}/>
                 <CarouselBtn class_="icon add-icon" text='add list' icon={<Plus className='plus-icon'/>}/>
-            </div> */}
+            </div>
         </div>
             
     )
@@ -68,7 +67,6 @@ export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
     let info = useRef({})
-    // const format = {0:'zero',1:'one',2:'two',3:'three','4'}
     let carousel_wait_time = useRef(6)
     
     function promiseMoveSilentlyToRight(current_slide){
@@ -83,8 +81,6 @@ export default function Carousel({data}){
             }
             // console.log(info.current,info.current[i])
             const slide_name = current_slide.dataset.name
-            console.log(slide_name)
-
             const keyframes=[
             {transform: info.current[slide_name]},
             {transform: `translateX(${percent}%)`}
@@ -128,7 +124,6 @@ export default function Carousel({data}){
         let new_percent = new_slide_index !==0?-new_slide_index*100:0
 
         if(info.current[slide_name] === `translateX(${(new_slide_index+1)*-100}%)`){   // Checking if It's Been Moving to the FutherMost Left pervious
-            console.log('ptss')
             await promiseMoveSilentlyToRight(new_slide)
 
         }
@@ -158,30 +153,32 @@ export default function Carousel({data}){
     }
     async function moveSlidesBackward(slide_index=undefined){
         const secs = slide_index !== undefined? 0.5 :3
-        const cur_ele = document.querySelector('.current')
-        const cur_slide_index = +cur_ele.dataset.index
-        cur_ele.classList.remove('current')
+        const current_slide = document.querySelector('.current')
+        const cur_slide_name=current_slide.dataset.name
+        const cur_slide_index = +current_slide.dataset.index
+        current_slide.classList.remove('current')
 
         let percent=(cur_slide_index-1)*-100// no need to check zero
         const keyframes=[
-            {transform: info.current[cur_slide_index]},
+            {transform: info.current[cur_slide_name]},
             {transform: `translateX(${percent}%)`}
         ]
-        info.current[cur_slide_index]=`translateX(${percent}%)`
-        cur_ele.animate(keyframes,opts(secs))
+        info.current[cur_slide_name]=`translateX(${percent}%)`
+        current_slide.animate(keyframes,opts(secs))
 
         let new_slide_index=cur_slide_index-1   // no need to check for at index 0
         setCurrentSlideIndex(new_slide_index)
-        const next_ele=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
+        const next_slide=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
+        const slide_name = next_slide.dataset.name
         let new_percent = -new_slide_index*100
         const keyframes1=[
-            {transform: info.current[new_slide_index]},
+            {transform: info.current[slide_name]},
             {transform: `translateX(${new_percent}%)`}
         ]
-        info.current[new_slide_index]=`translateX(${new_percent}%)`
-        next_ele.querySelector('p').textContent=new_slide_index
-        next_ele.classList.add('current')
-        next_ele.animate(keyframes1,opts(secs))
+        info.current[slide_name]=`translateX(${new_percent}%)`
+        next_slide.querySelector('p').textContent=new_slide_index
+        next_slide.classList.add('current')
+        next_slide.animate(keyframes1,opts(secs))
 
         if(slide_index !== undefined && slide_index !== new_slide_index){
            // Basically saying next here 
