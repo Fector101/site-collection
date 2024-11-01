@@ -5,6 +5,7 @@ import { Star, StarHalf, Plus, Play , Triangle } from 'lucide-react'
 // import { useEffect } from 'react'
 import {toHHMMSS, parseDecimalSide} from './helper'
 import { useEffect, useRef, useState } from 'react'
+import {opts} from './Carousel_helper'
 function CarouselBtn({text,icon,class_}){
     
     return(
@@ -68,139 +69,143 @@ function Slide({title_,class_, overview_, vote_average_, secs_,index}){
 export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
+    let info = useRef()
     let carousel_wait_time = useRef(6)
-    function restSlidesPositions(){
-
-        Array.from(document.querySelectorAll('.carousel-content-case')).forEach((element,index,arr)=>{
-            if(index===0 || index ===1){
-                element.style.transition=''
-                element.style.opacity='0'
+    
+    function promiseMoveSilentlyToRight(current_slide){
+        return new Promise((resolve,reject) =>{
+            // console.log(current_slide)
+            let percent=undefined
+            const i = +current_slide.dataset.index
+            if(i === 1){
+                percent = 0
+            }else{
+                percent = -(i-1)*100
             }
-            if(index===0){
-                element.style.translate=`translateX(100%)`
-            }else if(index === 1){
-                // element.style.translate=`translateX(0%)`
+            const keyframes=[
+            {transform: info[i]},
+            {transform: `translateX(${percent}%)`}
+            ]
+            info[i]=`translateX(${percent}%)`
+
+            const opts = (secs)=>({duration:secs*1000,easing:"ease-in-out",fill:"forwards"})
+            const animation = current_slide.animate(keyframes,opts(0))
+            animation.onfinish=()=>{
+                resolve('')
             }
-                element.style.opacity='1'
-                element.style.transition= 'transform 3s ease-in-out'
-            return
-
-
-
-            // if(index === arr.length-1){
-            // }
-            // console.log(index)
-            // element.style.opacity='0'
-            // element.style.transition=''
-            // if(index !== 0 && index !== 1){
-            //     element.style.translate=`translateX(${-(index-1)*100}%)`
-            // }else{
-            //     if(index===0){
-            //         element.style.translate=`translateX(100%)`
-            //     }
-            // }
-            // element.style.transition= 'transform 3s ease-in-out'
+            current_slide.querySelector('p').textContent='M'
         })
     }
-    function moveSliderForward(){
-        const current_element = document.querySelector('.current')
-        let old_index = Number(current_element.dataset.index)
-        let new_index = undefined
-        // if(old_index===data.length-1){return}
-        if(old_index === data.length-1){
-            new_index = 0
-        // }else if(old_index ===0){
-            
-        }else{
-            new_index = old_index + 1
-        }
-        setCurrentSlideIndex(new_index)
-        current_element.classList.remove('current')
-        // current_element.classList.add('move-left')
-        // current_element.style.transform = "translateX(-800%)"
-        function resetPos(){
-            current_element.style.transition= ''
-            if(old_index === 0){
-                current_element.style.transform= `translateX(${old_index+1*100}%)`
-            }else if (old_index ===1){
-                current_element.style.translate=`translateX(0%)`
-            }else{
-                current_element.style.translate=`translateX(${-(old_index-1)*100}%)`
-            }
-            current_element.style.opacity=0
-            current_element.style.transition= 'transform 6s ease-in-out'
-        }
-        current_element.style.transform= `translateX(${-(old_index+1)*100}%)`
-        setTimeout(()=>{
-            resetPos()
-        },6000)
-        const new_current = document.querySelector(`.carousel-content-case[data-index='${new_index}']`)
-        new_current.style.opacity=1
-        new_current.classList.add('current')
-        if(new_index===0){
-            new_current.style.transform= `translateX(0%)`
-        }else{
-            new_current.style.transform= `translateX(${-new_index*100}%)`
-        }
-        console.log('old ',old_index,'new ',new_index)
-        if(new_index === data.length-1){
-            // console.log(new_current)
-            restSlidesPositions()
-            // resetCarouselWaitTime()
-            // setTimeout(restSlidesPositions,2999)
-        }
-        // console.log('breathe of fresh air');
-        // console.log(new_current)
-        // console.log(`translateX(${-new_index*100}%)`)
-
-        // new_current.classList.remove('move-right')
+    function startSlidesMovingFoward(secs,slide_index=undefined){
+        timer.current=setTimeout(()=>moveSlidesForward(slide_index),secs*1000)
+    }
+    async function moveSlidesForward(slide_index = undefined){
+        const secs = slide_index !== undefined? 0.5 :3
         
-
-
-    }
-    function moveSliderBackward(){
-        // clearTimeout(timer.current) // Clearing Timer for when User clicks button
         const current_element = document.querySelector('.current')
         let old_index = Number(current_element.dataset.index)
-        let new_index = undefined
-    
-        if(old_index === 0){
-            new_index = data.length - 1
-        }else{
-            new_index = old_index - 1
-        }
         current_element.classList.remove('current')
-        current_element.classList.add('move-right')
-        const new_current = document.querySelector(`.carousel-content-case[data-index='${new_index}']`)
+        
+        const keyframes=[
+            {transform: info.current[old_index]},
+            {transform: `translateX(${(old_index+1)*-100}%)`}
+        ]
+        info[old_index]=`translateX(${(old_index+1)*-100}%)`
+        current_element.animate(keyframes,opts(secs))
 
-        new_current.classList.add('current','move-right')
-        new_current.classList.remove('move-left')
+        let new_slide_index = old_index === data.length-1 ? 0 : old_index + 1
+        setCurrentSlideIndex(new_slide_index)
+        const new_slide = document.querySelector(`.carousel-content-case[data-index='${new_slide_index}']`)
+
+        let new_percent = new_slide_index !==0?-new_slide_index*100:0
+
+        if(info[new_slide_index] === `translateX(${(new_slide_index+1)*-100}%)`){   // Checking if It's Been Moving to the FutherMost Left pervious
+            await promiseMoveSilentlyToRight(new_slide)
+        }
+        const keyframes1=[
+            {transform: info[new_slide_index]},
+            {transform: `translateX(${new_percent}%)`}
+        ]
+        info[new_slide_index]=`translateX(${new_percent}%)`
+        new_slide.classList.add('current')
+        new_slide.animate(keyframes1,opts(secs))
+        
+        if(slide_index === undefined){
+            startSlidesMovingFoward(carousel_wait_time.current)
+        }else if(slide_index !== new_slide_index){  //  If it's not undefined means we stop at given slide_index
+            startSlidesMovingFoward(0.5,slide_index)
+        }
+
     }
-    function startAnimation(){
-        // Start fade-out animation
-        // end fade-out animation
-        // change slide
-        // console.log(carousel_wait_time.current)
-        // timer.current = setTimeout(moveSliderForward,carousel_wait_time.current*1000)
-        timer.current = setInterval(moveSliderForward,carousel_wait_time.current*1000)
-        // Start fade-in animation
-        // end fade-in animation
+        
+    function startMovingBackForward(secs,slide_index=undefined){
+        timer=setTimeout(()=>moveSlidesForward(slide_index),secs*1000)
+    }
+    async function moveSlidesBackward(slide_index=undefined){
+        const secs = slide_index !== undefined? 0.5 :3
+        const cur_ele = document.querySelector('.current')
+        const cur_slide_index = +cur_ele.dataset.index
+        cur_ele.classList.remove('current')
+
+        let percent=(cur_slide_index-1)*-100// no need to check zero
+        const keyframes=[
+            {transform: info[cur_slide_index]},
+            {transform: `translateX(${percent}%)`}
+        ]
+        info[cur_slide_index]=`translateX(${percent}%)`
+        cur_ele.animate(keyframes,opts(secs))
+
+        let new_slide_index=cur_slide_index-1   // no need to check for at index 0
+        setCurrentSlideIndex(new_slide_index)
+        const next_ele=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
+        let new_percent = -new_slide_index*100
+        const keyframes1=[
+            {transform: info[new_slide_index]},
+            {transform: `translateX(${new_percent}%)`}
+        ]
+        info[new_slide_index]=`translateX(${new_percent}%)`
+        next_ele.querySelector('p').textContent=new_slide_index
+        next_ele.classList.add('current')
+        next_ele.animate(keyframes1,opts(secs))
+
+        if(slide_index !== undefined && slide_index !== new_slide_index){
+           // Basically saying next here 
+            startMovingBackForward(0.5,slide_index)
+        }
+    }
+    function moveSliderBackwardOnce(){
+
+    }
+    function moveSliderForwardOnce(){
+
+    }
+    
+    function goToSlide(slide_index){
+        clearTimeout(timer)
+        const cur_slider_index=+document.querySelector('.current').dataset.index
+        if(slide_index > cur_slider_index){
+            moveSlidesForward(slide_index)
+        }
+        else{
+            moveSlidesBackward(slide_index)
+        }
     }
     function stopCarouselAnimation(){clearTimeout(timer.current)}
     function restartCarouselAnimation(){
         stopCarouselAnimation()
-        startAnimation()
+        startMovingBackForward(carousel_wait_time.current)
+
     }
     function increaseCarouselWaitTime(){
         carousel_wait_time.current = 20 
         restartCarouselAnimation()
     }
     function resetCarouselWaitTime(){
-        carousel_wait_time.current = 100000
+        carousel_wait_time.current = 10
         restartCarouselAnimation()
     }
     useEffect(function(){
-        startAnimation()
+        startMovingBackForward(carousel_wait_time.current)
         return stopCarouselAnimation
     // eslint-disable-next-line
     },[])
@@ -209,7 +214,7 @@ export default function Carousel({data}){
     return (
         <div className="carousel-case" style={{backgroundImage: ``}}>
         {/* // <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case" style={{backgroundImage: `url(${img1})`}}> */}
-            <button onClick={moveSliderBackward} className='carousel-left-btn carousel-dir-btn'><Triangle/></button>
+            <button onClick={moveSliderBackwardOnce} className='carousel-left-btn carousel-dir-btn'><Triangle/></button>
             {data.map(({overview, title, vote_average,secs = 2000},index)=>{
                     let class_=''
                     if(index === 0 ){
@@ -217,12 +222,12 @@ export default function Carousel({data}){
                     }else{
                         // class_=' move-right'
                     }
-                    const slide = <Slide index={index} class_={class_} title_={title} key={title} moveSliderBackward_={moveSliderBackward} moveSliderForward_={moveSliderForward} overview_={overview} vote_average_={vote_average} secs_={secs}/>
+                    const slide = <Slide index={index} class_={class_} title_={title} key={title} overview_={overview} vote_average_={vote_average} secs_={secs}/>
                     return slide
                 })
             }
-            <Myprogress current_slide_index__={current_slide_index} number_of_slides={data.length} setSlider={setCurrentSlideIndex}/>
-            <button onClick={moveSliderForward} className='carousel-right-btn carousel-dir-btn'><Triangle/></button>
+            <Myprogress current_slide_index__={current_slide_index} number_of_slides={data.length} setSlider={goToSlide}/>
+            <button onClick={moveSliderForwardOnce} className='carousel-right-btn carousel-dir-btn'><Triangle/></button>
         </div>
 )
 

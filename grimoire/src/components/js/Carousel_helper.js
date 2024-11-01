@@ -4,29 +4,7 @@ const opts = (secs)=>({duration:secs*1000,easing:"ease-in-out",fill:"forwards"})
 let timer=undefined
 let info={}
 const slides = Array.from(document.querySelectorAll('.case div'))
-const btn = document.querySelector('button')
-function init(){
-    function carouselSlider(){
-        const slider = document.createElement('span')
-        slider.classList.add('slider')
-        const btns=()=>[...Array(5).keys()].map(i=>`<button data-slide-index="${i}" class="${!i&& 'current'}" ></button>`).join('')
-        slider.innerHTML=btns()
-        document.querySelector('.case').insertAdjacentElement('beforeend',slider)
-    }
 
-    carouselSlider()
-    slides.forEach((each,i)=>{
-        if (i !== 0 && i !== 1){
-            each.style.transform = `translateX(${(i-1)*-100}%)`
-            info[i]=`translateX(${(i-1)*-100}%)`
-        }else{
-            each.style.transform = `translateX(0%)`
-            info[i]=`translateX(0%)`
-        }
-        each.querySelector('p').textContent=i
-    })
-}
-init()
 function promiseMoveSilentlyToRight(current_slide){
     return new Promise((resolve,reject) =>{
         // console.log(current_slide)
@@ -51,8 +29,8 @@ function promiseMoveSilentlyToRight(current_slide){
         current_slide.querySelector('p').textContent='M'
     })
 }
-function start(secs,slide_index=undefined){
-    timer=setTimeout(()=>moveForward(slide_index),secs*1000)
+function start(secs,slide_index){
+    timer=setTimeout(()=>moveForward(secs===0.5?slide_index:undefined),secs*1000)
 }
 function startMovingThemRight(secs,slide_index){
     timer=setTimeout(()=>moveBackForward(secs===0.5?slide_index:undefined),secs*1000)
@@ -149,11 +127,9 @@ function goToSlide(slide_index){
     const cur_slider_index=+document.querySelector('div.current').dataset.index
     if(slide_index > cur_slider_index){
         moveForward(slide_index)
-        btn.innerText='foward'
     }
     else{
         moveBackForward(slide_index)
-        btn.innerText='back-foward'
     }
 }
 document.querySelector('span.slider').addEventListener('click',function(e){
@@ -162,4 +138,4 @@ document.querySelector('span.slider').addEventListener('click',function(e){
     const slide_index=+target.dataset.slideIndex
     goToSlide(slide_index)
 })
-start()
+export {opts}
