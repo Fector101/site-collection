@@ -1,6 +1,5 @@
 // import { useEffect, useRef, useState } from "react";
 import "./components/css/App.css";
-// import { Camera } from "lucide-react";
 import Homepage from "./components/js/Homepage";
 import "./components/css/responsive.css"
 import { top_movies_data } from "./components/js/api_data";
@@ -21,18 +20,16 @@ async function apiCall(){
   const data = await res.json()
   return data
 }
-// PUBLIC_URL=/site-collection/
 
 function App() {
   let [top_10_movies,setTop10Movies]=useState([])
   useEffect(function(){
-    apiCall().then(data=>setTop10Movies(data))
-    // apiCall().then(data=>console.log(data))
+    // apiCall().then(data=>setTop10Movies(data))
   },[])
   return (
     <div className="App">
-      <Homepage top_movies_data__={top_10_movies.results?.slice(0,7)}/>
-      {/* <Camera color="red" size={48}/> */}
+      <Homepage top_movies_data__={top_movies_data.results?.slice(0,7)}/>
+      {/* <Homepage top_movies_data__={top_10_movies.results?.slice(0,7)}/> */}
     </div>
   )
 }

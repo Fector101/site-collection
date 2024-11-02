@@ -40,8 +40,21 @@ function ComputedStars({rating}){
         </>
     )
 }
-function Slide({style,img,title_,class_, overview_, vote_average_, secs_,index}){
-    style['backgroundImage']=`url(https://image.tmdb.org/t/p/original${img})`
+function Slide({pos_info__, class_, movie_data, index}){
+    let {backdrop_path,title, overview, vote_average, secs=7200} = movie_data
+    let style={transform: ``}
+    let translateX = ''
+    if (index !== 0 && index !== 1){
+        translateX =pos_info__.current['name '+index]||`translateX(${(index-1)*-100}%)`
+        style.transform = translateX
+        pos_info__.current['name '+index]= translateX
+    }else{
+        translateX =pos_info__.current['name '+index]||'translateX(0%)'
+        style.transform=translateX
+        pos_info__.current['name '+index]=translateX
+    }
+    style['backgroundImage']=`url(https://image.tmdb.org/t/p/original${backdrop_path})`
+
     const clipText=(text)=>{
         let new_text = text.split(' ').slice(0,32).join(' ')
         if(!new_text.endsWith('.')){ new_text+='...' }
@@ -52,15 +65,15 @@ function Slide({style,img,title_,class_, overview_, vote_average_, secs_,index})
             {/* <p>{index}</p> */}
             {/* {#TODO A Big play button in the middle looks better (the btn will be round with border-radius and icon of color white)} */}
             <div className="texts">
-                <h3 className="title">{title_}</h3>
+                <h3 className="title">{title}</h3>
                 <div className="sub-box">
-                    <p>{toHHMMSS(secs_)} hrs</p>
+                    <p>{toHHMMSS(secs)} hrs</p>
                     <div className="rating-stars"> 
-                        {<ComputedStars rating={vote_average_/2} />}
+                        {<ComputedStars rating={vote_average/2} />}
                     </div>
-                    <p>{vote_average_}</p>
+                    <p>{vote_average}</p>
                 </div>
-                <p className="description">{clipText(overview_)}</p>
+                <p className="description">{clipText(overview)}</p>
             </div>
             <div className='btns-case'>
                 <CarouselBtn class_="icon watch-icon" text='watch trailer' icon={<Play/>}/>
@@ -73,36 +86,31 @@ function Slide({style,img,title_,class_, overview_, vote_average_, secs_,index})
 export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
-    let info = useRef({})
-    const slide_through_secs=1
+    let pos_info = useRef({})
+    const slide_through_secs=0.5
     let carousel_wait_time = useRef(6)
+    let you = useRef(0)
     
     function promiseMoveSilentlyToRight(current_slide){
         return new Promise((resolve,reject) =>{
             // console.log(current_slide)
-            let percent=undefined
             const i = +current_slide.dataset.index
-            if(i === 1){
-                percent = 0
-            }else{
-                percent = -(i-1)*100
-            }
+            let percent = i === 1 ? 0 : -(i-1)*100
+            
             // console.log(info.current,info.current[i])
             const slide_name = current_slide.dataset.name
             const keyframes=[
-            {transform: info.current[slide_name]},
+            {transform: pos_info.current[slide_name]},
             {transform: `translateX(${percent}%)`}
             ]
-            info.current[slide_name]=`translateX(${percent}%)`
+            pos_info.current[slide_name]=`translateX(${percent}%)`
 
-            const opts = (secs)=>({duration:secs*1000,easing:"ease-in-out",fill:"forwards"})
             const animation = current_slide.animate(keyframes,opts(0))
             animation.onfinish=()=>{
                 resolve('')
             }
         })
     }
-    let you = useRef(0)
     // useEffect(function(){console.log(info)},[info])
     function startSlidesMovingFoward(secs,slide_index=undefined){
         timer.current=setTimeout(()=>moveSlidesForward(slide_index),secs*1000)
@@ -117,11 +125,11 @@ export default function Carousel({data}){
         
         // console.log(info.current[cur_slide_name])
         const keyframes=[
-            {transform: info.current[cur_slide_name]},
+            {transform: pos_info.current[cur_slide_name]},
             {transform: `translateX(${(old_index+1)*-100}%)`}
         ]
         // console.log(keyframes)
-        info.current[cur_slide_name]=`translateX(${(old_index+1)*-100}%)`
+        pos_info.current[cur_slide_name]=`translateX(${(old_index+1)*-100}%)`
         current_element.animate(keyframes,opts(secs))
 
         let new_slide_index = old_index === data.length-1 ? 0 : old_index + 1
@@ -130,15 +138,15 @@ export default function Carousel({data}){
         const slide_name = new_slide.dataset.name
         let new_percent = new_slide_index !==0?-new_slide_index*100:0
 
-        if(info.current[slide_name] === `translateX(${(new_slide_index+1)*-100}%)`){   // Checking if It's Been Moving to the FutherMost Left pervious
+        if(pos_info.current[slide_name] === `translateX(${(new_slide_index+1)*-100}%)`){   // Checking if It's Been Moving to the FutherMost Left pervious
             await promiseMoveSilentlyToRight(new_slide)
 
         }
         const keyframes1=[
-            {transform: info.current[slide_name]},
+            {transform: pos_info.current[slide_name]},
             {transform: `translateX(${new_percent}%)`}
         ]
-        info.current[slide_name]=`translateX(${new_percent}%)`
+        pos_info.current[slide_name]=`translateX(${new_percent}%)`
         // console.log(info.current)
         you.current+=1
         new_slide.classList.add('current')
@@ -169,10 +177,10 @@ export default function Carousel({data}){
 
         let percent=(cur_slide_index-1)*-100// no need to check zero
         const keyframes=[
-            {transform: info.current[cur_slide_name]},
+            {transform: pos_info.current[cur_slide_name]},
             {transform: `translateX(${percent}%)`}
         ]
-        info.current[cur_slide_name]=`translateX(${percent}%)`
+        pos_info.current[cur_slide_name]=`translateX(${percent}%)`
         current_slide.animate(keyframes,opts(secs))
 
         let new_slide_index=cur_slide_index-1   // no need to check for at index 0
@@ -182,10 +190,10 @@ export default function Carousel({data}){
         const slide_name = next_slide.dataset.name
         let new_percent = -new_slide_index*100
         const keyframes1=[
-            {transform: info.current[slide_name]},
+            {transform: pos_info.current[slide_name]},
             {transform: `translateX(${new_percent}%)`}
         ]
-        info.current[slide_name]=`translateX(${new_percent}%)`
+        pos_info.current[slide_name]=`translateX(${new_percent}%)`
         next_slide.classList.add('current')
         next_slide.animate(keyframes1,opts(secs))
 
@@ -243,24 +251,11 @@ export default function Carousel({data}){
         <div className="carousel-case" style={{backgroundImage: ``}}>
          {/* <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case" style={{backgroundImage: `url(https://image/tmdb.org/t/p/w500${backdrop_path})`}}>  */}
             <button onClick={moveSliderBackwardOnce} className='carousel-left-btn carousel-dir-btn'><Triangle/></button>
-            {data.map(({overview, title, vote_average,backdrop_path,secs = 2000},index)=>{
-                    let class_=''
-                    if(index === 0 ){
-                        class_=' current'
-                    }
-                    let style={transform: ``}
-                    if (index !== 0 && index !== 1){
-                        style.transform = `translateX(${(index-1)*-100}%)`
-                        info.current['name '+index]=info.current['name '+index]||`translateX(${(index-1)*-100}%)`
-                    }else{
-                        style.transform='translateX(0%)'
-                        info.current['name '+index]=info.current['name '+index]||'translateX(0%)'
-                    }
-                    const slide = <Slide style={style} index={index} img={backdrop_path} class_={class_} title_={title} key={title} overview_={overview} vote_average_={vote_average} secs_={secs}/>
-                    return slide
-                })
-            }
+            
+            {data.map((each_data,i)=> <Slide pos_info__={pos_info} index={i} movie_data={each_data} class_={i === current_slide_index ? ' current' : ''} key={i}/> ) }
+            
             <Myprogress current_slide_index__={current_slide_index} number_of_slides={data.length} setSlider={goToSlide}/>
+            
             <button onClick={moveSliderForwardOnce} className='carousel-right-btn carousel-dir-btn'><Triangle/></button>
         </div>
 )
