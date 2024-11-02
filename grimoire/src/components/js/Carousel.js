@@ -87,10 +87,15 @@ export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
     let pos_info = useRef({})
+    let animation = useRef()
+    let animation_1 = useRef()
     const slide_through_secs=0.5
     let carousel_wait_time = useRef(6)
     let you = useRef(0)
-    
+    function stopAllOngoingAnimations(){
+        animation.current?.cancel()
+        animation_1.current?.cancel()
+    }
     function promiseMoveSilentlyToRight(current_slide){
         return new Promise((resolve,reject) =>{
             // console.log(current_slide)
@@ -111,11 +116,31 @@ export default function Carousel({data}){
             }
         })
     }
+    function promiseMoveSilentlyToLeft(current_slide){
+        return new Promise((resolve,reject) =>{
+            // console.log(current_slide)
+            const i = +current_slide.dataset.index
+            let percent = (i+1)*-100
+            // console.log(info.current,info.current[i])
+            const slide_name = current_slide.dataset.name
+            const keyframes=[
+            {transform: pos_info.current[slide_name]},
+            {transform: `translateX(${percent}%)`}
+            ]
+            pos_info.current[slide_name]=`translateX(${percent}%)`
+
+            const animation = current_slide.animate(keyframes,opts(0))
+            animation.onfinish=()=>{
+                resolve('')
+            }
+        })
+    }
     // useEffect(function(){console.log(info)},[info])
     function startSlidesMovingFoward(secs,slide_index=undefined){
         timer.current=setTimeout(()=>moveSlidesForward(slide_index),secs*1000)
     }
     async function moveSlidesForward(slide_index = undefined){
+        // stopAllOngoingAnimations()
         const secs = slide_index !== undefined? slide_through_secs :3
         
         const current_element = document.querySelector('.current')
@@ -130,10 +155,11 @@ export default function Carousel({data}){
         ]
         // console.log(keyframes)
         pos_info.current[cur_slide_name]=`translateX(${(old_index+1)*-100}%)`
-        current_element.animate(keyframes,opts(secs))
+        animation.current = current_element.animate(keyframes,opts(secs))
 
         let new_slide_index = old_index === data.length-1 ? 0 : old_index + 1
         setCurrentSlideIndex(new_slide_index)
+        console.log(new_slide_index)
         const new_slide = document.querySelector(`.carousel-content-case[data-index='${new_slide_index}']`)
         const slide_name = new_slide.dataset.name
         let new_percent = new_slide_index !==0?-new_slide_index*100:0
@@ -150,7 +176,7 @@ export default function Carousel({data}){
         // console.log(info.current)
         you.current+=1
         new_slide.classList.add('current')
-        new_slide.animate(keyframes1,opts(secs))
+        animation_1.current =new_slide.animate(keyframes1,opts(secs))
         // console.log(keyframes1)
         // console.log(info.current)
         
@@ -169,25 +195,29 @@ export default function Carousel({data}){
         timer.current=setTimeout(()=>moveSlidesBackward(slide_index),secs*1000)
     }
     async function moveSlidesBackward(slide_index=undefined){
+        // stopAllOngoingAnimations()
         const secs = slide_index !== undefined? slide_through_secs :carousel_wait_time.current
         const current_slide = document.querySelector('.current')
         const cur_slide_name=current_slide.dataset.name
         const cur_slide_index = +current_slide.dataset.index
         current_slide.classList.remove('current')
 
-        let percent=(cur_slide_index-1)*-100// no need to check zero
+        let percent=(cur_slide_index-1)*-100
         const keyframes=[
             {transform: pos_info.current[cur_slide_name]},
             {transform: `translateX(${percent}%)`}
         ]
         pos_info.current[cur_slide_name]=`translateX(${percent}%)`
-        current_slide.animate(keyframes,opts(secs))
+        animation.current =current_slide.animate(keyframes,opts(secs))
 
-        let new_slide_index=cur_slide_index-1   // no need to check for at index 0
+        let new_slide_index=cur_slide_index === 0?data.length - 1:cur_slide_index-1   // no need to check for at index 0
         setCurrentSlideIndex(new_slide_index)
-        // const next_slide=document.querySelector(`.case div[data-index="${new_slide_index}"]`)
         const next_slide = document.querySelector(`.carousel-content-case[data-index='${new_slide_index}']`)
         const slide_name = next_slide.dataset.name
+        
+        if(pos_info.current[slide_name] === `translateX(${(new_slide_index-1)*-100}%)`){   // Checking if It's Been Moving to the FutherMost Left pervious
+            await promiseMoveSilentlyToLeft(next_slide)
+        }
         let new_percent = -new_slide_index*100
         const keyframes1=[
             {transform: pos_info.current[slide_name]},
@@ -195,24 +225,30 @@ export default function Carousel({data}){
         ]
         pos_info.current[slide_name]=`translateX(${new_percent}%)`
         next_slide.classList.add('current')
-        next_slide.animate(keyframes1,opts(secs))
+        animation_1.current =next_slide.animate(keyframes1,opts(secs))
 
         if(slide_index !== undefined && slide_index !== new_slide_index){
            // Basically saying next here 
             startMovingBackForward(slide_through_secs,slide_index)
+        }else if(slide_index === new_slide_index){
+            startSlidesMovingFoward(carousel_wait_time.current) // Go back to old Flow Speed
         }
     }
     function moveSliderBackwardOnce(){
+        clearTimeout(timer.current)
         const current_slide = document.querySelector('.current')
         const slide_index= Number(current_slide.dataset.index)
         const next_index = slide_index === 0 ?  data.length-1 : slide_index-1
-        goToSlide(next_index)
+        // goToSlide(next_index)
+        moveSlidesBackward(next_index)
     }
     function moveSliderForwardOnce(){
+        clearTimeout(timer.current)
         const current_slide = document.querySelector('.current')
         const slide_index= Number(current_slide.dataset.index)
         const next_index = slide_index === data.length-1?0:slide_index+1
-        goToSlide(next_index)
+        // goToSlide(next_index)
+        moveSlidesForward(next_index)
     }
     
     function goToSlide(slide_index){
