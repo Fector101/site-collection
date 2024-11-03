@@ -142,7 +142,7 @@ export default function Carousel({data}){
     async function moveSlidesForward(slide_index = undefined){
         // stopAllOngoingAnimations()
         const secs = slide_index !== undefined? slide_through_secs :3
-        
+        if(current_slide_index === 2)return
         const current_element = document.querySelector('.current')
         const cur_slide_name=current_element.dataset.name
         let old_index = Number(current_element.dataset.index)
@@ -159,7 +159,7 @@ export default function Carousel({data}){
 
         let new_slide_index = old_index === data.length-1 ? 0 : old_index + 1
         setCurrentSlideIndex(new_slide_index)
-        console.log(new_slide_index)
+        
         const new_slide = document.querySelector(`.carousel-content-case[data-index='${new_slide_index}']`)
         const slide_name = new_slide.dataset.name
         let new_percent = new_slide_index !==0?-new_slide_index*100:0
@@ -277,7 +277,7 @@ export default function Carousel({data}){
         restartCarouselAnimation()
     }
     useEffect(function(){
-        startSlidesMovingFoward(carousel_wait_time.current)
+        // startSlidesMovingFoward(carousel_wait_time.current)
         return stopCarouselAnimation
     // eslint-disable-next-line
     },[])

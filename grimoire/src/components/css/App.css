@@ -9,7 +9,7 @@
 html, body {
   height: 100%;
 }
-body > #root,.App{
+body > #root{
   height: 100%;
   width: 100%;
   background-color: rgb(255, 255, 255);
@@ -18,19 +18,27 @@ body > #root,.App{
 .App{
   --font-style:sans-serif;
   --custom-font-style: 'Sometype Mono', monospace;
-  font-family: var(--font-style);
+  --theme-color:yellow;
+  --bod-color: aliceblue;
+  /* font-family: var(--font-style); */
+
+
+
+  font-family: var(--custom-font-style);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  font-optical-sizing: auto;
+  
   display: flex;
   flex-direction: column;
-  font-optical-sizing: auto;
-  color: aliceblue;
+  color: var(--bod-color);
   background-color: rgb(39, 36, 36);
-  /*font-weight: 400;
-  font-style: normal; */
+  gap: 40px;
+  padding: 1% 2%;
 
 }
+
+
 .svg-solid-yellow{
   fill: yellow;
   color: yellow;
@@ -40,3 +48,42 @@ body > #root,.App{
 }
 button{ background-color: transparent;display: flex;}
 button:hover{background-color: rgba(255, 255, 255, 0.437);}
+
+.homepage-header{
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+}
+main{
+  height: 65vh;
+  width: 100%;
+  display: flex;
+  align-items: end;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  /* position: absolute; 
+  left: 0;
+  right: 0;
+  */
+}
+
+main::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0%{left: -150%}
+  50%{left:50%}
+  100%{left:150%}
+}

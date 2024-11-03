@@ -1,0 +1,22 @@
+.SectionPreview{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 45vh;
+    height: 300px;
+}
+.SectionPreview .header{
+    display: flex;
+    gap: 15px;
+    margin-left: 10px;
+}
+.SectionPreview h3{font-size: 25px;}
+.SectionPreview svg{
+    height: 100%;
+}
+.SectionPreview .collection{
+    width: 100%;
+    flex: 1;
+    background-color: grey;
+}

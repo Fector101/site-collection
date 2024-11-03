@@ -4,7 +4,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    background-color: green;
     display: flex;
     
     /* height: 300px;
@@ -28,6 +27,7 @@
     transition: transform 6s ease-in-out;
     background-size: cover;
     /* border: 1px solid black; */
+    
 }
 /* .carousel-content-case p{
     margin: auto;
@@ -55,16 +55,15 @@
     position:relative;
     z-index:1;
 }
-.title{
+.carousel-case .title{
     font-size: 50px;
     /* margin-bottom: 1%; */
 }
-.sub-box{
+.carousel-case .sub-box{
     display: flex;
     align-items: center;
 }
-.rating-stars {
-
+.carousel-case .rating-stars {
     display: flex;
     gap: 4px;
     margin: 0 10px;    
@@ -76,10 +75,10 @@
     /* fill: var(--star-color); */
     /* color: var(--star-color); */
 /* } */
-.sub-box{
+.carousel-case .sub-box{
     margin-left: 5px;
 }
-.description{
+.carousel-case .description{
     margin-left: 10px;
 }
 .carousel-content-case .btns-case{

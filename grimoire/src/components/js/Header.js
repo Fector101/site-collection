@@ -27,12 +27,29 @@ function SearchInput({placeholder}){
         </div>
     )
 }
+function MynavBar({links,current_page_name}){
+    return (
+        <nav className="side-content left">
+                {links.map((each_link,i)=>{
+                    return  <ol key={i}>
+                                <li className={each_link === current_page_name ? "current-page":''}>
+                                    <p>{each_link}</p>
+                                    {each_link === current_page_name && <hr className="current-page-ruler"/> }
+                                </li>
+                            </ol>
+                })}
+                    
+        </nav>
+    )
+}
 export default function Header({class_,userName}){
     return (
         <header className={class_||''}>
             <p className="title">Grimoire</p>
+
+            <MynavBar links={['Home','List']} current_page_name={'Home'}/>
             <SearchInput placeholder="Search movies and TV shows"/>
-            <div className="side-content">
+            <div className="side-content right">
                 {
                 userName === undefined?
                     <>

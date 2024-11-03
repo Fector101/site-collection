@@ -4,7 +4,6 @@ import Homepage from "./components/js/Homepage";
 import "./components/css/responsive.css"
 import { top_movies_data } from "./components/js/api_data";
 import { useEffect, useState } from "react";
-// console.log(top_movies_data)
 
 async function apiCall(){
   const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
@@ -20,7 +19,7 @@ async function apiCall(){
   const data = await res.json()
   return data
 }
-
+// /site-collection/
 function App() {
   let [top_10_movies,setTop10Movies]=useState([])
   useEffect(function(){
