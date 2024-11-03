@@ -99,7 +99,7 @@
 }
 .SectionPreview .collection .card .sub-case .rate-btn{
     color: var(--svg-primary-bg);
-    padding: 2px;
+    padding: 2px 1px;
     border-radius: 2px;
 }
 .SectionPreview .collection .card .card-info-texts .sub-case svg{
@@ -114,7 +114,7 @@
     padding: 0;
     height: 0;
     visibility: hidden;
-    transition: all 0.5s ease-in-out;
+    transition: visibility 0.2s ease-in-out, height 0.4s ease-in-out, padding 0.4s ease-in-out;
 }
 .SectionPreview .collection .card:hover .hidden{
     height: auto;
