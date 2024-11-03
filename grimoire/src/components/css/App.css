@@ -20,6 +20,7 @@ body > #root{
   --custom-font-style: 'Sometype Mono', monospace;
   --theme-color:yellow;
   --bod-color: aliceblue;
+  --svg-primary-bg: aliceblue;
   /* font-family: var(--font-style); */
 
 
@@ -35,7 +36,7 @@ body > #root{
   background-color: rgb(39, 36, 36);
   gap: 40px;
   padding: 1% 2%;
-
+  overflow-x: hidden;
 }
 
 
@@ -46,6 +47,7 @@ body > #root{
 .svg-outline-yellow{
   color: yellow;
 }
+.cursor-pointer{ cursor: pointer; }
 button{ background-color: transparent;display: flex;}
 button:hover{background-color: rgba(255, 255, 255, 0.437);}
 

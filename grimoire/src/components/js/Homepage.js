@@ -8,9 +8,9 @@ export default function Homepage({top_movies_data__}){
         <>
             <main>
             <Header class_='homepage-header'/>
-                {top_movies_data__&&<Carousel data={top_movies_data__}/>}
+                {top_movies_data__&&<Carousel data={top_movies_data__.results?.slice(0,7)}/>}
             </main>
-            {top_movies_data__&&<SectionPreview title={'Trending'} icon={<TrendingUp />} data={top_movies_data__}/>}
+            {top_movies_data__&&<SectionPreview title={'Trending'} icon={<TrendingUp />} data={top_movies_data__.results}/>}
         </>
     )
 }

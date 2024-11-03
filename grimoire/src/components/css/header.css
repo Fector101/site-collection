@@ -24,11 +24,6 @@ header .title {
     margin-right: auto;
     font-family: var(--custom-font-style);
 }
-nav{
-
-    /* background-color: green;
-    background-color: yellow; */
-}
 nav ol{
     display: flex;
     gap: 15px;

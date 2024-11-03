@@ -27,7 +27,7 @@ function App() {
   },[])
   return (
     <div className="App">
-      <Homepage top_movies_data__={top_movies_data.results?.slice(0,7)}/>
+      <Homepage top_movies_data__={top_movies_data}/>
       {/* <Homepage top_movies_data__={top_10_movies.results?.slice(0,7)}/> */}
     </div>
   )

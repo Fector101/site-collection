@@ -71,7 +71,7 @@ function Slide({pos_info__, class_, movie_data, index}){
                     <div className="rating-stars"> 
                         {<ComputedStars rating={vote_average/2} />}
                     </div>
-                    <p>{vote_average}</p>
+                    <p>{(+vote_average).toFixed(2)}</p>
                 </div>
                 <p className="description">{clipText(overview)}</p>
             </div>
@@ -283,9 +283,9 @@ export default function Carousel({data}){
     },[])
     
 
+    // <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case"> 
     return (
         <div className="carousel-case" style={{backgroundImage: ``}}>
-         {/* <div onMouseLeave={resetCarouselWaitTime} onMouseEnter={increaseCarouselWaitTime} className="carousel-case" style={{backgroundImage: `url(https://image/tmdb.org/t/p/w500${backdrop_path})`}}>  */}
             <button onClick={moveSliderBackwardOnce} className='carousel-left-btn carousel-dir-btn'><Triangle/></button>
             
             {data.map((each_data,i)=> <Slide pos_info__={pos_info} index={i} movie_data={each_data} class_={i === current_slide_index ? ' current' : ''} key={i}/> ) }
