@@ -1,6 +1,7 @@
 import {useState, React} from "react";
 import "./../css/header.css"
 import { Search, User2, ChevronDown, BellIcon } from "lucide-react"
+import { Link } from "react-router-dom"
 
 function SearchInput({placeholder}){
     const [isFocused, setIsFocused] = useState(false);
@@ -30,11 +31,11 @@ function SearchInput({placeholder}){
 function MynavBar({links,current_page_name}){
     return (
         <nav className="side-content left">
-                {links.map((each_link,i)=>{
+                {links.map((each_page,i)=>{
                     return  <ol key={i}>
-                                <li className={each_link === current_page_name ? "current-page":''}>
-                                    <p>{each_link}</p>
-                                    {each_link === current_page_name && <hr className="current-page-ruler"/> }
+                                <li className={each_page.name === current_page_name ? "current-page":''}>
+                                    <Link to={each_page.link} className="link">{each_page.name}</Link>
+                                    {each_page.name === current_page_name && <hr className="current-page-ruler"/> }
                                 </li>
                             </ol>
                 })}
@@ -47,7 +48,7 @@ export default function Header({class_,userName}){
         <header className={class_||''}>
             <p className="title">Grimoire</p>
 
-            <MynavBar links={['Home','List']} current_page_name={'Home'}/>
+            <MynavBar links={[{link:'/grimoire',name:'Home'},{link:'/lists', name:'List'}]} current_page_name={'Home'}/>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content right">
                 {

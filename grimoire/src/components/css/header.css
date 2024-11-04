@@ -31,13 +31,14 @@ nav ol{
     list-style: none;
 }
 
-header li{
+header li .link{
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     font-size: 15px;
     color: #9ca3af;
 }
-header li.current-page{
+header li.current-page .link{
     font-size: 17px;
     color: whitesmoke;
     gap: 2px;
