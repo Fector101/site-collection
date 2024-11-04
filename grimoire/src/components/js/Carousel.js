@@ -1,5 +1,5 @@
 import './../css/carousel.css'
-import img1 from './../imgs/img.png'
+// import img1 from './../imgs/img.png'
 import { Star, StarHalf, Plus, Play , Triangle } from 'lucide-react'
 // import { nanoid } from 'nanoid'
 // import { useEffect } from 'react'

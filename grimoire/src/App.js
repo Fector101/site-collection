@@ -38,7 +38,7 @@ function App() {
     <>
       <p>{saved_state}</p>
       <Routes>
-        <Route path="/grimoire" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
+        <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
         <Route path="/lists/*" element={<ListRoutes />} /> 
         <Route path="*" element={ <NotFoundpage/>} />
       </Routes>
@@ -53,18 +53,18 @@ function App() {
 export default App
 
 // Sticky Routers Header
-{/* <Route path="/lists" element={<HeaderSticky />}> 
-  <Route index  element={ <Listspage text='Frm App Component to Route'/> } />
-  <Route path=":list_name" element={ <Listpage text='Frm App Component to Route'/> }/>
-  <Route path="new-list" element={ <CreateListpage text='Frm App Component to Route'/> }/>
-</Route> */}
+// {/* <Route path="/lists" element={<HeaderSticky />}> 
+//   <Route index  element={ <Listspage text='Frm App Component to Route'/> } />
+//   <Route path=":list_name" element={ <Listpage text='Frm App Component to Route'/> }/>
+//   <Route path="new-list" element={ <CreateListpage text='Frm App Component to Route'/> }/>
+// </Route> */}
 
 // If UnRelated Path Share One Element
-{/* <Route element={<HeaderSticky />}> 
-  <Route index  element={ <Listspage text='Frm App Component to Route'/> } />
-  <Route path="some_path" element={ <Listpage text='Frm App Component to Route'/> }/>
-  <Route path="another-unrelated-path-using-same-head" element={ <CreateListpage text='Frm App Component to Route'/> }/>
-</Route>   */}
+// {/* <Route element={<HeaderSticky />}> 
+//   <Route index  element={ <Listspage text='Frm App Component to Route'/> } />
+//   <Route path="some_path" element={ <Listpage text='Frm App Component to Route'/> }/>
+//   <Route path="another-unrelated-path-using-same-head" element={ <CreateListpage text='Frm App Component to Route'/> }/>
+// </Route>   */}
 
 // return (
 //   <Routes>
@@ -83,12 +83,12 @@ export default App
 
 
 
-{/* <Routes>
-<Route path="/lists" element={<p>Some Side Bar With Same Route</p>} />
-</Routes>
-<Routes>
-<Route path="/grimoire" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
-{/* <Route path="/lists/*" element={<ListRoutes />} /> 
-<Route path="*" element={ <NotFoundpage/>} /> */}
+// {/* <Routes>
+// <Route path="/lists" element={<p>Some Side Bar With Same Route</p>} />
+// </Routes>
+// <Routes>
+// <Route path="/grimoire" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
+// {/* <Route path="/lists/*" element={<ListRoutes />} /> 
+// <Route path="*" element={ <NotFoundpage/>} /> */}
 // </Routes> */}
 
