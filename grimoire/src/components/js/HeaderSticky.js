@@ -1,12 +1,14 @@
 import {useState, React} from "react";
 import "./../css/header.css"
 import { Search, User2, ChevronDown, BellIcon } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, Outlet, useSearchParams } from "react-router-dom"
 
 function SearchInput({placeholder}){
     const [isFocused, setIsFocused] = useState(false);
-    const [inputValue, setInputValue] = useState('');
-    const isActive = isFocused || inputValue.length > 0;
+    const [searchParams, setSearchParams] = useSearchParams({n: 3});
+    
+    const number = searchParams.get('n')
+    const isActive = isFocused || searchParams !== ''
   
     return(
         <div className="search-input-box">
@@ -15,13 +17,13 @@ function SearchInput({placeholder}){
             </button>
         <div className="input-box">
             <input 
-                type="text"
+                type="number"
                 id="search"
                 className="search-input"
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                value={number}
+                onChange={(e) => setSearchParams({ n: e.target.value})}
             />
             <label htmlFor="search" className={`search-label ${isActive ? 'active' : ''}`}> {placeholder} </label>
         </div>
@@ -34,7 +36,7 @@ function MynavBar({links,current_page_name}){
                 {links.map((each_page,i)=>{
                     return  <ol key={i}>
                                 <li className={each_page.name === current_page_name ? "current-page":''}>
-                                    <Link to={each_page.link} state="Hi" className="link">{each_page.name}</Link>
+                                    <Link to={each_page.link} className="link">{each_page.name}</Link>
                                     {each_page.name === current_page_name && <hr className="current-page-ruler"/> }
                                 </li>
                             </ol>
@@ -43,8 +45,9 @@ function MynavBar({links,current_page_name}){
         </nav>
     )
 }
-export default function Header({class_,userName}){
+export default function HeaderSticky({class_,userName}){
     return (
+        <>
         <header className={class_||''}>
             <p className="title">Grimoire</p>
 
@@ -73,5 +76,7 @@ export default function Header({class_,userName}){
                 }
             </div>
         </header>
+        <Outlet context={ {foxxy:()=> 'Wisdow Seekers', user_name: "Fabian - UserName From HeaderSticky"} }/>
+        </>
     )
 }
