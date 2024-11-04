@@ -53,7 +53,8 @@ function toHHMMSS(secs__){
 export function parseDecimalSide(decimal_number){
 	decimal_number=decimal_number.toString()
 	if(decimal_number.includes('.')){
-		let value = decimal_number.split('.').at(-1)
+		let list_of_values_nd_dot = decimal_number.split('.')
+		let value =list_of_values_nd_dot[list_of_values_nd_dot.length - 1]
 		return Number('0.'+value)
 	}
 	else{return 0}

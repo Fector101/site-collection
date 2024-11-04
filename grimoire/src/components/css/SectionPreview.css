@@ -101,6 +101,7 @@
     color: var(--svg-primary-bg);
     padding: 2px 1px;
     border-radius: 2px;
+    margin-left: 2px;
 }
 .SectionPreview .collection .card .card-info-texts .sub-case svg{
     /* margin: 0 7px; */
@@ -115,6 +116,7 @@
     height: 0;
     visibility: hidden;
     transition: visibility 0.2s ease-in-out, height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    transition-delay: 0.15s;
 }
 .SectionPreview .collection .card:hover .hidden{
     height: auto;

@@ -11,7 +11,7 @@ function Card({movie_data}){
                     <Bookmark/>
                 </button>
             </div>
-            <img alt={title} src={`https://image.tmdb.org/t/p/original${poster_path}`} />
+            <img alt={title} loading="lazy" src={`https://image.tmdb.org/t/p/original${poster_path}`} />
             {/* <img alt={title}/> */}
             <div className="card-info-texts hidden">
                 <p>{title}</p>    
