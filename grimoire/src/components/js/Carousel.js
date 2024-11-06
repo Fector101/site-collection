@@ -92,6 +92,7 @@ export default function Carousel({data}){
     const slide_through_secs=0.5
     let carousel_wait_time = useRef(6)
     let you = useRef(0)
+    // eslint-disable-next-line
     function stopAllOngoingAnimations(){
         animation.current?.cancel()
         animation_1.current?.cancel()
@@ -267,11 +268,13 @@ export default function Carousel({data}){
         startSlidesMovingFoward(carousel_wait_time.current)
 
     }
+    // eslint-disable-next-line
     function increaseCarouselWaitTime(){
         carousel_wait_time.current = 10
         console.log('increased')
         restartCarouselAnimation()
     }
+    // eslint-disable-next-line
     function resetCarouselWaitTime(){
         carousel_wait_time.current = 6
         restartCarouselAnimation()

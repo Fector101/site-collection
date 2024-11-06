@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function NotFoundpage(){
     const {'*':url_extension} = useParams()

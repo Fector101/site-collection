@@ -426,6 +426,7 @@ export const top_movies_data = {
     "total_pages": 500,
     "total_results": 10000
 }
+// eslint-disable-next-line
 const data1={
     "page": 1,
     "results": [

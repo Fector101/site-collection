@@ -48,7 +48,7 @@ export default function Header({class_,userName}){
         <header className={class_||''}>
             <p className="title">Grimoire</p>
 
-            <MynavBar links={[{link:'/grimoire',name:'Home'},{link:'/lists', name:'List'}]} current_page_name={'Home'}/>
+            <MynavBar links={[{link:'/grimoire',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content right">
                 {
