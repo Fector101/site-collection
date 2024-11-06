@@ -15,7 +15,7 @@ body > #root{
   background-color: rgb(255, 255, 255);
 }
 
-.App{
+.page{
   --font-style:sans-serif;
   --custom-font-style: 'Sometype Mono', monospace;
   --theme-color:yellow;
@@ -36,7 +36,9 @@ body > #root{
   background-color: rgb(39, 36, 36);
   gap: 40px;
   padding: 1% 2%;
-  overflow-x: hidden;
+  /* height: 100%; */
+  width: 100%;
+  /* overflow-x: hidden; */
 }
 
 
@@ -52,29 +54,31 @@ button{ background-color: transparent;display: flex;}
 button:hover{background-color: rgba(255, 255, 255, 0.437);}
 
 .homepage-header{
+  
+}
+/*   
   position: absolute;
   top:0;
   left: 0;
   right: 0;
-  width: 100%;
-  margin: 0 auto;
-  z-index: 1;
-}
+  margin: 0 auto; 
+*/
 main{
   height: 65vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: end;
   border-radius: 30px;
   overflow: hidden;
-  position: relative;
-  /* position: absolute; 
-  left: 0;
-  right: 0;
-  */
+  /* position: relative; */
 }
+/* position: absolute; 
+left: 0;
+right: 0;
+*/
 
-main::before{
+/* main::before{
   content: "";
   position: absolute;
   top: 0;
@@ -83,7 +87,7 @@ main::before{
   height: 100%;
   background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
   animation: shimmer 1.5s infinite;
-}
+} */
 @keyframes shimmer {
   0%{left: -150%}
   50%{left:50%}

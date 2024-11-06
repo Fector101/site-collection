@@ -1,4 +1,4 @@
-import {useState, React} from "react";
+import {useState, React, useEffect} from "react";
 import "./../css/header.css"
 import { Search, User2, ChevronDown, BellIcon } from "lucide-react"
 import { Link } from "react-router-dom"
@@ -7,7 +7,20 @@ function SearchInput({placeholder}){
     const [isFocused, setIsFocused] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const isActive = isFocused || inputValue.length > 0;
-  
+    useEffect(function(){
+        function noMoreInCarouselBoundsDesign(){
+            const header = document.querySelector('header')
+            const header_btm = header.getBoundingClientRect().bottom
+            const carousel_btm = document.querySelector('.carousel-case').getBoundingClientRect().bottom
+            if(header_btm > carousel_btm){
+                header.classList.add('left-carousel')
+            }else{
+                header.classList.remove('left-carousel')
+            }
+        }
+        window.addEventListener('scroll',noMoreInCarouselBoundsDesign)
+        return ()=>window.removeEventListener('scroll',noMoreInCarouselBoundsDesign)
+    },[])
     return(
         <div className="search-input-box">
             <button className="input-btn">

@@ -30,6 +30,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
+        {/* <Route path="/grimoire" element={ <Homepage top_movies_data__={top_movies_data}/> }/> */}
         <Route path="/lists/*" element={<ListRoutes />} /> 
         <Route path="*" element={ <NotFoundpage/>} />
       </Routes>
