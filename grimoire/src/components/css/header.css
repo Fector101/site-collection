@@ -13,7 +13,10 @@ header {
     transition: all 0.5s ease-in-out;
 }
 
-.left-carousel {
+.left-carousel-top {
+    top: 0;
+}
+.left-carousel-bounds {
     background: #272424;
     top: 0;
 }

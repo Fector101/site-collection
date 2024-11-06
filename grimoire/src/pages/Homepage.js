@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import Carousel from "./../components/js/Carousel"
 import Header from "./../components/js/Header"
 import SectionPreview from "./../components/js/SectionPreview"

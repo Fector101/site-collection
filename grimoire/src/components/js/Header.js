@@ -9,13 +9,20 @@ function SearchInput({placeholder}){
     const isActive = isFocused || inputValue.length > 0;
     useEffect(function(){
         function noMoreInCarouselBoundsDesign(){
+            const carousel = document.querySelector('.carousel-case')
             const header = document.querySelector('header')
             const header_btm = header.getBoundingClientRect().bottom
-            const carousel_btm = document.querySelector('.carousel-case').getBoundingClientRect().bottom
+            const carousel_btm = carousel.getBoundingClientRect().bottom
             if(header_btm > carousel_btm){
-                header.classList.add('left-carousel')
-            }else{
-                header.classList.remove('left-carousel')
+                header.classList.add('left-carousel-bounds')
+            }
+            else if(header.getBoundingClientRect().top > carousel.getBoundingClientRect().top){
+                header.classList.add('left-carousel-top')
+                header.classList.remove('left-carousel-bounds')
+            }
+            else{
+                header.classList.remove('left-carousel-bounds')
+                header.classList.remove('left-carousel-top')
             }
         }
         window.addEventListener('scroll',noMoreInCarouselBoundsDesign)
