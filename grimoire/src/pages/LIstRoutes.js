@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import Listspage from "./Listspage"
 import CreateListpage from "./CreateListpage"
 import Listpage from "./Listpage"
-import HeaderSticky from "../components/js/HeaderSticky"
+// import HeaderSticky from "../components/js/HeaderSticky"
 
 export default function ListRoutes(){
     return (

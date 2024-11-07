@@ -1,8 +1,10 @@
 import "./../css/SectionPreview.css"
-import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
+import { Star, ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
+// import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
 
 function Card({movie_data}){
-    let {poster_path,title, media_type, vote_average,rated='PG'} = movie_data
+    let {poster_path,title, vote_average,rated='PG'} = movie_data
+    // let {poster_path,title, media_type, vote_average,rated='PG'} = movie_data
     
     return (
         <li className="card cursor-pointer">
