@@ -7,6 +7,12 @@
     height: max-content;
     margin-bottom: 7.5px;
 }
+.rated-pg{background-color: rgb(20, 191, 20);}
+.rated-r{background-color: rgb(241, 54, 54);}
+.rated-pg-13{background-color:plum;}
+.rated-nc-17{background-color:7671c9;}
+.rated-pg-18{background-color:#7671c9;}
+
 .SectionPreview .header{
     display: flex;
     gap: 15px;
@@ -27,6 +33,8 @@
     padding-bottom: 7.5px;
     /* height: 305px; */
     height: 280px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .SectionPreview .collection::-webkit-scrollbar{
     display: none;
@@ -58,22 +66,25 @@
     font-size: 13px;
     overflow: hidden;
     flex: 0 0 auto;
+    --backdrop-bg-hover:rgba(22, 21, 22, 0.505);
 
-    --backdrop-bg:rgba(22, 21, 22, 0.505);
+    --backdrop-bg:rgba(22, 21, 22, 0.298);
+    --backdrop-bg-lighter:rgba(22, 21, 22, 0.142);
 }
 .SectionPreview .collection .card .bookmark-btn-case{
     position: absolute;
-    width: 100%;
-    background-color: var(--backdrop-bg);
+    right: 0;
+    background-color: var(--backdrop-bg-lighter);
 }
-.SectionPreview .collection .card .bookmark{
-    padding: 2px 2px;
+.SectionPreview .collection .card .add-to-list-btn{
     height: 40px;
     border-radius: 5px;
     color: var(--svg-primary-bg);
     margin-left: auto;
+    padding: 5px; 
+
 }
-.SectionPreview .card .bookmark svg{
+.SectionPreview .card .add-to-list-btn svg{
     height: 100%
 }
 .SectionPreview .collection .card img{
@@ -82,33 +93,47 @@
     height: 100%;
 
 }
-.SectionPreview .collection .card .card-info-texts{
+.SectionPreview .collection .card .card-info{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    /* flex-direction: column; */
     position: absolute;   
     bottom: 0;
     width: 100%;
     background-color: var(--backdrop-bg);
 }
-.SectionPreview .collection .card .card-info-texts .sub-case{
-    display: flex;
-    height: 30px;
-    align-items: center;
-    text-transform: capitalize;
-
+.SectionPreview .card .card-info .side-case{
+    display: flex; 
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    padding-bottom: 0;
+    /*height: 100%;
+    align-items: center; */
 }
-.SectionPreview .collection .card .sub-case .rate-btn{
+.SectionPreview .card .card-info > button{
+    padding: 2px 3px;
+    align-items: center;
+    height: max-content;
+    margin-top: auto;
+    color: inherit;
+    border-radius: 2px;
+    
+}
+.SectionPreview .card .rate-status-case{
+    justify-content: flex-end;
+    position: relative;
+    right: 5px;
+    gap: 2px;
+    justify-content: flex-end;
+}
+.SectionPreview .collection .card .side-case .rate-btn{
     color: var(--svg-primary-bg);
     padding: 2px 1px;
     border-radius: 2px;
-    margin-left: 2px;
 }
-.SectionPreview .collection .card .card-info-texts .sub-case svg{
-    /* margin: 0 7px; */
+.SectionPreview .collection .card .card-info .side-case svg{
     height: 15px;
-}
-.SectionPreview .collection .card .card-info-texts .sub-case .svg-solid-yellow{
-    margin-left: auto;
 }
 
 .SectionPreview .collection .card .hidden{
@@ -123,11 +148,8 @@
     visibility: visible;
 }
 
-.SectionPreview .collection .card:hover .hidden.bookmark-btn-case{
-    padding: 5px 10px;
-}
-.SectionPreview .collection .card:hover .hidden.card-info-texts{
-    padding: 15px 10px;
+.SectionPreview .collection .card .card-info{
+    padding: 10px;
     padding-right: 5px;
 }
 

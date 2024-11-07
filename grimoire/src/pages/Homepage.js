@@ -1,5 +1,5 @@
 import Carousel from "./../components/js/Carousel"
-import Header from "./../components/js/Header"
+// import Header from "./../components/js/Header"
 import SectionPreview from "./../components/js/SectionPreview"
 import { TrendingUp, Tv, ChartNoAxesColumn,Clock3} from "lucide-react"
 // import { TrendingUp, Tv, ChartNoAxesColumn,Film,Clapperboard } from "lucide-react"

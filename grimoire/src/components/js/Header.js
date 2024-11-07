@@ -8,7 +8,7 @@ function SearchInput({placeholder}){
     const [inputValue, setInputValue] = useState('');
     const isActive = isFocused || inputValue.length > 0;
     useEffect(function(){
-        function noMoreInCarouselBoundsDesign(){
+        function headerDesignAccordingToPos(){
             const carousel = document.querySelector('.carousel-case')
             if(!carousel)return
             const header = document.querySelector('header')
@@ -25,8 +25,9 @@ function SearchInput({placeholder}){
                 header.classList.remove('left-carousel-bounds','left-carousel-top')
             }
         }
-        window.addEventListener('scroll',noMoreInCarouselBoundsDesign)
-        return ()=>window.removeEventListener('scroll',noMoreInCarouselBoundsDesign)
+        headerDesignAccordingToPos()
+        window.addEventListener('scroll',headerDesignAccordingToPos)
+        return ()=>window.removeEventListener('scroll',headerDesignAccordingToPos)
     },[])
     return(
         <div className="search-input-box">
@@ -48,13 +49,18 @@ function SearchInput({placeholder}){
         </div>
     )
 }
+
 function MynavBar({links,current_page_name}){
+    function swicthPage(e){
+        console.log(e)
+
+    }
     return (
         <nav className="side-content left">
                 {links.map((each_page,i)=>{
                     return  <ol key={i}>
                                 <li className={each_page.name === current_page_name ? "current-page":''}>
-                                    <Link to={each_page.link} state="Hi" className="link">{each_page.name}</Link>
+                                    <Link to={each_page.link} onClick={swicthPage} state="Hi" className="link">{each_page.name}</Link>
                                     <hr className={`${each_page.name === current_page_name ? 'current-page-ruler' : ''}`}/>
                                 </li>
                             </ol>
