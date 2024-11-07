@@ -1,25 +1,37 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+// Last layout
+// <>
+//       <Routes >
+//         <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
+//         {/* <Route path="/grimoire" element={ <Homepage top_movies_data__={top_movies_data}/> }/> */}
+//         <Route path="/lists/*" element={<ListRoutes />} /> 
+//         <Route path="*" element={ <NotFoundpage/>} />
+//       </Routes>
+//     </>
 
-function App() {
-    let location = useLocation()
-    console.log(location)
-    // let [top_10_movies,setTop10Movies]=useState([])
-    // useEffect(function(){
-    //   apiCall().then(data=>setTop10Movies(data))
-    // },[])
-    const saved_state = location.state
-    return (
-      <>
-        <p>{saved_state}</p>
-        <Routes>
-          <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
-          <Route path="/lists/*" element={<ListRoutes />} /> 
-          <Route path="*" element={ <NotFoundpage/>} />
-        </Routes>
-      </>
 
-    )
-}  
+
+// import { Route, Routes, useLocation } from "react-router-dom";
+
+// function App() {
+//     let location = useLocation()
+//     console.log(location)
+//     // let [top_10_movies,setTop10Movies]=useState([])
+//     // useEffect(function(){
+//     //   apiCall().then(data=>setTop10Movies(data))
+//     // },[])
+//     const saved_state = location.state
+//     return (
+//       <>
+//         <p>{saved_state}</p>
+//         <Routes>
+//           <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
+//           <Route path="/lists/*" element={<ListRoutes />} /> 
+//           <Route path="*" element={ <NotFoundpage/>} />
+//         </Routes>
+//       </>
+
+//     )
+// }  
 // Sticky Routers Header
 // {/* <Route path="/lists" element={<HeaderSticky />}> 
 //   <Route index  element={ <Listspage text='Frm App Component to Route'/> } />

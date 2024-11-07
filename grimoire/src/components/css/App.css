@@ -13,9 +13,7 @@ body > #root{
   height: 100%;
   width: 100%;
   background-color: rgb(255, 255, 255);
-}
 
-.page{
   --font-style:sans-serif;
   --custom-font-style: 'Sometype Mono', monospace;
   --theme-color:yellow;
@@ -29,10 +27,16 @@ body > #root{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-optical-sizing: auto;
+  color: var(--bod-color);
+
+
+}
+
+.page{
+  
   
   display: flex;
   flex-direction: column;
-  color: var(--bod-color);
   background-color: rgb(39, 36, 36);
   gap: 40px;
   padding: 1% 2%;
@@ -53,9 +57,7 @@ body > #root{
 button{ background-color: transparent;display: flex;}
 button:hover{background-color: rgba(255, 255, 255, 0.437);}
 
-.homepage-header{
-  
-}
+
 /*   
   position: absolute;
   top:0;

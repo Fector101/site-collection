@@ -6,7 +6,7 @@ export default function Listspage({text}){
     // console.log(obj.foxxy())
     return (
         <>
-            <p>{obj.user_name}</p>
+            <p>{obj?.user_name}</p>
             <p>{text}</p>
             {/* 'replace' Keyword means we're Removing current page from links visted (i.e We can't come back to the page with the link about to be clicked)
             <Link to="/lists/movie1" replace>List 1</Link> */}

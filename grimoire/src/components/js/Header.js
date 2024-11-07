@@ -1,7 +1,7 @@
 import {useState, React, useEffect} from "react";
 import "./../css/header.css"
 import { Search, User2, ChevronDown, BellIcon } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 
 function SearchInput({placeholder}){
     const [isFocused, setIsFocused] = useState(false);
@@ -10,6 +10,7 @@ function SearchInput({placeholder}){
     useEffect(function(){
         function noMoreInCarouselBoundsDesign(){
             const carousel = document.querySelector('.carousel-case')
+            if(!carousel)return
             const header = document.querySelector('header')
             const header_btm = header.getBoundingClientRect().bottom
             const carousel_btm = carousel.getBoundingClientRect().bottom
@@ -21,8 +22,7 @@ function SearchInput({placeholder}){
                 header.classList.remove('left-carousel-bounds')
             }
             else{
-                header.classList.remove('left-carousel-bounds')
-                header.classList.remove('left-carousel-top')
+                header.classList.remove('left-carousel-bounds','left-carousel-top')
             }
         }
         window.addEventListener('scroll',noMoreInCarouselBoundsDesign)
@@ -55,7 +55,7 @@ function MynavBar({links,current_page_name}){
                     return  <ol key={i}>
                                 <li className={each_page.name === current_page_name ? "current-page":''}>
                                     <Link to={each_page.link} state="Hi" className="link">{each_page.name}</Link>
-                                    {each_page.name === current_page_name && <hr className="current-page-ruler"/> }
+                                    <hr className={`${each_page.name === current_page_name ? 'current-page-ruler' : ''}`}/>
                                 </li>
                             </ol>
                 })}
@@ -65,10 +65,11 @@ function MynavBar({links,current_page_name}){
 }
 export default function Header({class_,userName}){
     return (
+        <>
         <header className={class_||''}>
             <p className="title">Grimoire</p>
 
-            <MynavBar links={[{link:'/grimoire',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
+            <MynavBar links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content right">
                 {
@@ -93,5 +94,7 @@ export default function Header({class_,userName}){
                 }
             </div>
         </header>
+        <Outlet context={ {foxxy:()=> 'Wisdow Seekers', user_name: "Fabian - UserName From HeaderSticky"} }/>
+        </>
     )
 }

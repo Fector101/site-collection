@@ -7,7 +7,7 @@ import HeaderSticky from "../components/js/HeaderSticky"
 export default function ListRoutes(){
     return (
         <Routes>
-            <Route element={<HeaderSticky />}>
+            <Route>
                 <Route index  element={ <Listspage text='Frm App Component to Route'/> } />
                 <Route path=":list_name" element={ <Listpage text='Frm App Component to Route'/> }/>
                 <Route path="new-list" element={ <CreateListpage text='Frm App Component to Route'/> }/>
@@ -15,3 +15,11 @@ export default function ListRoutes(){
         </Routes >
     )
 }
+
+// <Routes>
+// <Route element={<HeaderSticky />}>
+//     <Route index  element={ <Listspage text='Frm App Component to Route'/> } />
+//     <Route path=":list_name" element={ <Listpage text='Frm App Component to Route'/> }/>
+//     <Route path="new-list" element={ <CreateListpage text='Frm App Component to Route'/> }/>
+// </Route>
+// </Routes >

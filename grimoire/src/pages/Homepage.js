@@ -8,7 +8,7 @@ export default function Homepage({top_movies_data__}){
 
     return (
         <div className="home-page page">
-            <Header class_='homepage-header'/>
+            {/* <Header class_='homepage-header'/> */}
             <main>
                 {top_movies_data__&&<Carousel data={top_movies_data__.results?.slice(0,7)}/>}
             </main>

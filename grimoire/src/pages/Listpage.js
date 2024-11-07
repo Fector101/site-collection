@@ -6,7 +6,7 @@ export default function Listpage(){
     const obj = useOutletContext()
     return (
         <>
-            <p>{obj.user_name}</p>
+            <p>{obj?.user_name}</p>
             <p>{list_name} List</p>
         </>
     )
