@@ -31,6 +31,8 @@ header {
 header .title {
     font-size: 25px;
     margin-right: 10px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .side-content {
@@ -57,7 +59,7 @@ header li {
     flex-direction: column;
 }
 
-header li .link {
+header li a {
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -65,7 +67,7 @@ header li .link {
     color: #9ca3af;
 }
 
-header li.current-page .link {
+header li.current-page a{
     font-size: 17px;
     color: whitesmoke;
     gap: 2px;
@@ -74,10 +76,10 @@ header li.current-page .link {
 header li hr {
     height: 0;
     width: 0;
-    transition: all 0.3 ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-header li .current-page-ruler {
+header li.current-page hr {
     width: 88%;
     height: 3px;
     background-color: var(--theme-color);

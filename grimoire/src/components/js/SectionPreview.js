@@ -34,12 +34,18 @@ function Card({movie_data}){
         </li>
     )
 }
-export default function SectionPreview({data,title, icon}){
+export default function SectionPreview({data,title, icon,data_info}){
+    console.log(data_info.active)
+
+    if(!data_info.active){data_info.active=data_info.types[0]}
     return (
         <section className="SectionPreview">
             <div className="header">
                 {icon && icon}
                 <h3>{title}</h3>
+                <div className="display-flex preview-media-type--btns-case">
+                    {data_info.types.map((each,i,arr)=> <button className={`cursor-pointer `+ (each===data_info.active? "btn-fill-white active" : "btn-outline-white") + (arr.length ===1 ?' one-type':'') }>{each}</button> )}
+                </div>
             </div>
             <ol className="collection  horizontal-scrollbar__items--faded-end horizontal-scrollbar__items--faded-start horizontal-scrollbar__items--faded">
 

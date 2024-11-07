@@ -1,12 +1,14 @@
 // import { useEffect, useRef, useState } from "react";
+import "./components/css/quick-style.css"
 import "./components/css/App.css";
-import Homepage from "./pages/Homepage";
 import "./components/css/responsive.css"
+import Homepage from "./pages/Homepage";
 import { top_movies_data } from "./components/js/api_data";
 import { Route, Routes } from "react-router-dom";
 import NotFoundpage from "./pages/NotFoundpage";
 import ListRoutes from "./pages/LIstRoutes";
 import Header from "./components/js/Header";
+
 // async function apiCall(){
 //   const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
 //   const options = {

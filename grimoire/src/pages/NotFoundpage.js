@@ -7,7 +7,7 @@ export default function NotFoundpage(){
     useEffect(function(){
         setTimeout(()=>{
             // navigate(-1) // To Go to last page.
-            navigate('/grimoire',{state: 'Page not found'})
+            navigate('/',{state: 'Page not found'})
         },1000)
     // eslint-disable-next-line
     },[])

@@ -14,10 +14,10 @@ export default function Homepage({top_movies_data__}){
             </main>
             {top_movies_data__&&
             <>
-            <SectionPreview title={'Trending'} icon={<TrendingUp />} data={top_movies_data__.results}/>
-            <SectionPreview title={'Top'} icon={<ChartNoAxesColumn />} data={top_movies_data__.results}/>
-            <SectionPreview title={'Ongoing'} icon={<Tv />} data={top_movies_data__.results}/>
-            <SectionPreview title={'Upcoming'} icon={<Clock3 />} data={top_movies_data__.results}/>
+            <SectionPreview title={'Trending'} icon={<TrendingUp />} data_info={{types:['Movies','TV Shows'],active:'Movies'}} data={top_movies_data__.results}/>
+            <SectionPreview title={'Top'} icon={<ChartNoAxesColumn />} data_info={{types:['Movies','TV Shows'],active:'Movies'}} data={top_movies_data__.results}/>
+            <SectionPreview title={'Ongoing'} icon={<Tv />} data_info={{types:['TV Shows']}} data={top_movies_data__.results}/>
+            <SectionPreview title={'Upcoming'} icon={<Clock3 />} data_info={{types:['Movies','TV Shows'],active:'Movies'}} data={top_movies_data__.results}/>
           
          
                     

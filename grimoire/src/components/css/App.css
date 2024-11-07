@@ -46,24 +46,7 @@ body > #root{
 }
 
 
-.svg-solid-yellow{
-  fill: yellow;
-  color: yellow;
-}
-.svg-outline-yellow{
-  color: yellow;
-}
-.cursor-pointer{ cursor: pointer; }
-.inline-block{
-  display: inline-block;
-}
-.display-flex{
-  display: flex;
-}
-.algin-left{
-  align-items: flex-end;
-}
-button{ background-color: transparent;display: flex;}
+button{ background-color: transparent;display: flex;font-family: inherit;}
 button:not(.not-hov-effect):hover{background-color: rgba(255, 255, 255, 0.437);}
 
 
@@ -99,8 +82,8 @@ right: 0;
   background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
   animation: shimmer 1.5s infinite;
 } */
-@keyframes shimmer {
+/* @keyframes shimmer {
   0%{left: -150%}
   50%{left:50%}
   100%{left:150%}
-}
+} */

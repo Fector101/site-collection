@@ -52,19 +52,23 @@ function SearchInput({placeholder}){
 
 function MynavBar({links,current_page_name}){
     function swicthPage(e){
-        console.log(e)
+        const clicked_link_name = e.target.id
+        console.log(clicked_link_name)
+        if(!clicked_link_name)return
+        document.querySelector('.current-page').classList.remove('current-page')
+        document.getElementById(clicked_link_name).closest('li').classList.add('current-page')
 
     }
     return (
         <nav className="side-content left">
-                {links.map((each_page,i)=>{
-                    return  <ol key={i}>
-                                <li className={each_page.name === current_page_name ? "current-page":''}>
-                                    <Link to={each_page.link} onClick={swicthPage} state="Hi" className="link">{each_page.name}</Link>
-                                    <hr className={`${each_page.name === current_page_name ? 'current-page-ruler' : ''}`}/>
+                <ol >
+                    {links.map((each_page,i)=>{
+                                return  <li key={i} className={each_page.name === current_page_name ? "current-page":''}>
+                                    <Link id={each_page.name} to={each_page.link} onClick={swicthPage} state="Hi">{each_page.name}</Link>
+                                    <hr />
                                 </li>
-                            </ol>
-                })}
+                    })}
+                </ol>
                     
         </nav>
     )
@@ -73,7 +77,11 @@ export default function Header({class_,userName}){
     return (
         <>
         <header className={class_||''}>
-            <p className="title">Grimoire</p>
+            <p>
+                <Link to={userName?'/':'landing-page'} className="title">
+                Grimoire
+                </Link>
+            </p>
 
             <MynavBar links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
             <SearchInput placeholder="Search movies and TV shows"/>
