@@ -2,6 +2,7 @@ import {useState, React, useEffect} from "react";
 import "./../css/header.css"
 import { Search, User2, ChevronDown, BellIcon } from "lucide-react"
 import { Link, Outlet } from "react-router-dom"
+import { nanoid } from "nanoid";
 
 function SearchInput({placeholder}){
     const [isFocused, setIsFocused] = useState(false);
@@ -52,19 +53,18 @@ function SearchInput({placeholder}){
 
 function MynavBar({links,current_page_name}){
     function swicthPage(e){
-        const clicked_link_name = e.target.id
-        console.log(clicked_link_name)
-        if(!clicked_link_name)return
+        const clicked_link = e.target
+        if(!clicked_link)return
         document.querySelector('.current-page').classList.remove('current-page')
-        document.getElementById(clicked_link_name).closest('li').classList.add('current-page')
+        clicked_link.closest('li').classList.add('current-page')
 
     }
     return (
         <nav className="side-content left">
                 <ol >
                     {links.map((each_page,i)=>{
-                                return  <li key={i} className={each_page.name === current_page_name ? "current-page":''}>
-                                    <Link id={each_page.name} to={each_page.link} onClick={swicthPage} state="Hi">{each_page.name}</Link>
+                                return  <li key={nanoid()} className={each_page.name === current_page_name ? "current-page":''}>
+                                    <Link id={nanoid()} to={each_page.link} onClick={swicthPage} state="Hi">{each_page.name}</Link>
                                     <hr />
                                 </li>
                     })}

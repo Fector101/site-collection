@@ -1,9 +1,11 @@
+import { nanoid } from "nanoid"
 import "./../css/SectionPreview.css"
 import { Star, ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
+import { useState } from "react"
 // import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
 
 function Card({movie_data}){
-    let {poster_path,title, vote_average,rated='PG'} = movie_data
+    let {poster_path,release_date,title, vote_average,rated='PG'} = movie_data
     // let {poster_path,title, media_type, vote_average,rated='PG'} = movie_data
     
     return (
@@ -18,6 +20,7 @@ function Card({movie_data}){
             <div className="card-info">
                 <button className="rated-pg not-hov-effect">
                     {/* <Link to={`${media_type}\:${rated}`}>{rated}</Link>     */}
+                    {release_date.split('-')[0]}
                     {rated}  
                 </button>
                 <div className="side-case">
@@ -35,16 +38,23 @@ function Card({movie_data}){
     )
 }
 export default function SectionPreview({data,title, icon,data_info}){
-    console.log(data_info.active)
-
     if(!data_info.active){data_info.active=data_info.types[0]}
+    let [activePreview, setActivePreview] = useState(()=>data_info.active||data_info.types[0])
+    function switchPreview(e){
+        const clicked_tab = e.target
+        if(!clicked_tab)return
+        setActivePreview(clicked_tab.innerText)
+        // document.querySelector('.preview-media-type-btns-case button.active').classList.remove('active')
+        // clicked_tab.classList.add('active')
+
+    }
     return (
         <section className="SectionPreview">
             <div className="header">
                 {icon && icon}
                 <h3>{title}</h3>
-                <div className="display-flex preview-media-type--btns-case">
-                    {data_info.types.map((each,i,arr)=> <button className={`cursor-pointer `+ (each===data_info.active? "btn-fill-white active" : "btn-outline-white") + (arr.length ===1 ?' one-type':'') }>{each}</button> )}
+                <div className="display-flex preview-media-type-btns-case">
+                    {data_info.types.map((each,i,arr)=> <button onClick={switchPreview} id={nanoid()} key={nanoid()} className={`cursor-pointer `+ (each===activePreview? "btn-fill-white active" : "btn-outline-white") + (arr.length ===1 ?' one-type':'') }>{each}</button> )}
                 </div>
             </div>
             <ol className="collection  horizontal-scrollbar__items--faded-end horizontal-scrollbar__items--faded-start horizontal-scrollbar__items--faded">

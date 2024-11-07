@@ -22,15 +22,15 @@
     /* background-color: green; */
 }
 .SectionPreview h3{font-size: 25px;}
-.SectionPreview .preview-media-type--btns-case{
+.SectionPreview .preview-media-type-btns-case{
     margin-left: auto;
     width: 140px;
     height: 80%;
 }
-.SectionPreview .preview-media-type--btns-case:has(button.one-type){
+.SectionPreview .preview-media-type-btns-case:has(button.one-type){
     width: 70px;
 }
-.SectionPreview .preview-media-type--btns-case button{
+.SectionPreview .preview-media-type-btns-case button{
     width: 50%;
     border: 1px solid grey;
     justify-content: center;
@@ -38,17 +38,17 @@
     border-radius: 3px;
     font-size: 12px;
 }
-.SectionPreview .preview-media-type--btns-case button.active{
+.SectionPreview .preview-media-type-btns-case button.active{
     border: none;
 }
-.SectionPreview .preview-media-type--btns-case button:first-child{
+.SectionPreview .preview-media-type-btns-case button:first-child{
     border-radius: 5px 0 0 5px;
     border-right-style: none;
 }
-.SectionPreview .preview-media-type--btns-case button:nth-child(2){
+.SectionPreview .preview-media-type-btns-case button:nth-child(2){
     border-radius: 0 5px 5px 0;
 }
-.SectionPreview .preview-media-type--btns-case button.one-type{width: 100%;border-radius: 5px;}
+.SectionPreview .preview-media-type-btns-case button.one-type{width: 100%;border-radius: 5px;}
 
 .SectionPreview svg{
     height: 100%;
