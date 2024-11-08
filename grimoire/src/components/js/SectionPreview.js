@@ -38,7 +38,6 @@ function Card({movie_data}){
     )
 }
 export default function SectionPreview({data,title, icon,data_info}){
-    if(!data_info.active){data_info.active=data_info.types[0]}
     let [activePreview, setActivePreview] = useState(()=>data_info.active||data_info.types[0])
     function switchPreview(e){
         const clicked_tab = e.target
@@ -54,7 +53,7 @@ export default function SectionPreview({data,title, icon,data_info}){
                 {icon && icon}
                 <h3>{title}</h3>
                 <div className="display-flex preview-media-type-btns-case">
-                    {data_info.types.map((each,i,arr)=> <button onClick={switchPreview} id={nanoid()} key={nanoid()} className={`cursor-pointer `+ (each===activePreview? "btn-fill-white active" : "btn-outline-white") + (arr.length ===1 ?' one-type':'') }>{each}</button> )}
+                    {data_info.types.map((each,i,arr)=> <button onClick={()=>setActivePreview(each)} id={nanoid()} key={nanoid()} className={`cursor-pointer `+ (each===activePreview? "btn-fill-white active" : "btn-outline-white") + (arr.length ===1 ?' one-type':'') }>{each}</button> )}
                 </div>
             </div>
             <ol className="collection  horizontal-scrollbar__items--faded-end horizontal-scrollbar__items--faded-start horizontal-scrollbar__items--faded">
