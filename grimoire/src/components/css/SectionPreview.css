@@ -93,7 +93,6 @@
     border-radius: 5px;
     /* box-shadow: 2px 2px 1px 0.5px rgb(158, 164, 179); */
     /* border: 1px solid grey; */
-    font-size: 13px;
     overflow: hidden;
     flex: 0 0 auto;
     --backdrop-bg-hover:rgba(22, 21, 22, 0.505);
@@ -125,8 +124,6 @@
 }
 .SectionPreview .collection .card .card-info{
     display: flex;
-    /* flex-direction: column; */
-    /* position: absolute;    */
     bottom: 0;
     padding-top: 30px;
     padding-bottom: 10px;
@@ -153,6 +150,7 @@
 }
 .SectionPreview .card .card-info .side-case{
     display: flex; 
+    /* background: #000; */
     /* flex-direction: column; */
     gap: 5px;
     padding: 5px;
@@ -162,11 +160,20 @@
     align-items: center; */
 }
 .SectionPreview .card .rate-status-case{
-    justify-content: flex-end;
+    align-items: center;
     position: relative;
-    right: 5px;
-    gap: 2px;
-    justify-content: flex-end;
+    top: 1px;
+    background-color: rgb(24, 24, 24);
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: rgb(185, 185, 185);
+    font-size: 11px;
+    margin-left: 5px;
+    /* align-self: flex-end; */
+    /* background-color: red; */
+}
+.SectionPreview .card .rate-status-case .rate-txt{
+    
 }
 .SectionPreview .collection .card .side-case .rate-btn{
     color: var(--svg-primary-bg);

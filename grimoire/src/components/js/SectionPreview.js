@@ -26,7 +26,7 @@ function Card({movie_data}){
                 <div className="side-case">
                     <div className="display-flex rate-status-case">
                         {/* <Star className="svg-solid-yellow" /> */}
-                        <p className="">{(+vote_average).toFixed(2)}</p>
+                        <p className="rate-txt">{(+vote_average).toFixed(2)}</p>
                     </div>
                     <div className="display-flex rate-btns-case">
                         <button className="rate-btn"> <ArrowBigDown /> </button>
