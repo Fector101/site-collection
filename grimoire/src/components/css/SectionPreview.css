@@ -131,12 +131,16 @@
     padding-left: 10px;
     width: 100%;
     background-color: var(--backdrop-bg);
+
+    --card-rate-primary-color:rgb(201, 201, 201);
+
 }
 
 .SectionPreview .card .sutle-card-btn{
     align-items: center;
     height: max-content;
-    color: rgb(201, 201, 201);
+    color: rgb(185, 185, 185);
+
     font-size: 12px;
     margin-top: auto;
     border-radius: 2px;
@@ -160,29 +164,39 @@
     align-items: center; */
 }
 .SectionPreview .card .rate-status-case{
+
     align-items: center;
     position: relative;
     top: 1px;
     background-color: rgb(24, 24, 24);
     padding: 1px 4px;
     border-radius: 2px;
-    color: rgb(185, 185, 185);
+    color: var(--card-rate-primary-color);
     font-size: 11px;
     margin-left: 5px;
     /* align-self: flex-end; */
     /* background-color: red; */
 }
-.SectionPreview .card .rate-status-case .rate-txt{
-    
-}
-.SectionPreview .collection .card .side-case .rate-btn{
-    color: var(--svg-primary-bg);
+.SectionPreview .card .vote-btn{
     padding: 2px 1px;
     border-radius: 2px;
 }
-.SectionPreview .collection .card .card-info .side-case svg{
+.SectionPreview .card .side-case svg{
+    color: var(--card-rate-primary-color);
     height: 20px;
 }
+.SectionPreview .card .side-case .vote-btn.up.clicked svg{
+    --color:rgb(173, 233, 167);
+    fill: var(--color);
+    color: var(--color);
+}
+
+.SectionPreview .card .side-case .vote-btn.down.clicked svg{
+    --color:rgb(233, 167, 167);
+    fill: var(--color);
+    color: var(--color);
+}
+
 
 .SectionPreview .collection .card .hidden{
     padding: 0;

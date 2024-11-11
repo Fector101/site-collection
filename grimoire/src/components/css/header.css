@@ -63,12 +63,12 @@ header li a {
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    font-size: 15px;
+    font-size: 14px;
     color: #9ca3af;
 }
 
 header li.current-page a{
-    font-size: 17px;
+    font-size: 16px;
     color: whitesmoke;
     gap: 2px;
 }

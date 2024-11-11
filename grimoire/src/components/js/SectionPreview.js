@@ -16,7 +16,7 @@ function Card({movie_data}){
                 </button>
             </div>
             <img alt={title} loading="lazy" src={`https://image.tmdb.org/t/p/original${poster_path}`} />
-            {/* <img alt={title}/> */}
+            {/* <img alt={title} loading="lazy" srcSet={`https://via.placeholder.com/320x480`} src={`https://image.tmdb.org/t/p/original${poster_path}`} /> */}
             <div className="card-info">
                 <button className="sutle-card-btn not-hoveffect">
                     {/* <Link to={`${media_type}\:${rated}`}>{rated}</Link>     */}
@@ -29,8 +29,8 @@ function Card({movie_data}){
                         <p className="rate-txt">{(+vote_average).toFixed(2)}</p>
                     </div>
                     <div className="display-flex rate-btns-case">
-                        <button className="rate-btn"> <ArrowBigDown /> </button>
-                        <button className="rate-btn"> <ArrowBigUp /> </button>
+                        <button onClick={(e)=>{ e.target.closest('.card').querySelector('.vote-btn.clicked')?.classList.remove('clicked'); e.target.closest('button').classList.toggle('clicked')}} className="vote-btn down"> <ArrowBigDown /> </button>
+                        <button onClick={(e)=>{ e.target.closest('.card').querySelector('.vote-btn.clicked')?.classList.remove('clicked'); e.target.closest('button').classList.toggle('clicked')}} className="vote-btn up"> <ArrowBigUp /> </button>
                     </div>
                 </div>
             </div>
