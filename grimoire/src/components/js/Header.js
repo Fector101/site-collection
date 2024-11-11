@@ -79,6 +79,7 @@ function MySidenavBar({links,for_,current_page_name}){
     const location = useLocation()
     current_page_name=location.pathname === '/'?'Home':location.pathname.replace('/','')
     current_page_name=current_page_name==='shows'?'Tv shows':current_page_name
+    current_page_name=current_page_name==='lists'?'Lists':current_page_name
     console.log(current_page_name)
     function swicthPage(e){
         const clicked_link = e.target
