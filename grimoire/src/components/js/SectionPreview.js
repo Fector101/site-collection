@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid"
 import "./../css/SectionPreview.css"
-import { Star, ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
+import { Star,ArrowBigUp,ArrowBigDown,LucideListPlus} from 'lucide-react'
 import { useState } from "react"
 // import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
 
@@ -12,25 +12,25 @@ function Card({movie_data}){
         <li className="card cursor-pointer">
             <div className="bookmark-btn-case">
                 <button className="add-to-list-btn">
-                    <Plus/>
+                    <LucideListPlus/>
                 </button>
             </div>
             <img alt={title} loading="lazy" src={`https://image.tmdb.org/t/p/original${poster_path}`} />
             {/* <img alt={title}/> */}
             <div className="card-info">
-                <button className="rated-pg not-hov-effect">
+                <button className="sutle-card-btn not-hoveffect">
                     {/* <Link to={`${media_type}\:${rated}`}>{rated}</Link>     */}
-                    {release_date.split('-')[0]}
-                    {rated}  
+                        {release_date.split('-')[0]}
                 </button>
+                <button className="sutle-card-btn not-hv-effect"> {rated} </button>
                 <div className="side-case">
                     <div className="display-flex rate-status-case">
-                        <Star className="svg-solid-yellow" />
+                        {/* <Star className="svg-solid-yellow" /> */}
                         <p className="">{(+vote_average).toFixed(2)}</p>
                     </div>
                     <div className="display-flex rate-btns-case">
-                        <button className="rate-btn"> <ThumbsDown /> </button>
-                        <button className="rate-btn"> <ThumbsUp /> </button>
+                        <button className="rate-btn"> <ArrowBigDown /> </button>
+                        <button className="rate-btn"> <ArrowBigUp /> </button>
                     </div>
                 </div>
             </div>

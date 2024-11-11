@@ -7,11 +7,11 @@
     height: max-content;
     margin-bottom: 7.5px;
 }
-.rated-pg{background-color: rgb(20, 191, 20);}
+/* .rated-pg{background-color: rgb(20, 191, 20);}
 .rated-r{background-color: rgb(241, 54, 54);}
 .rated-pg-13{background-color:plum;}
 .rated-nc-17{background-color:7671c9;}
-.rated-pg-18{background-color:#7671c9;}
+.rated-pg-18{background-color:#7671c9;} */
 
 .SectionPreview .header{
     display: flex;
@@ -55,7 +55,6 @@
 }
 .SectionPreview .collection{
     width: 100%;
-    height:250px;
     overflow:scroll hidden;
     display: flex;
     gap:15px;
@@ -63,9 +62,9 @@
     /* flex-wrap: wrap; */
     padding-bottom: 7.5px;
     /* height: 305px; */
-    height: 280px;
-    padding-left: 20px;
-    padding-right: 20px;
+    height:300px;
+    padding-left: 22px;
+    padding-right: 22px;
 }
 .SectionPreview .collection::-webkit-scrollbar{
     display: none;
@@ -126,30 +125,41 @@
 }
 .SectionPreview .collection .card .card-info{
     display: flex;
-    justify-content: space-between;
     /* flex-direction: column; */
-    position: absolute;   
+    /* position: absolute;    */
     bottom: 0;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 10px;
     width: 100%;
     background-color: var(--backdrop-bg);
 }
+
+.SectionPreview .card .sutle-card-btn{
+    align-items: center;
+    height: max-content;
+    color: rgb(201, 201, 201);
+    font-size: 12px;
+    margin-top: auto;
+    border-radius: 2px;
+    background-color: rgb(61, 59, 59);
+    padding: 3px 5px;
+    margin-right: 5px;
+}
+.SectionPreview .card .sutle-card-btn:hover{
+    background-color: rgba(61, 59, 59, 0.976);
+    box-shadow: 1px 1px 1.5px rgb(98, 98, 98);
+}
 .SectionPreview .card .card-info .side-case{
     display: flex; 
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 5px;
     padding: 5px;
     padding-bottom: 0;
+    margin-left: auto;
     /*height: 100%;
     align-items: center; */
-}
-.SectionPreview .card .card-info > button{
-    padding: 2px 3px;
-    align-items: center;
-    height: max-content;
-    margin-top: auto;
-    color: inherit;
-    border-radius: 2px;
-    
 }
 .SectionPreview .card .rate-status-case{
     justify-content: flex-end;
@@ -164,7 +174,7 @@
     border-radius: 2px;
 }
 .SectionPreview .collection .card .card-info .side-case svg{
-    height: 15px;
+    height: 20px;
 }
 
 .SectionPreview .collection .card .hidden{
@@ -177,11 +187,6 @@
 .SectionPreview .collection .card:hover .hidden{
     height: auto;
     visibility: visible;
-}
-
-.SectionPreview .collection .card .card-info{
-    padding: 10px;
-    padding-right: 5px;
 }
 
 /* .SectionPreview .collection .card::before{

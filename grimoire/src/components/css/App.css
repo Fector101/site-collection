@@ -47,7 +47,8 @@ body > #root{
 
 
 button{ background-color: transparent;display: flex;font-family: inherit;}
-button:not(.not-hov-effect):hover{background-color: rgba(255, 255, 255, 0.437);}
+button:hover{background-color: rgba(255, 255, 255, 0.437);}
+/* button:not(.not-hov-effect):hover{background-color: rgba(255, 255, 255, 0.437);} */
 
 
 /*   

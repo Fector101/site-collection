@@ -15,7 +15,8 @@ function SearchInput({placeholder}){
             const header = document.querySelector('header')
             const header_btm = header.getBoundingClientRect().bottom
             const carousel_btm = carousel.getBoundingClientRect().bottom
-            if(header_btm > carousel_btm){
+            const carousel_texts_con_btm=document.querySelector('.carousel-content-case .title').getBoundingClientRect().top
+            if(header_btm > carousel_texts_con_btm){
                 header.classList.add('left-carousel-bounds')
             }
             else if(header.getBoundingClientRect().top > carousel.getBoundingClientRect().top){

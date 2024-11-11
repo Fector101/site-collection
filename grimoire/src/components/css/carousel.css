@@ -62,11 +62,27 @@
 .carousel-case .sub-box{
     display: flex;
     align-items: center;
+    height: 22px;
+    overflow: hidden;
 }
-.carousel-case .rating-stars {
+.carousel-case .rating {
     display: flex;
     gap: 4px;
     margin: 0 10px;    
+    height: 100%;
+    color: rgb(183, 179, 179);
+    font-size: 14px;
+    align-items: end;
+}
+.rating p{
+    margin-right: 6px;
+}
+.rating .img{
+    height: 100%;
+    margin-right: 2px;
+}
+.rating .imdb-img{
+    /* height: 40px; */
 }
 /* .rating-stars svg{ */
     /* box-shadow: 1px 1px 1px green; */
