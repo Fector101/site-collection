@@ -82,8 +82,8 @@ function Slide({pos_info__, class_, movie_data, index}){
                 <p className="description">{clipText(overview)}</p>
             </div>
             <div className='btns-case'>
-                <CarouselBtn class_="icon watch-icon" text='Watch Trailer' icon={<Play/>}/>
-                <CarouselBtn class_="icon add-icon" text='Add to Watchlist' icon={<LucideListPlus className='plus-icon'/>}/>
+                <CarouselBtn class_="icon cursor-pointer watch-icon" text='Watch Trailer' icon={<Play/>}/>
+                <CarouselBtn class_="icon cursor-pointer add-icon" text='Add to Watchlist' icon={<LucideListPlus className='plus-icon'/>}/>
             </div>
         </div>
             

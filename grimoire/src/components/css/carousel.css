@@ -115,7 +115,16 @@
     border-radius: 10px;
     background-color: #FFFFFF;
     color: black;
+    transition: font-size 0.4s ease-in-out;
 }
+.btns-case button:hover{
+    background-color: #FFFFFF;
+    font-size: 13px;
+}
+.btns-case button:hover svg{
+    height: 60%;
+}
+
 .btns-case button p{
     position: relative;
     top: 1px;

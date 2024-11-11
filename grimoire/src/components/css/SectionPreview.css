@@ -86,7 +86,6 @@
 
 .SectionPreview .collection .card{
     height:100%;
-    width:max-content;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -105,22 +104,23 @@
     right: 0;
     background-color: var(--backdrop-bg-lighter);
 }
-.SectionPreview .collection .card .add-to-list-btn{
+.SectionPreview .card .add-to-list-btn{
     height: 40px;
-    border-radius: 5px;
+    border-top-right-radius: 5px;
     color: var(--svg-primary-bg);
     margin-left: auto;
     padding: 5px; 
-
+}
+.SectionPreview .card .add-to-list-btn:hover{
+    background:  rgba(61, 59, 59, 0.522);
 }
 .SectionPreview .card .add-to-list-btn svg{
     height: 100%
 }
 .SectionPreview .collection .card img{
-    width:190px;
+    /* width:190px; */
     /* height: 220px; */
     height: 100%;
-
 }
 .SectionPreview .collection .card .card-info{
     display: flex;
@@ -137,10 +137,7 @@
 }
 
 .SectionPreview .card .sutle-card-btn{
-    align-items: center;
-    height: max-content;
     color: rgb(185, 185, 185);
-
     font-size: 12px;
     margin-top: auto;
     border-radius: 2px;
