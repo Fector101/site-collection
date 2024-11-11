@@ -34,7 +34,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
-        <Route path="/lists/*" element={<ListRoutes />} /> 
+        <Route path="/list/*" element={<ListRoutes />} /> 
         <Route path="*" element={ <NotFoundpage/>} />
       </Routes>
     </>
