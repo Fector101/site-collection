@@ -1,7 +1,8 @@
 import {useState, React, useEffect} from "react";
 import "./../css/header.css"
-import { Search, User2, ChevronDown, BellIcon, Menu } from "lucide-react"
-import { Link, Outlet } from "react-router-dom"
+import "./../css/header-responsive .css"
+import { Search, User2, ChevronDown, BellIcon, Menu, HomeIcon, Bookmark, Tv, Activity, Film, ChevronRight } from "lucide-react"
+import { Link, Outlet, useLocation } from "react-router-dom"
 import { nanoid } from "nanoid";
 
 function SearchInput({placeholder}){
@@ -60,21 +61,61 @@ function MynavBar({links,for_,current_page_name}){
 
     }
     return (
-        <nav className={for_}>
-                <ol >
-                    {links.map((each_page,i)=>{
-                                return  <li key={nanoid()} className={each_page.name === current_page_name ? "current-page":''}>
-                                    <Link id={nanoid()} to={each_page.link} onClick={swicthPage} state="Hi">{each_page.name}</Link>
-                                    <hr />
-                                </li>
-                    })}
-                </ol>
-                    
-        </nav>
+<nav className={for_}>
+    <ol >
+        {links.map((each_page,i)=>{
+            return  <li key={nanoid()} className={each_page.name === current_page_name ? "current-page":''}>
+                <Link id={nanoid()} to={each_page.link} onClick={swicthPage} state="Hi">{each_page.name}</Link>
+                <hr />
+            </li>
+        })}
+    </ol>
+        
+</nav>
+    )
+}
+
+function MySidenavBar({links,for_,current_page_name}){
+    const location = useLocation()
+    current_page_name=location.pathname === '/'?'Home':location.pathname.replace('/','')
+    current_page_name=current_page_name==='shows'?'Tv shows':current_page_name
+    console.log(current_page_name)
+    function swicthPage(e){
+        const clicked_link = e.target
+        if(!clicked_link)return
+        document.querySelector('.current-page').classList.remove('current-page')
+        clicked_link.closest('a').classList.add('current-page')
+
+    }
+    return (
+<nav className={for_}>
+        {links.map((each_page,i)=>{
+            return  <Link id={nanoid()} key={nanoid()} to={each_page.link} onClick={swicthPage} state="Hi"  className={each_page.name === current_page_name ? "current-page":''}>
+                        {each_page.icon}
+                        <p>{each_page.name}</p>
+                        {each_page.name !== current_page_name && <ChevronRight className="to-page-chevron" />}
+                    </Link>
+        })}
+        
+</nav>
+
     )
 }
 export default function Header({class_,userName}){
     // userName='Dev'
+    useEffect(function(){
+        
+        document.querySelector('.side-menu-modal').addEventListener('mouseup',function(e){
+            // if(e.target === document.querySelector('.side-menu-modal')){
+            // if(e.target === document.querySelector('.side-menu-modal')){
+            document.querySelector('.side-menu-modal').classList.add('display-none')
+            // }
+        })
+        document.querySelector('.menu-btn').addEventListener('click',function(){
+            document.querySelector('.side-menu-modal').classList.remove('display-none')
+        })
+
+    },[])
     return (
         <>
         <header className={class_||''}>
@@ -88,14 +129,14 @@ export default function Header({class_,userName}){
                 </Link>
             {/* </p> */}
 
-            <MynavBar for_="title-bar-nav" links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
+            <MynavBar for_="title-bar-nav" links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/Movies', name:'Movies'},{link:'/shows', name:'Tv shows'}]} current_page_name={'Home'}/>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content right">
                 {
                 userName === undefined?
                     <>
-                    <button className="outline-white">Sign Up</button>
-                    <button className="outline-white">Sign in</button>
+                    <button className="outline-white sign-up">Sign Up</button>
+                    <button className="outline-white sign-in">Sign in</button>
                     </>
                 :
                     <>
@@ -114,11 +155,13 @@ export default function Header({class_,userName}){
             </div>
  
         </header>
-        {/* <section className="side-menu-modal">
+        <section className="side-menu-modal display-none">
             <div className="side-menu-content-box">
-                <MynavBar for_="side-menu" links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
+                <MySidenavBar for_="side-menu" links={[{link:'/',name:'Home',icon:<HomeIcon />},{link:'/lists', name:'Lists',icon:<Bookmark />},{link:'/shows', name:'Tv shows', icon:<Tv/>},{link:'/Movies', name:'Movies',icon:<Film />},{link:'/Cartoons', name:'Cartoons',icon:<Activity />},{link:'/Search', name:'Search',icon:<Search />}]} current_page_name={'Home'}/>
+                <button className="outline-white sign-up">Sign Up</button>
+
             </div>
-        </section> */}
+        </section>
         <Outlet context={ {foxxy:()=> 'Wisdow Seekers', user_name: "Fabian - UserName From HeaderSticky"} }/>
         </>
     )

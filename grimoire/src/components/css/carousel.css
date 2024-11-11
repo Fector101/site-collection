@@ -24,9 +24,9 @@
     justify-content: end;
     /* padding: 2% 4%; */
     padding: 3% 6%;
-    transition: transform 6s ease-in-out;
+    /* transition: transform 6s ease-in-out; */
     background-size: cover;
-    /* border: 1px solid black; */
+    /* border: 1px solid white; */
     
 }
 /* .carousel-content-case p{

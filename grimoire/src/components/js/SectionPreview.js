@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid"
 import "./../css/SectionPreview.css"
-import { ChevronLeft,ArrowBigUp,ArrowBigDown,LucideListPlus, ChevronRight} from 'lucide-react'
+import { ChevronLeft,ArrowBigUp,ArrowBigDown,Bookmark, ChevronRight} from 'lucide-react'
+// import { ChevronLeft,ArrowBigUp,ArrowBigDown,LucideListPlus, ChevronRight} from 'lucide-react'
 import { useState } from "react"
 // import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
 
@@ -12,7 +13,7 @@ function Card({movie_data}){
         <li className="card cursor-pointer">
             <div className="bookmark-btn-case">
                 <button className="add-to-list-btn">
-                    <LucideListPlus/>
+                    <Bookmark/>
                 </button>
             </div>
             <img alt={title} loading="lazy" src={`https://image.tmdb.org/t/p/original${poster_path}`} />

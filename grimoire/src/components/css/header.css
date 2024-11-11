@@ -67,7 +67,7 @@ header li a {
     color: #9ca3af;
 }
 
-header li.current-page a{
+li.current-page a{
     font-size: 16px;
     color: whitesmoke;
     gap: 2px;
@@ -199,6 +199,7 @@ button.subscribe-btn {
 
 
 .outline-white {
+    display: block;
     border: 1px solid white;
     color: aliceblue;
     width: 100px;
@@ -214,22 +215,55 @@ header .menu-btn{
     display: none;
     height: 25px;
     height: max-content;
+     color: var(--svg-primary-bg)
 }
 .side-menu-modal{
     position: absolute;
     top: 0;
     z-index: 10;
-    background: red;
     height: 100%;
     width: 100%;
+    background-color: rgba(18, 18, 18, 0.33);
+
 }
 .side-menu-content-box{
-    height: 100%;
+    /* height: 100%; */
+    position: relative;
+    /* top: 60px; */
     width: 45vw;
-    background: green;}
-.side-menu-content-box ol{
-    background: #000;
-    display: flex;
-    flex-direction: column;
+    background: green;
+    background-color:rgb(40, 40, 40);
+    padding: 10px;
+    padding-bottom: 20px;
     
+}
+.side-menu-content-box a{
+    align-items: center;
+    /* justify-content: center; */
+    display: flex;
+    padding-left: 15px;
+    padding-right: 10px;
+    width: 100%;
+    height: 50px;
+    gap:10px;
+    color: #a8aeb8;
+    text-decoration: none;
+}
+
+.side-menu-content-box nav a:hover{
+    background-color: rgba(18, 18, 18, 0.433);
+    
+}
+
+a.current-page{
+    color: whitesmoke;
+}
+.side-menu-content-box .to-page-chevron{
+    margin-left: auto;
+}
+.side-menu-content-box .sign-up{
+    margin: 0 auto;;
+    border-radius: 5px;
+    border-color: rgb(107, 107, 107);
+
 }
