@@ -75,8 +75,8 @@ export default function Header({class_,userName}){
                 {
                 userName === undefined?
                     <>
-                    <button className="outline-black">Sign Up</button>
-                    <button className="outline-black">Sign in</button>
+                    <button className="outline-white">Sign Up</button>
+                    <button className="outline-white">Sign in</button>
                     </>
                 :
                     <>

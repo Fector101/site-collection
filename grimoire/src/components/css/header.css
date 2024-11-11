@@ -9,12 +9,12 @@ header {
     width: 96%;
     top: 2%;
     transition: all 0.5s ease-in-out;
-
-
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
+    /* border: 1px solid grey; */
+    /* background-color: #7475ab !important; */
 }
 
     /* background-color: rgba(245, 245, 245, 0.427); */
@@ -35,14 +35,14 @@ header .title {
     color: inherit;
 }
 
-.side-content {
+.side-content,.title-bar-nav {
     display: flex;
     margin: auto 0;
     gap: 20px;
     align-items: center;
 }
 
-.side-content.left {
+.title-bar-nav {
     margin-right: auto;
     font-family: var(--custom-font-style);
 }
@@ -111,7 +111,7 @@ header .search-input-box {
     display: flex;
     padding: 5px;
     /* background-color: yellow; */
-}
+  }
 
 .search-icon {
     height: 83%;
@@ -128,7 +128,7 @@ header .search-input-box {
     flex: 1;
 }
 
-.input-box .search-input {
+.input-box input {
     background-color: transparent;
     border-radius: 0 10px 10px 0;
     padding-left: 10px;
@@ -160,13 +160,13 @@ header .search-input-box {
     margin-left: auto;
 }
 
-.side-content button {
+.side-content button, .title-bar-nav button {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.side-content svg {
+.side-content svg,.title-bar-nav svg {
     background-color: transparent;
     color: whitesmoke
 }
@@ -175,9 +175,11 @@ button.subscribe-btn {
     color: inherit;
     font-size: 15px;
     letter-spacing: o.5px;
-    background-color: rgb(243, 21, 21);
-    width: 100px;
+    background-color: rgb(21, 110, 243);
+    /* width: 100px; */
     height: 35px;
+    padding: 0 20px;
+    /* background: green; */
     font-style: var(--font-style);
     border-radius: 20px;
 }
@@ -196,11 +198,38 @@ button.subscribe-btn {
 }
 
 
-.outline-black {
+.outline-white {
     border: 1px solid white;
     color: aliceblue;
     width: 100px;
     height: 32px;
     font-size: 16px;
     font-family: var(--custom-font-style);
+}
+
+
+/* Side Menu */
+header .menu-btn{
+    padding: 3px;
+    display: none;
+    height: 25px;
+    height: max-content;
+}
+.side-menu-modal{
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    background: red;
+    height: 100%;
+    width: 100%;
+}
+.side-menu-content-box{
+    height: 100%;
+    width: 45vw;
+    background: green;}
+.side-menu-content-box ol{
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    
 }

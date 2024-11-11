@@ -63,12 +63,23 @@
     display: flex;
     align-items: center;
     height: 22px;
-    overflow: hidden;
+    /* overflow: hidden; */
+    margin-left: 7px;
+}
+.carousel-case .sub-box .duration-svg{
+    margin-right: 5px;
+    position: relative;
+    bottom: 2px;
+}
+.carousel-case .duration-svg,.duration-txt{
+    color: rgb(191, 191, 191);
+    /* font-size: 20px; */
 }
 .carousel-case .rating {
     display: flex;
     gap: 4px;
     margin: 0 10px;    
+    margin-left: 20px;
     height: 100%;
     color: rgb(183, 179, 179);
     font-size: 14px;
@@ -88,18 +99,15 @@
     /* fill: var(--star-color); */
     /* color: var(--star-color); */
 /* } */
-.carousel-case .sub-box{
-    margin-left: 5px;
-}
+
 .carousel-case .description{
     margin-left: 10px;
+
 }
 .carousel-content-case .btns-case{
     display: flex;
     gap: 30px;
     width: max-content;
-
-
     position:relative;
     z-index:1;
 }
@@ -108,18 +116,17 @@
     width: 170px;
     font-size: 12px;
     text-transform: uppercase;
-    display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     border-radius: 10px;
     background-color: #FFFFFF;
     color: black;
-    transition: font-size 0.4s ease-in-out;
+    transition: font-size 0.2s ease-in-out;
 }
 .btns-case button:hover{
     background-color: #FFFFFF;
-    font-size: 13px;
+    font-size: 12.5px;
 }
 .btns-case button:hover svg{
     height: 60%;

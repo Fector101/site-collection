@@ -1,6 +1,6 @@
 import './../css/carousel.css'
 // import img1 from './../imgs/img.png'
-import { Star, StarHalf, LucideListPlus, Play , Triangle } from 'lucide-react'
+import {Timer, Star, StarHalf, LucideListPlus, Play , Triangle } from 'lucide-react'
 // import { nanoid } from 'nanoid'
 // import { useEffect } from 'react'
 import {toHHMMSS, parseDecimalSide, randInt} from './helper'
@@ -68,7 +68,8 @@ function Slide({pos_info__, class_, movie_data, index}){
             <div className="texts">
                 <h3 className="title">{title}</h3>
                 <div className="sub-box">
-                    <p>{toHHMMSS(secs)} hrs</p>
+                    {/* <Timer className='duration-svg'/> */}
+                    <p className='duration-txt'>{toHHMMSS(secs)} hrs</p>
                     <div className="rating"> 
                         <img src={rot_img} className='rot-img img'/>
                         <p>{((+vote_average)*10).toFixed(2)}%</p>
@@ -149,7 +150,7 @@ export default function Carousel({data}){
     async function moveSlidesForward(slide_index = undefined){
         // stopAllOngoingAnimations()
         const secs = slide_index !== undefined? slide_through_secs :3
-        if(current_slide_index === 2)return
+        // if(current_slide_index === 2)return      // <dev>
         const current_element = document.querySelector('.current')
         const cur_slide_name=current_element.dataset.name
         let old_index = Number(current_element.dataset.index)

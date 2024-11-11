@@ -6,13 +6,14 @@
   box-sizing: border-box;
 }
 
-html, body {
+body {
   height: 100%;
+
 }
 body > #root{
   height: 100%;
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color:rgb(39, 36, 36);
 
   --font-style:sans-serif;
   --custom-font-style: 'Sometype Mono', monospace;
@@ -31,7 +32,9 @@ body > #root{
 
 
 }
-
+svg{
+  color: var(--svg-primary-bg)
+}
 .page{
   
   

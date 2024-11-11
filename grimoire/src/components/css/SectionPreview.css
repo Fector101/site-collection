@@ -50,19 +50,15 @@
 }
 .SectionPreview .preview-media-type-btns-case button.one-type{width: 100%;border-radius: 5px;}
 
-.SectionPreview svg{
-    height: 100%;
-}
+
 .SectionPreview .collection{
     width: 100%;
     overflow:scroll hidden;
+    position: relative;
     display: flex;
     gap:15px;
     list-style: none;
-    /* flex-wrap: wrap; */
     padding-bottom: 7.5px;
-    /* height: 305px; */
-    height:300px;
     padding-left: 22px;
     padding-right: 22px;
 }
@@ -83,9 +79,35 @@
     -webkit-mask-image: linear-gradient(270deg, transparent 0, #060d17 5%, #060d17 95%, transparent);
     mask-image: linear-gradient(270deg, transparent 0, #060d17 5%, #060d17 95%, transparent);
 }
-
+.SectionPreview .collection > button{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 70%;
+    width: 40px;
+    background: rgb(54, 54, 53);
+    align-items: center;
+    display: none;
+    --space-frm-edge:-5px;
+}
+.SectionPreview .collection > button svg{
+    color: var(--svg-primary-bg);
+    --size: 50px;
+    height: var(--size);
+    width: var(--size);
+}
+.collection-left-btn{
+    left: var(--space-frm-edge);
+}
+.collection-right-btn{
+    right: var(--space-frm-edge);
+}
 .SectionPreview .collection .card{
-    height:100%;
+    --card-height:300px;
+    --card-info-height:65px;
+    
     position: relative;
     display: flex;
     flex-direction: column;
@@ -94,20 +116,24 @@
     /* border: 1px solid grey; */
     overflow: hidden;
     flex: 0 0 auto;
-    --backdrop-bg-hover:rgba(22, 21, 22, 0.505);
+    height: var(--card-height);
+    width: 195px;
+    overflow: hidden;
 
+    --backdrop-bg-hover:rgba(22, 21, 22, 0.505);
     --backdrop-bg:rgba(22, 21, 22, 0.298);
     --backdrop-bg-lighter:rgba(22, 21, 22, 0.142);
 }
 .SectionPreview .collection .card .bookmark-btn-case{
     position: absolute;
     right: 0;
-    background-color: var(--backdrop-bg-lighter);
+    background-color: var(--backdrop-bg);
 }
 .SectionPreview .card .add-to-list-btn{
     height: 40px;
     border-top-right-radius: 5px;
     color: var(--svg-primary-bg);
+    /* color: rgb(195, 195, 195); */
     margin-left: auto;
     padding: 5px; 
 }
@@ -118,22 +144,16 @@
     height: 100%
 }
 .SectionPreview .collection .card img{
-    /* width:190px; */
-    /* height: 220px; */
-    height: 100%;
+    background-color: rgb(81, 78, 79);
+    height: calc(var(--card-height) - var(--card-info-height));
 }
 .SectionPreview .collection .card .card-info{
     display: flex;
-    bottom: 0;
-    padding-top: 30px;
-    padding-bottom: 10px;
-    padding-right: 5px;
-    padding-left: 10px;
-    width: 100%;
+    height: var(--card-info-height);
+    padding: 0 5px 10px 10px;
     background-color: var(--backdrop-bg);
-
+    
     --card-rate-primary-color:rgb(201, 201, 201);
-
 }
 
 .SectionPreview .card .sutle-card-btn{
@@ -151,33 +171,29 @@
 }
 .SectionPreview .card .card-info .side-case{
     display: flex; 
-    /* background: #000; */
-    /* flex-direction: column; */
     gap: 5px;
-    padding: 5px;
-    padding-bottom: 0;
     margin-left: auto;
-    /*height: 100%;
-    align-items: center; */
+    margin-top: auto;
+    height: 24px;
 }
-.SectionPreview .card .rate-status-case{
-
+.SectionPreview .card .rate-text-case{
+    height: 100%;
     align-items: center;
-    position: relative;
-    top: 1px;
     background-color: rgb(24, 24, 24);
-    padding: 1px 4px;
+    padding: 0 4px;
     border-radius: 2px;
     color: var(--card-rate-primary-color);
     font-size: 11px;
     margin-left: 5px;
-    /* align-self: flex-end; */
-    /* background-color: red; */
 }
 .SectionPreview .card .vote-btn{
     padding: 2px 1px;
     border-radius: 2px;
 }
+.SectionPreview .card .vote-btn:hover{
+    background: rgba(167, 166, 166, 0.127);
+}
+
 .SectionPreview .card .side-case svg{
     color: var(--card-rate-primary-color);
     height: 20px;

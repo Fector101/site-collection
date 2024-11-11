@@ -1,6 +1,6 @@
 import {useState, React, useEffect} from "react";
 import "./../css/header.css"
-import { Search, User2, ChevronDown, BellIcon } from "lucide-react"
+import { Search, User2, ChevronDown, BellIcon, Menu } from "lucide-react"
 import { Link, Outlet } from "react-router-dom"
 import { nanoid } from "nanoid";
 
@@ -14,7 +14,7 @@ function SearchInput({placeholder}){
             if(!carousel)return
             const header = document.querySelector('header')
             const header_btm = header.getBoundingClientRect().bottom
-            const carousel_btm = carousel.getBoundingClientRect().bottom
+            // const carousel_btm = carousel.getBoundingClientRect().bottom
             const carousel_texts_con_btm=document.querySelector('.carousel-content-case .title').getBoundingClientRect().top
             if(header_btm > carousel_texts_con_btm){
                 header.classList.add('left-carousel-bounds')
@@ -40,7 +40,6 @@ function SearchInput({placeholder}){
             <input 
                 type="text"
                 id="search"
-                className="search-input"
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 value={inputValue}
@@ -52,7 +51,7 @@ function SearchInput({placeholder}){
     )
 }
 
-function MynavBar({links,current_page_name}){
+function MynavBar({links,for_,current_page_name}){
     function swicthPage(e){
         const clicked_link = e.target
         if(!clicked_link)return
@@ -61,7 +60,7 @@ function MynavBar({links,current_page_name}){
 
     }
     return (
-        <nav className="side-content left">
+        <nav className={for_}>
                 <ol >
                     {links.map((each_page,i)=>{
                                 return  <li key={nanoid()} className={each_page.name === current_page_name ? "current-page":''}>
@@ -75,23 +74,28 @@ function MynavBar({links,current_page_name}){
     )
 }
 export default function Header({class_,userName}){
+    // userName='Dev'
     return (
         <>
         <header className={class_||''}>
-            <p>
+            <button className="menu-btn">
+                <Menu/>
+                {/* <Ham/> */}
+            </button>
+            {/* <p> */}
                 <Link to={userName?'/':'landing-page'} className="title">
                 Grimoire
                 </Link>
-            </p>
+            {/* </p> */}
 
-            <MynavBar links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
+            <MynavBar for_="title-bar-nav" links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content right">
                 {
                 userName === undefined?
                     <>
-                    <button className="outline-black">Sign Up</button>
-                    <button className="outline-black">Sign in</button>
+                    <button className="outline-white">Sign Up</button>
+                    <button className="outline-white">Sign in</button>
                     </>
                 :
                     <>
@@ -108,7 +112,13 @@ export default function Header({class_,userName}){
                     </>
                 }
             </div>
+ 
         </header>
+        {/* <section className="side-menu-modal">
+            <div className="side-menu-content-box">
+                <MynavBar for_="side-menu" links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/shows', name:'Tv shows'},{link:'/Cartoons', name:'Cartoons'}]} current_page_name={'Home'}/>
+            </div>
+        </section> */}
         <Outlet context={ {foxxy:()=> 'Wisdow Seekers', user_name: "Fabian - UserName From HeaderSticky"} }/>
         </>
     )
