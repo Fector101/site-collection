@@ -7,6 +7,7 @@
 
     .page {
         padding: 0 20px;
+        gap: 20px;
     }
 
     .page>main {
