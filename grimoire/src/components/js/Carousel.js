@@ -1,6 +1,6 @@
 import './../css/carousel.css'
 // import img1 from './../imgs/img.png'
-import {Timer, Star, StarHalf, LucideListPlus, Play , Triangle } from 'lucide-react'
+import {Timer, Star, StarHalf, LucideListPlus, Play , Triangle, Bookmark } from 'lucide-react'
 // import { nanoid } from 'nanoid'
 // import { useEffect } from 'react'
 import {toHHMMSS, parseDecimalSide, randInt} from './helper'
@@ -86,6 +86,10 @@ function Slide({pos_info__, class_, movie_data, index}){
                 <CarouselBtn class_="icon cursor-pointer watch-icon" text='Watch Trailer' icon={<Play/>}/>
                 <CarouselBtn class_="icon cursor-pointer add-icon" text='Add to Watchlist' icon={<LucideListPlus className='plus-icon'/>}/>
             </div>
+            <button className='phone-bookmark-btn display-none' style={{zIndex:1}}>
+                <Bookmark className='svg-white-fill svg1'/>
+                <Bookmark className='svg-white-fill'/>
+            </button>
         </div>
             
     )

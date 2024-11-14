@@ -1,6 +1,6 @@
 import {useState, React, useEffect} from "react";
 import "./../css/header.css"
-import "./../css/header-responsive .css"
+import "./../css/header-responsive.css"
 import { Search, User2, ChevronDown, BellIcon, Menu, HomeIcon, Bookmark, Tv, Activity, Film, ChevronRight } from "lucide-react"
 import { Link, Outlet, useLocation } from "react-router-dom"
 import { nanoid } from "nanoid";
@@ -133,6 +133,10 @@ export default function Header({class_,userName}){
             <MynavBar for_="title-bar-nav" links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/Movies', name:'Movies'},{link:'/shows', name:'Tv shows'}]} current_page_name={'Home'}/>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content right">
+                <Link className="btn lists-header-btn-link" to='lists' state="Hi">
+                    <Bookmark className="svg-white-fill" />
+                </Link>
+                
                 {
                 userName === undefined?
                     <>

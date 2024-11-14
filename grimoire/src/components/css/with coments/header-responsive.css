@@ -154,7 +154,15 @@
 
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 460px) {
+/* @media screen and (max-width: 360px) { */
+    .side-content.right{
+        gap: 10px;
+    }
+    .side-content.right .lists-header-btn-link{
+        display: flex;
+    }
+
     .side-content.right button.sign-up {
         display: none;
     }

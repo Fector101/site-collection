@@ -1,49 +1,57 @@
-@media screen and (max-width:500px) {
-    .carousel-content-case .phone-bookmark-btn svg.svg1 {
-        --color: rgb(155, 155, 167);
+@media screen and (max-width: 500px) {
+
+    /* .carousel-content-case {
+        overflow: hidden;
+    }
+    .carousel-content-case .texts .title{
+        font-size: 15px;
+    }
+    .carousel-content-case .texts .sub-box{
+        font-size: 10px;
+    }
+    .carousel-content-case .btns-case button svg{
+        height: 10px;
+    }
+    .carousel-content-case .btns-case{
+        position: relative;
+        bottom: 15px;
+    }
+    .carousel-content-case .btns-case button{
+        height: 32px;
+        width: 130px;
+        font-size: 8px;
+    } */
+
+    /* #root >.page{background-color:rgb(190, 190, 235);} */
+    .carousel-content-case .phone-bookmark-btn svg.svg1{
+        --color:rgb(155, 155, 167);
         fill: var(--color);
         color: var(--color);
         position: absolute;
         left: 3px;
         top: 5px;
     }
+    .carousel-content-case .phone-bookmark-btn svg:hover{
+        --color:rgb(202, 202, 235);
 
-    .carousel-content-case .phone-bookmark-btn svg:hover {
-        --color: rgb(202, 202, 235);
     }
-
-    .carousel-content-case .phone-bookmark-btn svg {
-        --color: rgb(230, 230, 241);
+    .carousel-content-case .phone-bookmark-btn svg{
+        /* z-index: 2; */
+        --color:rgb(230, 230, 241);
         fill: var(--color);
         color: var(--color);
         position: relative;
         height: 100%;
         width: 100%;
     }
-
-    .carousel-content-case .phone-bookmark-btn:hover {
-        background-color: transparent;
-    }
-
-    .carousel-content-case .phone-bookmark-btn {
+    .carousel-content-case .phone-bookmark-btn:hover{background-color: transparent;}
+    .carousel-content-case .phone-bookmark-btn{
         position: relative;
         right: 30px;
         bottom: 35px;
         height: 55px;
-        width: 55px;
-        animation: beat 1s ease-in-out infinite;
+        width:  55px;
     }
-  
-    /* Keyframes for the "beating" animation */
-    @keyframes beat {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-    }
-
     .carousel-content-case .texts,
     .carousel-case .btns-case {
         display: none;
@@ -82,7 +90,9 @@
     .SectionPreview .card .card-info .side-case {
         gap: 3px;
         flex-direction: column;
+        /* margin-bottom: 10px; */
         height: auto;
+        /* background-color: red; */
     }
 
     .SectionPreview .card .sutle-card-btn {
@@ -94,5 +104,6 @@
         width: max-content;
         padding: 2px 4px;
         align-self: center;
+        /* background: red; */
     }
 }
