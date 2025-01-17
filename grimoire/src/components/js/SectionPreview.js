@@ -4,6 +4,8 @@ import { ChevronLeft,ArrowBigUp,ArrowBigDown,Bookmark, ChevronRight} from 'lucid
 // import { ChevronLeft,ArrowBigUp,ArrowBigDown,LucideListPlus, ChevronRight} from 'lucide-react'
 import { useState } from "react"
 // import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
+import card_img_placeholder from  "./../imgs/card-img-pl1.png"
+import ImgwithPL from "./ImgwithPL"
 
 function Card({movie_data}){
     let {poster_path,release_date,title, vote_average,rated='PG'} = movie_data
@@ -16,7 +18,7 @@ function Card({movie_data}){
                     <Bookmark/>
                 </button>
             </div>
-            <img alt={title} loading="lazy" src={`https://image.tmdb.org/t/p/original${poster_path}`} />
+            <ImgwithPL alt={title} src={`https://image.tmdb.org/t/p/original${poster_path}`} placeholder_src={card_img_placeholder} />
             {/* <img alt={title} loading="lazy" srcSet={`https://via.placeholder.com/320x480`} src={`https://image.tmdb.org/t/p/original${poster_path}`} /> */}
             <div className="card-info">
                 <button className="sutle-card-btn">
