@@ -175,16 +175,37 @@
     
     
 }
-.SectionPreview .collection .card .card-info .title-box-pc p{
+.SectionPreview .collection .card .card-info .title{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px;
 }
-.SectionPreview .collection .card .card-info .btns-box{
+
+.SectionPreview .collection .card .card-info .details-box{
     display: flex;
     flex: 1;
 }
+
+
+.SectionPreview .collection .card .card-info .details-box .details-case-1{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    justify-content: space-between;
+}
+.SectionPreview .collection .card .card-info .details-case-1 .btns-box{
+    width: 100%;
+    display: flex;
+    margin-top: auto;
+}
+
+.SectionPreview .collection .card .card-info .details-case-1 .title{
+    font-size: 12px;
+    display: none;
+}
+
 
 .SectionPreview .card .sutle-card-btn {
     color: rgb(185, 185, 185);
@@ -201,7 +222,7 @@
     box-shadow: 1px 1px 1.5px rgb(98, 98, 98);
 }
 
-.SectionPreview .card .card-info .side-case {
+.SectionPreview .card .card-info .details-case-2 {
     display: flex;
     gap: 5px;
     margin-left: auto;
@@ -229,18 +250,18 @@
     background: rgba(167, 166, 166, 0.127);
 }
 
-.SectionPreview .card .side-case svg {
+.SectionPreview .card .details-case-2 svg {
     color: var(--card-rate-primary-color);
     height: 20px;
 }
 
-.SectionPreview .card .side-case .vote-btn.up.clicked svg {
+.SectionPreview .card .details-case-2 .vote-btn.up.clicked svg {
     --color: rgb(173, 233, 167);
     fill: var(--color);
     color: var(--color);
 }
 
-.SectionPreview .card .side-case .vote-btn.down.clicked svg {
+.SectionPreview .card .details-case-2 .vote-btn.down.clicked svg {
     --color: rgb(233, 167, 167);
     fill: var(--color);
     color: var(--color);
