@@ -79,7 +79,13 @@
         --card-info-height: 60px;
         width: 170px;
     }
+    .SectionPreview .collection .card .card-info {
+        padding-top: 0;
+    }
 
+    .SectionPreview .card .card-info .title-box-pc {
+        display: none;
+    }
     .SectionPreview .card .card-info .side-case {
         gap: 3px;
         flex-direction: column;

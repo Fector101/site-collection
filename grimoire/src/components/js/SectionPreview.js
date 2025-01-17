@@ -6,10 +6,11 @@ import { useState } from "react"
 // import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
 import card_img_placeholder from  "./../imgs/card-img-pl1.png"
 import ImgwithPL from "./ImgwithPL"
+// import { Link } from "react-router-dom";
 
 function Card({movie_data}){
     let {poster_path,release_date,title, vote_average,rated='PG'} = movie_data
-    // let {poster_path,title, media_type, vote_average,rated='PG'} = movie_data
+    // let {poster_path,title, release_date,media_type, vote_average,rated='PG'} = movie_data
     
     return (
         <li className="card cursor-pointer">
@@ -19,23 +20,28 @@ function Card({movie_data}){
                 </button>
             </div>
             <ImgwithPL alt={title} src={`https://image.tmdb.org/t/p/original${poster_path}`} placeholder_src={card_img_placeholder} />
-            {/* <img alt={title} loading="lazy" srcSet={`https://via.placeholder.com/320x480`} src={`https://image.tmdb.org/t/p/original${poster_path}`} /> */}
             <div className="card-info">
-                <button className="sutle-card-btn">
-                    {/* <Link to={`${media_type}\:${rated}`}>{rated}</Link>     */}
-                        {release_date.split('-')[0]}
-                </button>
-                <button className="sutle-card-btn not-hv-effect"> {rated} </button>
-                <div className="side-case">
-                    <div className="display-flex rate-text-case">
-                        {/* <Star className="svg-solid-yellow" /> */}
-                        <p className="rate-txt">{(+vote_average).toFixed(2)}</p>
-                    </div>
-                    <div className="display-flex rate-btns-case">
-                        <button onClick={(e)=>{ e.target.closest('.card').querySelector('.vote-btn.clicked')?.classList.remove('clicked'); e.target.closest('button').classList.toggle('clicked')}} className="vote-btn down"> <ArrowBigDown /> </button>
-                        <button onClick={(e)=>{ e.target.closest('.card').querySelector('.vote-btn.clicked')?.classList.remove('clicked'); e.target.closest('button').classList.toggle('clicked')}} className="vote-btn up"> <ArrowBigUp /> </button>
+                <div className="title-box-pc">
+                    <p> {title} </p>
+                </div>
+                <div className="btns-box">
+                    {/* <p> {title} </p> */}
+
+                    <button className="sutle-card-btn">
+                        {/* <Link to={`${media_type}\:${rated}`}>{rated}</Link>     */}
+                            {release_date.split('-')[0]}
+                    </button>
+                    <button className="sutle-card-btn not-hv-effect"> {rated} </button>
+
+                    <div className="side-case">
+                        <div className="display-flex rate-text-case"> <p className="rate-txt"> {(+vote_average).toFixed(2)} </p> </div>
+                        <div className="display-flex rate-btns-case">
+                            <button onClick={(e)=>{ e.target.closest('.card').querySelector('.vote-btn.clicked')?.classList.remove('clicked'); e.target.closest('button').classList.toggle('clicked')}} className="vote-btn down"> <ArrowBigDown /> </button>
+                            <button onClick={(e)=>{ e.target.closest('.card').querySelector('.vote-btn.clicked')?.classList.remove('clicked'); e.target.closest('button').classList.toggle('clicked')}} className="vote-btn up"> <ArrowBigUp /> </button>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </li>
     )

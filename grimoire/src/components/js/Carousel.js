@@ -71,7 +71,7 @@ function Slide({pos_info__, class_, movie_data, index}){
                     {/* <Timer className='duration-svg'/> */}
                     <p className='duration-txt'>{toHHMMSS(secs)} hrs</p>
                     <div className="rating"> 
-                        <img src={rot_img} className='rot-img img'/>
+                        <img src={rot_img} alt={title+' poster'} className='rot-img img'/>
                         <p>{((+vote_average)*10).toFixed(2)}%</p>
                         {/* {<ComputedStars rating={vote_average/2} />} */}
                         <svg xmlns="http://www.w3.org/2000/svg" className='imdb-img img' viewBox="0 0 448 512">
