@@ -172,14 +172,12 @@
 
 .SectionPreview .collection .card .card-info .title-box-pc{
     margin-top: auto;
-    
-    
+    font-size: 13px;
 }
 .SectionPreview .collection .card .card-info .title{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 14px;
 }
 
 .SectionPreview .collection .card .card-info .details-box{
