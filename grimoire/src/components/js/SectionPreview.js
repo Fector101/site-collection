@@ -11,7 +11,20 @@ import ImgwithPL from "./ImgwithPL"
 function Card({movie_data}){
     let {poster_path,release_date,title, vote_average,rated='PG'} = movie_data
     // let {poster_path,title, release_date,media_type, vote_average,rated='PG'} = movie_data
-    
+    function takeVote(element){
+        const clicked_btn = element.target.closest('button')
+        if (!clicked_btn) return
+        
+        const card = element.target.closest('.card')
+        const user_vote = [...clicked_btn.classList].filter(class_name=> ['up','down'].includes(class_name))[0]
+        
+        if (user_vote === 'up'){
+            card.querySelector('.rate-btns-case .vote-btn.down').classList.remove('clicked')
+        }else if (user_vote === 'down'){
+            card.querySelector('.rate-btns-case .vote-btn.up').classList.remove('clicked')
+        }
+        clicked_btn.classList.toggle('clicked')
+    }
     return (
         <li className="card cursor-pointer">
             <div className="bookmark-btn-case">
@@ -37,8 +50,8 @@ function Card({movie_data}){
                     <div className="details-case-2">
                         <div className="display-flex rate-text-case"> <p className="rate-txt"> {(+vote_average).toFixed(2)} </p> </div>
                         <div className="display-flex rate-btns-case">
-                            <button onClick={(e)=>{ e.target.closest('.card').querySelector('.vote-btn.clicked')?.classList.remove('clicked'); e.target.closest('button').classList.toggle('clicked')}} className="vote-btn down"> <ArrowBigDown /> </button>
-                            <button onClick={(e)=>{ e.target.closest('.card').querySelector('.vote-btn.clicked')?.classList.remove('clicked'); e.target.closest('button').classList.toggle('clicked')}} className="vote-btn up"> <ArrowBigUp /> </button>
+                            <button onClick={takeVote} className="vote-btn down"> <ArrowBigDown /> </button>
+                            <button onClick={takeVote} className="vote-btn up"> <ArrowBigUp /> </button>
                         </div>
                     </div>
                 </div>
