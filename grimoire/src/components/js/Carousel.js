@@ -38,11 +38,6 @@ function Slide({pos_info__, class_, movie_data, index}){
     }
     style['backgroundImage']=`url(https://image.tmdb.org/t/p/original${backdrop_path})`
 
-    const clipText=(text)=>{
-        let new_text = text.split(' ').slice(0,32).join(' ')
-        if(!new_text.endsWith('.')){ new_text+='...' }
-        return new_text
-    }
     return (
         <div className={'carousel-content-case'+class_} data-index={index} data-name={'name '+index} style={style}>
             {/* <p>{index}</p> */}
