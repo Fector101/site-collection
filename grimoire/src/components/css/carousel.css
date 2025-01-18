@@ -1,1 +1,193 @@
-.carousel-case{width:100%;height:100%;background-repeat:no-repeat;background-size:cover;position:relative;display:flex;}.carousel-content-case{--color:rgba(61, 57, 61, 0.62);background-position: center;background-color:var(--color);height:100%;min-width:100%;display:flex;align-items:end;justify-content:end;padding:3% 6%;background-size:cover;}.carousel-content-case::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:#3d393d9e;}.carousel-content-case .texts{display:flex;flex-direction:column;font-family:'Sometype Mono', monospace;font-size:17px;gap:10px;position:relative;z-index:1;}.carousel-case .title{font-size:50px;}.carousel-case .sub-box{display:flex;align-items:center;height:22px;margin-left:7px;}.carousel-case .sub-box .duration-svg{margin-right:5px;position:relative;bottom:2px;}.carousel-case .duration-svg,.duration-txt{color:rgb(191, 191, 191);}.carousel-case .rating{display:flex;gap:4px;margin:0 10px;margin-left:20px;height:100%;color:rgb(183, 179, 179);font-size:14px;align-items:end;}.rating p{margin-right:6px;}.rating .img{height:100%;margin-right:2px;}.carousel-case .description{margin-left:10px;}.carousel-content-case .btns-case{display:flex;gap:30px;width:max-content;position:relative;z-index:1;}.btns-case button{height:43px;width:170px;font-size:12px;text-transform:uppercase;align-items:center;justify-content:center;gap:10px;border-radius:10px;background-color:#FFFFFF;color:black;transition:font-size 0.2s ease-in-out;}.btns-case button:hover{background-color:#FFFFFF;font-size:12.5px;}.btns-case button:hover svg{height:60%;}.btns-case button p{position:relative;top:1px;}.btns-case button svg{fill:black;height:50%;}.carousel-dir-btn{--carousel-btns-space-frm-side:20px;--carousel-btns-space-frm-top:48%;--size:32px;position:absolute;width:20px;height:var(--size);background:rgba(145, 143, 143, 0.485);align-items:center;justify-content:center;padding:0 4px;z-index:1;}.carousel-left-btn{top:var(--carousel-btns-space-frm-top);left:var(--carousel-btns-space-frm-side);}.carousel-left-btn svg{transform:rotate(-90deg);}.carousel-right-btn{top:var(--carousel-btns-space-frm-top);right:var(--carousel-btns-space-frm-side);}.carousel-right-btn svg{transform:rotate(90deg);}.carousel-dir-btn svg{width:15px;height:15px;fill:rgba(248, 238, 238, 0.529);color:transparent;}.carousel-progress{background-color:rgba(0, 0, 0, 0.323);padding:2px 5px;border-radius:3px;display:flex;gap:5px;width:max-content;position:absolute;bottom:10px;left:0;right:0;margin:0 auto;}.carousel-progress div{--size:6px;height:var(--size);width:var(--size);background-color:rgba(255, 255, 255, 0.538);border-radius:60%;transition:background-color 0.4s;}.carousel-progress div.active{background-color:white;}
+.carousel-case {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+}
+
+.carousel-content-case {
+    --color: rgba(61, 57, 61, 0.62);
+    background-position: center;
+    background-color: var(--color);
+    height: 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding: 3% 6%;
+    background-size: cover;
+}
+
+.carousel-content-case::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #3d393d9e;
+}
+
+.carousel-content-case .texts {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Sometype Mono', monospace;
+    font-size: 17px;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.carousel-case .title {
+    font-size: 50px;
+}
+
+.carousel-case .sub-box {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    margin-left: 7px;
+}
+
+.carousel-case .sub-box .duration-svg {
+    margin-right: 5px;
+    position: relative;
+    bottom: 2px;
+}
+
+.carousel-case .duration-svg,.carousel-case .duration-txt {
+    color: rgb(191, 191, 191);
+}
+
+.carousel-case .rating {
+    display: flex;
+    gap: 4px;
+    margin: 0 10px;
+    margin-left: 20px;
+    height: 100%;
+    color: rgb(183, 179, 179);
+    font-size: 14px;
+    align-items: end;
+}
+
+.rating p {
+    margin-right: 6px;
+}
+
+.rating .img {
+    height: 100%;
+    margin-right: 2px;
+}
+
+.carousel-case .description {
+    margin-left: 10px;
+}
+
+.carousel-content-case .btns-case {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    position: relative;
+    z-index: 1;
+}
+
+.btns-case button {
+    height: 43px;
+    width: 170px;
+    font-size: 12px;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    color: black;
+    transition: font-size 0.2s ease-in-out;
+}
+
+.btns-case button:hover {
+    background-color: #FFFFFF;
+    font-size: 12.5px;
+}
+
+.btns-case button:hover svg {
+    height: 60%;
+}
+
+.btns-case button p {
+    position: relative;
+    top: 1px;
+}
+
+.btns-case button svg {
+    fill: black;
+    height: 50%;
+}
+
+.carousel-dir-btn {
+    --carousel-btns-space-frm-side: 20px;
+    --carousel-btns-space-frm-top: 48%;
+    --size: 32px;
+    position: absolute;
+    width: 20px;
+    height: var(--size);
+    background: rgba(145, 143, 143, 0.485);
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    z-index: 1;
+}
+
+.carousel-left-btn {
+    top: var(--carousel-btns-space-frm-top);
+    left: var(--carousel-btns-space-frm-side);
+}
+
+.carousel-left-btn svg {
+    transform: rotate(-90deg);
+}
+
+.carousel-right-btn {
+    top: var(--carousel-btns-space-frm-top);
+    right: var(--carousel-btns-space-frm-side);
+}
+
+.carousel-right-btn svg {
+    transform: rotate(90deg);
+}
+
+.carousel-dir-btn svg {
+    width: 15px;
+    height: 15px;
+    fill: rgba(248, 238, 238, 0.529);
+    color: transparent;
+}
+
+.carousel-progress {
+    background-color: rgba(0, 0, 0, 0.323);
+    padding: 2px 5px;
+    border-radius: 3px;
+    display: flex;
+    gap: 5px;
+    width: max-content;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.carousel-progress div {
+    --size: 6px;
+    height: var(--size);
+    width: var(--size);
+    background-color: rgba(255, 255, 255, 0.538);
+    border-radius: 60%;
+    transition: background-color 0.4s;
+}
+
+.carousel-progress div.active {
+    background-color: white;
+}
