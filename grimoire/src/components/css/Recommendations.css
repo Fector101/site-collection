@@ -2,15 +2,15 @@
     align-self: center;
 }
 .hori-card{
-    height: 200px;
-    width: 450px;
+    height: 12.5rem;
+    width: 28.125rem;
     flex: 0 0 auto;
     border-radius: 5px;
     /* background-color: rebeccapurple; */
 }
 
 .hori-card .img-div{
-    width: 150px;
+    width: 9.375rem;
     background-size: cover;
     background-position: center;
 }
@@ -25,7 +25,7 @@
     /* gap: 10px; */
 }
 .hori-card .content h3{
-    font-size: 20px;
+    font-size: 1.25rem;
     /* margin-top: auto; */
     margin-bottom: 10px;
 }
@@ -41,11 +41,11 @@
 }
 
 .hori-card .duration-box{
-    height: 14px;
+    height: 0.875rem;
     align-items: center;
 }
 .hori-card .duration-txt{
-    font-size: 12px;
+    font-size: 0.75rem;
     color: rgb(191, 191, 191);
 }
 .hori-card .duration-box svg{
@@ -61,15 +61,15 @@
 .hori-card .genres-box p{
     background-color:rgb(61, 59, 59);
     padding: 2px 4px;
-    font-size: 12px;
+    font-size: 0.75rem;
     border-radius: 9px;
 }
 .hori-card .btm-box .rating-box{
-    --size:20px;
+    --size: 1.25rem;
     height: var(--size);
 }
 .hori-card .btm-box .rating-box svg{
-    --size:17px;
+    --size:1.0625rem;
     height: var(--size);
     width: var(--size);
     margin-right: 2px;
@@ -93,7 +93,7 @@
     /* background-color: red; */
 }
 .hori-card .bookmark-btn svg{
-    --size: 35px;
+    --size: 2.1875rem;
     height: var(--size);
     width: var(--size);
 
