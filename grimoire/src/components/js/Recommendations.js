@@ -31,7 +31,7 @@ function ComputedStars({ rating }) {
 
 
 function Card4Recommend({ data }) {
-  let { poster_path, release_date, overview, secs = 7200, title, vote_average, rated = 'PG' } = data
+  let { poster_path, overview, secs = 7200, title, vote_average} = data
   console.log('https://image.tmdb.org/t/p/original' + poster_path)
   return (
     <div className="hori-card flex overflow-hidden" key={title}>
@@ -46,7 +46,7 @@ function Card4Recommend({ data }) {
         	
 			<div className="duration-box flex">
 				<Clock/>
-				<p className="duration-txt"> {7200/60} mins </p>
+				<p className="duration-txt"> {secs/60} mins </p>
 			</div>
 			
 			<div className="genres-box flex">
