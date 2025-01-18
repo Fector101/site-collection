@@ -31,21 +31,38 @@
     background-color: var(--backdrop-bg);
 }
 
-@media screen and (max-width:500px) {
-    .card4Recommend{
-        width: 50vw;
-        --card-height: 30vh;
-    }
-} */
+*/
 
 
 .hori-card{
     height: 200px;
     width: 450px;
+    flex: 0 0 auto;
+    border-radius: 5px;
+    /* background-color: rebeccapurple; */
 }
+
 .hori-card .img-div{
     width: 150px;
+    background-size: cover;
+    background-position: center;
 }
+.hori-card .content{
+    flex-direction: column;
+    align-content: center;
+    justify-content: end;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    /* background: rebeccapurple; */
+    /* gap: 10px; */
+}
+.hori-card .content h3{
+    font-size: 20px;
+    /* margin-top: auto; */
+    margin-bottom: 10px;
+}
+
 .hori-card .overview{
     font-size: 0.875rem; /* Corresponds to text-sm */
     color: #6c757d; /* Corresponds to text-muted-foreground (commonly muted gray) */
@@ -56,3 +73,64 @@
     margin-bottom: 0.5rem; /* Corresponds to mb-2 */
 }
 
+.hori-card .duration-txt{
+    font-size: 13px;
+    color: rgb(191, 191, 191);
+
+}
+.hori-card .genres-box{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+.hori-card .genres-box p{
+    background-color: #63656670;
+    padding: 2px 4px;
+    font-size: 12px;
+    border-radius: 9px;
+}
+.hori-card .btm-box .rating-box{
+    --size:20px;
+    height: var(--size);
+}
+.hori-card .btm-box .rating-box svg{
+    height: var(--size);
+    width: var(--size);
+}
+
+.hori-card .btm-box{
+    position: relative;
+    align-items: center;
+}
+
+.hori-card .bookmark-btn{
+    position: absolute;
+    right: 1px;
+    color: var(--svg-primary-bg);
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: 20px;
+    padding: 5px;
+    /* background-color: red; */
+}
+.hori-card .bookmark-btn svg{
+    --size: 35px;
+    height: var(--size);
+    width: var(--size);
+
+}
+
+@media screen and (max-width:500px) {
+    .hori-card .genres-box p{
+        font-size: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .hori-card .content h3{
+        font-size: 17px;
+    }
+
+    .hori-card .duration-txt{
+        font-size: 14px;
+    }
+}

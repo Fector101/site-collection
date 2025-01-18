@@ -34,25 +34,31 @@ function Card4Recommend({ data }) {
   let { poster_path, release_date, overview, secs = 7200, title, vote_average, rated = 'PG' } = data
   console.log('https://image.tmdb.org/t/p/original' + poster_path)
   return (
-    <div className="hori-card flex overflow-hidden">
-      	<div className="img-div" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${poster_path})`}}></div>
-		<div className="content">
-        	{/* <h3>{title}</h3> */}
-        	<div className="overview">
+    <div className="hori-card flex overflow-hidden" key={title}>
+        <div className="g"></div>
+      	<ImgwithPL className="img-div" src= {`https://image.tmdb.org/t/p/original${poster_path})`}/>
+		<div className="content flex">
+        	<h3>{title}</h3>
+        	
+			<div className="overview">
           		<p>{overview}</p>
         	</div>
-        	<p>{toHHMMSS(7200)}</p>
-			<div className="genres-box">
-				{['Animation','Action','Adventure'].map(each_genre=><p className="genre-txt">{each_genre}</p>)}
+        	
+			<p className="duration-txt">{toHHMMSS(7200)}</p>
+			
+			<div className="genres-box flex">
+				{['Animation','Action','Adventure'].map(each_genre=><p key={each_genre} className="genre-txt">{each_genre}</p>)}
 			</div>
-			<div className="btm-box">
-				<div className="ratings-box">
+
+			<div className="btm-box flex">
+				<div className="rating-box">
 					<ComputedStars rating={vote_average/2}/>
 				</div>
-				<button>
+				<button className="bookmark-btn flex">
 					<Bookmark/>
 				</button>
 			</div>
+
       </div>
     </div>
   )
