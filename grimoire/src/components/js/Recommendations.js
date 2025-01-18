@@ -1,4 +1,4 @@
-import { SignalMedium, StarHalf, Star, Zap, Eye, Bookmark } from "lucide-react"
+import { SignalMedium, StarHalf, Star, Zap, Eye, Bookmark, Clock } from "lucide-react"
 import './../css/Recommendations.css'
 import { Link } from 'react-router-dom'
 import ImgwithPL from "./ImgwithPL"
@@ -44,7 +44,10 @@ function Card4Recommend({ data }) {
           		<p>{overview}</p>
         	</div>
         	
-			<p className="duration-txt">{toHHMMSS(7200)}</p>
+			<div className="duration-box flex">
+				<Clock/>
+				<p className="duration-txt"> {7200/60} mins </p>
+			</div>
 			
 			<div className="genres-box flex">
 				{['Animation','Action','Adventure'].map(each_genre=><p key={each_genre} className="genre-txt">{each_genre}</p>)}

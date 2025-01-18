@@ -40,10 +40,18 @@
     margin-bottom: 0.5rem; /* Corresponds to mb-2 */
 }
 
+.hori-card .duration-box{
+    height: 14px;
+    align-items: center;
+}
 .hori-card .duration-txt{
-    font-size: 13px;
+    font-size: 12px;
     color: rgb(191, 191, 191);
-
+}
+.hori-card .duration-box svg{
+    --size: 100%;
+    /* width: var(--size); */
+    height: var(--size);
 }
 .hori-card .genres-box{
     margin-top: 5px;
@@ -61,11 +69,15 @@
     height: var(--size);
 }
 .hori-card .btm-box .rating-box svg{
+    --size:17px;
     height: var(--size);
     width: var(--size);
+    margin-right: 2px;
+
 }
 
 .hori-card .btm-box{
+    /* background: rebeccapurple; */
     position: relative;
     align-items: center;
 }
@@ -97,7 +109,4 @@
         font-size: 17px;
     }
 
-    .hori-card .duration-txt{
-        font-size: 14px;
-    }
 }
