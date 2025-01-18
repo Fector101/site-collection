@@ -1,6 +1,7 @@
 export const top_movies_data = {
     "api": "https://www.themoviedb.org/u/Fector101 data below",
     "api_1": "https://www.omdbapi.com/ data in screenshot on my phone can't use this to search for top movies",
+    "api2": "https://image.tmdb.org this is what loveable AI is using",
     "page": 1,
     "results": [
         {
