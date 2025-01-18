@@ -1,6 +1,6 @@
 import './../css/carousel.css'
 // import img1 from './../imgs/img.png'
-import {Timer, Star, StarHalf, LucideListPlus, Play , Triangle, Bookmark } from 'lucide-react'
+import {Timer, Star, StarHalf, LucideListPlus, Play , Triangle, Bookmark, Clock } from 'lucide-react'
 // import { nanoid } from 'nanoid'
 // import { useEffect } from 'react'
 import {toHHMMSS, parseDecimalSide, randInt} from './helper'
@@ -45,7 +45,7 @@ function Slide({pos_info__, class_, movie_data, index}){
             <div className="texts">
                 <h3 className="title">{title}</h3>
                 <div className="sub-box">
-                    {/* <Timer className='duration-svg'/> */}
+                    <Clock className='duration-svg'/>
                     <p className='duration-txt'>{toHHMMSS(secs)} hrs</p>
                     <div className="rating"> 
                         <img src={rot_img} alt={title+' poster'} className='rot-img img'/>

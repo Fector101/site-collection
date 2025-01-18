@@ -53,12 +53,12 @@
 
 .carousel-case .sub-box .duration-svg {
     margin-right: 5px;
-    position: relative;
-    bottom: 2px;
+    height: 80%;
 }
 
 .carousel-case .duration-svg,.carousel-case .duration-txt {
     color: rgb(191, 191, 191);
+    height: 17px; /*fixing font-scaling issue*/
 }
 
 .carousel-case .rating {
