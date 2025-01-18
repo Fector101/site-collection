@@ -22,7 +22,7 @@ function ComputedStars({ rating }) {
       {[...Array(rating__).keys()].map(each => <Star className='svg-solid-yellow' key={each} />)}
       {numberFrmHalfStar() !== 0 && <StarHalf className='svg-outline-yellow solid-yellow' />}
       {empty_star &&
-        [...Array(empty_star).keys()].map(each => <Star className='svg-outline-yellow' key={each} />)
+        [...Array(empty_star).keys()].map(each => <Star className='star-grey' key={each} />)
       }
     </>
   )
@@ -67,14 +67,12 @@ function Card4Recommend({ data }) {
 export default function Recommendations({ data }) {
   return (
 
-    <section className="SectionPreview">
+    <section className="SectionPreview recommendations-main-case">
       <div className="header">
+		<p>---</p>
         <Zap />
         <h3>Recommendations</h3>
-
-        <div className="display-flex preview-media-type-btns-case">
-          {/* {data_info.types.map((each,i,arr)=> <button onClick={switchPreview} id={nanoid()} key={nanoid()} className={`cursor-pointer `+ (each===activePreview? "btn-fill-white active" : "btn-outline-white") + (arr.length ===1 ?' one-type':'') }>{each}</button> )} */}
-        </div>
+		<p>---</p>
       </div>
       <ol className="collection  horizontal-scrollbar__items--faded-end horizontal-scrollbar__items--faded-start horizontal-scrollbar__items--faded">
 

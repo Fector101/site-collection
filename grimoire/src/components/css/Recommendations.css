@@ -1,39 +1,6 @@
-/* .card4Recommend{
-    --card-height: 40vh;
-    --card-info-height: 65px;
-
-    width: 32vw;
-    min-width: 300px;
-    min-height: 170px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    overflow: hidden;
-    flex: 0 0 auto;
-    height: var(--card-height);
-    overflow: hidden;
-    --backdrop-bg: rgba(22, 21, 22, 0.298);
+.recommendations-main-case .header{
+    align-self: center;
 }
-
-
-.card4Recommend .img-box{
-    height: calc(var(--card-height) - var(--card-info-height));
-    min-height: 100px;
-    width: 100%;
-    background-size: cover;
-}
-.card4Recommend .info{
-    display: flex;
-    flex-direction: column;
-    height: var(--card-info-height);
-    padding: 10px 5px 10px 10px;
-    background-color: var(--backdrop-bg);
-}
-
-*/
-
-
 .hori-card{
     height: 200px;
     width: 450px;
@@ -84,7 +51,7 @@
     gap: 5px;
 }
 .hori-card .genres-box p{
-    background-color: #63656670;
+    background-color:rgb(61, 59, 59);
     padding: 2px 4px;
     font-size: 12px;
     border-radius: 9px;

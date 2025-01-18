@@ -3,14 +3,16 @@ body section.display-none {
 }
 
 .svg-solid-yellow {
-    fill: yellow;
-    color: yellow;
+    fill: #dfdf1a;
+    color: #dfdf1a;
 }
 
 .svg-outline-yellow {
-    color: yellow;
+    color: #dfdf1a;
 }
-
+.star-grey{
+    color: #f7f7b9;
+}
 .cursor-pointer {
     cursor: pointer;
 }
