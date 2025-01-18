@@ -83,6 +83,10 @@
 
 .carousel-case .description {
     margin-left: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .carousel-content-case .btns-case {

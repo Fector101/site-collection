@@ -62,7 +62,7 @@ function Slide({pos_info__, class_, movie_data, index}){
                         <p>{((+vote_average)-randInt(2,3)).toFixed(2)}/10</p>
                     </div>
                 </div>
-                <p className="description">{clipText(overview)}</p>
+                <p className="description">{overview}</p>
             </div>
             <div className='btns-case'>
                 <CarouselBtn class_="icon cursor-pointer watch-icon" text='Watch Trailer' icon={<Play/>}/>
