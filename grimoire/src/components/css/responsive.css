@@ -63,7 +63,6 @@
     .SectionPreview h3 {
         font-size: 19px;
     }
-
     .SectionPreview .preview-media-type-btns-case {
         margin-left: auto;
         width: 115px;
@@ -73,7 +72,6 @@
     .SectionPreview .preview-media-type-btns-case button {
         font-size: 10px;
     }
-
     .SectionPreview .collection .card {
         --card-height: 280px;
         --card-info-height: 60px;
@@ -104,6 +102,10 @@
         width: max-content;
         padding: 2px 4px;
         align-self: center;
+    }
+
+    .SectionPreview .view-all-link {
+        margin-top: 0; /*Because no scroll bar*/
     }
 }
 

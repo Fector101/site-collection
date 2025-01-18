@@ -23,24 +23,6 @@ function Myprogress({current_slide_index__, number_of_slides,setSlider}){
         </div>
     )
 }
-/**
- * Assume's rating starts from 0 to 5
- */
-function ComputedStars({rating}){
-    const decimal_path=parseDecimalSide(rating)
-    const rating__= Math.trunc(rating)
-    const numberFrmHalfStar=()=>decimal_path>= 0.5?1:0
-    const empty_star = 5 - (rating__ + numberFrmHalfStar() )
-    return (
-        <>
-        {[...Array(rating__).keys()].map(each=><Star className='svg-solid-yellow' key={each}/>)}
-        {numberFrmHalfStar() !== 0 && <StarHalf className='svg-outline-yellow solid-yellow' />}
-        {empty_star&& 
-            [...Array(empty_star).keys()].map(each=><Star className='svg-outline-yellow' key={each} />)
-        }
-        </>
-    )
-}
 function Slide({pos_info__, class_, movie_data, index}){
     let {backdrop_path,title, overview, vote_average, secs=7200} = movie_data
     let style={transform: ``}

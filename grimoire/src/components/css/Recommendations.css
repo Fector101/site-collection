@@ -1,0 +1,58 @@
+/* .card4Recommend{
+    --card-height: 40vh;
+    --card-info-height: 65px;
+
+    width: 32vw;
+    min-width: 300px;
+    min-height: 170px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    overflow: hidden;
+    flex: 0 0 auto;
+    height: var(--card-height);
+    overflow: hidden;
+    --backdrop-bg: rgba(22, 21, 22, 0.298);
+}
+
+
+.card4Recommend .img-box{
+    height: calc(var(--card-height) - var(--card-info-height));
+    min-height: 100px;
+    width: 100%;
+    background-size: cover;
+}
+.card4Recommend .info{
+    display: flex;
+    flex-direction: column;
+    height: var(--card-info-height);
+    padding: 10px 5px 10px 10px;
+    background-color: var(--backdrop-bg);
+}
+
+@media screen and (max-width:500px) {
+    .card4Recommend{
+        width: 50vw;
+        --card-height: 30vh;
+    }
+} */
+
+
+.hori-card{
+    height: 200px;
+    width: 450px;
+}
+.hori-card .img-div{
+    width: 150px;
+}
+.hori-card .overview{
+    font-size: 0.875rem; /* Corresponds to text-sm */
+    color: #6c757d; /* Corresponds to text-muted-foreground (commonly muted gray) */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Corresponds to line-clamp-2 */
+    margin-bottom: 0.5rem; /* Corresponds to mb-2 */
+}
+

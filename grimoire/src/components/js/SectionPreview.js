@@ -6,6 +6,7 @@ import { useState } from "react"
 // import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
 import card_img_placeholder from  "./../imgs/card-img-pl1.png"
 import ImgwithPL from "./ImgwithPL"
+import { Link } from "react-router-dom"
 // import { Link } from "react-router-dom";
 
 function Card({movie_data}){
@@ -60,7 +61,7 @@ function Card({movie_data}){
         </li>
     )
 }
-export default function SectionPreview({data,title, icon,data_info}){
+export default function SectionPreview({data,title, icon,data_info,url}){
     let [activePreview, setActivePreview] = useState(()=>data_info.active||data_info.types[0])
     function switchPreview(e){
         const clicked_tab = e.target
@@ -75,6 +76,7 @@ export default function SectionPreview({data,title, icon,data_info}){
             <div className="header">
                 {icon && icon}
                 <h3>{title}</h3>
+
                 <div className="display-flex preview-media-type-btns-case">
                     {data_info.types.map((each,i,arr)=> <button onClick={switchPreview} id={nanoid()} key={nanoid()} className={`cursor-pointer `+ (each===activePreview? "btn-fill-white active" : "btn-outline-white") + (arr.length ===1 ?' one-type':'') }>{each}</button> )}
                 </div>
@@ -86,6 +88,7 @@ export default function SectionPreview({data,title, icon,data_info}){
 
                 <button className="collection-right-btn"> <ChevronRight /> </button>
             </ol>
+            {url && <Link to={url} className="view-all-link">View all</Link>}
         </section>
     )
 }

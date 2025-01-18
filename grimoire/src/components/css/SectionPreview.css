@@ -2,24 +2,24 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
     min-height: 50vh;
     height: max-content;
-    margin-bottom: 7.5px;
+    margin-bottom: 10px;
 }
 
 .SectionPreview .header {
     display: flex;
     gap: 15px;
     margin-left: 10px;
+    margin-bottom: 20px;
     height: 40px;
     align-items: center;
 }
 
 .SectionPreview h3 {
     font-size: 25px;
+    
 }
-
 .SectionPreview .preview-media-type-btns-case {
     margin-left: auto;
     width: 140px;
@@ -64,7 +64,7 @@
     display: flex;
     gap: 15px;
     list-style: none;
-    padding-bottom: 7.5px;
+    padding-bottom: 20px;
     padding-left: 22px;
     padding-right: 22px;
 }
@@ -178,6 +178,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: rgb(185, 185, 185);
 }
 
 .SectionPreview .collection .card .card-info .details-box{
@@ -206,7 +207,8 @@
 
 
 .SectionPreview .card .sutle-card-btn {
-    color: rgb(185, 185, 185);
+    color: rgb(215, 213, 213);
+
     font-size: 12px;
     margin-top: auto;
     border-radius: 2px;
@@ -276,4 +278,16 @@
 .SectionPreview .collection .card:hover .hidden {
     height: auto;
     visibility: visible;
+}
+
+.SectionPreview .view-all-link {
+    margin: auto;
+    margin-top: 5px;
+    margin-right: 10px;
+    color: rgb(255, 255, 202);
+    text-decoration: none;
+    font-size: 12px;
+}
+.SectionPreview .view-all-link:hover {
+    text-decoration: underline;
 }
