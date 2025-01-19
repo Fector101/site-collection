@@ -1,1 +1,56 @@
-*{padding:0;margin:0;outline:none;border:0;box-sizing:border-box;}body{height:100%;}body > #root{height:100%;width:100%;background-color:rgb(39, 36, 36);--font-style:sans-serif;--custom-font-style:'Sometype Mono', monospace;--theme-color:yellow;--bod-color:aliceblue;--svg-primary-bg:aliceblue;font-family:var(--custom-font-style);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-optical-sizing:auto;color:var(--bod-color);}.page{display:flex;flex-direction:column;background-color:rgb(39, 36, 36);gap:40px;padding:1% 2%;width:100%;}body button{background-color:transparent;display:flex;font-family:inherit;}body button:hover{background-color:rgba(255, 255, 255, 0.437);}main{height:65vh;width:100%;display:flex;flex-direction:column;align-items:end;border-radius:30px;overflow:hidden;}
+* {
+    padding: 0;
+    margin: 0;
+    /* outline: none; */
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+}
+
+body>#root {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(39, 36, 36);
+    --font-style: sans-serif;
+    --custom-font-style: 'Sometype Mono', monospace;
+    --theme-color: yellow;
+    --bod-color: aliceblue;
+    --svg-primary-bg: aliceblue;
+    font-family: var(--custom-font-style);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+    color: var(--bod-color);
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(39, 36, 36);
+    gap: 40px;
+    padding: 1% 2%;
+    width: 100%;
+}
+
+body button {
+    background-color: transparent;
+    display: flex;
+    font-family: inherit;
+}
+
+body button:hover {
+    background-color: rgba(255, 255, 255, 0.437);
+}
+
+main {
+    height: 65vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    border-radius: 30px;
+    overflow: hidden;
+}
