@@ -1,12 +1,11 @@
 import './carousel.css'
-// import img1 from './../imgs/img.png'
-import {Timer, Star, StarHalf, LucideListPlus, Play , Triangle, Bookmark, Clock } from 'lucide-react'
-// import { nanoid } from 'nanoid'
-// import { useEffect } from 'react'
-import {toHHMMSS, parseDecimalSide, randInt} from '../../js/helper'
+import {LucideListPlus, Play , Triangle, Bookmark, Clock } from 'lucide-react'
+import {toHHMMSS, randInt} from '../../js/helper'
 import { useEffect, useRef, useState } from 'react'
 import {fixBtnsTabIndex, opts,CarouselBtn} from './Carousel_helper'
 import rot_img from './../../imgs/rot.png'
+
+
 function Myprogress({current_slide_index__, number_of_slides,setSlider}){
     return(
         <div className='carousel-progress'>
