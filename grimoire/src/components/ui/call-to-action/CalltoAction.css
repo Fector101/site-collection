@@ -3,7 +3,7 @@
     /* overflow: hidden; */
 }
 .call-to-action .case{
-    padding: 1rem;
+    padding-block: 1rem;
     flex-direction: column;
     border: 1px solid grey;
     /* width: max-content; */
