@@ -32,7 +32,6 @@ function ComputedStars({ rating }) {
 
 function Card4Recommend({ data }) {
   let { poster_path, overview, secs = 7200, title, vote_average} = data
-  console.log('https://image.tmdb.org/t/p/original' + poster_path)
   return (
     <div className="hori-card flex overflow-hidden" key={title}>
         <div className="g"></div>
