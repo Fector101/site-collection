@@ -27,8 +27,8 @@ body>#root {
     color: var(--bod-color);
 }
 *:focus{
-    outline: 1.5px plum solid;
-    border: 2px plum solid !important;
+    outline: 1px rgb(88, 69, 88) solid;
+    border: 1.2px var(--accent-color) solid !important;
 }
 .page {
     display: flex;
