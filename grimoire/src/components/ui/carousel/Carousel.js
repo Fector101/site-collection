@@ -61,6 +61,7 @@ function Slide({pos_info__, class_, movie_data, index}){
             
     )
 }
+
 export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
     let timer = useRef()
