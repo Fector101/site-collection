@@ -35,7 +35,7 @@ body>#root {
     flex-direction: column;
     background-color: rgb(39, 36, 36);
     gap: 40px;
-    padding-block: 1%;
+    padding-top: 1%;
     width: 100%;
 }
 
