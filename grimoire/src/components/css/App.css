@@ -19,13 +19,17 @@ body>#root {
     --theme-color: yellow;
     --bod-color: aliceblue;
     --svg-primary-bg: aliceblue;
+    --accent-color: rgb(207, 207, 249);
     font-family: var(--custom-font-style);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-optical-sizing: auto;
     color: var(--bod-color);
 }
-
+*:focus{
+    outline: 1.5px plum solid;
+    border: 2px plum solid !important;
+}
 .page {
     display: flex;
     flex-direction: column;
