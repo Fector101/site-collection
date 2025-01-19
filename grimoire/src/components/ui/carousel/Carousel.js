@@ -256,7 +256,7 @@ export default function Carousel({data}){
     // eslint-disable-next-line
     function increaseCarouselWaitTime(){
         carousel_wait_time.current = 10
-        console.log('increased')
+        // console.log('increased')
         restartCarouselAnimation()
     }
     // eslint-disable-next-line
