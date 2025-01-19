@@ -9,12 +9,12 @@ export default function CalltoAction(){
             <p className="msg">For More Refined & Personalized Recommendations </p>
             <form className="flex">
                 {/* <div className="row flex"> */}
-                    <label for='email'> Email </label>
+                    <label htmlFor='email'> Email </label>
                     <input id="email" placeholder="Enter your email"/>
                 {/* </div>
                 <div className="row flex"> */}
 
-                    <label for='password'> Password </label>
+                    <label htmlFor='password'> Password </label>
                     <div className="password-input-box flex">
                         <input type="password" id="password" placeholder="Enter your password"/>
                         <button className="flex"> <Eye /> </button>
