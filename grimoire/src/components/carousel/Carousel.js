@@ -1,21 +1,12 @@
-import './../css/carousel.css'
+import './carousel.css'
 // import img1 from './../imgs/img.png'
 import {Timer, Star, StarHalf, LucideListPlus, Play , Triangle, Bookmark, Clock } from 'lucide-react'
 // import { nanoid } from 'nanoid'
 // import { useEffect } from 'react'
-import {toHHMMSS, parseDecimalSide, randInt} from './helper'
+import {toHHMMSS, parseDecimalSide, randInt} from '../js/helper'
 import { useEffect, useRef, useState } from 'react'
-import {opts} from './Carousel_helper'
+import {fixBtnsTabIndex, opts,CarouselBtn} from './Carousel_helper'
 import rot_img from './../imgs/rot.png'
-function CarouselBtn({text,icon,class_}){
-    
-    return(
-        <button className={class_}>
-            {icon}
-            <p>{text}</p>
-        </button>
-    )
-}
 function Myprogress({current_slide_index__, number_of_slides,setSlider}){
     return(
         <div className='carousel-progress'>
@@ -177,6 +168,8 @@ export default function Carousel({data}){
         }else if(slide_index === new_slide_index){
             startSlidesMovingFoward(carousel_wait_time.current) // Go back to old Flow Speed
         }
+        fixBtnsTabIndex(current_element,new_slide)
+
 
     }
         

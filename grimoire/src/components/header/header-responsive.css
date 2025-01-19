@@ -1,0 +1,176 @@
+@media screen and (max-width:1300px) {
+    header {
+        gap: 10px;
+    }
+
+    header .search-input-box {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    header {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    header .search-input-box {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .search-input-box label {
+        font-size: 14px;
+    }
+
+    .outline-white {
+        width: 90px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    header .title {
+        font-size: 23px;
+    }
+
+    header li a {
+        font-size: 13px;
+    }
+
+    header li.current-page a {
+        font-size: 15px;
+    }
+
+    .outline-white {
+        width: 80px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    header .search-input-box {
+        height: 30px;
+    }
+
+    .search-input-box label {
+        top: 0.5rem;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    header {
+        padding-left: 1.8%;
+        padding-right: 1.8%;
+    }
+}
+
+@media screen and (max-width:950px) {
+    header {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .title-bar-nav {
+        margin: 0 auto;
+    }
+
+    .title-bar-nav ol {
+        display: flex;
+        gap: 20px;
+    }
+
+    .search-input-box .input-box {
+        display: none;
+    }
+
+    header .search-input-box {
+        margin-right: 20px;
+        flex: unset;
+    }
+
+    .side-content.right {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width:800px) {
+    header {
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 2%;
+        position: sticky;
+        width: 100%;
+        top: 0;
+    }
+
+    header .menu-btn {
+        display: flex;
+        margin: auto 0;
+    }
+
+    header .title {
+        margin: auto 5px;
+        font-size: 20px;
+        margin-right: 5px;
+    }
+
+    .title-bar-nav ol {
+        display: none;
+    }
+
+    header .search-input-box {
+        margin-right: 10px;
+        margin-left: 0;
+        flex: 1;
+    }
+
+    .search-input-box .input-box {
+        display: flex;
+    }
+
+    .search-input-box label {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:750px) {
+    header {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    header .search-input-box {
+        display: none;
+    }
+}
+
+@media screen and (max-width:460px) {
+    .side-content.right {
+        gap: 10px;
+    }
+
+    .side-content.right .lists-header-btn-link {
+        display: flex;
+    }
+
+    .side-content.right button.sign-up {
+        display: none;
+    }
+
+    .side-content.right button.sign-in {
+        width: 73px;
+        height: 26px;
+        font-size: 12px;
+        border-radius: 5px;
+        border-color: rgb(107, 107, 107);
+    }
+
+    .side-menu-content-box {
+        width: 60vw;
+    }
+}

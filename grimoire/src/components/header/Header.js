@@ -1,6 +1,6 @@
 import {useState, React, useEffect} from "react";
-import "./../css/header.css"
-import "./../css/header-responsive.css"
+import "./header.css"
+import "./header-responsive.css"
 import { Search, User2, ChevronDown, BellIcon, Menu, HomeIcon, Bookmark, Tv, Activity, Film, ChevronRight } from "lucide-react"
 import { Link, Outlet, useLocation } from "react-router-dom"
 import { nanoid } from "nanoid";

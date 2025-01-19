@@ -138,4 +138,18 @@ const opts = (secs)=>({duration:secs*1000,easing:"ease-in-out",fill:"forwards"})
 //     const slide_index=+target.dataset.slideIndex
 //     goToSlide(slide_index)
 // })
-export {opts}
+
+function CarouselBtn({text,icon,class_}){
+
+    return(
+        <button className={class_} tabIndex={-1}>
+            {icon}
+            <p>{text}</p>
+        </button>
+    )
+}
+function fixBtnsTabIndex(last_slide,current_slide){
+    [...current_slide.querySelectorAll('.btns-case button')].map(btn=>btn.tabIndex=0);
+    [...last_slide?.querySelectorAll('.btns-case button')].map(btn=>btn.tabIndex=-1)
+}
+export {opts, fixBtnsTabIndex,CarouselBtn}
