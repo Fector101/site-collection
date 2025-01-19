@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import ImgwithPL from "../../js/ImgwithPL";
+import ImgwithPL from "./../../js/ImgwithPL";
 import './footer.css'
-
+import logo_src from "../../imgs/logo.png"
 export default function Footer(){
     return(
         <div className="footer flex">
-            <ImgwithPL className="logo"/>
+            <img className="logo" src={logo_src} alt="logo" />
             <div className="basic">
                 <Link to='lists'>Lists</Link>
                 <Link to='lists'>Help</Link>
