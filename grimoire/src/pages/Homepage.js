@@ -1,4 +1,4 @@
-import Carousel from "../components/carousel/Carousel"
+import Carousel from "../components/ui/carousel/Carousel"
 // import Header from "./../components/Header/Header"
 import SectionPreview from "./../components/js/SectionPreview"
 import Recommendations from "./../components/js/Recommendations"

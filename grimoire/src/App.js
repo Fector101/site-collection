@@ -6,7 +6,7 @@ import { top_movies_data } from "./components/js/api_data";
 import { Route, Routes } from "react-router-dom";
 import NotFoundpage from "./pages/NotFoundpage";
 import ListRoutes from "./pages/LIstRoutes";
-import Header from "./components/Header/Header";
+import Header from "./components/ui/header/Header";
 import "./components/css/responsive.css"
 
 // async function apiCall(){
