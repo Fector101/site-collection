@@ -1,0 +1,22 @@
+.footer{
+    background-color: #1e1d1d;
+    padding: 1rem;
+    margin: 0;
+    margin-top: 2rem;
+    height: 25vh;
+    overflow: hidden;
+    /* position: fixed; */
+    /* bottom: 1px; */
+}
+.footer .logo{
+    --size:30px;
+    width: var(--size);
+    height: var(--size);
+}
+.footer > div{
+    display: flex;
+    flex-direction: column;
+}
+.footer a{
+    font-size: 13px;
+}
