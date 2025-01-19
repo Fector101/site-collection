@@ -2,7 +2,7 @@ import Carousel from "../components/ui/carousel/Carousel"
 // import Header from "./../components/Header/Header"
 import SectionPreview from "./../components/js/SectionPreview"
 import Recommendations from "./../components/js/Recommendations"
-import CalltoAction from "./../components/js/CalltoAction"
+import CalltoAction from "./../components/ui/call-to-action/CalltoAction"
 import {TrendingUp, Tv, ChartNoAxesColumn,Clock3, Smile, SmilePlus} from "lucide-react"
 // import { TrendingUp, Tv, ChartNoAxesColumn,Film,Clapperboard } from "lucide-react"
 

@@ -1,8 +1,7 @@
 @media screen and (max-width:500px) {
     .carousel-content-case .phone-bookmark-btn svg.svg1 {
-        --color: rgb(155, 155, 167);
-        fill: var(--color);
-        color: var(--color);
+        fill: var(--accent-color);
+        color: var(--accent-color);
         position: absolute;
         left: 3px;
         top: 5px;
