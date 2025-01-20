@@ -28,6 +28,10 @@
     height: 80%;
 }
 
+.SectionPreview .btn-outline-white {
+    color: inherit;
+}
+
 .SectionPreview .preview-media-type-btns-case:has(button.one-type) {
     width: 70px;
 }
