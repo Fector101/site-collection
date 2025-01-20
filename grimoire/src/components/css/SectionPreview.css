@@ -223,10 +223,6 @@
     margin-right: 5px;
 }
 
-.SectionPreview .card .sutle-card-btn:hover {
-    background-color: rgba(61, 59, 59, 0.976);
-    box-shadow: 1px 1px 1.5px rgb(98, 98, 98);
-}
 
 .SectionPreview .card .card-info .details-case-2 {
     display: flex;

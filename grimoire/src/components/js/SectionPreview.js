@@ -44,8 +44,8 @@ function Card({movie_data}){
                     <div className="details-case-1">
                         <p className="title"> {title} </p>
                         <div className="btns-box">
-                            <button className="sutle-card-btn"> {release_date.split('-')[0]} </button>
-                            <button className="sutle-card-btn not-hv-effect"> {rated} </button>
+                            <p className="sutle-card-btn"> {release_date.split('-')[0]} </p>
+                            <p className="sutle-card-btn not-hv-effect"> {rated} </p>
                         </div>
                     </div>
                     <div className="details-case-2">
