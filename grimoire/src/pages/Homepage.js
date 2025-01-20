@@ -22,7 +22,6 @@ export default function Homepage({top_movies_data__}){
             <SectionPreview title={'Ongoing'} icon={<Tv />} data_info={{types:['TV Shows']}} data={top_movies_data__.results} url='ongoing'/>
             <Recommendations data={top_movies_data__.results.slice(0,6)}/>
             <CalltoAction />
-            {/* <Footer /> */}
             </>
             }
         </div>
