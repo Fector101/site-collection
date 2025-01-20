@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import ImgwithPL from "./../../js/ImgwithPL";
+// import ImgwithPL from "./../../js/ImgwithPL";
 import './footer.css'
-import logo_src from "../../imgs/logo.png"
+// import logo_src from "../../imgs/logo.png"
 import { toTitleCase } from "../../js/helper";
 function Row({header,links,className}){
     
@@ -23,11 +23,10 @@ export default function Footer(){
     return(
         <footer className="footer flex">
             {/* <img className="logo" src={logo_src} alt="logo" /> */}
-            <Row className="basic" header="Grimorie" links={[{name_:"Lists",url:'lists'},{name_:'Help',url:'help'},{name_:"Chat",url:'chat'}]}/>
+            <Row className="basic" header="Grimorie" links={[{name_:"Home",url:'/'},{name_:"Lists",url:'lists'},{name_:'Help',url:'help'},{name_:"Chat",url:'chat'}]}/>
             <Row className="site-sections" header='Categories' links={[{url:'trending'},{url:'top'},{url:'ongoning'},{url:'upcoming'}]} />
             <Row className="company-sections" header="Company" links={[{url:'about'},{url:'contant-us'},{url:'terms', name_:'Terms of Service'},{url:'hire'}]} />
             <Row className="contant-handlers" header='' links={[{url:'twitter'},{url:'email'}]} />
         </footer>
     )
 }
-// how to add th in linux mint time

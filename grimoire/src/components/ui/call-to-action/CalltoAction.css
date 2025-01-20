@@ -44,6 +44,7 @@
     border-radius: 5px;
     background-color: transparent;
     border: 1px solid grey;
+    color: rgb(231, 231, 231);
     text-indent: 10px;
 }
 .call-to-action .case form input::placeholder{
