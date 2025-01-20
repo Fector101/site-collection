@@ -124,6 +124,7 @@ export default function Carousel({data}){
         const secs = slide_index !== undefined? slide_through_secs :3
         // if(current_slide_index === 2)return      // <dev>
         const current_element = document.querySelector('.current')
+        if(!current_element) return
         const cur_slide_name=current_element.dataset.name
         let old_index = Number(current_element.dataset.index)
         
