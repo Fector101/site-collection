@@ -1,3 +1,11 @@
+
+/**
+ *  Changes String first letter to Captial Case
+ * @param {string} str
+ * @returns {string} string in Title Case
+ */const toTitleCase = str => str.slice(0,1) + str.slice(1)
+
+
 // A collection of Helpful Independent Functions
 /**
  *  Computes list to give string with space at front if str_or_list is not undefined
@@ -60,4 +68,4 @@ export function parseDecimalSide(decimal_number){
 	}
 	else{return 0}
 }
-export {isTouchDevice,returnClass,randInt, toHHMMSS}
+export {isTouchDevice,returnClass,randInt, toHHMMSS, toTitleCase}
