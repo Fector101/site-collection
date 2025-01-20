@@ -106,6 +106,7 @@
         position: sticky;
         width: 100%;
         top: 0;
+        background-color: #272424;;
     }
 
     header .menu-btn {
