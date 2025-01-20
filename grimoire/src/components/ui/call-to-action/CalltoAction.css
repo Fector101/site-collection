@@ -68,6 +68,12 @@
 }
 .call-to-action form .password-input-box button svg{color: var(--svg-primary-bg);}
 .call-to-action form .password-input-box button:hover svg{fill: rgb(255, 255, 255, 0.437);}
+.call-to-action form .sign-in{
+    padding: 0.5rem 1rem;
+    width: max-content;
+    align-self: center;
+    border-radius: 5px
+}
 
 .call-to-action .sign-up-box{
     font-size: 13px;
