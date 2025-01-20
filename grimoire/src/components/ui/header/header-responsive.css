@@ -173,4 +173,7 @@
     .side-menu-content-box {
         width: 60vw;
     }
+    header .subscribe-btn{
+        display: none;
+    }
 }

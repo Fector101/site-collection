@@ -119,7 +119,7 @@ export default function Header({class_,userName}){
     },[])
     return (
         <>
-        <header className={class_||''}>
+        <header className={class_}>
             <button className="menu-btn">
                 <Menu/>
                 {/* <Ham/> */}
