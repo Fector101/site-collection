@@ -37,6 +37,7 @@ body>#root {
     background-color: rgb(39, 36, 36);
     gap: 40px;
     padding-top: 1%;
+    padding-bottom: 2rem;
     width: 100%;
 }
 
