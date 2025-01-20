@@ -27,7 +27,7 @@ export default function NotFoundpage(){
 
 
     return(
-        <div className="not-found-page-ui">
+        <div className="not-found-page-ui flex-page">
             <p>Going back to <Link to={'/'}>main page</Link> in</p>
             <p style={{fontSize: '2.1rem'}}>{i} {i>1?'Secs':'Sec'}</p>
             <p> {url_extension} does not exist</p>
