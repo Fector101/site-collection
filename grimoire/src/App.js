@@ -3,7 +3,7 @@ import "./components/css/quick-style.css"
 import "./components/css/App.css";
 import Homepage from "./pages/Homepage";
 import { top_movies_data } from "./components/js/api_data";
-import {Route, Routes, useNavigate } from "react-router-dom";
+import {Route, Routes } from "react-router-dom";
 import NotFoundpage from "./pages/NotFoundpage";
 import ListRoutes from "./pages/LIstRoutes";
 import Header from "./components/ui/header/Header";
@@ -29,10 +29,9 @@ import { useEffect } from "react";
 // /site-collection/
 function App() {
   // let [top_10_movies,setTop10Movies]=useState([])
-  const navigate = useNavigate()
-  const goToMovie = () => {
-    navigate('/movie?id=933260');
-  };
+  // const navigate = useNavigate()
+  // const goToMovie = () => navigate('/movie?id=933260');
+  
   useEffect(function(){
     // goToMovie()
   //   apiCall().then(data=>setTop10Movies(data))

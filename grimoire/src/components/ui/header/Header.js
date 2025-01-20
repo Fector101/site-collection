@@ -2,7 +2,7 @@ import {useState, React, useEffect} from "react";
 import "./header.css"
 import "./header-responsive.css"
 import { Search, User2, ChevronDown, BellIcon, Menu, HomeIcon, Bookmark, Tv, Activity, Film, ChevronRight } from "lucide-react"
-import { Link, Outlet, useLocation } from "react-router-dom"
+import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { nanoid } from "nanoid";
 
 function SearchInput({placeholder}){
@@ -104,6 +104,9 @@ function MySidenavBar({links,for_,current_page_name}){
 }
 export default function Header({class_,userName}){
     // userName='Dev'
+    const {'*':url_extension} = useParams()
+    console.log(url_extension,'header')
+    
     useEffect(function(){
         
         document.querySelector('.side-menu-modal').addEventListener('mouseup',function(e){
