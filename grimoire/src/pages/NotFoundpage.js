@@ -15,7 +15,6 @@ export default function NotFoundpage(){
         },1000 * max_timeout)
         const interval = setInterval(()=>{
             Seti(old_count=>{
-                console.log(old_count)
                 if (old_count === 1)clearInterval(interval)
                 return old_count-1
             })
