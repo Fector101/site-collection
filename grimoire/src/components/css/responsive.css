@@ -51,7 +51,8 @@
 
     .page {
         /* padding: 0 20px; */
-        padding-block: 0;
+        padding-top: 0.75rem;
+        padding-bottom: 0;
         gap: 0.625rem;
     }
 
