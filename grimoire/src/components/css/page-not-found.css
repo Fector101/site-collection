@@ -1,14 +1,12 @@
-body:has(.not-found-page-ui){
-    #root{
+body:has(.not-found-page-ui) #root{
         height: 100vh;
         display: flex;
         flex-direction: column;
-    }
-    header{
+}
+body:has(.not-found-page-ui) header{
         position: sticky;
         width: 100%;
         top: 0;
-    }
 }
 .not-found-page-ui{
     display: flex;
