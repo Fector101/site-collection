@@ -13,7 +13,7 @@ function Row({header,links,className}){
                 links.map(({url,name_})=>{
                     let link_name = toTitleCase(name_ || url)
                     
-                    return <Link to={url}>{link_name}</Link>
+                    return <Link key={link_name} to={url}>{link_name}</Link>
                 })
             }
         </div>
