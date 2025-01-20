@@ -141,7 +141,7 @@
 
 @media screen and (max-width:750px) {
     header {
-        height: 70px;
+        min-height: 70px;
         padding: 0 20px;
         background-image: none;
         box-shadow: 1px 1px 1px rgb(34, 33, 33);

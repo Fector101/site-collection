@@ -1,15 +1,3 @@
-body:has(.not-found-page-ui) #root{
-    height: 100vh;
-}
-body:has(.flex-page) #root{
-    display: flex;
-    flex-direction: column;
-}
-body:has(.flex-page) header{
-        position: sticky;
-        width: 100%;
-        top: 0;
-}
 .not-found-page-ui{
     display: flex;
     flex-direction: column;

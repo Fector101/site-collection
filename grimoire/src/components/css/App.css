@@ -7,7 +7,7 @@
 }
 
 body {
-    height: 100%;
+    height: 100vh;
 }
 
 body>#root {
@@ -30,6 +30,7 @@ body>#root {
     outline: 1px rgb(88, 69, 88) solid;
     border: 1.2px var(--accent-color) solid !important;
 }
+
 .page {
     display: flex;
     flex-direction: column;
@@ -59,4 +60,18 @@ main {
     overflow: hidden;
     width: 96%;
     align-self: center; 
+}
+.movie-page{
+    margin: auto;
+}
+
+/* For flex position pages */
+body:has(.flex-page) #root{
+    display: flex;
+    flex-direction: column;
+}
+body:has(.flex-page) header{
+    position: sticky;
+    width: 100%;
+    top: 0;
 }
