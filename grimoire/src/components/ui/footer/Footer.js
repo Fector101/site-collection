@@ -2,31 +2,31 @@ import { Link } from "react-router-dom";
 import ImgwithPL from "./../../js/ImgwithPL";
 import './footer.css'
 import logo_src from "../../imgs/logo.png"
+import { toTitleCase } from "../../js/helper";
+function Row({header,links,className}){
+    
+
+    return(
+        <div className={className}>
+            <p>{header}</p>
+            {
+                links.map(({url,name_})=>{
+                    let link_name = toTitleCase(name_ || url)
+                    
+                    return <Link to={url}>{link_name}</Link>
+                })
+            }
+        </div>
+    )
+}
 export default function Footer(){
     return(
         <div className="footer flex">
-            <img className="logo" src={logo_src} alt="logo" />
-            <div className="basic">
-                <Link to='lists'>Lists</Link>
-                <Link to='lists'>Help</Link>
-                <Link to='lists'>Chat</Link>
-            </div>
-            <div className="site-sections">
-                <Link to="trending">Trending</Link>
-                <Link to="top">Top</Link>
-                <Link to="ongoing">Ongoing</Link>
-                <Link to="upcoming">Upcoming</Link>
-            </div>
-            <div className="company-sections">
-                <Link>About</Link>
-                <Link>Contact Us</Link>
-                <Link>Terms of Service</Link>
-                <Link>Hire</Link>
-            </div>
-            <div className="contant-handlers">
-                <Link>Twitter</Link>
-                <Link>Email</Link>
-            </div>
+            {/* <img className="logo" src={logo_src} alt="logo" /> */}
+            <Row className="basic" header="Grimorie" links={[{name_:"Lists",url:'lists'},{name_:'Help',url:'help'},{name_:"Chat",url:'chat'}]}/>
+            <Row className="site-sections" header='Categories' links={[{url:'trending'},{url:'top'},{url:'ongoning'},{url:'upcoming'}]} />
+            <Row className="company-sections" header="Company" links={[{url:'about'},{url:'contant-us'},{url:'terms', name_:'Terms of Service'},{url:'hire'}]} />
+            <Row className="contant-handlers" header='' links={[{url:'twitter'},{url:'email'}]} />
         </div>
     )
 }

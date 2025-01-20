@@ -3,10 +3,12 @@
     padding: 1rem;
     margin: 0;
     margin-top: 2rem;
-    height: 25vh;
+    /* height: 25vh; */
     overflow: hidden;
     /* position: fixed; */
     /* bottom: 1px; */
+    width: 100%;
+    gap: 15px;
 }
 .footer .logo{
     --size:30px;
@@ -14,9 +16,33 @@
     height: var(--size);
 }
 .footer > div{
-    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
     flex-direction: column;
+    gap: 10px;
+}
+.footer p{
+    /* display: block; */
 }
 .footer a{
     font-size: 13px;
+    display: inline-block;
+    padding-right: 10px;
+    color: rgb(194, 194, 166);
+    text-decoration: none;
+    font-size: 12px;
+}
+.footer a:hover{
+    color: rgb(216, 216, 163);
+    text-decoration: underline;
+}
+
+@media screen and (max-width:500px) {
+    .footer{
+        flex-direction: column;
+    }
+    .footer > div{
+        flex-direction: row;
+    }
+
 }
