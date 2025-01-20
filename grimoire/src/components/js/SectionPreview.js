@@ -6,13 +6,14 @@ import { useState } from "react"
 // import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
 import card_img_placeholder from  "./../imgs/card-img-pl1.png"
 import ImgwithPL from "./ImgwithPL"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 // import { Link } from "react-router-dom";
 
-function Card({movie_data}){
-    let {poster_path,release_date,title, vote_average,rated='PG'} = movie_data
+function Card({movie_data,onClick}){
+    let {poster_path,release_date,title, vote_average,rated='PG',id} = movie_data
     // let {poster_path,title, release_date,media_type, vote_average,rated='PG'} = movie_data
     function takeVote(element){
+        element.stopPropagation()
         const clicked_btn = element.target.closest('button')
         if (!clicked_btn) return
         
@@ -26,8 +27,12 @@ function Card({movie_data}){
         }
         clicked_btn.classList.toggle('clicked')
     }
+    const navigate = useNavigate()
+    const goToMovie = () => {
+      navigate(`/movie?id=${id}`);
+    };
     return (
-        <li className="card cursor-pointer">
+        <li className="card cursor-pointer" onClick={goToMovie}>
             <div className="bookmark-btn-case">
                 <button className="add-to-list-btn">
                     <Bookmark/>
@@ -84,7 +89,7 @@ export default function SectionPreview({data,title, icon,data_info,url}){
             <ol className="collection  horizontal-scrollbar__items--faded-end horizontal-scrollbar__items--faded-start horizontal-scrollbar__items--faded">
                 <button className="collection-left-btn"> <ChevronLeft/> </button>
 
-                {data.map((each_movie,i)=> <Card movie_data={each_movie} key={i}/> ) }
+                {data.map((each_movie,i)=> <Card movie_data={each_movie} key={i} /> ) }
 
                 <button className="collection-right-btn"> <ChevronRight /> </button>
             </ol>

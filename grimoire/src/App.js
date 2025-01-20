@@ -34,7 +34,7 @@ function App() {
     navigate('/movie?id=933260');
   };
   useEffect(function(){
-    goToMovie()
+    // goToMovie()
   //   apiCall().then(data=>setTop10Movies(data))
   },[])
   return (
