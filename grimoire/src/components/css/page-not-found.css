@@ -20,3 +20,7 @@ body:has(.not-found-page-ui){
     margin: auto;
     font-size: 1.3rem;
 }
+.not-found-page-ui a{
+    color: rgb(255, 255, 202);
+    /* text-decoration: none; */
+}
