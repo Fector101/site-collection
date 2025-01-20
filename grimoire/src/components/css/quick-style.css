@@ -56,3 +56,7 @@ body section.display-none {
 .display-none {
     display: none;
 }
+
+.margin-auto{
+    margin: auto;
+}
