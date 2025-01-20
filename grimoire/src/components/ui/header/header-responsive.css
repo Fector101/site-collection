@@ -143,6 +143,7 @@
         height: 70px;
         padding: 0 20px;
         background-image: none;
+        box-shadow: 1px 1px 1px rgb(34, 33, 33);
     }
 
     header .search-input-box {
