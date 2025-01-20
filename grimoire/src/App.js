@@ -8,6 +8,7 @@ import NotFoundpage from "./pages/NotFoundpage";
 import ListRoutes from "./pages/LIstRoutes";
 import Header from "./components/ui/header/Header";
 import "./components/css/responsive.css"
+import Footer from "./components/ui/footer/Footer";
 
 // async function apiCall(){
 //   const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
@@ -37,6 +38,7 @@ function App() {
         <Route path="/list/*" element={<ListRoutes />} /> 
         <Route path="*" element={ <NotFoundpage/>} />
       </Routes>
+      <Footer/>
     </>
     // <div className="App">
       // <Homepage top_movies_data__={top_movies_data}/>
