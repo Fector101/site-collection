@@ -35,7 +35,7 @@ function Card4Recommend({ data }) {
   return (
     <div className="hori-card flex overflow-hidden" key={title}>
         <div className="g"></div>
-      	<ImgwithPL className="img-div" src= {`https://image.tmdb.org/t/p/original${poster_path})`}/>
+      	<ImgwithPL className="img-div" alt={title} src= {`https://image.tmdb.org/t/p/original${poster_path})`}/>
 		<div className="content flex">
         	<h3>{title}</h3>
         	
