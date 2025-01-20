@@ -1,0 +1,22 @@
+body:has(.not-found-page-ui){
+    #root{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    header{
+        position: sticky;
+        width: 100%;
+        top: 0;
+    }
+    footer{
+    }
+}
+.not-found-page-ui{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 40vh; */
+    margin: auto;
+    font-size: 1.3rem;
+}
