@@ -3,7 +3,7 @@ import "./components/css/quick-style.css"
 import "./components/css/App.css";
 import Homepage from "./pages/Homepage";
 import { top_movies_data } from "./components/js/api_data";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import {Route, Routes, useNavigate } from "react-router-dom";
 import NotFoundpage from "./pages/NotFoundpage";
 import ListRoutes from "./pages/LIstRoutes";
 import Header from "./components/ui/header/Header";
