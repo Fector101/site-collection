@@ -39,9 +39,9 @@ body section.display-none {
     background-color: rgb(232, 232, 232);
     color: black;
 }
-
-.btn-outline-white {
-    color: inherit;
+.outline-white{
+    border:1px solid white;
+    color:aliceblue;
 }
 
 .red {
