@@ -4,27 +4,7 @@ export const top_movies_data = {
     "api2": "https://image.tmdb.org this is what loveable AI is using",
     "page": 1,
     "results": [
-        {
-            "backdrop_path": "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
-            "id": 912649,
-            "title": "Venom: The Last Dance",
-            "original_title": "Venom: The Last Dance",
-            "overview": "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
-            "poster_path": "/k42Owka8v91trK1qMYwCQCNwJKr.jpg",
-            "media_type": "movie",
-            "adult": false,
-            "original_language": "en",
-            "genre_ids": [
-                878,
-                28,
-                12
-            ],
-            "popularity": 7523.862,
-            "release_date": "2024-10-22",
-            "video": false,
-            "vote_average": 6.6,
-            "vote_count": 248
-        },
+        
         {
             "backdrop_path": "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
             "id": 912649,
