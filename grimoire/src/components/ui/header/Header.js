@@ -52,7 +52,10 @@ function SearchInput({placeholder}){
     )
 }
 
-function MynavBar({links,for_,current_page_name}){
+function MynavBar({links,for_}){
+    const location = useLocation()
+    const current_page_link=location.pathname
+
     function swicthPage(e){
         const clicked_link = e.target
         if(!clicked_link)return
@@ -64,7 +67,7 @@ function MynavBar({links,for_,current_page_name}){
 <nav className={for_}>
     <ol >
         {links.map((each_page,i)=>{
-            return  <li key={nanoid()} className={each_page.name === current_page_name ? "current-page":''}>
+            return  <li key={nanoid()} className={each_page.link === current_page_link ? "current-page":''}>
                 <Link id={nanoid()} to={each_page.link} onClick={swicthPage} state="Hi">{each_page.name}</Link>
                 <hr />
             </li>
@@ -75,12 +78,10 @@ function MynavBar({links,for_,current_page_name}){
     )
 }
 
-function MySidenavBar({links,for_,current_page_name}){
+function MySidenavBar({links,for_}){
     const location = useLocation()
-    current_page_name=location.pathname === '/'?'Home':location.pathname.replace('/','')
-    current_page_name=current_page_name==='shows'?'Tv shows':current_page_name
-    current_page_name=current_page_name==='lists'?'Lists':current_page_name
-    console.log(current_page_name)
+    const current_page_link=location.pathname
+    console.log(current_page_link)
     function swicthPage(e){
         const clicked_link = e.target
         if(!clicked_link)return
@@ -90,11 +91,11 @@ function MySidenavBar({links,for_,current_page_name}){
     }
     return (
 <nav className={for_}>
-        {links.map((each_page,i)=>{
-            return  <Link id={nanoid()} key={nanoid()} to={each_page.link} onClick={swicthPage} state="Hi"  className={each_page.name === current_page_name ? "current-page":''}>
+        {links.map((each_page)=>{
+            return  <Link id={nanoid()} key={nanoid()} to={each_page.link} onClick={swicthPage} state="Hi"  className={each_page.link === current_page_link ? "current-page":''}>
                         {each_page.icon}
                         <p>{each_page.name}</p>
-                        {each_page.name !== current_page_name && <ChevronRight className="to-page-chevron" />}
+                        {each_page.link === current_page_link && <ChevronRight className="to-page-chevron" />}
                     </Link>
         })}
         
@@ -133,7 +134,7 @@ export default function Header({class_,userName}){
                 </Link>
             {/* </p> */}
 
-            <MynavBar for_="title-bar-nav" links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/Movies', name:'Movies'},{link:'/shows', name:'Tv shows'}]} current_page_name={'Home'}/>
+            <MynavBar for_="title-bar-nav" links={[{link:'/',name:'Home'},{link:'/lists', name:'Lists'},{link:'/Movies', name:'Movies'},{link:'/shows', name:'Tv shows'}]}/>
             <SearchInput placeholder="Search movies and TV shows"/>
             <div className="side-content right">
                 <Link className="btn lists-header-btn-link" to='lists' state="Hi">
@@ -165,7 +166,7 @@ export default function Header({class_,userName}){
         </header>
         <section className="side-menu-modal display-none">
             <div className="side-menu-content-box">
-                <MySidenavBar for_="side-menu" links={[{link:'/',name:'Home',icon:<HomeIcon />},{link:'/lists', name:'Lists',icon:<Bookmark />},{link:'/shows', name:'Tv shows', icon:<Tv/>},{link:'/Movies', name:'Movies',icon:<Film />},{link:'/Cartoons', name:'Cartoons',icon:<Activity />},{link:'/Search', name:'Search',icon:<Search />}]} current_page_name={'Home'}/>
+                <MySidenavBar for_="side-menu" links={[{link:'/',name:'Home',icon:<HomeIcon />},{link:'/lists', name:'Lists',icon:<Bookmark />},{link:'/shows', name:'Tv shows', icon:<Tv/>},{link:'/Movies', name:'Movies',icon:<Film />},{link:'/Cartoons', name:'Cartoons',icon:<Activity />},{link:'/Search', name:'Search',icon:<Search />}]}/>
                 <button className="outline-white sign-up">Sign Up</button>
 
             </div>

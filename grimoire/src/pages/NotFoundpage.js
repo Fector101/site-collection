@@ -15,7 +15,7 @@ export default function NotFoundpage({redirect_path,timeout_secs}){
         setSecondsRemaining(timeout_secs)
         const timeout = setTimeout(()=>{
             // navigate(-1) // To Go to last page.
-            // navigate(redirect_path,{state: 'Page not found'})
+            navigate(redirect_path,{state: 'Page not found'})
         },1000 * timeout_secs)
         const interval = setInterval(()=>{
             setSecondsRemaining(prev=>{
