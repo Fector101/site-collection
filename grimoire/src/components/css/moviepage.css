@@ -91,12 +91,12 @@
 
 .movie-page section.overview-box p{
     color: rgb(166, 173, 184);
-    font-size: 13px;    
+    font-size: 13px;
     /* font-family:  sans-serif; */
 }
 .movie-page section.rating-box table {
     font-size: 13px;
-    --smaller-row-width: 130px;
+    --smaller-row-width: 150px;
     --lagre-row-width: 200px;
     border-collapse: separate; /* Allows rounded corners */
     border-spacing: 0; /* Avoid gaps between cells */
@@ -107,14 +107,22 @@
 
 .movie-page .rating-box table tr td:nth-child(1) {
     width: var(--smaller-row-width);
+    display: flex;
+    align-items: center;
 }
 .movie-page .rating-box table tr td:nth-child(2) {
     width: var(--lagre-row-width);
 }
 
 .movie-page .rating-box table tr td {
-    padding: 5px;
+    padding: 6px;
     border-style: solid;
+}
+.movie-page .rating-box table tr td img{
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+
 }
 .movie-page .rating-box table tr:first-child td {
     border-color: rgb(133, 134, 137);

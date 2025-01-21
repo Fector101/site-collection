@@ -6,6 +6,10 @@ import ImgwithPL from "../components/js/ImgwithPL";
 import './../components/css/moviepage.css'
 import { PlayCircle, User2 } from "lucide-react";
 import { BookmarkActionButton } from "../components/ui/buttons/buttons";
+import rottenTomatoImg from './../components/imgs/rotten_tomato.png'
+import imdbSvg from './../components/imgs/imdb.svg'
+import logoPng from './../components/imgs/logo.png'
+
 function Castmember({member_data}){
     return(
         <div className="cast-member">
@@ -127,15 +131,24 @@ export default function Moviepage(){
                             {/* <td> Vote count </td> */}
                         </tr>
                         <tr>
-                            <td>IMDB</td>
+                            <td>
+                              <img src={imdbSvg} alt="IMDB"/>
+                              <p>IMDB</p>
+                              </td>
                             <td>{vote_average}</td>
                         </tr>
                         <tr>
-                            <td>Rotten Tomato</td>
+                            <td> 
+                                <img src={rottenTomatoImg} alt="Rotten Tomato"/>
+                                <p>Rotten Tomato</p>
+                              </td>
                             <td>{popularity}</td>
                         </tr>
                         <tr>
-                            <td>Grimoire</td>
+                            <td>
+                              <img src={logoPng} alt="Grimoire"/>
+                              <p>Grimoire</p>
+                              </td>
                             <td>{vote_count}</td>
                         </tr>
                     </tbody>  
