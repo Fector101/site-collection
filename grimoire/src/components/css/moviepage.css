@@ -61,7 +61,7 @@
     height: var(--size);
     width: var(--size);
     border-radius: 50%;
-    /* position: absolute; */
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
