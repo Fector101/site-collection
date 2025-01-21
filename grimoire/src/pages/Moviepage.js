@@ -98,18 +98,18 @@ export default function Moviepage(){
 
             <section  style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`}} className="movie-poster-case">
 
-                <h3> {original_title} </h3>
-                <div className="sub-details">
-                    <p> {release_date} </p>
-                    <div className="genres-box">
-                        {genre_ids.map(genre_id=><p key={nanoid()} className={genre_id}>{getGenreName(genre_id)}</p>)}
-                    </div>
-                    <p> {vote_average} </p>
-                </div>
                 <button className="play-btn">
                   <PlayCircle/>
                 </button>
-                <BookmarkActionButton className='bookmark-btn'/>
+                <div className="content flex">
+                  <div className="details">
+                      <h3> {original_title} </h3>
+                      <p className="inline-block"> {release_date} </p>
+                      <p className="inline-block"> {vote_average} </p>
+                      <div className="genres-box flex"> {genre_ids.map(genre_id=><p key={nanoid()} className={genre_id + '0'}>{getGenreName(genre_id)}</p>)} </div>
+                  </div>
+                  <BookmarkActionButton className='bookmark-btn'/>
+                </div>
             </section>
 
             <section className="overview-box">

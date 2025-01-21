@@ -17,10 +17,7 @@
     margin-bottom: 1rem;
     font-size: 20px;
 }
-.movie-page section.overview-box p{
-    color: rgb(166, 173, 184);
-    font-size: 13px;    
-}
+
 .movie-page .movie-poster-case{
     height: 300px;
     border-radius: 5px;
@@ -28,16 +25,43 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding: 1rem;
+    /* padding: 1rem; */
     position: relative;
 }
+
+
+.movie-page .content{
+    align-items: end;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.25rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+.movie-page .content .details{
+    font-size: 1.4rem;
+    flex: 1;
+}
+.movie-page .genres-box{
+    gap: 5px;
+    flex-wrap: wrap;
+    font-size: 10px;
+}
+
+.movie-page .genres-box p{
+    color: var(--accent-color);
+    background: #252525;
+    border-radius: 5px;
+    padding: 0.125rem 0.25rem;
+}
+
+
 .movie-page .movie-poster-case .play-btn{
     color: var(--svg-primary-bg);
     --size:5rem;
     height: var(--size);
     width: var(--size);
     border-radius: 50%;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     bottom: 0;
     left: 0;
@@ -51,14 +75,16 @@
 
 
 .movie-page .bookmark-btn{
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    margin-bottom: 2rem;
     color: var(--svg-primary-bg);
     font-size: 1.5rem;
     cursor: pointer;
 }
 
+.movie-page section.overview-box p{
+    color: rgb(166, 173, 184);
+    font-size: 13px;    
+}
 .movie-page .cast-box{
     display: flex;
     gap: 15px;
