@@ -18,7 +18,8 @@
     font-size: 20px;
 }
 .movie-page section.overview-box p{
-    color: rgb(166, 173, 184)
+    color: rgb(166, 173, 184);
+    font-size: 13px;    
 }
 .movie-page .movie-poster-case{
     height: 300px;
@@ -53,7 +54,6 @@
     position: absolute;
     bottom: 1rem;
     right: 1rem;
-    /* padding: 0.5rem; */
     color: var(--svg-primary-bg);
     font-size: 1.5rem;
     cursor: pointer;
@@ -73,12 +73,12 @@
     min-width: 200px;
     padding: 10px;
     gap: 3px;
-    /* background-color: #523434; */
     border-radius: 10px;
     overflow: hidden; 
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center; /* Important for names longer than box width*/
     transition: 0.3s;
 }
 .movie-page .cast-box .cast-member img{
@@ -91,4 +91,19 @@
 .movie-page .cast-box .cast-member p{
     font-size: 13px;
     /* height: 20px; */
+}
+
+@media screen and (max-width:500px) {
+    .movie-page .cast-box{
+        gap: 10px;
+    }
+    .movie-page .cast-box .cast-member{
+        min-width: 150px;
+    }
+    .movie-page .cast-box .cast-member img{
+        --size:100px;
+    }
+    .movie-page .cast-box .cast-member p{
+        font-size: 12px;
+    }
 }
