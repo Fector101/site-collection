@@ -1,3 +1,4 @@
+import { genreIds } from "./api_data"
 
 /**
  *  Changes String first letter to Captial Case
@@ -68,4 +69,9 @@ export function parseDecimalSide(decimal_number){
 	}
 	else{return 0}
 }
-export {isTouchDevice,returnClass,randInt, toHHMMSS, toTitleCase}
+
+function getGenreName(id){
+	return genreIds[id]
+}
+
+export {isTouchDevice,returnClass,randInt, toHHMMSS, toTitleCase, getGenreName}

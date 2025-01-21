@@ -32,7 +32,7 @@ function Card({movie_data,onClick}){
       navigate(`/movie?id=${id}`);
     };
     return (
-        <li className="card cursor-pointer" onClick={goToMovie}>
+        <li className="card cursor-pointer" tabIndex="0" onClick={goToMovie}>
             <div className="bookmark-btn-case">
                 <button className="add-to-list-btn">
                     <Bookmark/>

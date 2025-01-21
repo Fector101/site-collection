@@ -1,0 +1,47 @@
+.movie-page {
+    width: 100%;
+    padding-top: 0.25rem;
+    padding-bottom: 1.5rem;
+}
+.movie-page section{
+    width: 100%;
+    overflow: hidden;
+    /* margin-top: 2rem; */
+}
+.movie-page .movie-poster-case{
+    height: 300px;
+    /* margin-top: 0; */
+}
+.movie-page .cast-box{
+    display: flex;
+    gap: 15px;
+    overflow: scroll hidden;
+    /* background-color: #1c1c1c; */
+}
+
+.movie-page .cast-box .cast-member{
+    --card-height: 300px;
+  --card-info-height: 65px;
+
+    min-width: 200px;
+    padding: 10px;
+    gap: 3px;
+    /* background-color: #523434; */
+    border-radius: 10px;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+.movie-page .cast-box .cast-member img{
+    height: calc(100% - var(--card-info-height));
+    border-radius: 50%;
+    --size:120px;
+    height: var(--size);
+    width: var(--size);
+}
+.movie-page .cast-box .cast-member p{
+    font-size: 13px;
+    /* height: 20px; */
+}
