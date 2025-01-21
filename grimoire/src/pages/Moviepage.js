@@ -104,8 +104,8 @@ export default function Moviepage(){
                 <div className="content flex">
                   <div className="details">
                       <h3> {original_title} </h3>
-                      <p className="inline-block"> {release_date} </p>
-                      <p className="inline-block"> {vote_average} </p>
+                      {/* <p className="inline-block"> {release_date} </p>
+                      <p className="inline-block"> {vote_average} </p> */}
                       <div className="genres-box flex"> {genre_ids.map(genre_id=><p key={nanoid()} className={genre_id + '0'}>{getGenreName(genre_id)}</p>)} </div>
                   </div>
                   <BookmarkActionButton className='bookmark-btn'/>
@@ -115,6 +115,26 @@ export default function Moviepage(){
             <section className="overview-box">
                 <h4>Overview</h4>
                 <p>{overview}</p>
+            </section>
+
+            <section className="overview-box">
+                <h4>Rating</h4>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Rating</td>
+                            <td>{vote_average}</td>
+                        </tr>
+                        <tr>
+                            <td>Popularity</td>
+                            <td>{popularity}</td>
+                        </tr>
+                        <tr>
+                            <td>Vote Count</td>
+                            <td>{vote_count}</td>
+                        </tr>
+                    </tbody>  
+                </table>
             </section>
 
             <section>

@@ -41,6 +41,14 @@
     font-size: 1.4rem;
     flex: 1;
 }
+.movie-page .content .details h3{
+    font-size: 1.825rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
 .movie-page .genres-box{
     gap: 5px;
     flex-wrap: wrap;
@@ -84,6 +92,7 @@
 .movie-page section.overview-box p{
     color: rgb(166, 173, 184);
     font-size: 13px;    
+    /* font-family:  sans-serif; */
 }
 .movie-page .cast-box{
     display: flex;
@@ -120,16 +129,20 @@
 }
 
 @media screen and (max-width:500px) {
-    .movie-page .cast-box{
-        gap: 10px;
-    }
-    .movie-page .cast-box .cast-member{
-        min-width: 150px;
-    }
-    .movie-page .cast-box .cast-member img{
-        --size:100px;
-    }
-    .movie-page .cast-box .cast-member p{
-        font-size: 12px;
-    }
+.movie-page .content .details h3{
+    font-size: 1.3rem;
+}
+.movie-page .cast-box{
+    gap: 10px;
+}
+.movie-page .cast-box .cast-member{
+    min-width: 150px;
+}
+.movie-page .cast-box .cast-member img{
+    --size:100px;
+}
+.movie-page .cast-box .cast-member p{
+    font-size: 12px;
+}
+
 }
