@@ -117,23 +117,29 @@ export default function Moviepage(){
                 <p>{overview}</p>
             </section>
 
-            <section className="overview-box">
-                <h4>Rating</h4>
+            <section className="rating-box">
+                <h4>Ratings</h4>
                 <table>
                     <tbody>
                         <tr>
-                            <td>Rating</td>
+                            <td> Site </td>
+                            <td> Rating </td>
+                            {/* <td> Vote count </td> */}
+                        </tr>
+                        <tr>
+                            <td>IMDB</td>
                             <td>{vote_average}</td>
                         </tr>
                         <tr>
-                            <td>Popularity</td>
+                            <td>Rotten Tomato</td>
                             <td>{popularity}</td>
                         </tr>
                         <tr>
-                            <td>Vote Count</td>
+                            <td>Grimoire</td>
                             <td>{vote_count}</td>
                         </tr>
                     </tbody>  
+
                 </table>
             </section>
 
