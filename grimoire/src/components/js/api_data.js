@@ -8,7 +8,7 @@ export const top_movies_data = {
             "backdrop_path": "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
             "id": 912649,
             "title": "Venom: The Last Dance",
-            "original_title": "Venom: The Last Dance, and My name is fabian blah blah blah",
+            "original_title": "Venom: The Last Dance",
             "overview": "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
             "poster_path": "/k42Owka8v91trK1qMYwCQCNwJKr.jpg",
             "media_type": "movie",
