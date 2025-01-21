@@ -26,7 +26,14 @@ function Slide({pos_info__, class_, movie_data, index}){
         style.transform=translateX
         pos_info__.current['name '+index]=translateX
     }
-    style['backgroundImage']=`url(https://image.tmdb.org/t/p/original${backdrop_path})`
+
+    let [cover_img,SetCoverImg] = useState('linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.5), transparent)')
+    useEffect(()=>{
+        const img = new Image()
+        img.src = `https://image.tmdb.org/t/p/original${backdrop_path}`
+        img.onload = ()=>SetCoverImg(`url(${img.src})`)
+    },[backdrop_path])
+    style['backgroundImage']=cover_img
 
     return (
         <div className={'carousel-content-case'+class_} data-index={index} data-name={'name '+index} style={style}>

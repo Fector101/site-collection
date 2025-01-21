@@ -105,7 +105,7 @@ export default function Moviepage(){
         const img = new Image()
         img.src = `https://image.tmdb.org/t/p/original${backdrop_path}`
         img.onload = ()=>SetCoverImg(`url(${img.src})`)
-    },[])
+    },[backdrop_path])
     return (
         <div className="movie-page margin-auto flex-page">
 
