@@ -73,3 +73,40 @@ body:has(.flex-page) header{
     width: 100%;
     top: 0;
 }
+
+
+/* Beating Bookmark Button */
+
+.beating-bookmark-btn{
+    height: 55px;
+    width: 55px;
+    animation: beat 1s ease-in-out infinite;
+    position: relative;
+}
+
+.beating-bookmark-btn svg {
+    --color: rgb(230, 230, 241);
+    fill: var(--color);
+    color: var(--color);
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.beating-bookmark-btn svg:first-child {
+    fill: var(--accent-color);
+    color: var(--accent-color);
+    position: absolute;
+    left: 3px;
+    top: 5px;
+}
+
+/* Keyframes for the "beating" animation */
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    }

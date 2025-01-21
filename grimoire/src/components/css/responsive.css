@@ -33,16 +33,6 @@
         display:flex;
         animation: beat 1s ease-in-out infinite;
     }
-  
-    /* Keyframes for the "beating" animation */
-    @keyframes beat {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-    }
 
     .carousel-content-case .texts,
     .carousel-case .btns-case {

@@ -4,11 +4,12 @@ import { nanoid } from "nanoid";
 import { getGenreName } from "../components/js/helper";
 import ImgwithPL from "../components/js/ImgwithPL";
 import './../components/css/moviepage.css'
-import { PlayCircle } from "lucide-react";
+import { PlayCircle, UserCircle2Icon } from "lucide-react";
+import { BookmarkActionButton } from "../components/ui/buttons/buttons";
 function Castmember({member_data}){
     return(
         <div className="cast-member">
-            <ImgwithPL src={`https://cast/${member_data.img}`} alt={member_data.name} /> 
+            <ImgwithPL pl_type='svg' placeholder_src={<UserCircle2Icon/>} src={`https://cast/${member_data.img}`} alt={member_data.name} /> 
             <p> {member_data.name || "Loerm ipm"} </p>
             <p> {member_data.character   || "Joe"} </p>
         </div>
@@ -108,6 +109,7 @@ export default function Moviepage(){
                 <button className="play-btn">
                   <PlayCircle/>
                 </button>
+                <BookmarkActionButton/>
             </section>
 
             <section className="overview-box">
