@@ -128,7 +128,7 @@ export default function Moviepage(){
                         <tr>
                             <td> Site </td>
                             <td> Rating </td>
-                            {/* <td> Vote count </td> */}
+                            <td> People</td>
                         </tr>
                         <tr>
                             <td>
@@ -136,6 +136,7 @@ export default function Moviepage(){
                               <p>IMDB</p>
                               </td>
                             <td>{vote_average}</td>
+                            <td>10k</td>
                         </tr>
                         <tr>
                             <td> 
@@ -143,6 +144,7 @@ export default function Moviepage(){
                                 <p>Rotten Tomato</p>
                               </td>
                             <td>{popularity}</td>
+                            <td>11.1k</td>
                         </tr>
                         <tr>
                             <td>
@@ -150,6 +152,7 @@ export default function Moviepage(){
                               <p>Grimoire</p>
                               </td>
                             <td>{vote_count}</td>
+                            <td>1m</td>
                         </tr>
                     </tbody>  
 
