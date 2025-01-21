@@ -109,7 +109,7 @@ export default function Moviepage(){
                 <button className="play-btn">
                   <PlayCircle/>
                 </button>
-                <BookmarkActionButton/>
+                <BookmarkActionButton className='bookmark-btn'/>
             </section>
 
             <section className="overview-box">

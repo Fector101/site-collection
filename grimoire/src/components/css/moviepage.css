@@ -29,7 +29,6 @@
     justify-content: end;
     padding: 1rem;
     position: relative;
-    /* width: 90%; */
 }
 .movie-page .movie-poster-case .play-btn{
     color: var(--svg-primary-bg);
@@ -48,6 +47,18 @@
     height: 100%;
     width: 100%;
 }
+
+
+.movie-page .bookmark-btn{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    /* padding: 0.5rem; */
+    color: var(--svg-primary-bg);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 .movie-page .cast-box{
     display: flex;
     gap: 15px;
