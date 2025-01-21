@@ -11,7 +11,6 @@
 .movie-page section{
     width: 100%;
     overflow: hidden;
-    /* margin-top: 2rem; */
 }
 .movie-page section h4{
     margin-bottom: 1rem;
@@ -22,10 +21,10 @@
     height: 300px;
     border-radius: 5px;
     background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: end;
-    /* padding: 1rem; */
     position: relative;
 }
 
@@ -35,7 +34,7 @@
     padding-left: 0.5rem;
     padding-right: 1rem;
     padding-bottom: 0.25rem;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
 }
 .movie-page .content .details{
     font-size: 1.4rem;
@@ -174,7 +173,6 @@
 }
 .movie-page .cast-box .cast-member p{
     font-size: 13px;
-    /* height: 20px; */
 }
 
 @media screen and (max-width:500px) {

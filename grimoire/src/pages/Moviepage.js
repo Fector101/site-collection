@@ -9,6 +9,7 @@ import { BookmarkActionButton } from "../components/ui/buttons/buttons";
 import rottenTomatoImg from './../components/imgs/rotten_tomato.png'
 import imdbSvg from './../components/imgs/imdb.svg'
 import logoPng from './../components/imgs/logo.png'
+import { useEffect, useState } from "react";
 
 function Castmember({member_data}){
     return(
@@ -23,6 +24,7 @@ export default function Moviepage(){
     const [searchParams] = useSearchParams();
     const movie_id = searchParams.get('id');
     const movie_data ={...top_movies_data.results.find(({id}) => id === +movie_id)} //{...object.value} clones main object value
+    // const movie_data ={}//{...top_movies_data.results.find(({id}) => id === +movie_id)} //{...object.value} clones main object value
     
     const { 
             adult,
@@ -41,7 +43,7 @@ export default function Moviepage(){
             vote_count,
         } = movie_data
     delete movie_data.title
-    const cast = [
+    let cast = [
         {
           "id": 6193,
           "name": "Leonardo DiCaprio",
@@ -97,10 +99,17 @@ export default function Moviepage(){
           "profile_path": "/nvTujOMoJuSsbI5G9l83dkfWtQ3.jpg"
         }
       ]
+    // cast = []
+    let [cover_img,SetCoverImg] = useState('linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.5), transparent)')
+    useEffect(()=>{
+        const img = new Image()
+        img.src = `https://image.tmdb.org/t/p/original${backdrop_path}`
+        img.onload = ()=>SetCoverImg(`url(${img.src})`)
+    },[])
     return (
         <div className="movie-page margin-auto flex-page">
 
-            <section  style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`}} className="movie-poster-case">
+            <section  style={{backgroundImage: cover_img}} className="movie-poster-case">
 
                 <button className="play-btn">
                   <PlayCircle/>
@@ -110,7 +119,7 @@ export default function Moviepage(){
                       <h3> {original_title} </h3>
                       {/* <p className="inline-block"> {release_date} </p>
                       <p className="inline-block"> {vote_average} </p> */}
-                      <div className="genres-box flex"> {genre_ids.map(genre_id=><p key={nanoid()} className={genre_id + '0'}>{getGenreName(genre_id)}</p>)} </div>
+                      <div className="genres-box flex"> {genre_ids?.map(genre_id=><p key={nanoid()} className={genre_id + '0'}>{getGenreName(genre_id)}</p>)} </div>
                   </div>
                   <BookmarkActionButton className='bookmark-btn'/>
                 </div>
