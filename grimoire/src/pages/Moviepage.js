@@ -23,8 +23,8 @@ function Castmember({member_data}){
 export default function Moviepage(){
     const [searchParams] = useSearchParams();
     const movie_id = searchParams.get('id');
-    const movie_data ={...top_movies_data.results.find(({id}) => id === +movie_id)} //{...object.value} clones main object value
-    // const movie_data ={}//{...top_movies_data.results.find(({id}) => id === +movie_id)} //{...object.value} clones main object value
+    let movie_data ={...top_movies_data.results.find(({id}) => id === +movie_id)} //{...object.value} clones main object value
+    // movie_data ={}
     
     const { 
             adult,
@@ -163,6 +163,15 @@ export default function Moviepage(){
                             <td>{vote_count}</td>
                             <td>1m</td>
                         </tr>
+                        
+                        {/* <tr>   Download the logo and add it to the project
+                            <td>
+                              <img src={logoPng} alt="themoviedb"/>
+                              <p>themoviedb</p>
+                              </td>
+                            <td>{vote_average}</td>
+                            <td>{vote_count}</td>
+                        </tr> */}
                     </tbody>  
 
                 </table>
