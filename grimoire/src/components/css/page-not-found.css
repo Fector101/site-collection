@@ -8,3 +8,16 @@
 .not-found-page-ui a{
     color: rgb(255, 255, 202);
 }
+.not-found-page-ui .secs-txt{
+    font-size: 1.25rem;
+}
+@media screen and (max-width:380px) {
+    .not-found-page-ui h1{
+        font-size: 1.9rem;
+        margin-bottom: 10px;
+    }
+    .not-found-page-ui p{
+        font-size: 15px;
+    }
+    
+}

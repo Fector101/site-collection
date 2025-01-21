@@ -43,7 +43,7 @@ function App() {
         <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
         <Route path="/movie" element={ <Moviepage /> }/>
         <Route path="/list/*" element={<ListRoutes />} /> 
-        <Route path="*" element={ <NotFoundpage/>} />
+        <Route path="*" element={ <NotFoundpage redirect_path='/' timeout_secs={5}/>} />
       </Routes>
       <Footer/>
     </>
