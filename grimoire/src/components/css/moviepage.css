@@ -1,16 +1,52 @@
 .movie-page {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     padding-top: 0.25rem;
     padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .movie-page section{
     width: 100%;
     overflow: hidden;
     /* margin-top: 2rem; */
 }
+.movie-page section h4{
+    margin-bottom: 1rem;
+    font-size: 20px;
+}
+.movie-page section.overview-box p{
+    color: rgb(166, 173, 184)
+}
 .movie-page .movie-poster-case{
     height: 300px;
-    /* margin-top: 0; */
+    border-radius: 5px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 1rem;
+    position: relative;
+    /* width: 90%; */
+}
+.movie-page .movie-poster-case .play-btn{
+    color: var(--svg-primary-bg);
+    --size:5rem;
+    height: var(--size);
+    width: var(--size);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.movie-page .movie-poster-case .play-btn svg{
+    height: 100%;
+    width: 100%;
 }
 .movie-page .cast-box{
     display: flex;

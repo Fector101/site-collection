@@ -105,8 +105,9 @@ export default function Moviepage(){
                     </div>
                     <p> {vote_average} </p>
                 </div>
-
-                <PlayCircle />
+                <button className="play-btn">
+                  <PlayCircle/>
+                </button>
             </section>
 
             <section className="overview-box">
