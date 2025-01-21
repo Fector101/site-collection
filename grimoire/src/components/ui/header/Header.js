@@ -95,7 +95,7 @@ function MySidenavBar({links,for_}){
             return  <Link id={nanoid()} key={nanoid()} to={each_page.link} onClick={swicthPage} state="Hi"  className={each_page.link === current_page_link ? "current-page":''}>
                         {each_page.icon}
                         <p>{each_page.name}</p>
-                        {each_page.link === current_page_link && <ChevronRight className="to-page-chevron" />}
+                        {each_page.link !== current_page_link && <ChevronRight className="to-page-chevron" />}
                     </Link>
         })}
         
