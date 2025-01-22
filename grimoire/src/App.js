@@ -9,6 +9,7 @@ import ListRoutes from "./pages/LIstRoutes";
 import Header from "./components/ui/header/Header";
 import "./components/css/responsive.css"
 import Footer from "./components/ui/footer/Footer";
+// import Moviepage from "./pages/stuff/Moviepage";
 import Moviepage from "./pages/Moviepage";
 import { useEffect } from "react";
 

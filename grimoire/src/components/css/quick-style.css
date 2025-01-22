@@ -20,7 +20,9 @@ body section.display-none {
 .inline-block {
     display: inline-block;
 }
-
+.inline-flex {
+    display: inline-flex;
+}
 .display-flex {
     display: flex;
 }
