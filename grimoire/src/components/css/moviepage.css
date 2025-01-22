@@ -96,27 +96,27 @@
 
 /* web edit*/
 
-.movie-page .card .vote-btn {
+.movie-page .vote-btn {
     padding: 2px 1px;
     border-radius: 2px;
 }
 
-.movie-page .card .vote-btn:hover {
+.movie-page .vote-btn:hover {
     background: rgba(167, 166, 166, 0.127);
 }
 
-.movie-page .card .details-case-2 svg {
+.movie-page .details-case-2 svg {
     color: var(--card-rate-primary-color);
     height: 20px;
 }
 
-.movie-page .card .details-case-2 .vote-btn.up.clicked svg {
+.movie-page .details-case-2 .vote-btn.up.clicked svg {
     --color: rgb(173, 233, 167);
     fill: var(--color);
     color: var(--color);
 }
 
-.movie-page .card .details-case-2 .vote-btn.down.clicked svg {
+.movie-page .details-case-2 .vote-btn.down.clicked svg {
     --color: rgb(233, 167, 167);
     fill: var(--color);
     color: var(--color);
