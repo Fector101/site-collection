@@ -25,7 +25,21 @@ export default function Moviepage(){
     const movie_id = searchParams.get('id');
     let movie_data ={...top_movies_data.results.find(({id}) => id === +movie_id)} //{...object.value} clones main object value
     // movie_data ={}
-    
+        function takeVote(element){
+        element.stopPropagation()
+        const clicked_btn = element.target.closest('button')
+        if (!clicked_btn) return
+
+        const card = element.target.closest('.card')
+        const user_vote = [...clicked_btn.classList].filter(class_name=> ['up','down'].includes(class_name))[0]
+
+        if (user_vote === 'up'){
+            card.querySelector('.rate-btns-case .vote-btn.down').classList.remove('clicked')
+        }else if (user_vote === 'down'){
+            card.querySelector('.rate-btns-case .vote-btn.up').classList.remove('clicked')
+        }
+        clicked_btn.classList.toggle('clicked')
+    }
     const { 
             adult,
             backdrop_path,
@@ -132,6 +146,10 @@ export default function Moviepage(){
 
             <section className="rating-box">
                 <h4>Ratings</h4>
+                        <div className="display-flex rate-btns-case">
+                            <button onClick={takeVote} className="vote-btn down"> <ArrowBigDown /> </button>
+                            <button onClick={takeVote} className="vote-btn up"> <ArrowBigUp /> </button>
+                        </div>
                 <table>
                     <tbody>
                         <tr>
