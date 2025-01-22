@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { getGenreName } from "../components/js/helper";
 import ImgwithPL from "../components/js/ImgwithPL";
 import './../components/css/moviepage.css'
-import { PlayCircle, User2 } from "lucide-react";
+import { PlayCircle, User2, ArrowBigDown, ArrowBigUp} from "lucide-react";
 import { BookmarkActionButton } from "../components/ui/buttons/buttons";
 import rottenTomatoImg from './../components/imgs/rotten_tomato.png'
 import imdbSvg from './../components/imgs/imdb.svg'
@@ -25,12 +25,12 @@ export default function Moviepage(){
     const movie_id = searchParams.get('id');
     let movie_data ={...top_movies_data.results.find(({id}) => id === +movie_id)} //{...object.value} clones main object value
     // movie_data ={}
-        function takeVote(element){
+    function takeVote(element){
         element.stopPropagation()
         const clicked_btn = element.target.closest('button')
         if (!clicked_btn) return
 
-        const card = element.target.closest('.card')
+        const card = element.target.closest('.voting-box')
         const user_vote = [...clicked_btn.classList].filter(class_name=> ['up','down'].includes(class_name))[0]
 
         if (user_vote === 'up'){
