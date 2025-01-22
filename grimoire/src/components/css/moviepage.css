@@ -97,6 +97,15 @@
 
 /* web edit*/
 
+.movie-page section.rating-box{
+    position: relative;
+}
+
+.movie-page section.rating-box .rate-btns-case{
+    position: absolute; 
+    top: 1px;
+    right: 1px;
+}
 .movie-page .vote-btn {
     padding: 2px 1px;
     border-radius: 2px;
