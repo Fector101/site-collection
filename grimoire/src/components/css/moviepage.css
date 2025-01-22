@@ -93,6 +93,38 @@
     font-size: 13px;
     /* font-family:  sans-serif; */
 }
+
+/* web edit*/
+
+.movie-page .card .vote-btn {
+    padding: 2px 1px;
+    border-radius: 2px;
+}
+
+.movie-page .card .vote-btn:hover {
+    background: rgba(167, 166, 166, 0.127);
+}
+
+.movie-page .card .details-case-2 svg {
+    color: var(--card-rate-primary-color);
+    height: 20px;
+}
+
+.movie-page .card .details-case-2 .vote-btn.up.clicked svg {
+    --color: rgb(173, 233, 167);
+    fill: var(--color);
+    color: var(--color);
+}
+
+.movie-page .card .details-case-2 .vote-btn.down.clicked svg {
+    --color: rgb(233, 167, 167);
+    fill: var(--color);
+    color: var(--color);
+}
+
+
+
+/* web edit */
 .movie-page section.rating-box table {
     font-size: 13px;
     --smaller-row-width: 140px;
