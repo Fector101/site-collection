@@ -30,13 +30,13 @@ export default function Moviepage(){
         const clicked_btn = element.target.closest('button')
         if (!clicked_btn) return
 
-        const card = element.target.closest('.voting-box')
+        const card = element.target.closest('.rate-btns-case')
         const user_vote = [...clicked_btn.classList].filter(class_name=> ['up','down'].includes(class_name))[0]
 
         if (user_vote === 'up'){
-            card.querySelector('.rate-btns-case .vote-btn.down').classList.remove('clicked')
+            card.querySelector('.vote-btn.down').classList.remove('clicked')
         }else if (user_vote === 'down'){
-            card.querySelector('.rate-btns-case .vote-btn.up').classList.remove('clicked')
+            card.querySelector('.vote-btn.up').classList.remove('clicked')
         }
         clicked_btn.classList.toggle('clicked')
     }
