@@ -1,16 +1,55 @@
 import { useSearchParams } from "react-router-dom";
 import { top_movies_data } from "../components/js/api_data"
 import { nanoid } from "nanoid";
-import { getGenreName } from "../components/js/helper";
+import { getGenreName, randInt } from "../components/js/helper";
 import ImgwithPL from "../components/js/ImgwithPL";
 import './../components/css/moviepage.css'
-import { PlayCircle, User2, ArrowBigDown, ArrowBigUp} from "lucide-react";
+import { PlayCircle, User2, ArrowBigDown, ArrowBigUp, Clock, Calendar, Languages} from "lucide-react";
 import { BookmarkActionButton } from "../components/ui/buttons/buttons";
 import rottenTomatoImg from './../components/imgs/rotten_tomato.png'
 import imdbSvg from './../components/imgs/imdb.svg'
 import logoPng from './../components/imgs/logo.png'
 import { useEffect, useState } from "react";
 
+function formatTime(secs){
+  
+	const format = (arg)=>arg.toString().padStart(2, '0')
+
+  let time = ''
+	let sec_num = parseInt(secs, 10)
+	let hrs=Math.floor(sec_num/3600)
+	let mins = Math.floor((sec_num - (hrs * 3600)) / 60)
+	let secs__=sec_num - (hrs*3600)-(mins*60)
+	if (hrs > 0) time += `${format(hrs)} ${hrs===1?'hr':'hrs'}`
+  if (mins > 0) time += ` ${format(mins)} ${mins===1?'min':'mins'}`
+  if (secs__ > 0) time += ` ${format(secs__)} ${secs__===1?'sec':'secs'}`
+
+	return time
+
+}
+
+function formatDate(date){
+    
+  const dateObj = new Date(date);
+
+  // Get the day, month, and year
+  const month = dateObj.toLocaleString('default', { month: 'short' }); // Abbreviated month
+  const year = dateObj.getFullYear();
+
+  function getOrdinalSuffix(day) {
+    if (day >= 11 && day <= 13) return 'th';
+    switch (day % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  }
+  let day = dateObj.getDate();
+  day+=getOrdinalSuffix(day)
+
+  return `${day} of ${month}, ${year}`;
+}
 function Castmember({member_data}){
     return(
         <div className="cast-member">
@@ -47,6 +86,7 @@ export default function Moviepage(){
             id,
             media_type,
             original_language,
+            title,
             original_title,
             overview,
             popularity,
@@ -56,7 +96,7 @@ export default function Moviepage(){
             vote_average,
             vote_count,
         } = movie_data
-    delete movie_data.title
+    // delete movie_data.title
     let cast = [
         {
           "id": 6193,
@@ -120,6 +160,7 @@ export default function Moviepage(){
         img.src = `https://image.tmdb.org/t/p/original${backdrop_path}`
         img.onload = ()=>SetCoverImg(`url(${img.src})`)
     },[backdrop_path])
+    const secs = randInt(3600, 7200)
     return (
         <div className="movie-page margin-auto flex-page">
 
@@ -130,18 +171,44 @@ export default function Moviepage(){
                 </button>
                 <div className="content flex">
                   <div className="details">
-                      <h3> {original_title} </h3>
-                      {/* <p className="inline-block"> {release_date} </p>
-                      <p className="inline-block"> {vote_average} </p> */}
+                      <h3> {title} </h3>
+                      {original_title !== title && <caption>AKA: {original_title}</caption>}
+                      <ul className="sub-details">
+                        <li className="inline-flex">
+                          <Clock />
+                          <p>{formatTime(secs)}</p>
+                        </li>
+                        <li className="lang inline-flex">
+                          <Languages />
+                          <p className=""> lang: {original_language} </p>
+                        </li>
+                        <li className="flex">
+                          <Calendar />
+                          <p className=""> Released: {formatDate(release_date)} </p>
+                        </li>
+                        {/* <p className="inline-block"> {vote_average} </p> */}
+                      </ul>
                       <div className="genres-box flex"> {genre_ids?.map(genre_id=><p key={nanoid()} className={genre_id + '0'}>{getGenreName(genre_id)}</p>)} </div>
+                  </div>
+                  <div className="large-btns-box">
+                    <button className="outline-white">Watched It</button>
+                    <button className="outline-white">Add to List</button>
+                    <button className="outline-white">Favourites</button>
                   </div>
                   <BookmarkActionButton className='bookmark-btn'/>
                 </div>
             </section>
-
+            
             <section className="overview-box">
                 <h4>Overview</h4>
                 <p>{overview}</p>
+            </section>
+
+            <section>
+                <h3>Cast</h3>
+                <div className="cast-box">
+                    {cast.map(each_member=><Castmember key={nanoid()} member_data={each_member}/>)}
+                </div>
             </section>
 
             <section className="rating-box">
@@ -195,12 +262,7 @@ export default function Moviepage(){
                 </table>
             </section>
 
-            <section>
-                <h3>Cast</h3>
-                <div className="cast-box">
-                    {cast.map(each_member=><Castmember key={nanoid()} member_data={each_member}/>)}
-                </div>
-            </section>
+            
         </div>
     )
 }

@@ -31,34 +31,58 @@
 
 .movie-page .content{
     align-items: end;
-    padding-left: 0.5rem;
-    padding-right: 1rem;
-    padding-bottom: 0.25rem;
+    padding-left:  2rem;
+    padding-right: 2rem;
+    padding-bottom: 1.5rem;
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
 }
 .movie-page .content .details{
-    font-size: 1.4rem;
     flex: 1;
 }
 .movie-page .content .details h3{
-    font-size: 1.825rem;
+    font-size: 2.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.movie-page ul.sub-details{
+    /* display: flex; */
+    margin-left: 10px;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    font-size:15px ;
+}
+.movie-page ul.sub-details li svg{
+    --size:16px;
+    width: var(--size);
+    height: var(--size);
+
+}
+.movie-page ul.sub-details li.lang{
+    margin-left: 13px;
+/* .movie-page ul.sub-details li:not(.lang){ */
+}
+.movie-page ul.sub-details li{
+    /* display: inline-flex; */
+    align-items: center;
+    gap: 10px;
 }
 .movie-page .genres-box{
     gap: 5px;
     flex-wrap: wrap;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .movie-page .genres-box p{
     color: var(--accent-color);
     background: #252525;
     border-radius: 5px;
-    padding: 0.125rem 0.25rem;
+    padding: 0.25rem 0.5rem;
+    /* padding: 0.125rem 0.25rem; */
 }
 
 
@@ -82,9 +106,21 @@
 
 
 .movie-page .bookmark-btn{
+    display: none;
     margin-bottom: 2rem;
     color: var(--svg-primary-bg);
     font-size: 1.5rem;
+    cursor: pointer;
+}
+.movie-page .large-btns-box {
+    display: flex;
+    gap: 16px;
+}
+.movie-page .large-btns-box button{
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 1rem;
     cursor: pointer;
 }
 
@@ -94,9 +130,6 @@
     /* font-family:  sans-serif; */
 }
 
-
-/* web edit*/
-
 .movie-page section.rating-box{
     position: relative;
 }
@@ -105,6 +138,7 @@
     position: absolute; 
     top: 1px;
     right: 1px;
+    --card-rate-primary-color: rgb(201, 201, 201);
 }
 .movie-page .vote-btn {
     padding: 2px 1px;
@@ -115,7 +149,7 @@
     background: rgba(167, 166, 166, 0.127);
 }
 
-.movie-page svg {
+.movie-page .vote-btn svg {
     color: var(--card-rate-primary-color);
     height: 20px;
 }
@@ -131,10 +165,6 @@
     fill: var(--color);
     color: var(--color);
 }
-
-
-/* web edit */
-
 
 .movie-page section.rating-box table {
     font-size: 13px;
@@ -221,6 +251,10 @@
 @media screen and (max-width:500px) {
 .movie-page .content .details h3{
     font-size: 1.3rem;
+}
+
+.movie-page .genres-box{
+    font-size: 10px;
 }
 .movie-page .cast-box{
     gap: 10px;
