@@ -31,14 +31,16 @@
 
 
 .movie-page .content{
+    height: 100%;
     align-items: end;
     padding-left:  2rem;
     padding-right: 2rem;
     padding-bottom: 1.5rem;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.731), transparent);
 }
 .movie-page .content .details{
-    flex: 1;
+    max-width: 60%;
 }
 .movie-page .content .details h3{
     font-size: 2.5rem;
@@ -57,6 +59,12 @@
     /* list-style: none; */
     font-size:15px ;
 }
+
+
+.movie-page ul.sub-details.for-smaller-screen{
+    display: none;
+}
+
 .movie-page ul.sub-details li svg{
     --size:16px;
     width: var(--size);
@@ -101,16 +109,23 @@
     height: var(--size);
     width: var(--size);
     border-radius: 50%;
-    position: absolute;
+     position: absolute; 
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.42);
+    background-color: #f4f429;
+    
 }
 .movie-page .movie-poster-case .play-btn svg{
-    height: 100%;
-    width: 100%;
+    height: 70%;
+    width:  70%;
+    margin: auto;
+    --color:black;
+    fill: var(--color);
+    color: var(--color);
 }
 
 
@@ -120,19 +135,25 @@
     color: var(--svg-primary-bg);
     font-size: 1.5rem;
     cursor: pointer;
+    margin-left: auto;
 }
 .movie-page .large-btns-box {
     display: flex;
-    gap: 16px;
+    gap: 5px;
+    margin-left: auto;
+}
+.movie-page .medium-screens-btns {
+    display: none;
 }
 .movie-page .large-btns-box button{
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.6rem;
+    width: max-content;
     border-radius: 5px;
     font-size: 1rem;
     margin-right: 1rem;
     cursor: pointer;
     align-items: center;
-    gap: 7px;
+    gap: 5px;
 }
 
 .movie-page section.overview-box p{
@@ -259,14 +280,50 @@
     font-size: 13px;
 }
 
+@media screen and (max-width:1000px) {
+
+.movie-page .large-screens-btns{
+    display: none;
+}
+.movie-page .medium-screens-btns{
+    justify-content: right;
+    display: flex;
+    
+}
+}
+@media screen and (max-width:600px) {
+.movie-page .large-btns-box button {
+    padding: 0.25rem 0.5rem;
+    font-size: 13px;
+    margin-right: 1rem;
+    gap: 7px;
+}
+}
+
+
 @media screen and (max-width:500px) {
 .movie-page .content .details h3{
     font-size: 1.3rem;
 }
 
+.movie-page ul.sub-details:not(.for-smaller-screen){
+    display: none;
+}
+
+.movie-page ul.sub-details.for-smaller-screen{
+    display: flex;
+}
 .movie-page .genres-box{
     font-size: 10px;
 }
+.movie-page .watchlist-btn{
+    display: none;
+}
+
+.movie-page .bookmark-btn{
+    display: flex;
+}
+
 .movie-page .cast-box{
     gap: 10px;
 }

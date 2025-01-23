@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { getGenreName, randInt } from "../components/js/helper";
 import ImgwithPL from "../components/js/ImgwithPL";
 import './../components/css/moviepage.css'
-import { PlayCircle, User2, ArrowBigDown, ArrowBigUp, Clock, Calendar, Languages} from "lucide-react";
+import { PlayCircle, User2, ArrowBigDown, ArrowBigUp, Clock, Calendar, Languages, Eye, PlusCircle, Heart, HeartCrack, Dot, Play} from "lucide-react";
 import { BookmarkActionButton } from "../components/ui/buttons/buttons";
 import rottenTomatoImg from './../components/imgs/rotten_tomato.png'
 import imdbSvg from './../components/imgs/imdb.svg'
@@ -27,7 +27,13 @@ function formatTime(secs){
 	return time
 
 }
-
+function ActionBtns({btns_data,className,icon}){
+  return(
+    <div className={"large-btns-box"+ (className? ' '+className:'')}>
+      {btns_data.map(({title,icon,func,className})=> <button key={title} onClick={func} className={"outline-white"+ (className? ' '+className:'')}> {icon} {title}</button> )}
+    </div>
+  )
+}
 function formatDate(date){
     
   const dateObj = new Date(date);
@@ -59,6 +65,31 @@ function Castmember({member_data}){
         </div>
     )
 }
+function Details({secs,original_language,release_date,className}){
+  return(
+    <ul className={"sub-details" +  (className? ' '+className:'')}>
+
+                        <li className="inline-flex">
+                          <Clock />
+                          <p>{formatTime(secs)}</p>
+                        </li>
+                        <li className="lang inline-flex">
+                          
+                          <p className="dot"> &#x2022; </p>
+                          {/* <Dot className="dot"/> */}
+                          <Languages />
+                          <p className=""> lang: {original_language} </p>
+                        </li>
+
+                        <li className="flex">
+                          <Calendar />
+                          <p className=""> Released: {formatDate(release_date)} </p>
+                        </li>
+                        {/* <p className="inline-block"> {vote_average} </p> */}
+                      </ul>
+  )
+}
+
 export default function Moviepage(){
     const [searchParams] = useSearchParams();
     const movie_id = searchParams.get('id');
@@ -161,43 +192,27 @@ export default function Moviepage(){
         img.onload = ()=>SetCoverImg(`url(${img.src})`)
     },[backdrop_path])
     const secs = randInt(3600, 7200)
+    const action_btns_data = [{title:'Watched It',icon:<Eye/>}, {title:'Add to List',icon: <PlusCircle/>, className: 'watchlist-btn'}, {title:'Favourites', icon: <Heart/>}]
     return (
         <div className="movie-page margin-auto flex-page">
 
             <section  style={{backgroundImage: cover_img}} className="movie-poster-case">
-
-                <button className="play-btn">
-                  <PlayCircle/>
-                </button>
+                
+                <button className="play-btn"> <Play/> </button>
                 <div className="content flex">
                   <div className="details">
                       <h3> {title} </h3>
-                      {original_title !== title && <caption>AKA: {original_title}</caption>}
-                      <ul className="sub-details">
-                        <li className="inline-flex">
-                          <Clock />
-                          <p>{formatTime(secs)}</p>
-                        </li>
-                        <li className="lang inline-flex">
-                          <Languages />
-                          <p className=""> lang: {original_language} </p>
-                        </li>
-                        <li className="flex">
-                          <Calendar />
-                          <p className=""> Released: {formatDate(release_date)} </p>
-                        </li>
-                        {/* <p className="inline-block"> {vote_average} </p> */}
-                      </ul>
+                      {original_title !== title && <p>AKA: {original_title}</p>}
+                      <Details className="for-lager-screen" secs={secs} original_language={original_language} release_date={release_date} />
                       <div className="genres-box flex"> {genre_ids?.map(genre_id=><p key={nanoid()} className={genre_id + '0'}>{getGenreName(genre_id)}</p>)} </div>
                   </div>
-                  <div className="large-btns-box">
-                    <button className="outline-white">Watched It</button>
-                    <button className="outline-white">Add to List</button>
-                    <button className="outline-white">Favourites</button>
-                  </div>
+
                   <BookmarkActionButton className='bookmark-btn'/>
+                  <ActionBtns className="large-screens-btns" btns_data={action_btns_data}/>
                 </div>
             </section>
+            <Details className="for-smaller-screen" secs={secs} original_language={original_language} release_date={release_date} />
+            <ActionBtns className="medium-screens-btns" btns_data={action_btns_data}/>
             
             <section className="overview-box">
                 <h4>Overview</h4>
