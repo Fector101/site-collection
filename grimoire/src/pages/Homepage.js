@@ -1,8 +1,9 @@
+import {TrendingUp, Tv, ChartNoAxesColumn} from "lucide-react"
 import Carousel from "../components/ui/carousel/Carousel"
 import SectionPreview from "./../components/js/SectionPreview"
 import Recommendations from "./../components/js/Recommendations"
-import CalltoAction from "./../components/ui/call-to-action/CalltoAction"
-import {TrendingUp, Tv, ChartNoAxesColumn} from "lucide-react"
+import LoginComponent from "../components/ui/login-signup/LoginComponent"
+import "./../components/css/CalltoAction.css"
 
 export default function Homepage({top_movies_data__}){
 
@@ -17,7 +18,9 @@ export default function Homepage({top_movies_data__}){
             <SectionPreview title={'Top'} icon={<ChartNoAxesColumn />} data_info={{types:['Movies','TV Shows'],active:'Movies'}} data={top_movies_data__.results} url='top'/>
             <SectionPreview title={'Ongoing'} icon={<Tv />} data_info={{types:['TV Shows']}} data={top_movies_data__.results} url='ongoing'/>
             <Recommendations data={top_movies_data__.results.slice(0,6)}/>
-            <CalltoAction />
+            <div className="call-to-action SectionPreview">
+                <LoginComponent />
+            </div>
             </>
             }
         </div>

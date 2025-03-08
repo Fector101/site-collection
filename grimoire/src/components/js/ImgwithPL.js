@@ -11,7 +11,7 @@ export default function ImgwithPL({src, placeholder_src, alt,className, pl_type}
     placeholder_src= placeholder_src || placeholder_img_default
     useEffect(() => {
         const img = new Image()
-        img.src = src
+        // img.src = src    
         img.onload = () => setIsLoaded(1)
       }, [src])
 

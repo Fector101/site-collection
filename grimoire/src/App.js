@@ -12,6 +12,7 @@ import Footer from "./components/ui/footer/Footer";
 // import Moviepage from "./pages/stuff/Moviepage";
 import Moviepage from "./pages/Moviepage";
 import { useEffect } from "react";
+import SignupPage from "./pages/Signuppage";
 
 // async function apiCall(){
 //   const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
@@ -41,6 +42,7 @@ function App() {
     <>
       <Header/>
       <Routes>
+        <Route path="/signup" element={ <SignupPage /> }/>
         <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
         <Route path="/movie" element={ <Moviepage /> }/>
         <Route path="/list/*" element={<ListRoutes />} /> 

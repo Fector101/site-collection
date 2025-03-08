@@ -105,7 +105,7 @@
 
 .movie-page .movie-poster-case .play-btn{
     color: var(--svg-primary-bg);
-    --size:5rem;
+    --size:4rem;
     height: var(--size);
     width: var(--size);
     border-radius: 50%;

@@ -1,0 +1,116 @@
+.form-container {
+    display: flex;
+    padding-block: 1rem;
+    flex-direction: column;
+    border: 1px solid grey;
+    align-self: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+}
+
+.form-container h3 {
+    font-size: 2rem;
+}
+
+.form-top-msg {
+    font-size: 14px;
+    align-self: center;
+    width: 80%;
+    text-align: center;
+    color: #deeaf4;
+
+}
+
+.form-container form {
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+
+}
+
+.form-container label {
+    font-size: 14px;
+}
+
+.form-container input {
+    height: 40px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid grey;
+    color: rgb(231, 231, 231);
+    text-indent: 10px;
+}
+
+.form-container input::placeholder {
+    color: rgb(131, 130, 130);
+}
+
+.form-password-input-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.form-password-input-container input {
+    width: 100%;
+}
+
+.form-password-input-container button {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    --size: 22px;
+    height: var(--size);
+    width: var(--size);
+}
+
+.form-password-input-container button:hover {
+    background: transparent;
+}
+
+.form-password-input-container button svg {
+    color: var(--svg-primary-bg);
+}
+
+.form-password-input-container button:hover svg {
+    fill: rgb(255, 255, 255, 0.437);
+}
+
+.form-submit-btn {
+    margin-block: 0.5rem;
+    padding: 0.5rem 1rem;
+    width: max-content;
+    align-self: center;
+    border-radius: 5px
+}
+.form-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+.form-row.constent a{
+    color: rgb(238, 238, 190);
+    text-decoration: none;
+}
+.form-btm-msg-section {
+    display: flex;
+    font-size: 13px;
+    color: var(--accent-color);
+    align-items: center;
+    gap: 10px;
+}
+
+.form-btm-msg-section a {
+    color: rgb(255, 255, 202);
+    font-size: 12px;
+}
+
+@media screen and (max-width:500px) {
+    .form-btm-msg-section .msg {
+        font-size: 0.8125rem;
+    }
+}
