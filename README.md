@@ -5,6 +5,7 @@ For Development
 ## General
 
 - All responsive css code should be in the file with original style
+let additional_class = className ? ' ' + className : ''
 
 ## Pages
 
