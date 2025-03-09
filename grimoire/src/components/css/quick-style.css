@@ -10,9 +10,11 @@ body section.display-none {
 .svg-outline-yellow {
     color: #dfdf1a;
 }
-.star-grey{
+
+.star-grey {
     color: #f7f7b9;
 }
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -20,9 +22,11 @@ body section.display-none {
 .inline-block {
     display: inline-block;
 }
+
 .inline-flex {
     display: inline-flex;
 }
+
 .display-flex {
     display: flex;
 }
@@ -30,9 +34,11 @@ body section.display-none {
 .flex {
     display: flex;
 }
-.overflow-hidden{
+
+.overflow-hidden {
     overflow: hidden;
 }
+
 .algin-left {
     align-items: flex-end;
 }
@@ -41,9 +47,10 @@ body section.display-none {
     background-color: rgb(232, 232, 232);
     color: black;
 }
-.outline-white{
-    border:1px solid white;
-    color:aliceblue;
+
+.outline-white {
+    border: 1px solid white;
+    color: aliceblue;
 }
 
 .red {
@@ -59,6 +66,21 @@ body section.display-none {
     display: none;
 }
 
-.margin-auto{
+.margin-auto {
     margin: auto;
+}
+
+.margin-left-auto {
+    margin-left: auto;
+}
+
+.fd-row {
+    flex-direction: row;
+}
+
+.algin-items-cen {
+    align-items: center;
+}
+.width100per{
+    width: 100%;
 }

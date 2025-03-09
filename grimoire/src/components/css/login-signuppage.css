@@ -1,18 +1,8 @@
-.signup-page{
-    display: flex;
-    flex-direction: row;
-    padding: 20px 15px;
-    margin: auto;
-    /* background: #000; */
-    width: 100%;
-    align-items: center;
-    /* justify-content: center; */
+.signup-page, .login-page{
     gap: 8vw;
+    padding: 20px 15px;
 }
-.signup-page .signup-form{
-    margin-left: auto;
-}
-.signup-page .responsive-backdrop{
+.responsive-backdrop{
     margin-right: 3vw;
     width: 40vw;
     height: 60vh;
@@ -22,15 +12,15 @@
     /* background-color: pink; */
 }
 @media screen and (max-width:1024px) {
-    .signup-page{
+    .signup-page, .login-page{
         position: relative; /*For .signup-page .responsive-backdrop pos: absolute*/
     }
-    .signup-page .responsive-backdrop{
+    .responsive-backdrop{
         position: absolute;
         width: 100%;
         height: 100%;
     }
-    .signup-page .responsive-backdrop::before {
+    .responsive-backdrop::before {
         content: "";
         position: absolute;
         top: 0;
@@ -40,9 +30,7 @@
         height: 100%;
     }
     
-    .signup-page .signup-form{
+    .form-container{
         z-index: 1;
-        /* background: #000000c4; */
-
     }
 }

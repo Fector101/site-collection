@@ -1,25 +1,21 @@
-import { Eye } from "lucide-react"
 import { Link } from "react-router-dom"
+import './../../css/form.css'
+import { InputCom, PasswordInput } from "../form-comps/Inputs"
 
-export default function LoginComponent () {
+export default function LoginComponent ({className}) {
+    let additional_class = className ? ' ' + className : ''
+
     return (
-        <div className="case flex">
+        <div className={"form-container"+additional_class}>
             <h3>Login</h3>
-            <p className="msg">For More Refined & Personalized Recommendations </p>
+            <p className="form-top-msg">For More Refined & Personalized Recommendations </p>
             <form className="flex">
-                <label htmlFor='email'> Email </label>
-                <input id="email" placeholder="Enter your email" />
-
-                <label htmlFor='password'> Password </label>
-                <div className="password-input-box flex">
-                    <input type="password" id="password" placeholder="Enter your password" />
-                    <button className="flex"> <Eye /> </button>
-                </div>
-
-                <button className="outline-white sign-in">Login</button>
+                <InputCom title="Email" type='email' placeholder="Enter your email" />
+                <PasswordInput/>
+                <button className="outline-white form-submit-btn">Login</button>
             </form>
-            <div className="flex sign-up-box">
-                <p>Need an account?</p>
+            <div className="form-btm-msg-section">
+                <p className="msg">Need an account?</p>
                 <Link className='sign-up-link' to='/signup'>Sign Up</Link>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import './../../css/form.css'
 import { InputCom, PasswordInput } from "../form-comps/Inputs"
+import './../../css/form.css'
 
 
 
@@ -27,7 +27,7 @@ export default function SignupComponent({ className }) {
 
             <div className="form-btm-msg-section">
                 <p className="msg">Already have an account?</p>
-                <Link className='sign-up-link' to='/signup'>Login</Link>
+                <Link className='sign-up-link' to='/login'>Login</Link>
             </div>
 
         </div>
