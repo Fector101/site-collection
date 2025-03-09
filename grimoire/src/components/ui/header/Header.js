@@ -130,7 +130,9 @@ function ModalEle({modal,setModal}){
     }
     useEffect(function(){
         const modal = document.querySelector('.popup-modal')
-        function closeModalOnLinkClink(event){ if(event.target.closest('a')){ closeModal()} }
+        function closeModalOnLinkClink(event){ if(event.target.closest('a')){
+event.preventDefault()
+ closeModal()} }
         modal.addEventListener('click',closeModalOnLinkClink)
         return () => modal.removeEventListener('click',closeModalOnLinkClink)
     },[])
