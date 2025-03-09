@@ -1,9 +1,13 @@
 import {useState, React, useEffect} from "react";
 import "./header.css"
 import "./header-responsive.css"
-import { Search, User2, ChevronDown, BellIcon, Menu, HomeIcon, Bookmark, Tv, Activity, Film, ChevronRight } from "lucide-react"
+import { Search, User2, ChevronDown, BellIcon, Menu, HomeIcon, Bookmark, Tv, Activity, Film, ChevronRight, XCircle } from "lucide-react"
 import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { nanoid } from "nanoid";
+import LoginForm from "../login-signup/LoginForm";
+import SignupForm from "../login-signup/SignupForm";
+import { disableScroll, enableScroll } from "../../js/helper";
+import useCarouselStore from "../carousel/useCarouselStore";
 
 function SearchInput({placeholder}){
     const [isFocused, setIsFocused] = useState(false);
@@ -103,11 +107,50 @@ function MySidenavBar({links,for_}){
 
     )
 }
+function ModalEle({modal,setModal}){
+    let component = undefined
+    const timer = useCarouselStore((state) => state.timer);
+    if(modal){
+        clearInterval(timer)
+        disableScroll()
+    }else{
+        enableScroll()
+    }
+    if(modal === 'login'){
+        // Not using tertanry operator because might add others elements
+        component = <LoginForm />
+    }else if(modal === 'signup'){
+        component = <SignupForm />
+    }
+
+    function closeModal(){
+        enableScroll()
+        setModal('')
+        
+    }
+    useEffect(function(){
+        const modal = document.querySelector('.popup-modal')
+        function closeModalOnLinkClink(event){ if(event.target.closest('a')){ closeModal()} }
+        modal.addEventListener('click',closeModalOnLinkClink)
+        return () => modal.removeEventListener('click',closeModalOnLinkClink)
+    },[])
+    return(
+        <section className='popup-modal'>
+            <span>
+                <button className='cursor-pointer close-btn'>
+                    <XCircle onClick={closeModal} />
+                </button>
+                {component}
+            </span>
+        </section>
+    )
+}
 export default function Header({class_,userName}){
     // userName='Dev'
     const {'*':url_extension} = useParams()
     console.log(url_extension,'header')
-    
+    const [modal,setModalEle] = useState('')
+
     useEffect(function(){
         
         document.querySelector('.side-menu-modal').addEventListener('mouseup',function(e){
@@ -144,8 +187,8 @@ export default function Header({class_,userName}){
                 {
                 userName === undefined?
                     <>
-                    <button className="outline-white sign-up">Sign Up</button>
-                    <button className="outline-white sign-in">Sign in</button>
+                    <button className="outline-white sign-up" onClick={()=>setModalEle('signup')}>Sign Up</button>
+                    <button className="outline-white sign-in" onClick={()=>setModalEle('login')}>Sign in</button>
                     </>
                 :
                     <>
@@ -167,10 +210,14 @@ export default function Header({class_,userName}){
         <section className="side-menu-modal display-none">
             <div className="side-menu-content-box">
                 <MySidenavBar for_="side-menu" links={[{link:'/',name:'Home',icon:<HomeIcon />},{link:'/lists', name:'Lists',icon:<Bookmark />},{link:'/shows', name:'Tv shows', icon:<Tv/>},{link:'/Movies', name:'Movies',icon:<Film />},{link:'/Cartoons', name:'Cartoons',icon:<Activity />},{link:'/Search', name:'Search',icon:<Search />}]}/>
-                <button className="outline-white sign-up">Sign Up</button>
+                <button className="outline-white sign-up" onClick={()=>setModalEle('signup')}>Sign Up</button>
 
             </div>
         </section>
+        {
+           modal && <ModalEle modal={modal} setModal={setModalEle} />
+
+        }
         <Outlet context={ {foxxy:()=> 'Wisdow Seekers', user_name: "Fabian - UserName From HeaderSticky"} }/>
         </>
     )

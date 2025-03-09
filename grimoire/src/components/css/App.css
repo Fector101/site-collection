@@ -17,6 +17,7 @@ body>#root {
     --bod-color: aliceblue;
     --svg-primary-bg: aliceblue;
     --accent-color: rgb(207, 207, 249);
+    --modal-bg: #000000de;
     font-family: var(--custom-font-style);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

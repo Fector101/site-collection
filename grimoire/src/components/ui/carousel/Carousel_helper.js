@@ -1,6 +1,22 @@
+
+const opts = (secs) => ({ duration: secs * 1000, easing: "ease-in-out", fill: "forwards" })
+
+function CarouselBtn({ text, icon, class_ }) {
+
+    return (
+        <button className={class_} tabIndex={-1}>
+            {icon}
+            <p>{text}</p>
+        </button>
+    )
+}
+function fixBtnsTabIndex(slide,visible) {
+    [...slide.querySelectorAll('.btns-case button')].map(btn => btn.tabIndex = visible?0:-1);
+}
+export { opts, fixBtnsTabIndex, CarouselBtn }
+
 // let carousel_wait_time = 6
 // const carousel = document.querySelector('.case')
-const opts = (secs) => ({ duration: secs * 1000, easing: "ease-in-out", fill: "forwards" })
 // let timer=undefined
 // let info={}
 // const slides = Array.from(document.querySelectorAll('.case div'))
@@ -138,17 +154,3 @@ const opts = (secs) => ({ duration: secs * 1000, easing: "ease-in-out", fill: "f
 //     const slide_index=+target.dataset.slideIndex
 //     goToSlide(slide_index)
 // })
-
-function CarouselBtn({ text, icon, class_ }) {
-
-    return (
-        <button className={class_} tabIndex={-1}>
-            {icon}
-            <p>{text}</p>
-        </button>
-    )
-}
-function fixBtnsTabIndex(slide,visible) {
-    [...slide.querySelectorAll('.btns-case button')].map(btn => btn.tabIndex = visible?0:-1);
-}
-export { opts, fixBtnsTabIndex, CarouselBtn }

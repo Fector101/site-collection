@@ -11,7 +11,8 @@ export default function LoginForm ({className}) {
             <p className="form-top-msg">For More Refined & Personalized Recommendations </p>
             <form className="flex">
                 <InputCom title="Email" type='email' placeholder="Enter your email" />
-                <PasswordInput/>
+                <PasswordInput title="Password" placeholder="Enter your password" />
+
                 <button className="outline-white form-submit-btn">Login</button>
             </form>
             <div className="form-btm-msg-section">

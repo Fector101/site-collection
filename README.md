@@ -32,6 +32,20 @@ function InputCom({title,type,placeholder}){
 
 ```
 
-# TODO
+## TODO
 
 - in policy page add `users watchedlists will be use to create recommandations for other users`
+
+## CSS
+
+```css
+        --modal-bg: #000000de;
+```
+
+
+help this is causing my react router page to refresh useEffect(function(){
+        const modal = document.querySelector('.popup-modal')
+        function closeModalOnLinkClink(event){ if(event.target.closest('a')){ closeModal()} }
+        modal.addEventListener('click',closeModalOnLinkClink)
+        return () => modal.removeEventListener('click',closeModalOnLinkClink)
+    },[])

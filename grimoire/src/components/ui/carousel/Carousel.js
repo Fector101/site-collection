@@ -1,3 +1,5 @@
+
+import useCarouselStore from "./useCarouselStore";
 import './carousel.css'
 import {LucideListPlus, Play , Triangle, Bookmark, Clock } from 'lucide-react'
 import {toHHMMSS, randInt} from '../../js/helper'
@@ -71,13 +73,16 @@ function Slide({pos_info__, class_, movie_data, index}){
 
 export default function Carousel({data}){
     let [current_slide_index, setCurrentSlideIndex] = useState(0)
-    let timer = useRef()
+    // let timer = useRef()
+    const timer = useCarouselStore((state) => state.timer);
+    const setTimer = useCarouselStore((state) => state.setTimer);
+
     let pos_info = useRef({})
     let animation = useRef()
     let animation_1 = useRef()
     const slide_through_secs=0.5
     let carousel_wait_time = useRef(6)
-    let you = useRef(0)
+    // let you = useRef(0)
     // eslint-disable-next-line
     function stopAllOngoingAnimations(){
         animation.current?.cancel()
@@ -124,7 +129,7 @@ export default function Carousel({data}){
     }
     // useEffect(function(){console.log(info)},[info])
     function startSlidesMovingFoward(secs,slide_index=undefined){
-        timer.current=setTimeout(()=>moveSlidesForward(slide_index),secs*1000)
+        setTimer(setTimeout(()=>moveSlidesForward(slide_index),secs*1000))
     }
     async function moveSlidesForward(slide_index = undefined){
         // stopAllOngoingAnimations()
@@ -164,7 +169,7 @@ export default function Carousel({data}){
         ]
         pos_info.current[slide_name]=`translateX(${new_percent}%)`
         // console.log(info.current)
-        you.current+=1
+        // you.current+=1
         new_slide.classList.add('current')
         animation_1.current =new_slide.animate(keyframes1,opts(secs))
         animation_1.current.onfinish=()=>fixBtnsTabIndex(new_slide,true)
@@ -182,7 +187,7 @@ export default function Carousel({data}){
     }
         
     function startMovingBackForward(secs,slide_index=undefined){
-        timer.current=setTimeout(()=>moveSlidesBackward(slide_index),secs*1000)
+        setTimer(setTimeout(()=>moveSlidesBackward(slide_index),secs*1000))
     }
     async function moveSlidesBackward(slide_index=undefined){
         // stopAllOngoingAnimations()
@@ -229,7 +234,7 @@ export default function Carousel({data}){
 
     }
     function moveSliderBackwardOnce(){
-        clearTimeout(timer.current)
+        clearTimeout(timer)
         const current_slide = document.querySelector('.current')
         const slide_index= Number(current_slide.dataset.index)
         const next_index = slide_index === 0 ?  data.length-1 : slide_index-1
@@ -237,7 +242,7 @@ export default function Carousel({data}){
         moveSlidesBackward(next_index)
     }
     function moveSliderForwardOnce(){
-        clearTimeout(timer.current)
+        clearTimeout(timer)
         const current_slide = document.querySelector('.current')
         const slide_index= Number(current_slide.dataset.index)
         const next_index = slide_index === data.length-1?0:slide_index+1
@@ -246,7 +251,7 @@ export default function Carousel({data}){
     }
     
     function goToSlide(slide_index){
-        clearTimeout(timer.current)
+        clearTimeout(timer)
         const cur_slider_index=+document.querySelector('.current').dataset.index
         if(slide_index > cur_slider_index){
             moveSlidesForward(slide_index)
@@ -255,7 +260,7 @@ export default function Carousel({data}){
             moveSlidesBackward(slide_index)
         }
     }
-    function stopCarouselAnimation(){clearTimeout(timer.current)}
+    function stopCarouselAnimation(){clearTimeout(timer)}
     function restartCarouselAnimation(){
         stopCarouselAnimation()
         startSlidesMovingFoward(carousel_wait_time.current)
