@@ -4,7 +4,7 @@ import './../../css/form.css'
 
 
 
-export default function SignupComponent({ className }) {
+export default function SignupForm({ className }) {
     let additional_class = className ? ' ' + className : ''
 
     return (

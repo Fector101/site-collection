@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import './../../css/form.css'
 import { InputCom, PasswordInput } from "../form-comps/Inputs"
 
-export default function LoginComponent ({className}) {
+export default function LoginForm ({className}) {
     let additional_class = className ? ' ' + className : ''
 
     return (

@@ -2,7 +2,7 @@ import {TrendingUp, Tv, ChartNoAxesColumn} from "lucide-react"
 import Carousel from "../components/ui/carousel/Carousel"
 import SectionPreview from "./../components/js/SectionPreview"
 import Recommendations from "./../components/js/Recommendations"
-import LoginComponent from "../components/ui/login-signup/LoginComponent"
+import LoginComponent from "../components/ui/login-signup/LoginForm"
 
 export default function Homepage({top_movies_data__}){
 
