@@ -2,6 +2,10 @@
 
 For Development
 
+## General
+
+- All responsive css code should be in the file with original style
+
 ## Pages
 
 - App flex-page to page container from proper positioning and add margin: auto; to the page css container (TODO: create a page class tag for proper formatting)
@@ -28,4 +32,5 @@ function InputCom({title,type,placeholder}){
 ```
 
 # TODO
+
 - in policy page add `users watchedlists will be use to create recommandations for other users`
