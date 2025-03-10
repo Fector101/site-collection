@@ -274,7 +274,6 @@ a.current-page {
     top: 0;
     z-index: 10;
     background-color: #ffffff94;
-    border: 1px solid grey;
     align-self: center;
     height: 100%;
 }

@@ -1,6 +1,6 @@
 .form-container {
     display: flex;
-    padding-block: 1rem;
+    padding-block: 1.5rem;
     flex-direction: column;
     border: 1px solid grey;
     align-self: center;
