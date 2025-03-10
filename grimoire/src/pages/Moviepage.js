@@ -3,6 +3,7 @@ import { top_movies_data } from "../components/js/api_data"
 import { nanoid } from "nanoid";
 import { getGenreName, randInt } from "../components/js/helper";
 import ImgwithPL from "../components/js/ImgwithPL";
+import GoToTop from "../components/js/GoToTop";
 import './../components/css/moviepage.css'
 import { PlayCircle, User2, ArrowBigDown, ArrowBigUp, Clock, Calendar, Languages, Eye, PlusCircle, Heart, HeartCrack, Dot, Play} from "lucide-react";
 import { BookmarkActionButton } from "../components/ui/buttons/buttons";
@@ -276,7 +277,7 @@ export default function Moviepage(){
                 </table>
             </section>
 
-            
+             <GoToTop />
         </div>
     )
 }
