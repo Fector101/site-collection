@@ -1,4 +1,5 @@
 import {useState, React, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import "./header.css"
 import "./header-responsive.css"
 import { Search, User2, ChevronDown, BellIcon, Menu, HomeIcon, Bookmark, Tv, Activity, Film, ChevronRight, XCircle } from "lucide-react"
@@ -108,6 +109,7 @@ function MySidenavBar({links,for_}){
     )
 }
 function ModalEle({modal,setModal}){
+    const navigate = useNavigate()
     let component = undefined
     const timer = useCarouselStore((state) => state.timer);
     if(modal){
@@ -130,9 +132,13 @@ function ModalEle({modal,setModal}){
     }
     useEffect(function(){
         const modal = document.querySelector('.popup-modal')
-        function closeModalOnLinkClink(event){ if(event.target.closest('a')){
+        function closeModalOnLinkClink(event){ 
+const link= event.target.closest('a')
+if(link){
 event.preventDefault()
- closeModal()} }
+closeModal()
+navigate(link.getAttribute("href"))
+ } }
         modal.addEventListener('click',closeModalOnLinkClink)
         return () => modal.removeEventListener('click',closeModalOnLinkClink)
     },[])
