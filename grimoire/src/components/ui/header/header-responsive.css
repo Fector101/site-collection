@@ -103,7 +103,7 @@
         padding-left: 2%;
         padding-right: 2%;
         padding-bottom: 2%;
-        position: sticky;
+        /* position: sticky; */
         width: 100%;
         top: 0;
         background-color: #272424;;
