@@ -39,6 +39,7 @@ function InputCom({title,type,placeholder}){
 ## CSS
 
 - Overflow-x:hidden on parent make child sticky inactive
+- Use fixed pos for modals so it still covers all screen when scrolled passed screen top and is opened unlike pos absolute
 
 ```css
         --modal-bg: #000000de;

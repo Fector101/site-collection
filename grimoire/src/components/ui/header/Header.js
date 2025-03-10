@@ -114,7 +114,7 @@ function ModalEle({ modal, setModal }) {
     const timer = useCarouselStore((state) => state.timer);
     if (modal) {
         clearInterval(timer)
-        disableScroll()
+        // disableScroll()
     } else {
         enableScroll()
     }

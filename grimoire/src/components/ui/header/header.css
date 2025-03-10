@@ -207,7 +207,7 @@ header .menu-btn {
 }
 
 .side-menu-modal {
-    position: absolute;
+    position: fixed;
     top: 1px;
     z-index: 10;
     height: 100%;
@@ -273,15 +273,17 @@ a.current-page {
     align-items: center;
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 0;
-    margin: auto;
     bottom: 0;
     left: 0;
     right: 0;
+    margin: auto;
     z-index: 10;
     justify-content: center;
     background-color: #ffffff94;
+    height: 100vh;
+    width: 100vw;
 }
 
 .popup-modal span{
