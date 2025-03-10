@@ -38,14 +38,8 @@ function InputCom({title,type,placeholder}){
 
 ## CSS
 
+- Overflow-x:hidden on parent make child sticky inactive
+
 ```css
         --modal-bg: #000000de;
 ```
-
-
-help this is causing my react router page to refresh useEffect(function(){
-        const modal = document.querySelector('.popup-modal')
-        function closeModalOnLinkClink(event){ if(event.target.closest('a')){ closeModal()} }
-        modal.addEventListener('click',closeModalOnLinkClink)
-        return () => modal.removeEventListener('click',closeModalOnLinkClink)
-    },[])

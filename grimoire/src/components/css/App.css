@@ -27,7 +27,7 @@ body>#root {
 
 
     display: flex;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     flex-direction: column;
   
 }
