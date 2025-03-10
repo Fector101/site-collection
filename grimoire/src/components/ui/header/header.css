@@ -270,42 +270,31 @@ a.current-page {
 
 
 .popup-modal {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
     position: fixed;
     top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
     z-index: 10;
-    justify-content: center;
     background-color: #ffffff94;
-    height: 100vh;
-    width: 100vw;
+    border: 1px solid grey;
+    align-self: center;
+    height: 100%;
 }
 
 .popup-modal span{
-    width: 100%;
-    height: 100%;
-    padding: 30px;
-    align-items: center;
+    background-color: var(--modal-bg);
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: var(--modal-bg);
+    padding: 30px;
+    height: 100%;
+    width: 100%;
 }
 .popup-modal .close-btn {
     --size: 30px;
     height: var(--size);
     width: var(--size);
-    /* position: absolute; */
-    /* top: 25px; */
-    /* right: 25px; */
     color: var(--svg-primary-bg);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    /* align-self: flex-end; */
 }
