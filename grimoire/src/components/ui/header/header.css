@@ -287,24 +287,25 @@ a.current-page {
 }
 
 .popup-modal span{
-    padding: 0 30px;
     width: 100%;
     height: 100%;
-    padding: 0 30px;
+    padding: 30px;
     align-items: center;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     background-color: var(--modal-bg);
 }
 .popup-modal .close-btn {
     --size: 30px;
     height: var(--size);
     width: var(--size);
-    position: absolute;
-    top: 25px;
-    right: 25px;
+    /* position: absolute; */
+    /* top: 25px; */
+    /* right: 25px; */
     color: var(--svg-primary-bg);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
+    /* align-self: flex-end; */
 }

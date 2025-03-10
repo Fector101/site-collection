@@ -114,15 +114,15 @@ function ModalEle({ modal, setModal }) {
     const timer = useCarouselStore((state) => state.timer);
     if (modal) {
         clearInterval(timer)
-        // disableScroll()
+        disableScroll()
     } else {
         enableScroll()
     }
     if (modal === 'login') {
         // Not using tertanry operator because might add others elements
-        component = <LoginForm />
+        component = <LoginForm className='margin-auto' />
     } else if (modal === 'signup') {
-        component = <SignupForm />
+        component = <SignupForm className='margin-auto' />
     }
 
     function closeModal() {
@@ -147,7 +147,7 @@ function ModalEle({ modal, setModal }) {
     return (
         <section className='popup-modal'>
             <span>
-                <button className='cursor-pointer close-btn'>
+                <button className='cursor-pointer close-btn margin-left-auto'>
                     <XCircle onClick={closeModal} />
                 </button>
                 {component}
