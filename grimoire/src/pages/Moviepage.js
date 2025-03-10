@@ -74,8 +74,7 @@ function Details({secs,original_language,release_date,className}){
                           <p>{formatTime(secs)}</p>
                         </li>
                         <li className="lang inline-flex">
-                          { className !== "for-smaller-screen"?
-                          <p className="dot"> &#x2022; </p> : <></>
+                          { className !== "for-smaller-screen" && <p className="dot"> &#x2022; </p> }
                           {/* <Dot className="dot"/> */}
                           <Languages />
                           <p className=""> lang: {original_language} </p>
