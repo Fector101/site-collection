@@ -42,6 +42,7 @@ body section.display-none {
 .align-self-cen {
     align-self: center;
 }
+
 .algin-left {
     align-items: flex-end;
 }
@@ -84,13 +85,23 @@ body section.display-none {
 .algin-items-cen {
     align-items: center;
 }
-.width100per{
+
+.width100per {
     width: 100%;
 }
-.no-text-select{
+
+.no-text-select {
     user-select: none;
 }
-.disabled-btn{
-    border-color:grey;
-    color:grey;
+
+.disabled-btn {
+    border-color: grey;
+    color: grey;
+}
+
+.disabled-btn:hover {
+    border-color: grey;
+    color: grey;
+    background-color: transparent;
+    cursor: default;
 }
