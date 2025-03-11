@@ -1,11 +1,12 @@
 # A collection of web apps
 
-For Development
+Development Guide Line/Code Structure
 
 ## General
 
 - All responsive css code should be in the file with original style
 let additional_class = className ? ' ' + className : ''
+- removed scroll to up from home page because i need user to see what they clicked when they move back one page
 
 ## Pages
 
