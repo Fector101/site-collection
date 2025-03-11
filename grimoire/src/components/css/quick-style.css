@@ -39,6 +39,9 @@ body section.display-none {
     overflow: hidden;
 }
 
+.align-self-cen {
+    align-self: center;
+}
 .algin-left {
     align-items: flex-end;
 }
@@ -83,4 +86,11 @@ body section.display-none {
 }
 .width100per{
     width: 100%;
+}
+.no-text-select{
+    user-select: none;
+}
+.disabled-btn{
+    border-color:grey;
+    color:grey;
 }

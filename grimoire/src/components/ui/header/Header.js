@@ -111,6 +111,7 @@ function MySidenavBar({ links, for_ }) {
 
 
 function ModalEle({ modal, setModal }) {
+    // TODO Bind Esc Key to close Modal
     const navigate = useNavigate()
     const timer = useCarouselStore((state) => state.timer);
     const  [component, setComponent]= useState(()=>null)
