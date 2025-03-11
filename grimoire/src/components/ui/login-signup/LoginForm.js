@@ -10,7 +10,7 @@ export default function LoginForm({ className }) {
             <h3>Login</h3>
             <p className="form-top-msg">For More Refined & Personalized Recommendations </p>
             <form className="flex">
-                <InputCom title="Email/Username" type='text' placeholder="Enter your email or UserName" />
+                <InputCom title="Email|Username" type='text' placeholder="Enter your email or UserName" />
                 <PasswordInput title="Password" placeholder="Enter your password" />
                 <div className="form-row constent">
                     <input type="checkbox" className="checkbox" required />

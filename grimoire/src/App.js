@@ -14,6 +14,7 @@ import Moviepage from "./pages/Moviepage";
 import { useEffect } from "react";
 import SignupPage from "./pages/Signuppage";
 import LoginPage from "./pages/Loginpage";
+import ForgotPSPage from "./pages/ForgotPSpage";
 
 // async function apiCall(){
 //   const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
@@ -47,6 +48,7 @@ function App() {
         <Route path="/login" element={ <LoginPage /> }/>
         <Route path="/" element={ <Homepage top_movies_data__={top_movies_data}/> }/>
         <Route path="/movie" element={ <Moviepage /> }/>
+        <Route path="/forgot-ps" element={ <ForgotPSPage /> }/>
         <Route path="/list/*" element={<ListRoutes />} /> 
         <Route path="*" element={ <NotFoundpage redirect_path='/' timeout_secs={5}/>} />
       </Routes>
