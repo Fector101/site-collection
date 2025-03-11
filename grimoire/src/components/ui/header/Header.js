@@ -108,40 +108,54 @@ function MySidenavBar({ links, for_ }) {
 
     )
 }
+
+
 function ModalEle({ modal, setModal }) {
     const navigate = useNavigate()
-    let component = undefined
     const timer = useCarouselStore((state) => state.timer);
-    if (modal) {
+    const  [component, setComponent]= useState(()=>null)
+
+    
+
+    function displayComponent(modal){
+        if (modal === 'login') {   // Not using tertanry operator because might add others elements
+            setComponent(<LoginForm className='margin-auto' />)
+        } else if (modal === 'signup') {
+            setComponent(<SignupForm className='margin-auto' />)
+        }
+    }
+    function closeModal() {
+        enableScroll()
+        setModal('')
+        
+    }
+    if (component) {
         clearInterval(timer)
         disableScroll()
     } else {
         enableScroll()
-    }
-    if (modal === 'login') {
-        // Not using tertanry operator because might add others elements
-        component = <LoginForm className='margin-auto' />
-    } else if (modal === 'signup') {
-        component = <SignupForm className='margin-auto' />
-    }
-
-    function closeModal() {
-        enableScroll()
-        setModal('')
-
-    }
+    }   
     useEffect(function () {
-        const modal = document.querySelector('.popup-modal')
+        displayComponent(modal)
+    },[modal])
+    
+    useEffect(function () {
+        const modal_ = document.querySelector('.popup-modal')
         function closeModalOnLinkClink(event) {
             const link = event.target.closest('a')
             if (link) {
                 event.preventDefault()
-                closeModal()
-                navigate(link.getAttribute("href"))
+                const sigup_or_login_link = link.getAttribute("href")?.slice(1)
+                if(['login', 'signup'].includes(sigup_or_login_link)){
+                    displayComponent(sigup_or_login_link)
+                }else{
+                    closeModal()
+                    navigate(link.getAttribute("href"))
+                }
             }
         }
-        modal.addEventListener('click', closeModalOnLinkClink)
-        return () => modal.removeEventListener('click', closeModalOnLinkClink)
+        modal_.addEventListener('click', closeModalOnLinkClink)
+        return () => modal_.removeEventListener('click', closeModalOnLinkClink)
         // eslint-disable-next-line
     }, [])
     return (
@@ -155,6 +169,8 @@ function ModalEle({ modal, setModal }) {
         </section>
     )
 }
+
+
 export default function Header({ class_, userName }) {
     // userName='Dev'
     const { '*': url_extension } = useParams()

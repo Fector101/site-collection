@@ -33,7 +33,7 @@
     font-size: 14px;
 }
 
-.form-container input {
+.form-container input:not([type="checkbox"]) {
     height: 40px;
     border-radius: 5px;
     background-color: transparent;
@@ -41,6 +41,11 @@
     color: rgb(231, 231, 231);
     text-indent: 10px;
 }
+.form-container input.checkbox{
+    height: 30px;
+    background-color: red;
+}
+
 
 .form-container input::placeholder {
     color: rgb(131, 130, 130);
@@ -94,7 +99,6 @@
 }
 .form-row.constent a{
     color: rgb(238, 238, 190);
-    text-decoration: none;
 }
 .form-btm-msg-section {
     display: flex;
@@ -104,9 +108,11 @@
     gap: 10px;
 }
 
-.form-btm-msg-section a {
+.form-container a{
     color: rgb(255, 255, 202);
     font-size: 12px;
+    /* text-decoration: none; */
+
 }
 
 @media screen and (max-width:500px) {
