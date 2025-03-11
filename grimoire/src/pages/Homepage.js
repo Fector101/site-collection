@@ -3,7 +3,6 @@ import Carousel from "../components/ui/carousel/Carousel"
 import SectionPreview from "./../components/js/SectionPreview"
 import Recommendations from "./../components/js/Recommendations"
 import LoginComponent from "../components/ui/login-signup/LoginForm"
-import GoToTop from "../components/js/GoToTop";
 
 export default function Homepage({ top_movies_data__ }) {
 
@@ -21,8 +20,6 @@ export default function Homepage({ top_movies_data__ }) {
                     <div className="SectionPreview">
                         <LoginComponent />
                     </div>
-                    <GoToTop />
-
                 </>
             }
         </div>
