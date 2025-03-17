@@ -13,8 +13,7 @@
 }
 
 .prompt-box {
-    width: 340px;
-    margin: 0 5px;
+    width: 330px;
     /* max-width: 99.9%; */
     border: 1px solid grey;
     border-radius: 13px;
