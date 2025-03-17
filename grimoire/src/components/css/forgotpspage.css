@@ -69,7 +69,6 @@
 
 /* Sent Link */
 
-
 .sent-icon {
     color: rgb(22 163 74);
     background: rgb(220 252 231/1);
@@ -124,33 +123,6 @@
 
 }
 
-/*
-.choose-email-container .choose-email-btn-box button.selected{
-    background-color: rgb(151, 129, 159);
-    outline: 1px rgb(88, 69, 88) solid;
-    border: 1.2px var(--accent-color) solid;
-    /* border: 2px inset #a288ea; 
-    transform: scale(1);
-}
-
-.choose-email-container .choose-email-btn-box button {
-}
-.prompt-box > div{
-    padding: 1rem 1.2rem;
-    border: 1px solid grey;
-    border-radius: 13px;
-
-    display: flex;
-    flex-direction: column;
-}
-.prompt-box > div button.submit{
-   padding: 0.5rem 0.8rem;
-   margin-top: 1.2rem;
-}
-
-.choose-email-container h3{
-    margin: 14px auto;
-}*/
 .progress-box {
     gap: 10px;
 }
@@ -180,4 +152,86 @@ span.progress-box svg {
     --size: 30px;
     height: var(--size);
     width: var(--size);
+}
+
+
+/* Loading Widgets */
+.loading-box {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.loading-box span {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    height: 28px;
+    background: linear-gradient(100deg,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.1) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    from {
+        background-position: -200% 0;
+    }
+
+    to {
+        background-position: 200% 0;
+    }
+}
+
+/* SentResetPSEmail */
+span.sent-icon-loading {
+    --size: 60px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    margin-block: 10px;
+}
+
+span.header-loading {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.h3-msg-loading {
+    width: 90%;
+}
+
+span.sent-email-loading {
+    width: 70%;
+    height: 35px;
+}
+
+span.long-msg-loading {
+    width: 85%;
+    height: 50px;
+}
+
+.didnt-recieve-msg-loading {
+    width: 34%;
+}
+
+.submit-loading {
+    width: 60px;
+}
+
+/* ChoicesBox */
+.btns-box{
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: 10px;
+}
+.btns-box span{
+    height: 50px;
+    width: 140px;
+}
+span.choice-btn{
+    width: 130px;
+    height: 35px;
 }

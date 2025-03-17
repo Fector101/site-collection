@@ -45,3 +45,7 @@ function InputCom({title,type,placeholder}){
 ```css
         --modal-bg: #000000de;
 ```
+
+### Loading Widget (Skeleton)
+
+- Always use span for child widgets
