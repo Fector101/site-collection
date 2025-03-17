@@ -97,6 +97,7 @@
     font-size: 14px;
     border-radius: 10px;
     color: var(--accent-color);
+    background-color:grey;
 }
 
 .prompt-box .sent-email svg {
