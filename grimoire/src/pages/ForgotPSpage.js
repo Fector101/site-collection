@@ -30,20 +30,21 @@ function SendRightEmail() {
     )
 }
 
-function SentResetPSEmail({ count_down, email }) {
+function SentResetPSEmail({ count_down, email,user_choice }) {
+    // user_choice:'sign-in' | 'reset-ps'
     // ON-ENTER Add Loading Snipper When Pinging Server with `email` Or Show Boxes or widgets Loading
-
+    const session = {expire_time: '1 hour'}
     return (
         // <div className='sent-password-reset-email'>
         <>
             <CheckCircle className='sent-icon' />
             <h3>Successfully</h3>
-            <h3>Sent Link to Reset To:</h3>
+            <h3>Sent {user_choice ==='sign-in'? 'a sign in link to:':'password reset Link to:'}</h3>
             <p className='sent-email'>
                 <Mail />
                 {email}</p>
             <p className='long-msg'>
-                Check your email and click on the link to reset your password. The link will expire in 1 hour.
+                Check your email and click on the {user_choice ==='sign-in'?'link to sign in to your account':'link to reset your password'}. The link will expire in {session.expire_time}.
             </p>
             <p className='didnt-recieve-msg'>Didn't recieve Link? </p>
             <button className={'outline-white submit' + (count_down ? ' disabled-btn' : '')}>
@@ -116,7 +117,7 @@ export default function ForgotPSPage({ email, username, phone_no }) {
                 {
                     pos===0?
                     <ChoicesBox email={email} user_choice={user_choice} setSlide={setPos} setChoice={setUserChoice}/>
-                    :<SentResetPSEmail count_down={count_down} email={email} /> 
+                    :<SentResetPSEmail count_down={count_down} user_choice={user_choice} email={email} /> 
                 }
 
                 {/* <div className="login-without-ps">
