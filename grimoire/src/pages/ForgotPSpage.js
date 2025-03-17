@@ -74,7 +74,7 @@ function ChoicesBox({ email,user_choice,setChoice,setSlide }) {
     }
     return (
         <>
-            <h3>Recover Account</h3>
+            <h3>Account Recovery</h3>
             <p className='long-msg'>Choose an option to access your account</p>
             <div className='choices-btns-box'>
                 <button onClick={handleSettedChoice} className={'choice outline-white'+ (user_choice === 'reset-ps'?' selected':'')}>Reset password</button>
