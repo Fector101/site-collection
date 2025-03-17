@@ -14,7 +14,8 @@
 
 .prompt-box {
     width: 340px;
-    max-width: 80%;
+    margin: 0 5px;
+    /* max-width: 99.9%; */
     border: 1px solid grey;
     border-radius: 13px;
     flex-direction: column;
@@ -178,3 +179,5 @@ span.progress-box svg {
     height: var(--size);
     width: var(--size);
 }
+
+
