@@ -123,6 +123,40 @@
 
 }
 
+/* Choose method of verification email/usename `EnterMethod` component */
+.method-input-box {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-block: 0.6rem;
+    width: 100%;
+}
+
+.method-input-box label,
+.method-input-box input {
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--accent-color);
+    background-color: #383839;
+    padding: 0.5rem;
+}
+
+.method-input-box label{
+    width: 90px;
+}
+
+.method-input-box input {
+    border-radius: 8px;
+    flex: 1;
+}
+.method-input-box button {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Progress Buttons */
+
 .progress-box {
     gap: 10px;
 }
@@ -222,16 +256,18 @@ span.long-msg-loading {
 }
 
 /* ChoicesBox */
-.btns-box{
+.btns-box {
     display: flex;
     /* flex-wrap: wrap; */
     gap: 10px;
 }
-.btns-box span{
+
+.btns-box span {
     height: 50px;
     width: 140px;
 }
-span.choice-btn{
+
+span.choice-btn {
     width: 130px;
     height: 35px;
 }
