@@ -13,7 +13,8 @@
 }
 
 .prompt-box {
-    width: 300px;
+    width: 340px;
+    max-width: 80%;
     border: 1px solid grey;
     border-radius: 13px;
     flex-direction: column;
@@ -27,6 +28,46 @@
     font-size: 13px;
 
 }
+
+/* Choices Component */
+.choices-btns-box {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-block: 1rem;
+    justify-content: center;
+}
+
+.choices-btns-box button {
+    color: inherit;
+    font-size: 12px;
+    height: 50px;
+    width: 140px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.forgot-password-page button.choice:hover {
+    transform: scale(1.05);
+    box-shadow: 1px 1px 1px gray;
+    background-color: transparent;
+}
+
+.forgot-password-page button.choice.selected {
+    background-color: rgb(151, 129, 159);
+    outline: 1px rgb(88, 69, 88) solid;
+    border: 1.2px var(--accent-color) solid;
+    transform: scale(1);
+}
+
+.mt-8px {
+    margin-top: 8px;
+}
+
+/* Sent Link */
+
 
 .sent-icon {
     color: rgb(22 163 74);
@@ -73,10 +114,10 @@
     margin-top: 10px;
 }
 
-.prompt-box .resend {
+.prompt-box .submit {
     width: max-content;
     border-radius: 5px;
-    padding: 0.3rem .5rem;
+    padding: 0.4rem 0.6rem;
 
 }
 
@@ -89,11 +130,6 @@
     transform: scale(1);
 }
 
-.choose-email-btn-box button:hover{
-    transform: scale(1.05);
-    box-shadow: 1px 1px 1px gray;
-    background-color: transparent;
-}
 .choose-email-container .choose-email-btn-box button {
 }
 .prompt-box > div{
@@ -112,6 +148,10 @@
 .choose-email-container h3{
     margin: 14px auto;
 }*/
+.progress-box {
+    gap: 10px;
+}
+
 span.progress-box button {
     --size: 20px;
     height: var(--size);
@@ -119,10 +159,15 @@ span.progress-box button {
     cursor: pointer;
     border-radius: 20px;
     position: relative;
+    background: #ffffff14;
+}
+
+span.progress-box svg.active {
+    color: white;
 }
 
 span.progress-box svg {
-    color: white;
+    color: grey;
     position: absolute;
     top: 0;
     right: 10px;
