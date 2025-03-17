@@ -41,7 +41,8 @@
     color: rgb(231, 231, 231);
     text-indent: 10px;
 }
-.form-container input.checkbox{
+
+.form-container input.checkbox {
     height: 30px;
     background-color: red;
 }
@@ -90,16 +91,19 @@
     align-self: center;
     border-radius: 5px
 }
-.form-row{
+
+.form-row {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
     font-size: 13px;
 }
-.form-row.constent a{
+
+.form-row.constent a {
     color: rgb(238, 238, 190);
 }
+
 .form-btm-msg-section {
     display: flex;
     font-size: 13px;
@@ -108,7 +112,7 @@
     gap: 10px;
 }
 
-.form-container a{
+.form-container a {
     color: rgb(255, 255, 202);
     font-size: 12px;
     /* text-decoration: none; */
@@ -118,5 +122,9 @@
 @media screen and (max-width:500px) {
     .form-btm-msg-section .msg {
         font-size: 0.8125rem;
+    }
+
+    .form-container form {
+        width: 80%;
     }
 }
