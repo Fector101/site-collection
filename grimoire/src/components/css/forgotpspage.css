@@ -97,8 +97,8 @@
     font-size: 14px;
     border-radius: 10px;
     color: var(--accent-color);
-    background-color:#9798A3;
-padding:0.5rem;
+    background-color: #383839;
+    padding: 0.5rem;
 }
 
 .prompt-box .sent-email svg {
@@ -181,5 +181,3 @@ span.progress-box svg {
     height: var(--size);
     width: var(--size);
 }
-
-
