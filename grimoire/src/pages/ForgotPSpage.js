@@ -31,7 +31,7 @@ function SendRightEmail() {
 }
 
 function SentResetPSEmail({ count_down, email }) {
-    // Add Loading Snipper When Pinging Server Or Show Boxes or widgets Loading
+    // ON-ENTER Add Loading Snipper When Pinging Server with `email` Or Show Boxes or widgets Loading
 
     return (
         // <div className='sent-password-reset-email'>
@@ -132,8 +132,8 @@ export default function ForgotPSPage({ email, username, phone_no }) {
 
             </div>
             <span className='flex progress-box'>
-                <button> <Dot className={pos===0?'active':''}/> </button>
-                <button> <Dot className={pos===1?'active':''}/> </button>
+                <button onClick={()=>setPos(0)}> <Dot className={pos===0?'active':''}/> </button>
+                <button onClick={()=>setPos(1)}> <Dot className={pos===1?'active':''}/> </button>
             </span>
         </div >
     )
