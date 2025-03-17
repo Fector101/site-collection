@@ -1,4 +1,4 @@
-.forgot-password-page{
+.forgot-password-page {
     gap: 1.2rem;
     padding: 1.2rem;
     /* background: rgb(63, 56, 56); */
@@ -7,29 +7,85 @@
     flex-direction: column;
     align-items: center;
 }
-.forgot-password-page h1{
+
+.forgot-password-page h1 {
     align-self: center;
 }
-.prompt-box{
-    gap: 20px;
-}
-.choose-email-container .choose-email-btn-box{
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.choose-email-container .choose-email-btn-box button{
-    color: inherit;
+
+.prompt-box {
+    width: 300px;
     border: 1px solid grey;
-    padding: 0.5rem;
-    border-radius: 10px;
-    transition: transform 0.5s ease;/*, box-shadow 0.2s ease, background-color 0.2s ease;*/
+    border-radius: 13px;
+    flex-direction: column;
+    /* gap: 15px; */
+    padding: 1rem 1.2rem;
+    align-items: center;
+    text-align: center;
 }
+
+.prompt-box p {
+    font-size: 13px;
+
+}
+
+.sent-icon {
+    color: rgb(22 163 74);
+    background: rgb(220 252 231/1);
+    --size: 60px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    padding: 10px;
+    margin-block: 10px;
+}
+
+.prompt-box h3 {
+    font-size: 16px;
+    margin-block: 8px;
+}
+
+.prompt-box .sent-email {
+    display: flex;
+    gap: 10px;
+    /* justify-items: center; */
+    align-items: center;
+    width: max-content;
+    /* border: 1px solid grey; */
+    margin: 0.6rem;
+    font-size: 14px;
+    border-radius: 10px;
+    color: var(--accent-color);
+}
+
+.prompt-box .sent-email svg {
+    color: var(--accent-color);
+    --size: 20px;
+    height: var(--size);
+    width: var(--size);
+}
+
+.didnt-recieve-msg {
+    font-size: 13px;
+    margin-block: 20px;
+}
+
+.long-msg {
+    margin-top: 10px;
+}
+
+.prompt-box .resend {
+    width: max-content;
+    border-radius: 5px;
+    padding: 0.3rem .5rem;
+
+}
+
+/*
 .choose-email-container .choose-email-btn-box button.selected{
     background-color: rgb(151, 129, 159);
     outline: 1px rgb(88, 69, 88) solid;
     border: 1.2px var(--accent-color) solid;
-    /* border: 2px inset #a288ea; */
+    /* border: 2px inset #a288ea; 
     transform: scale(1);
 }
 
@@ -55,9 +111,9 @@
 
 .choose-email-container h3{
     margin: 14px auto;
-}
-span.progress-box button{
-    --size:20px;
+}*/
+span.progress-box button {
+    --size: 20px;
     height: var(--size);
     width: var(--size);
     cursor: pointer;
@@ -65,7 +121,7 @@ span.progress-box button{
     position: relative;
 }
 
-span.progress-box svg{
+span.progress-box svg {
     color: white;
     position: absolute;
     top: 0;
@@ -73,7 +129,7 @@ span.progress-box svg{
     bottom: 0;
     left: -6px;
     margin: auto;
-    --size:30px;
+    --size: 30px;
     height: var(--size);
     width: var(--size);
 }

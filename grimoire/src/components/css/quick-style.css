@@ -82,6 +82,10 @@ body section.display-none {
     flex-direction: row;
 }
 
+.fd-column {
+    flex-direction: column;
+}
+
 .algin-items-cen {
     align-items: center;
 }
