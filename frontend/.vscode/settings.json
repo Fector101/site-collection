@@ -1,0 +1,26 @@
+{
+  "files.exclude": {
+    ".gitignore": true,
+    ".env": true,
+    "package.json": true,
+    "node_modules": true,
+    ".git": true,
+    "dist": true,
+    "tsconfig.app.tsbuildinfo": true,
+    "tsconfig.node.tsbuildinfo": true,
+    "eslint.config.js": true,
+    "tsconfig.node.json": true,
+    "tsconfig.json": true,
+    "tsconfig.app.json": true,
+    "vite.config.ts": true,
+    "package-lock.json": true,
+    "vercel.json": true,
+  },
+  "cSpell.words": [
+    "cooldown",
+    "Imgwith",
+    "Iversion",
+    "mainpage",
+    "siteoverview"
+  ]
+}
