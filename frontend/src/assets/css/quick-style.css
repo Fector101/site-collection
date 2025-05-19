@@ -34,7 +34,9 @@ body section.display-none {
 .flex {
     display: flex;
 }
-
+.flex-wrap{
+    flex-wrap: wrap;
+}
 .overflow-hidden {
     overflow: hidden;
 }
@@ -86,6 +88,9 @@ body section.display-none {
 
 .fd-column {
     flex-direction: column;
+}
+.flex-grow{
+    flex: 1;
 }
 
 .algin-items-cen {

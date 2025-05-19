@@ -85,30 +85,32 @@ interface IDetails {
     secs: number;
     original_language: string;
     release_date: string;
-    className: string;
+    className?: string;
 }
 // function Details({ title, original_title, secs, original_language, release_date, className }) {
-function Details({ secs, original_language, release_date, className }: IDetails) {
+function Details({ secs, original_language, release_date, className, original_title, title }: IDetails) {
     return (
-        <ul className={"sub-details" + (className ? ' ' + className : '')}>
+        <div className="movie-details">
+            <h3 className="truncate-2-lines movie-name"> {title} </h3>
+            {original_title !== title ? <p className="margin-left-10px">{original_title}</p> : <></>}
+            <ul className={"sub-details" + (className ? ' ' + className : '')}>
 
-            <li className="inline-flex">
-                <Clock />
-                <p>{formatTime(secs)}</p>
-            </li>
-            <li className="lang inline-flex">
-                {className !== "for-smaller-screen" && <p className="dot"> &#x2022; </p>}
-                {/* <Dot className="dot"/> */}
-                <Languages />
-                <p className=""> lang: {original_language} </p>
-            </li>
+                <li className="inline-flex">
+                    <Clock />
+                    <p>{formatTime(secs)}</p>
+                </li>
+                <li className="lang inline-flex">
+                    <Languages />
+                    <p className=""> lang: {original_language} </p>
+                </li>
 
-            <li className="flex">
-                <Calendar />
-                <p className=""> Released: {formatDate(release_date)} </p>
-            </li>
-            {/* <p className="inline-block"> {vote_average} </p> */}
-        </ul>
+                <li className="flex">
+                    <Calendar />
+                    <p className=""> Released: {formatDate(release_date)} </p>
+                </li>
+                {/* <p className="inline-block"> {vote_average} </p> */}
+            </ul>
+        </div>
     )
 }
 
@@ -218,46 +220,45 @@ export default function MoviePage() {
     const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, className: 'watchlist-btn' }, { title: 'Favourites', icon: <Heart /> }]
     return (
         <div className="movie-page margin-auto flex-page">
+            <section className="flex video-nd-details-box">
+                <section className="flex-grow">
+                    <section style={{ backgroundImage: cover_img }} className="movie-poster-case">
+                        <button className="play-btn"> <Play /> </button>
+                        <div className="content flex">
+                            <BookmarkActionButton className='bookmark-btn' />
+                            <ActionBtns className="large-screens-btns" btns_data={action_btns_data} />
+                        </div>
+                    </section>
+                    <div className="genres-box flex"> {genre_ids?.map(genre_id => <p key={nanoid()} className={genre_id + '0'}>{getGenreName(String(genre_id) as genreType)}</p>)} </div>
+                </section>
+                
+                <section className="flex fd-column movie-about-box">
 
-            <section style={{ backgroundImage: cover_img }} className="movie-poster-case">
+                    <Details original_title={original_title || ''} title={title || ''} secs={secs} original_language={original_language || ''} release_date={release_date || ''} />
 
-                <button className="play-btn"> <Play /> </button>
-                <div className="content flex">
-                    <div className="details">
-                        <h3 className="truncate-2-lines for-lager-screen"> {title} </h3>
-                        {original_title !== title && <p className="for-lager-screen">"{original_title}"</p>}
-                        <Details className="for-lager-screen" secs={secs} original_language={original_language || ''} release_date={release_date || ''} />
-                        <div className="genres-box flex"> {genre_ids?.map(genre_id => <p key={nanoid()} className={genre_id + '0'}>{getGenreName(String(genre_id) as genreType)}</p>)} </div>
-                    </div>
+                    <ActionBtns className="medium-screens-btns flex-wrap" btns_data={action_btns_data} />
 
-                    <BookmarkActionButton className='bookmark-btn' />
-                    <ActionBtns className="large-screens-btns" btns_data={action_btns_data} />
-                </div>
+                    <section className="overview-box for-lager-screen">
+                        <h4>Overview</h4>
+                        <p>{overview}</p>
+                    </section>
+
+                </section>
+
             </section>
-            <div className="for-smaller-screen fd-column">
-                <h3 className="truncate-2-lines"> {title} </h3>
-                {original_title !== title ? <p className="margin-left-10px">{original_title}</p> : <></>}
-            </div>
-            <Details className="for-smaller-screen" original_title={original_title || ''} title={title || ''} secs={secs} original_language={original_language || ''} release_date={release_date || ''} />
-            <ActionBtns className="medium-screens-btns" btns_data={action_btns_data} />
-
-            <section className="overview-box">
-                <h4>Overview</h4>
-                <p>{overview}</p>
-            </section>
-
-            <section>
-                <h3>Cast</h3>
-                <div className="cast-box">
-                    {cast.map(each_member => <CastMember key={nanoid()} member_data={each_member} />)}
-                </div>
-            </section>
+            <section className="overview-box for-medium-screen">
+                        <h4>Overview</h4>
+                        <p>{overview}</p>
+                    </section>
 
             <section className="rating-box">
-                <h4>Ratings</h4>
-                <div className="display-flex rate-btns-case">
-                    <button onClick={takeVote} className="vote-btn down"> <ArrowBigDown /> </button>
-                    <button onClick={takeVote} className="vote-btn up"> <ArrowBigUp /> </button>
+                <div className="header flex">
+                    <h4>Ratings</h4>
+                <div className="flex margin-left-auto rate-btns-case">
+                    <button onClick={takeVote} className="flex algin-items-cen vote-btn down"> <ArrowBigDown /> </button>
+                    <button onClick={takeVote} className="flex algin-items-cen vote-btn up"> <ArrowBigUp /> </button>
+                </div>
+
                 </div>
                 <table>
                     <tbody>
@@ -303,6 +304,13 @@ export default function MoviePage() {
 
                 </table>
             </section>
+            <section>
+                <h3>Cast</h3>
+                <div className="cast-box">
+                    {cast.map(each_member => <CastMember key={nanoid()} member_data={each_member} />)}
+                </div>
+            </section>
+
 
             <GoToTop />
         </div>
