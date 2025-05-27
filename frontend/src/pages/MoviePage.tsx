@@ -14,6 +14,7 @@ import rottenTomatoImg from '../assets/imgs/rotten_tomato.png'
 import imdbSvg from '../assets/imgs/imdb.svg'
 import logoPng from '../assets/imgs/logo.png'
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "../assets/js/useMediaQuery";
 
 function formatTime(secs: number) {
 
@@ -119,6 +120,8 @@ export default function MoviePage() {
     const movie_id = searchParams.get('id');
     const movie_data = { ...top_movies_data.results.find(({ id }) => id === Number(movie_id)) } //{...object.value} clones main object value
     // movie_data ={}
+    const is_medium_screen_size = useMediaQuery('(max-width:1040px')
+
     function takeVote(event: React.MouseEvent<HTMLButtonElement>) {
         event.stopPropagation()
         const target = (event.target as HTMLElement)
@@ -220,6 +223,8 @@ export default function MoviePage() {
     const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, className: 'watchlist-btn' }, { title: 'Favourites', icon: <Heart /> }]
     return (
         <div className="movie-page margin-auto flex-page">
+            <GoToTop />
+
             <section className="flex video-nd-details-box">
                 <section className="flex-grow">
                     <section style={{ backgroundImage: cover_img }} className="movie-poster-case">
@@ -231,7 +236,7 @@ export default function MoviePage() {
                     </section>
                     <div className="genres-box flex"> {genre_ids?.map(genre_id => <p key={nanoid()} className={genre_id + '0'}>{getGenreName(String(genre_id) as genreType)}</p>)} </div>
                 </section>
-                
+
                 <section className="flex fd-column movie-about-box">
 
                     <Details original_title={original_title || ''} title={title || ''} secs={secs} original_language={original_language || ''} release_date={release_date || ''} />
@@ -246,18 +251,21 @@ export default function MoviePage() {
                 </section>
 
             </section>
-            <section className="overview-box for-medium-screen">
-                        <h4>Overview</h4>
-                        <p>{overview}</p>
-                    </section>
+            {
+                is_medium_screen_size &&
+                <section className="overview-box for-medium-screen">
+                    <h4>Overview</h4>
+                    <p>{overview}</p>
+                </section>
+            }
 
             <section className="rating-box">
                 <div className="header flex">
                     <h4>Ratings</h4>
-                <div className="flex margin-left-auto rate-btns-case">
-                    <button onClick={takeVote} className="flex algin-items-cen vote-btn down"> <ArrowBigDown /> </button>
-                    <button onClick={takeVote} className="flex algin-items-cen vote-btn up"> <ArrowBigUp /> </button>
-                </div>
+                    <div className="flex margin-left-auto rate-btns-case">
+                        <button onClick={takeVote} className="flex algin-items-cen vote-btn down"> <ArrowBigDown /> </button>
+                        <button onClick={takeVote} className="flex algin-items-cen vote-btn up"> <ArrowBigUp /> </button>
+                    </div>
 
                 </div>
                 <table>
@@ -312,7 +320,6 @@ export default function MoviePage() {
             </section>
 
 
-            <GoToTop />
         </div>
     )
 }

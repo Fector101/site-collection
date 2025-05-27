@@ -30,6 +30,7 @@
     justify-content: end;
     position: relative;
     overflow: hidden;
+    border-bottom-left-radius: 0;
 }
 
 
@@ -51,11 +52,11 @@
     gap: 5px;
     flex-wrap: wrap;
     font-size: 14px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     width: max-content;
     background-color: #98959526;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     max-width: 100%
 }
 
@@ -131,9 +132,13 @@
 }
 
 .movie-page .large-btns-box.medium-screens-btns button {
-    font-size: 15px;
+    font-size: 14px;
 }
 
+.movie-page .large-btns-box button svg {
+    height: 20px;
+
+}
 .movie-page .large-btns-box.medium-screens-btns button svg {
     --size: 16px;
     width: var(--size);
