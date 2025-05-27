@@ -9,7 +9,7 @@ import './carousel.css'
 import { fixBtnsTabIndex, opts } from './carousel_helper'
 import { UserContext } from "../../assets/js/UserContextInstance";
 import { IMovieData } from '../../assets/js/api_data';
-
+// import { useLocation } from "react-router";
 
 interface IMyProgress {
     current_slide_index: number;
@@ -96,12 +96,14 @@ export default function Carousel({ data }: { data: IMovieData[] }) {
     const slide_through_secs = 0.5
     const carousel_wait_time = useRef(6)
     // let you = useRef(0)
+    // const routePath = useLocation();
 
     // eslint-disable-next-line
-    // function stopAllOngoingAnimations() {
-    //     animation.current?.cancel()
-    //     animation_1.current?.cancel()
-    // }
+    function stopAllOngoingAnimations() {
+        animation.current?.cancel()
+        animation_1.current?.cancel()
+        stopCarouselAnimation()
+    }
     function promiseMoveSilentlyToRight(current_slide: HTMLElement) {
         return new Promise((resolve) => {
             // console.log(current_slide)
@@ -150,7 +152,7 @@ export default function Carousel({ data }: { data: IMovieData[] }) {
         })
     }
     // useEffect(function(){console.log(info)},[info])
-    function startSlidesMovingFoward(secs: number, slide_index: undefined | number = undefined) {
+    function startSlidesMovingForward(secs: number, slide_index: undefined | number = undefined) {
         context?.setTimer(setTimeout(() => moveSlidesForward(slide_index), secs * 1000))
     }
     async function moveSlidesForward(slide_index: undefined | number = undefined) {
@@ -202,11 +204,11 @@ export default function Carousel({ data }: { data: IMovieData[] }) {
 
         // if(you.current === 2)return
         if (slide_index === undefined) {
-            startSlidesMovingFoward(carousel_wait_time.current)
+            startSlidesMovingForward(carousel_wait_time.current)
         } else if (slide_index !== new_slide_index) {  //  If it's not undefined means we stop at given slide_index
-            startSlidesMovingFoward(slide_through_secs, slide_index)
+            startSlidesMovingForward(slide_through_secs, slide_index)
         } else if (slide_index === new_slide_index) {
-            startSlidesMovingFoward(carousel_wait_time.current) // Go back to old Flow Speed
+            startSlidesMovingForward(carousel_wait_time.current) // Go back to old Flow Speed
         }
     }
 
@@ -256,7 +258,7 @@ export default function Carousel({ data }: { data: IMovieData[] }) {
             // Basically saying next here 
             startMovingBackForward(slide_through_secs, slide_index)
         } else if (slide_index === new_slide_index) {
-            startSlidesMovingFoward(carousel_wait_time.current) // Go back to old Flow Speed
+            startSlidesMovingForward(carousel_wait_time.current) // Go back to old Flow Speed
         }
 
     }
@@ -290,7 +292,7 @@ export default function Carousel({ data }: { data: IMovieData[] }) {
     function stopCarouselAnimation() { clearTimeout(timer) }
     function restartCarouselAnimation() {
         stopCarouselAnimation()
-        startSlidesMovingFoward(carousel_wait_time.current)
+        startSlidesMovingForward(carousel_wait_time.current)
 
     }
     // eslint-disable-next-line
@@ -306,8 +308,9 @@ export default function Carousel({ data }: { data: IMovieData[] }) {
     }
     useEffect(function () {
         fixBtnsTabIndex(document.querySelector('.carousel-content-case.current') as HTMLElement, true)
-        startSlidesMovingFoward(carousel_wait_time.current)
-        return stopCarouselAnimation
+        startSlidesMovingForward(carousel_wait_time.current)
+        return stopAllOngoingAnimations
+        // return stopCarouselAnimation
         // eslint-disable-next-line
     }, [])
 

@@ -183,17 +183,23 @@ export default function Header({ class_, userName }: { class_?: string, userName
     const [modal, setModalEle] = useState('')
 
     useEffect(function () {
-
-        document.querySelector('.side-menu-modal')?.addEventListener('mouseup', function () {
+        function forSideMenu() {
             // if(e.target === document.querySelector('.side-menu-modal')){
             // if(e.target === document.querySelector('.side-menu-modal')){
             document.querySelector('.side-menu-modal')?.classList.add('display-none')
             // }
-        })
-        document.querySelector('.menu-btn')?.addEventListener('click', function () {
-            document.querySelector('.side-menu-modal')?.classList.remove('display-none')
-        })
+        }
 
+        function forSideMenu1() {
+            document.querySelector('.side-menu-modal')?.classList.remove('display-none')
+        }
+
+        document.querySelector('.side-menu-modal')?.addEventListener('mouseup', forSideMenu)
+        document.querySelector('.menu-btn')?.addEventListener('click', forSideMenu1)
+        return function(){
+            document.querySelector('.side-menu-modal')?.removeEventListener('mouseup', forSideMenu)
+            document.querySelector('.menu-btn')?.removeEventListener('click', forSideMenu1)
+        }
     }, [])
     return (
         <>

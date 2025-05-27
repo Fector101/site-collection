@@ -19,10 +19,12 @@ export default function ImgwithPL({ src, placeholder_src, alt, className, pl_typ
     }
     placeholder_src = typeof placeholder_src === 'string' ? placeholder_src : placeholder_img_default;
     useEffect(() => {
-        const img = new Image()
-        img.src = src
-        console.log(img.src =='https://image.tmdb.org/t/p/original/2K2iXKB5sDJ0V3Q6U6VBmuzCPXl.jpg')
-        img.onload = () => setIsLoaded(true)
+        if (src){
+            const img = new Image()
+            img.src = src
+            console.log(img.src =='https://image.tmdb.org/t/p/original/2K2iXKB5sDJ0V3Q6U6VBmuzCPXl.jpg')
+            img.onload = () => setIsLoaded(true)
+        }
     }, [src])
 
     return (

@@ -74,7 +74,8 @@ function formatDate(date: string) {
 function CastMember({ member_data }: { member_data: { name: string, character: string, img?: string } }) {
     return (
         <div className="cast-member">
-            <ImgwithPL pl_type='svg' placeholder_src={<User2 style={{ color: '#bdbaba' }} />} src={`https://cast/${member_data.img}`} alt={member_data.name} />
+            <ImgwithPL pl_type='svg' placeholder_src={<User2 style={{ color: '#bdbaba' }} />} src='' alt={member_data.name} />
+            {/* <ImgwithPL pl_type='svg' placeholder_src={<User2 style={{ color: '#bdbaba' }} />} src={`https://cast/${member_data.img}`} alt={member_data.name} /> */}
             <p> {member_data.name || "Loerm ipm"} </p>
             <p> {member_data.character || "Joe"} </p>
         </div>
@@ -223,7 +224,6 @@ export default function MoviePage() {
     const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, className: 'watchlist-btn' }, { title: 'Favourites', icon: <Heart /> }]
     return (
         <div className="movie-page margin-auto flex-page">
-            <GoToTop />
 
             <section className="flex video-nd-details-box">
                 <section className="flex-grow">
@@ -319,7 +319,7 @@ export default function MoviePage() {
                 </div>
             </section>
 
-
+            <GoToTop />
         </div>
     )
 }
