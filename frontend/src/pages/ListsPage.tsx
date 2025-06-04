@@ -3,6 +3,7 @@ import card_img_placeholder from "../assets/imgs/card-img-pl1.png"
 import '../assets/css/list-page.css'
 import { BookmarkCheck, Eye, FilterX, Search, Users } from "lucide-react";
 import ImgwithPL from "../ui/images/ImgwithPL";
+// import SearchBar from "../ui/gpt/SearchBar";
 
 function Marker({ text }: { text: string }) {
     let defaultIcon = <FilterX className="filter-icon" />;
@@ -60,21 +61,21 @@ function FilterButton({ name, icon, index }: { name: string, icon: React.ReactNo
         </button>
     );
 }
-const itemList = [
-    'Apple',
-    'Banana',
-    'Cherry',
-    'Date',
-    'Elderberry',
-    'Fig',
-    'Grape',
-    'Honeydew',
-    'Indian Fig',
-    'Jackfruit',
-    'Kiwi',
-    'Lemon',
-    'Mango'
-  ];
+// const itemList = [
+//     'Apple',
+//     'Banana',
+//     'Cherry',
+//     'Date',
+//     'Elderberry',
+//     'Fig',
+//     'Grape',
+//     'Honeydew',
+//     'Indian Fig',
+//     'Jackfruit',
+//     'Kiwi',
+//     'Lemon',
+//     'Mango'
+//   ];
 export default function ListsPage({ text }: { text: string }) {
     return (
         <div className="list-page margin-auto flex-page page">
@@ -84,8 +85,8 @@ export default function ListsPage({ text }: { text: string }) {
                     <p>Browse and manage your collection of watchlists</p>
                 </div>
                 <div className="components flex fd-column">
-                <SearchBar data={itemList}/>
-                    {/* <SearchInput1 placeholder="Find a list" /> */}
+                  {/* <SearchBar data={itemList}/> */}
+                    <SearchInput1 placeholder="Find a list" />
                     <div className="filters-box flex flex-wrap">
                         {
                             // ['All Lists', 'Watching', 'Completed', 'Public Lists']
@@ -125,85 +126,3 @@ export default function ListsPage({ text }: { text: string }) {
         </div>
     )
 }
-
-
-
-
-import React, { useState } from 'react';
-
-const SearchBar = ({ data }) => {
-  const [query, setQuery] = useState('');
-  const filteredData = data.filter(item =>
-    item.toLowerCase().trim().includes(query.toLowerCase().trim())
-  );
-  
-
-  return (
-    <div style={styles.container}>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        style={styles.input}
-      />
-      {query && (
-        <ul style={styles.dropdown}>
-          {filteredData.length > 0 ? (
-            filteredData.map((item, index) => (
-              <li key={index} style={styles.item}>
-                {item}
-              </li>
-            ))
-          ) : (
-            <li style={styles.noResult}>No results found</li>
-          )}
-        </ul>
-      )}
-    </div>
-  );
-};
-
-const styles = {
-  container: {
-    width: '100%',
-    maxWidth: '400px',
-    margin: '0 auto',
-    position: 'relative',
-    fontFamily: 'Arial, sans-serif',
-  },
-  input: {
-    width: '100%',
-    padding: '12px 16px',
-    fontSize: '16px',
-    borderRadius: '8px',
-    border: '1px solid #ccc',
-    boxSizing: 'border-box',
-  },
-  dropdown: {
-    position: 'absolute',
-    top: '110%',
-    width: '100%',
-    backgroundColor: '#fff',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-    listStyle: 'none',
-    padding: 0,
-    margin: '4px 0 0 0',
-    maxHeight: '300px',
-    overflowY: 'auto',
-    zIndex: 10,
-  },
-  item: {
-    padding: '10px 16px',
-    cursor: 'pointer',
-    borderBottom: '1px solid #eee',
-    color: 'black',
-  },
-  noResult: {
-    padding: '10px 16px',
-    color: '#888',
-  },
-};
-
