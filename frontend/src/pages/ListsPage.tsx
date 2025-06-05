@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import card_img_placeholder from "../assets/imgs/card-img-pl1.png"
 import '../assets/css/list-page.css'
-import { BookmarkCheck, Eye, FilterX, Search, Users } from "lucide-react";
+import { BookmarkCheck, Clock, Eye, FilterX, List, Search, Users } from "lucide-react";
 import ImgwithPL from "../ui/images/ImgwithPL";
 import { MouseEventHandler, useEffect, useState } from "react";
 // import SearchBar from "../ui/gpt/SearchBar";
@@ -31,12 +31,13 @@ function WatchListLink({ title, desc, length, index, _id, status }: { title: str
                     {status.map((stat, i) => <Marker key={i} text={stat} />)}
                 </div>
                 <ImgwithPL placeholder_src={card_img_placeholder} src={`https://picsum.photos/200/300?random=${index}`} alt={title + ' img'} />
-                {/* // <img src={`https://picsum.photos/200/300?random=${index}`} alt={title + ' img'} /> */}
-
                 <div className="watchlist-item-text-box flex fd-column">
                     <h2 className="ellipsis">{title}</h2>
                     {desc && <p className="desc ellipsis-2">{desc}</p>}
-                    <p className="count">{length} items</p>
+                    <div className="count-box flex algin-items-cen">
+                        <List />
+                        <p className="count">{length} items</p>
+                    </div>
                 </div>
 
             </Link>
@@ -61,7 +62,7 @@ interface IFilterButton {
     onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
-function FilterButton({ name, icon, index, className,onClick }: IFilterButton) {
+function FilterButton({ name, icon, index, className, onClick }: IFilterButton) {
 
     return (
         <button onClick={onClick} className={"filter-btn algin-items-cen cursor-pointer" + (className ? ' ' + className : '')} key={index}>
@@ -106,7 +107,7 @@ export default function ListsPage({ text }: { text: string }) {
             { _id: '6', title: 'Comedy Movies', desc: '', length: 7, status: ['Watching'] },
             { _id: '7', title: 'Drama Movies', desc: 'A list of drama movies', length: 4, status: ['Public Lists', 'Completed'] },
             { _id: '8', title: 'Sci-Fi Movies', desc: 'Some long description of the list that is not too long', length: 6, status: ['Completed'] },
-            { _id: '9', title: 'Horror Movies', desc: '', length: 9, status: ['Watching', 'Completed'] },
+            { _id: '9', title: 'Horror Movies', desc: '', length: 9, status: ['Watching'] },
             { _id: '10', title: 'Romantic Movies', desc: '', length: 11, status: ['Watching'] },
 
         ])
@@ -128,13 +129,19 @@ export default function ListsPage({ text }: { text: string }) {
                     <div className="filters-box flex flex-wrap">
                         {
                             // ['All Lists', 'Watching', 'Completed', 'Public Lists']
-                            [{ name: "All Lists", icon: <FilterX /> }, { name: "Watching", icon: <Eye /> }, { name: 'Completed', icon: <BookmarkCheck /> }, { name: "Public Lists", icon: <Users /> }].map((filter, index) => {
-                                return <FilterButton 
-                                            onClick={()=>setCurrentFilter(filter.name)}
-                                            key={index} 
-                                            className={filter.name === current_filter ? 'active' : ''} 
-                                            name={filter.name} icon={filter.icon} index={index} 
-                                        />
+                            [
+                                { name: "All Lists", icon: <FilterX /> },
+                                { name: "Watching", icon: <Eye /> },
+                                { name: 'Completed', icon: <BookmarkCheck /> },
+                                // { name: "Public Lists", icon: <Users /> },
+                                { name: "Planning", icon: <Clock /> }
+                            ].map((filter, index) => {
+                                return <FilterButton
+                                    onClick={() => setCurrentFilter(filter.name)}
+                                    key={index}
+                                    className={filter.name === current_filter ? 'active' : ''}
+                                    name={filter.name} icon={filter.icon} index={index}
+                                />
                             }
                             )
                         }
@@ -145,12 +152,12 @@ export default function ListsPage({ text }: { text: string }) {
             <ol className="watchlist-scroll-container flex">
                 {
                     watchlists?.map((list, index) => {
-                    if (current_filter == 'All Lists' || list.status.includes(current_filter)){
-                        return <WatchListLink key={index} {...list} index={index} />
-                    }else{
-                        return<></>
-                    }
-                })
+                        if (current_filter == 'All Lists' || list.status.includes(current_filter)) {
+                            return <WatchListLink key={index} {...list} index={index} />
+                        } else {
+                            return <></>
+                        }
+                    })
                 }
             </ol>
             {/* <Link to="/lists/movie1">List 1</Link>
