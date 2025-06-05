@@ -1,0 +1,144 @@
+.add-to-list-popup.popup-modal {
+    background-color: rgba(0, 0, 0, 0.686);
+
+}
+
+.add-to-list-popup main {
+    width: 400px;
+    height: 430px;
+    border: 1px solid rgb(102, 102, 102);
+    background: #1a1a1a;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.add-to-list-popup main .close-btn{
+    align-self: flex-end;
+    --size: 21px;
+    width: var(--size);
+    height: var(--size);
+    padding: 3px;
+}
+.add-to-list-popup main h3{
+    font-size: 16px;
+    margin-top: 5px;
+    padding: 0 10px;
+}
+.add-to-list-popup .search-input-1-box{
+    margin-top: 10px;
+    height: 35px;
+    background: rgba(117, 117, 117, 0.107);
+    width: calc(100% - 40px);
+    margin-left: 0;
+    margin-block: 20px 5px;
+}
+.add-to-list-popup .search-input-1-box input::placeholder{
+    font-size: 12.5px;
+}
+.add-to-list-popup ol {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    overflow: hidden auto;
+    width: calc(100% - 50px);
+    padding-right: 2px;
+}
+
+.add-to-list-item {
+    --height: 55px;
+    margin-bottom: 2px;
+    height: var(--height);
+    /* background: #000;
+    border: 1px solid grey; */
+    min-height: var(--height);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 5px;
+}
+
+.add-to-list-item img {
+    --size: 36px;
+    height: 38px;
+    width: var(--size);
+    border-radius: 6px;
+}
+
+.add-to-list-item .desc {
+    height: max-content;
+    align-self: flex-end;
+    margin-bottom: 5px;
+}
+.add-to-list-item .title{
+    font-size: 13px;
+    
+}
+.add-to-list-item .count-box {
+    font-size: 12px;
+    gap: 5px;
+    margin-top: 2px;
+    color: rgb(180, 180, 180);
+}
+
+.add-to-list-item .count-box svg {
+    --size: 18px;
+    width: var(--size);
+    height: var(--size);
+}
+
+.add-to-list-item .marker {
+    margin-left: auto;
+    height: 22px;
+}
+
+.add-to-list-item .marker p {
+    font-size: 11px;
+}
+
+.add-to-list-item .marker svg {
+    --size: 14px;
+    width: var(--size);
+    height: var(--size);
+}
+
+.add-to-list-popup .create-btn{
+    margin-block: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(193, 193, 193);
+    border: 1px solid grey;
+    font-size: 13px;
+    padding: 4px 18px;
+    border-radius: 5px;
+}
+.add-to-list-popup .add-btn svg{
+    --size: 18px;
+    width: var(--size);
+    height: var(--size);
+}
+.add-to-list-popup .btm-action-btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-top: auto;
+    margin-bottom: 5px;
+}
+
+.add-to-list-popup .btm-action-btns button{
+    height: 30px;
+    padding: 0 10px;
+    color: white;
+    border-radius: 6px;
+}
+.add-to-list-popup .btm-action-btns button.add-btn{
+    background: purple;
+    justify-content: center;
+    font-size: 13px;
+}

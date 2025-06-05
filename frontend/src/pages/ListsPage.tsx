@@ -1,34 +1,19 @@
 import { Link } from "react-router";
 import card_img_placeholder from "../assets/imgs/card-img-pl1.png"
 import '../assets/css/list-page.css'
-import { BookmarkCheck, Clock, Eye, FilterX, List, Search, Users } from "lucide-react";
+import { BookmarkCheck, Clock, Eye, FilterX, List, Search} from "lucide-react";
 import ImgwithPL from "../ui/images/ImgwithPL";
 import { MouseEventHandler, useEffect, useState } from "react";
+import { IWatchList } from "../assets/js/myTypes";
+import { WatchListMarker } from "../ui/WatchListMarker";
 // import SearchBar from "../ui/gpt/SearchBar";
-
-function Marker({ text }: { text: string }) {
-    let defaultIcon = <FilterX className="filter-icon" />;
-    if (text === 'Watching') {
-        defaultIcon = <Eye className="filter-icon" />;
-    } else if (text === 'Completed') {
-        defaultIcon = <BookmarkCheck className="filter-icon" />;
-    } else if (text === 'Public Lists') {
-        defaultIcon = <Users className="filter-icon" />;
-    }
-    return (
-        <div className={`flex algin-items-cen marker ${text.toLowerCase().replace(' ', '-')}`} key={text}>
-            {defaultIcon}
-            {text}
-        </div>
-    );
-}
 
 function WatchListLink({ title, desc, length, index, _id, status }: { title: string, desc: string, index: number, length: number, _id: string, status: string[] }) {
     return (
         <li className="watchlist-item flex">
             <Link key={index} to={`/lists/${_id}`} className="flex fd-column">
                 <div className="status-box flex fd-column">
-                    {status.map((stat, i) => <Marker key={i} text={stat} />)}
+                    {status.map((stat, i) => <WatchListMarker key={i} text={stat} />)}
                 </div>
                 <ImgwithPL placeholder_src={card_img_placeholder} src={`https://picsum.photos/200/300?random=${index}`} alt={title + ' img'} />
                 <div className="watchlist-item-text-box flex fd-column">
@@ -86,13 +71,7 @@ function FilterButton({ name, icon, index, className, onClick }: IFilterButton) 
 //     'Lemon',
 //     'Mango'
 //   ];
-interface IWatchList {
-    _id: string;
-    title: string;
-    desc: string;
-    length: number;
-    status: string[];
-}
+
 
 export default function ListsPage({ text }: { text: string }) {
     const [watchlists, setWatchLists] = useState<IWatchList[] | undefined>()

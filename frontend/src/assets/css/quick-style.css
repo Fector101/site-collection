@@ -135,6 +135,13 @@ body section.display-none {
     text-overflow: ellipsis;
 }
 
+.truncate-1-line {
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 .ellipsis-2 {
     display: -webkit-box;
     line-clamp: 2;

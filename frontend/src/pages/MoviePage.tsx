@@ -16,6 +16,9 @@ import logoPng from '../assets/imgs/logo.png'
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "../assets/js/useMediaQuery";
 
+import { useContext } from "react"
+import { UserContext, AppContextType } from "../assets/js/UserContextInstance";
+
 function formatTime(secs: number) {
 
     const format = (arg: number) => arg.toString().padStart(2, '0')
@@ -36,7 +39,7 @@ interface IActionBtns {
     btns_data: {
         title: string;
         icon: React.ReactNode;
-        func?: React.MouseEventHandler<HTMLButtonElement>;
+        func_?: React.MouseEventHandler<HTMLButtonElement>;
         className?: string
     }[];
     className?: string
@@ -45,7 +48,7 @@ interface IActionBtns {
 function ActionBtns({ btns_data, className }: IActionBtns) {
     return (
         <div className={"large-btns-box" + (className ? ' ' + className : '')}>
-            {btns_data.map(({ title, icon, func, className }) => <button key={title} onClick={func} className={"outline-white" + (className ? ' ' + className : '')}> {icon} {title}</button>)}
+            {btns_data.map(({ title, icon, func_, className }) => <button key={title} onClick={func_} className={"outline-white" + (className ? ' ' + className : '')}> {icon} {title}</button>)}
         </div>
     )
 }
@@ -115,13 +118,21 @@ function Details({ secs, original_language, release_date, className, original_ti
         </div>
     )
 }
-
+function openAddToListPopup(context: AppContextType|null) {
+    context?.setAddToListState(old => {
+        return { ...old, state: true }
+    })
+}
 export default function MoviePage() {
     const [searchParams] = useSearchParams();
+    const context = useContext(UserContext);
+
     const movie_id = searchParams.get('id');
     const movie_data = { ...top_movies_data.results.find(({ id }) => id === Number(movie_id)) } //{...object.value} clones main object value
     // movie_data ={}
     const is_medium_screen_size = useMediaQuery('(max-width:1040px')
+    
+    
 
     function takeVote(event: React.MouseEvent<HTMLButtonElement>) {
         event.stopPropagation()
@@ -221,7 +232,7 @@ export default function MoviePage() {
         img.onload = () => SetCoverImg(`url(${img.src})`)
     }, [backdrop_path])
     const secs = randInt(3600, 7200)
-    const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, className: 'watchlist-btn' }, { title: 'Favourites', icon: <Heart /> }]
+    const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, 'func_':()=>openAddToListPopup(context),className: 'watchlist-btn' }, { title: 'Favorites', icon: <Heart /> }]
     return (
         <div className="movie-page margin-auto flex-page">
 
@@ -230,7 +241,7 @@ export default function MoviePage() {
                     <section style={{ backgroundImage: cover_img }} className="movie-poster-case">
                         <button className="play-btn"> <Play /> </button>
                         <div className="content flex">
-                            <BookmarkActionButton className='bookmark-btn' />
+                            <BookmarkActionButton className='bookmark-btn' onClick={()=>openAddToListPopup(context)}/>
                             <ActionBtns className="large-screens-btns" btns_data={action_btns_data} />
                         </div>
                     </section>

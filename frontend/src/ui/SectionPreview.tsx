@@ -6,9 +6,10 @@ import { useState } from "react"
 // import { Star, Bookmark,ThumbsUp,ThumbsDown,Plus} from 'lucide-react'
 import card_img_placeholder from "../assets/imgs/card-img-pl1.png"
 import ImgwithPL from "./images/ImgwithPL"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router"
 import { IMovieData } from "../assets/js/api_data"
-// import { Link } from "react-router-dom";
+import { useContext } from "react"
+import { UserContext } from "../assets/js/UserContextInstance";
 
 function Card({ movie_data }: { movie_data: IMovieData }) {
     const { poster_path, release_date, title, vote_average,
@@ -31,14 +32,25 @@ function Card({ movie_data }: { movie_data: IMovieData }) {
         clicked_btn.classList.toggle('clicked')
     }
     const navigate = useNavigate()
-    const goToMovie = () => {
-        navigate(`/movie?id=${id}`);
-    };
+    const goToMovie = () => { navigate(`/movie?id=${id}`); };
+
+    const context = useContext(UserContext);
+    function setAddToListState(event: React.MouseEvent<HTMLButtonElement>) {
+        event.stopPropagation()
+        // context?.setAddToListState(old => {
+        //     return { ...old, state: true}
+        // })
+        context?.setAddToListState(old => {
+                return { ...old, state: !old.state, itemId: id, item_name: title }
+            })
+        
+    }
     return (
         <li className="card cursor-pointer" tabIndex={0} onClick={goToMovie}>
+            
             <div className="bookmark-btn-case">
-                <button className="add-to-list-btn">
-                    <Bookmark />
+                <button className="add-to-list-btn" onClick={setAddToListState} title="Add to watchlist">
+                    <Bookmark/>
                 </button>
             </div>
             <ImgwithPL alt={title} src={`https://image.tmdb.org/t/p/original${poster_path}`} placeholder_src={card_img_placeholder} />
