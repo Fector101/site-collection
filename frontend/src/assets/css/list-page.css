@@ -91,6 +91,10 @@
     border-color: transparent;
 
 }
+.page.list-page .filter-btn:focus{
+    outline: none !important;
+    border: none !important;
+}
 .page.list-page .filter-btn svg{
     --size: 17px;
     width: var(--size);

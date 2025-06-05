@@ -257,6 +257,10 @@
     height: 20px;
 }
 
+.SectionPreview .card .details-case-2 .vote-btn.clicked{
+    outline: none !important;
+    border: none !important;
+}
 .SectionPreview .card .details-case-2 .vote-btn.up.clicked svg {
     --color: rgb(173, 233, 167);
     fill: var(--color);

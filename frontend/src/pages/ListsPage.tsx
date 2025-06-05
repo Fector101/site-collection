@@ -64,7 +64,7 @@ interface IFilterButton {
 function FilterButton({ name, icon, index, className,onClick }: IFilterButton) {
 
     return (
-        <button onClick={onClick} className={"filter-btn algin-items-cen" + (className ? ' ' + className : '')} key={index}>
+        <button onClick={onClick} className={"filter-btn algin-items-cen cursor-pointer" + (className ? ' ' + className : '')} key={index}>
             {icon}
             <span>{name}</span>
         </button>
