@@ -257,7 +257,7 @@
     height: 20px;
 }
 
-.SectionPreview .card .details-case-2 .vote-btn.clicked{
+.SectionPreview .card .details-case-2 .vote-btn:active,.SectionPreview .card .details-case-2 .vote-btn:focus{
     outline: none !important;
     border: none !important;
 }
