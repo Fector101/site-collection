@@ -5,6 +5,7 @@
 
 .add-to-list-popup main {
     width: 400px;
+    /* max-width: calc(100% - 10px); */
     height: 430px;
     border: 1px solid rgb(102, 102, 102);
     background: #1a1a1a;
@@ -17,19 +18,21 @@
     padding: 5px;
 }
 
-.add-to-list-popup main .close-btn{
+.add-to-list-popup main .close-btn {
     align-self: flex-end;
     --size: 21px;
     width: var(--size);
     height: var(--size);
     padding: 3px;
 }
-.add-to-list-popup main h3{
+
+.add-to-list-popup main h3 {
     font-size: 16px;
     margin-top: 5px;
     padding: 0 10px;
 }
-.add-to-list-popup .search-input-1-box{
+
+.add-to-list-popup .search-input-1-box {
     margin-top: 10px;
     height: 35px;
     background: rgba(117, 117, 117, 0.107);
@@ -37,9 +40,11 @@
     margin-left: 0;
     margin-block: 20px 5px;
 }
-.add-to-list-popup .search-input-1-box input::placeholder{
+
+.add-to-list-popup .search-input-1-box input::placeholder {
     font-size: 12.5px;
 }
+
 .add-to-list-popup ol {
     display: flex;
     flex-direction: column;
@@ -74,10 +79,11 @@
     align-self: flex-end;
     margin-bottom: 5px;
 }
-.add-to-list-item .title{
+
+.add-to-list-item .title {
     font-size: 13px;
-    
 }
+
 .add-to-list-item .count-box {
     font-size: 12px;
     gap: 5px;
@@ -106,7 +112,7 @@
     height: var(--size);
 }
 
-.add-to-list-popup .create-btn{
+.add-to-list-popup .create-btn {
     margin-block: 15px;
     display: flex;
     align-items: center;
@@ -117,12 +123,14 @@
     padding: 4px 18px;
     border-radius: 5px;
 }
-.add-to-list-popup .add-btn svg{
+
+.add-to-list-popup .add-btn svg {
     --size: 18px;
     width: var(--size);
     height: var(--size);
 }
-.add-to-list-popup .btm-action-btns{
+
+.add-to-list-popup .btm-action-btns {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -131,14 +139,46 @@
     margin-bottom: 5px;
 }
 
-.add-to-list-popup .btm-action-btns button{
+.add-to-list-popup .btm-action-btns button {
     height: 30px;
     padding: 0 10px;
     color: white;
     border-radius: 6px;
 }
-.add-to-list-popup .btm-action-btns button.add-btn{
+
+.add-to-list-popup .btm-action-btns button.add-btn {
     background: purple;
     justify-content: center;
     font-size: 13px;
+}
+
+@media screen and (max-width:500px) {
+
+    .add-to-list-popup main {
+        width: 400px;
+        max-width: calc(100% - 20px);
+        height: 500px;
+    }
+
+    .add-to-list-popup main h3 {
+        font-size: 15px;
+        display: block;
+        text-align: center;
+    }
+
+    .add-to-list-popup ol {
+        height: 250px;
+    }
+
+    .add-to-list-item .marker p {
+        font-size: 9px;
+    }
+
+    .add-to-list-item .title {
+        font-size: 12px;
+    }
+
+    .add-to-list-item .count-box {
+        font-size: 11px;
+    }
 }
