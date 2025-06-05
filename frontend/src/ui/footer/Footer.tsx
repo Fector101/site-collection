@@ -24,8 +24,8 @@ export default function Footer() {
             {/* <img className="logo" src={logo_src} alt="logo" /> */}
             <Row className="basic" header="Grimorie" links={[{ name: "Home", url: '/' }, { name: "Lists", url: 'lists' }, { name: 'Help', url: 'help' }, { name: "Chat", url: 'chat' }]} />
             <Row className="site-sections" header='Categories' links={[{ url: 'trending' }, { url: 'top' }, { url: 'ongoning' }, { url: 'upcoming' }]} />
-            <Row className="company-sections" header="Company" links={[{ url: 'about' }, { url: 'contant-us' }, { url: 'terms', name: 'Terms of Service' }, { url: 'hire' }]} />
-            <Row className="contant-handlers" header='' links={[{ url: 'twitter' }, { url: 'email' }]} />
+            {/* <Row className="company-sections" header="Company" links={[{ url: 'about' }, { url: 'contant-us' }, { url: 'terms', name: 'Terms of Service' }, { url: 'hire' }]} /> */}
+            <Row className="contant-handlers" header='Contact Me' links={[{ url: 'twitter' }, { url: 'email' }, { url: 'whatsapp' }]} />
         </footer>
     )
 }
