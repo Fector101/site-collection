@@ -65,8 +65,14 @@
     align-items: center;
     gap: 10px;
     padding: 0 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
 }
+.add-to-list-item.active{
+    border-color: rgb(141, 104, 186);
+    background: rgba(144, 99, 199, 0.248);
 
+}
 .add-to-list-item img {
     --size: 36px;
     height: 38px;

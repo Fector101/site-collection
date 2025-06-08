@@ -73,7 +73,7 @@ function FilterButton({ name, icon, index, className, onClick }: IFilterButton) 
 //   ];
 
 
-export default function ListsPage({ text }: { text: string }) {
+export default function WatchListsPage({ text }: { text: string }) {
     const [watchlists, setWatchLists] = useState<IWatchList[] | undefined>()
     const [current_filter, setCurrentFilter] = useState<string>("All Lists")
     useEffect(function () {

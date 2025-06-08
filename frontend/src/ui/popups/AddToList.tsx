@@ -35,6 +35,19 @@ export default function AddToList({ itemId, item_name }: IAddToListProps) {
             // })
             
         }
+    function clickedOption(event: React.MouseEvent<HTMLLIElement>,id:number) {
+        // event.stopPropagation()
+        document.querySelector('.add-to-list-item.active')?.classList.remove('active');
+        const clicked_list = event.target as HTMLElement
+        clicked_list.closest('li.add-to-list-item')?.classList.add('active');
+            // context?.addItemToList(itemId, listId);
+
+        if (id) {
+            console.log(`Clicked on list with ID: ${id}`);
+            // add the item to the list
+            // context?.addItemToList(itemId, listId);
+        }
+    }
     // const [current_filter, setCurrentFilter] = useState<string>("All Lists")
     useEffect(function () {
         setWatchLists([
@@ -61,9 +74,9 @@ export default function AddToList({ itemId, item_name }: IAddToListProps) {
                 <SearchInput1 placeholder='Search your watchlists' />
                 <ol>
                     {
-                        watchlists?.map((list) => {
+                        watchlists?.map((list,i) => {
                             return (
-                                <li key={list._id} className="add-to-list-item flex">
+                                <li key={list._id} className="add-to-list-item flex cursor-pointer" onClick={(e)=>clickedOption(e,list._id)}>
                                     <ImgwithPL src={`https://picsum.photos/200/300?random=${list._id}`} alt={list.title} />
                                     <div className="desc">
                                         <p className="title">{list.title}</p>
