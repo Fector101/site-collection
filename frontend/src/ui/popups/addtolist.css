@@ -38,9 +38,12 @@
     background: rgba(117, 117, 117, 0.107);
     width: calc(100% - 40px);
     margin-left: 0;
-    margin-block: 20px 5px;
+    margin-block: 20px 10px;
 }
 
+.add-to-list-popup .search-input-1-box input{
+    background-color: transparent;
+}
 .add-to-list-popup .search-input-1-box input::placeholder {
     font-size: 12.5px;
 }
@@ -122,9 +125,9 @@
     margin-block: 15px;
     display: flex;
     align-items: center;
-    gap: 7  px;
-    color: rgb(193, 193, 193);
-    border: 1px solid grey;
+    gap: 7px;
+    color: rgb(247, 247, 247);
+    border: 1px solid rgba(128, 128, 128, 0.468);
     font-size: 12px;
     padding: 4px 18px;
     border-radius: 5px;
@@ -150,14 +153,62 @@
     padding: 0 10px;
     color: white;
     border-radius: 6px;
+    font-size: 12px;
 }
 
-.add-to-list-popup .btm-action-btns button.add-btn {
+.add-to-list-popup .btm-action-btns button.fill-btn {
     background: rgb(121, 43, 169);
     justify-content: center;
-    font-size: 13px;
 }
 
+
+
+/* Create List Popup Styles */
+
+.add-to-list-popup.create-list-popup {
+    background-color: rgba(0, 0, 0, 0.686);
+}
+
+.add-to-list-popup.create-list-popup main{
+    width: 350px;
+    max-width: calc(100% - 20px);
+    height: auto;
+    background: #1a1a1a;
+    border: 1px solid rgb(102, 102, 102);
+    border-radius: 10px;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+.add-to-list-popup.create-list-popup main form{
+    gap: 10px;
+    width: calc(100% - 25px);
+}
+.add-to-list-popup.create-list-popup main form label{
+    margin-top: 16px;
+    font-size: 14px;
+}
+.add-to-list-popup.create-list-popup main form input[type="text"],.add-to-list-popup.create-list-popup main form select{
+    height: 35px;
+    text-indent: 10px;
+    background: rgba(117, 117, 117, 0.107);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.add-to-list-popup.create-list-popup main form select{
+    text-indent: 0;
+    padding: 0 10px;
+}
+
+.add-to-list-popup.create-list-popup .btm-action-btns {
+    margin-top: 15px;
+    justify-content: right;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* Responsive Styles */
 @media screen and (max-width:500px) {
 
     .add-to-list-popup main {
@@ -188,3 +239,5 @@
         font-size: 11px;
     }
 }
+
+
