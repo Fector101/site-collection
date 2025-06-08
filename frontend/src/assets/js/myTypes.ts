@@ -12,6 +12,6 @@ export interface IWatchList {
 }
 export interface IAddToListModalData {
     state: boolean;
-    itemId?: number;
+    itemId?: number | string; // | string is because of movie page interface movie_id == 'string'
     item_name: string;
 }

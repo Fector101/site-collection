@@ -118,9 +118,12 @@ function Details({ secs, original_language, release_date, className, original_ti
         </div>
     )
 }
-function openAddToListPopup(context: AppContextType|null) {
+
+function openAddToListPopup(context: AppContextType|null,name: string, id: string | number|null) {
     context?.setAddToListState(old => {
-        return { ...old, state: true }
+        name = name || old.item_name
+        id = id || old.itemId || 0
+        return { ...old, state: true, itemId: id, item_name: name }
     })
 }
 export default function MoviePage() {
@@ -232,7 +235,7 @@ export default function MoviePage() {
         img.onload = () => SetCoverImg(`url(${img.src})`)
     }, [backdrop_path])
     const secs = randInt(3600, 7200)
-    const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, 'func_':()=>openAddToListPopup(context),className: 'watchlist-btn' }, { title: 'Favorites', icon: <Heart /> }]
+    const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, 'func_':()=>openAddToListPopup(context,movie_data.title||'',movie_id),className: 'watchlist-btn' }, { title: 'Favorites', icon: <Heart /> }]
     return (
         <div className="movie-page margin-auto flex-page">
 
@@ -241,7 +244,7 @@ export default function MoviePage() {
                     <section style={{ backgroundImage: cover_img }} className="movie-poster-case">
                         <button className="play-btn"> <Play /> </button>
                         <div className="content flex">
-                            <BookmarkActionButton className='bookmark-btn' onClick={()=>openAddToListPopup(context)}/>
+                            <BookmarkActionButton className='bookmark-btn' onClick={()=>openAddToListPopup(context,movie_data.title||'',movie_id)}/>
                             <ActionBtns className="large-screens-btns" btns_data={action_btns_data} />
                         </div>
                     </section>
