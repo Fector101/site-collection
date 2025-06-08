@@ -8,7 +8,7 @@ import ImgwithPL from '../images/ImgwithPL';
 import { WatchListMarker } from '../WatchListMarker';
 
 interface IAddToListProps {
-    itemId?: number;
+    itemId?: number|string;
     item_name: string;
 }
 
