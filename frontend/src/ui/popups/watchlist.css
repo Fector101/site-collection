@@ -165,11 +165,11 @@
 
 /* Create List Popup Styles */
 
-.add-to-list-popup.create-list-popup {
+.create-list-popup {
     background-color: rgba(0, 0, 0, 0.686);
 }
 
-.add-to-list-popup.create-list-popup main{
+.create-list-popup main{
     width: 350px;
     max-width: calc(100% - 20px);
     height: auto;
@@ -179,15 +179,15 @@
     padding: 10px;
     padding-bottom: 15px;
 }
-.add-to-list-popup.create-list-popup main form{
+.create-list-popup main form{
     gap: 10px;
     width: calc(100% - 25px);
 }
-.add-to-list-popup.create-list-popup main form label{
+.create-list-popup main form label{
     margin-top: 16px;
     font-size: 14px;
 }
-.add-to-list-popup.create-list-popup main form input[type="text"],.add-to-list-popup.create-list-popup main form select{
+.create-list-popup main form input[type="text"], .create-list-popup main form select{
     height: 35px;
     text-indent: 10px;
     background: rgba(117, 117, 117, 0.107);
@@ -195,12 +195,12 @@
     border: none;
     border-radius: 5px;
 }
-.add-to-list-popup.create-list-popup main form select{
+.create-list-popup main form select{
     text-indent: 0;
     padding: 0 10px;
 }
 
-.add-to-list-popup.create-list-popup .btm-action-btns {
+.create-list-popup .btm-action-btns {
     margin-top: 15px;
     justify-content: right;
     gap: 10px;

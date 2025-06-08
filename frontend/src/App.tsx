@@ -1,6 +1,4 @@
-import { useContext } from "react"
 import { Route, Routes } from "react-router";
-import { UserContext } from "./assets/js/UserContextInstance";
 
 import './assets/css/quick-style.css'
 import './assets/css/app.css'
@@ -26,7 +24,6 @@ import "./assets/css/responsive.css"
 
 // markup data
 import { top_movies_data } from "./assets/js/api_data.tsx";
-import AddToList from "./ui/popups/AddToList.tsx";
 
 
 
@@ -36,13 +33,10 @@ function App() {
         rated: "PG",
         secs: 6000
     }))
-    const context = useContext(UserContext);
 
     return (
         <>
             <Header />
-            {context?.add_to_list_modal_data.state && <AddToList item_name={context.add_to_list_modal_data.item_name} itemId={context.add_to_list_modal_data.itemId} />}
-
             <Routes>
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />

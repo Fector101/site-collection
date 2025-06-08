@@ -8,10 +8,15 @@ import card_img_placeholder from "../assets/imgs/card-img-pl1.png"
 import ImgwithPL from "./images/ImgwithPL"
 import { Link, useNavigate } from "react-router"
 import { IMovieData } from "../assets/js/api_data"
-import { useContext } from "react"
-import { UserContext } from "../assets/js/UserContextInstance";
+import { IAddToListModalData } from "../assets/js/myTypes"
 
-function Card({ movie_data }: { movie_data: IMovieData }) {
+interface ICard {
+    movie_data: IMovieData;
+    setAddToWatchListModalData:React.Dispatch<IAddToListModalData>;
+
+}
+
+function Card({ movie_data,setAddToWatchListModalData }: ICard) {
     const { poster_path, release_date, title, vote_average,
         rated = 'PG',
         id } = movie_data
@@ -34,15 +39,9 @@ function Card({ movie_data }: { movie_data: IMovieData }) {
     const navigate = useNavigate()
     const goToMovie = () => { navigate(`/movie?id=${id}`); };
 
-    const context = useContext(UserContext);
     function setAddToListState(event: React.MouseEvent<HTMLButtonElement>) {
         event.stopPropagation()
-        // context?.setAddToListState(old => {
-        //     return { ...old, state: true}
-        // })
-        context?.setAddToListState(old => {
-                return { ...old, state: !old.state, itemId: id, item_name: title }
-            })
+        setAddToWatchListModalData({state:true,item_name:title,item_id:id})
         
     }
     return (
@@ -87,9 +86,10 @@ interface ISectionPreview {
     title: string;
     icon: React.ReactNode;
     data_info: data_info_type;
-    url: string
+    url: string;
+    setAddToWatchListModalData:React.Dispatch<IAddToListModalData>
 }
-export default function SectionPreview({ data, title, icon, data_info, url }: ISectionPreview) {
+export default function SectionPreview({ data, title, icon, data_info, url, setAddToWatchListModalData}: ISectionPreview) {
     const [activePreview, setActivePreview] = useState(() => data_info.active || data_info.types[0])
     function switchPreview(e:React.MouseEvent<HTMLButtonElement>) {
         const clicked_tab = e.target as HTMLButtonElement
@@ -112,7 +112,7 @@ export default function SectionPreview({ data, title, icon, data_info, url }: IS
             <ol className="collection  horizontal-scrollbar__items--faded-end horizontal-scrollbar__items--faded-start horizontal-scrollbar__items--faded">
                 <button className="collection-left-btn"> <ChevronLeft /> </button>
 
-                {data.map((each_movie, i) => <Card movie_data={each_movie} key={i} />)}
+                {data.map((each_movie, i) => <Card setAddToWatchListModalData={setAddToWatchListModalData} movie_data={each_movie} key={i} />)}
 
                 <button className="collection-right-btn"> <ChevronRight /> </button>
             </ol>

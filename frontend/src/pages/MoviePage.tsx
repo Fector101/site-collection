@@ -15,9 +15,7 @@ import imdbSvg from '../assets/imgs/imdb.svg'
 import logoPng from '../assets/imgs/logo.png'
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "../assets/js/useMediaQuery";
-
-import { useContext } from "react"
-import { UserContext, AppContextType } from "../assets/js/UserContextInstance";
+import AddToListPopup from "../ui/popups/AddToList";
 
 function formatTime(secs: number) {
 
@@ -119,22 +117,14 @@ function Details({ secs, original_language, release_date, className, original_ti
     )
 }
 
-function openAddToListPopup(context: AppContextType|null,name: string, id: string | number|null) {
-    context?.setAddToListState(old => {
-        name = name || old.item_name
-        id = id || old.itemId || 0
-        return { ...old, state: true, itemId: id, item_name: name }
-    })
-}
 export default function MoviePage() {
     const [searchParams] = useSearchParams();
-    const context = useContext(UserContext);
 
     const movie_id = searchParams.get('id');
     const movie_data = { ...top_movies_data.results.find(({ id }) => id === Number(movie_id)) } //{...object.value} clones main object value
     // movie_data ={}
     const is_medium_screen_size = useMediaQuery('(max-width:1040px')
-    
+    const [add_to_watchlist_modal_state,setAddToWatchListModalState] = useState<boolean>(false)
     
 
     function takeVote(event: React.MouseEvent<HTMLButtonElement>) {
@@ -235,16 +225,17 @@ export default function MoviePage() {
         img.onload = () => SetCoverImg(`url(${img.src})`)
     }, [backdrop_path])
     const secs = randInt(3600, 7200)
-    const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, 'func_':()=>openAddToListPopup(context,movie_data.title||'',movie_id),className: 'watchlist-btn' }, { title: 'Favorites', icon: <Heart /> }]
+    const action_btns_data = [{ title: 'Watched It', icon: <Eye /> }, { title: 'Add to List', icon: <PlusCircle />, 'func_':()=>setAddToWatchListModalState(true),className: 'watchlist-btn' }, { title: 'Favorites', icon: <Heart /> }]
     return (
         <div className="movie-page margin-auto flex-page">
+            {add_to_watchlist_modal_state && <AddToListPopup setStateToFalse={()=>setAddToWatchListModalState(false)} item_name={movie_data?.title|| ''} itemId={movie_id||0} />}
 
             <section className="flex video-nd-details-box">
                 <section className="flex-grow">
                     <section style={{ backgroundImage: cover_img }} className="movie-poster-case">
                         <button className="play-btn"> <Play /> </button>
                         <div className="content flex">
-                            <BookmarkActionButton className='bookmark-btn' onClick={()=>openAddToListPopup(context,movie_data.title||'',movie_id)}/>
+                            <BookmarkActionButton className='bookmark-btn' onClick={()=>setAddToWatchListModalState(true)}/>
                             <ActionBtns className="large-screens-btns" btns_data={action_btns_data} />
                         </div>
                     </section>
