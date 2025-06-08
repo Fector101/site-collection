@@ -16,6 +16,7 @@ import logoPng from '../assets/imgs/logo.png'
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "../assets/js/useMediaQuery";
 import AddToListPopup from "../ui/popups/AddToList";
+import RatingTable from "../ui/RatingTable";
 
 function formatTime(secs: number) {
 
@@ -273,49 +274,30 @@ export default function MoviePage() {
                     </div>
 
                 </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td> Site </td>
-                            <td> Rating </td>
-                            <td> People</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src={imdbSvg} alt="IMDB" />
-                                <p>IMDB</p>
-                            </td>
-                            <td>{vote_average}</td>
-                            <td>10k</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src={rottenTomatoImg} alt="Rotten Tomato" />
-                                <p>Rotten Tomato</p>
-                            </td>
-                            <td>{popularity}</td>
-                            <td>11.1k</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src={logoPng} alt="Grimoire" />
-                                <p>Grimoire</p>
-                            </td>
-                            <td>{vote_count}</td>
-                            <td>1m</td>
-                        </tr>
-
-                        {/* <tr>   Download the logo and add it to the project
-                            <td>
-                              <img src={logoPng} alt="themoviedb"/>
-                              <p>themoviedb</p>
-                              </td>
-                            <td>{vote_average}</td>
-                            <td>{vote_count}</td>
-                        </tr> */}
-                    </tbody>
-
-                </table>
+                <RatingTable rows={[
+                    {
+                        img: imdbSvg,
+                        alt: 'IMDB',
+                        name: 'IMDB',
+                        rating: vote_average || 0,
+                        vote_average: '10k'
+                    },
+                    {
+                        img: rottenTomatoImg,
+                        alt: 'Rotten Tomato',
+                        name: 'Rotten Tomato',
+                        rating: popularity || 0,
+                        vote_average: '11.1k'
+                    },
+                    {
+                        img: logoPng,
+                        alt: 'Grimoire',
+                        name: 'Grimoire',
+                        rating: vote_count || 0,
+                        vote_average: '1m'
+                    }
+                ]} />
+                
             </section>
             <section>
                 <h3>Cast</h3>
