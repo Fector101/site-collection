@@ -91,13 +91,13 @@ export default function AddToList({ itemId, item_name }: IAddToListProps) {
                         })
                     }
                 </ol>
-                <button className='create-btn'>
+                <button className='cursor-pointer create-btn'>
                     <Plus/>
                     <p>Create new watchlist</p>
                 </button>
                 <div className="btm-action-btns flex">
-                    <button className="flex algin-items-cen cancel-btn" onClick={setAddToListStateToClose} title='Close'>Cancel</button>
-                    <button className="flex algin-items-cen add-btn">Add to watchlist</button>
+                    <button className="cursor-pointer flex algin-items-cen cancel-btn" onClick={setAddToListStateToClose} title='Close'>Cancel</button>
+                    <button className="cursor-pointer flex algin-items-cen add-btn">Add to watchlist</button>
                 </div>
             </main>
 

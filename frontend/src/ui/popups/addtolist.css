@@ -122,15 +122,15 @@
     margin-block: 15px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 7  px;
     color: rgb(193, 193, 193);
     border: 1px solid grey;
-    font-size: 13px;
+    font-size: 12px;
     padding: 4px 18px;
     border-radius: 5px;
 }
 
-.add-to-list-popup .add-btn svg {
+.add-to-list-popup .create-btn svg {
     --size: 18px;
     width: var(--size);
     height: var(--size);
@@ -153,7 +153,7 @@
 }
 
 .add-to-list-popup .btm-action-btns button.add-btn {
-    background: purple;
+    background: rgb(121, 43, 169);
     justify-content: center;
     font-size: 13px;
 }
