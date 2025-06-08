@@ -1,16 +1,26 @@
 import { Link } from "react-router";
 import card_img_placeholder from "../assets/imgs/card-img-pl1.png"
 import '../assets/css/list-page.css'
-import { BookmarkCheck, Clock, Eye, FilterX, List, Search} from "lucide-react";
+import { BookmarkCheck, Clock, Eye, FilterX, List, Plus, Search } from "lucide-react";
 import ImgwithPL from "../ui/images/ImgwithPL";
 import { MouseEventHandler, useEffect, useState } from "react";
 import { IWatchList } from "../assets/js/myTypes";
 import { WatchListMarker } from "../ui/WatchListMarker";
+import CreateWatchListPopup from "../ui/popups/CreateWatchListPopup";
+interface IWatchListLink {
+    title: string;
+    desc: string;
+    index: number;
+    length: number;
+    _id: string;
+    status: string[];
+}
+
 // import SearchBar from "../ui/gpt/SearchBar";
 
-function WatchListLink({ title, desc, length, index, _id, status }: { title: string, desc: string, index: number, length: number, _id: string, status: string[] }) {
+function WatchListLink({ title, desc, length, index, _id, status }: IWatchListLink) {
     return (
-        <li className="watchlist-item flex">
+        <li className={"watchlist-item flex"}>
             <Link key={index} to={`/lists/${_id}`} className="flex fd-column">
                 <div className="status-box flex fd-column">
                     {status.map((stat, i) => <WatchListMarker key={i} text={stat} />)}
@@ -45,12 +55,21 @@ interface IFilterButton {
     index: number;
     className: string;
     onClick: MouseEventHandler<HTMLButtonElement>;
+    type?: 'filter' | 'action'
+
 }
 
-function FilterButton({ name, icon, index, className, onClick }: IFilterButton) {
+function FilterButton({ name, icon, index, className, onClick, type }: IFilterButton) {
 
     return (
-        <button onClick={onClick} className={"filter-btn algin-items-cen cursor-pointer" + (className ? ' ' + className : '')} key={index}>
+        <button
+            onClick={onClick}
+            className={
+                "filter-btn algin-items-cen cursor-pointer" 
+                + (className ? ' ' + className : '') 
+                + (type === 'action' ? ' border-radius-7' : '')
+            }
+            key={index}>
             {icon}
             <span>{name}</span>
         </button>
@@ -76,6 +95,8 @@ function FilterButton({ name, icon, index, className, onClick }: IFilterButton) 
 export default function WatchListsPage({ text }: { text: string }) {
     const [watchlists, setWatchLists] = useState<IWatchList[] | undefined>()
     const [current_filter, setCurrentFilter] = useState<string>("All Lists")
+    const [create_watch_list_modal_state, setCreateWatchListModalState] = useState<boolean>(false)
+
     useEffect(function () {
         setWatchLists([
             { _id: '1', title: 'Best Movies', desc: 'This is the first list', length: 5, status: ['Watching'] },
@@ -91,12 +112,11 @@ export default function WatchListsPage({ text }: { text: string }) {
 
         ])
     }, [])
-    // function filterList(filter_name){
-    //     // if ()
-    // }
+
 
     return (
         <div className="list-page margin-auto flex-page page">
+            {create_watch_list_modal_state && <CreateWatchListPopup setStateToFalse={closeCreateWatchlistPopup()} />}
             <div className="header flex">
                 <div className="texts flex fd-column">
                     <h1>My Watchlists</h1>
@@ -109,17 +129,25 @@ export default function WatchListsPage({ text }: { text: string }) {
                         {
                             // ['All Lists', 'Watching', 'Completed', 'Public Lists']
                             [
-                                { name: "All Lists", icon: <FilterX /> },
-                                { name: "Watching", icon: <Eye /> },
-                                { name: 'Completed', icon: <BookmarkCheck /> },
+                                { name: "All Lists", icon: <FilterX />, type: 'sys' },
+                                { name: "Watching", icon: <Eye />, type: 'sys' },
+                                { name: 'Completed', icon: <BookmarkCheck />, type: 'sys' },
                                 // { name: "Public Lists", icon: <Users /> },
-                                { name: "Planning", icon: <Clock /> }
+                                { name: "Planning", icon: <Clock />, type: 'sys' },
+                                { name: "Create", icon: <Plus />, type: 'action', func: () => setCreateWatchListModalState(true) }
                             ].map((filter, index) => {
                                 return <FilterButton
-                                    onClick={() => setCurrentFilter(filter.name)}
+                                    onClick={() => {
+                                        if (filter?.func) {
+                                            filter.func()
+                                        } else {
+                                            setCurrentFilter(filter.name)
+                                        }
+                                    }}
                                     key={index}
                                     className={filter.name === current_filter ? 'active' : ''}
                                     name={filter.name} icon={filter.icon} index={index}
+                                    type={filter.type as 'filter' | 'action'}
                                 />
                             }
                             )
@@ -148,4 +176,8 @@ export default function WatchListsPage({ text }: { text: string }) {
             <Link to="/lists/movie1" replace>List 1</Link> */}
         </div>
     )
+
+    function closeCreateWatchlistPopup(): (event: React.MouseEvent<HTMLButtonElement>) => void {
+        return () => setCreateWatchListModalState(false);
+    }
 }

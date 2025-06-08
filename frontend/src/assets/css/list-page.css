@@ -86,6 +86,9 @@
     color: white;
     border: 1px rgb(130, 130, 130) solid;
 }
+.page.list-page .filter-btn.border-radius-7{
+    border-radius: 7px;
+}
 .page.list-page .filter-btn.active{
     background-color: rgba(130, 130, 130, 0.539);
     border-color: transparent;

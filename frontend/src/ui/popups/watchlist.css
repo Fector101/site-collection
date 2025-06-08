@@ -178,6 +178,7 @@
     border-radius: 10px;
     padding: 10px;
     padding-bottom: 15px;
+    font-family: var(--custom-font-style);
 }
 .create-list-popup main form{
     gap: 10px;
@@ -216,7 +217,9 @@
         max-width: calc(100% - 20px);
         height: 500px;
     }
-
+  .create-list-popup main {
+    height: auto;
+  }
     .add-to-list-popup main h3 {
         font-size: 15px;
         display: block;
