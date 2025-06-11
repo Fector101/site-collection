@@ -1,0 +1,49 @@
+.list-page {
+    /* background: #000; */
+    padding: 0 20px;
+    padding-bottom: 20px;
+    margin: auto 0;
+
+}
+
+.list-page main {
+    height: auto;
+    align-items: unset;
+    border-radius: 0;
+    width: 100%;
+    flex-direction: unset;
+    margin-bottom: 20px;
+}
+
+.list-page button {
+    color: inherit;
+}
+
+.list-page .info-section {
+    /* gap: 10px; */
+}
+
+.list-page .main-info img {
+    width: 150px;
+    height: 190px;
+    margin-right: 10px;
+}
+
+.list-page .other-info {
+    margin-top: 10px;
+}
+
+.list-page .list-id {
+    color: #787978;
+}
+
+.list-page section.items-section {
+    background: #000;
+    flex: 1;
+    /* background-color: red; */
+    margin-left: 20px;
+}
+
+.filters-container{
+    gap: 10px;
+}

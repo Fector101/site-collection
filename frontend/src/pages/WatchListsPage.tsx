@@ -1,12 +1,13 @@
 import { Link } from "react-router";
 import card_img_placeholder from "../assets/imgs/card-img-pl1.png"
-import '../assets/css/list-page.css'
+import '../assets/css/watchlists-page.css'
 import { BookmarkCheck, Clock, Eye, FilterX, List, Plus, Search } from "lucide-react";
 import ImgwithPL from "../ui/images/ImgwithPL";
 import { MouseEventHandler, useEffect, useState } from "react";
 import { IWatchList } from "../assets/js/myTypes";
 import { WatchListMarker } from "../ui/WatchListMarker";
 import CreateWatchListPopup from "../ui/popups/CreateWatchListPopup";
+import { mockWatchLists } from "../assets/js/mockup_data";
 interface IWatchListLink {
     title: string;
     desc: string;
@@ -65,8 +66,8 @@ function FilterButton({ name, icon, index, className, onClick, type }: IFilterBu
         <button
             onClick={onClick}
             className={
-                "filter-btn algin-items-cen cursor-pointer" 
-                + (className ? ' ' + className : '') 
+                "filter-btn algin-items-cen cursor-pointer"
+                + (className ? ' ' + className : '')
                 + (type === 'action' ? ' border-radius-7' : '')
             }
             key={index}>
@@ -98,25 +99,13 @@ export default function WatchListsPage({ text }: { text: string }) {
     const [create_watch_list_modal_state, setCreateWatchListModalState] = useState<boolean>(false)
 
     useEffect(function () {
-        setWatchLists([
-            { _id: '1', title: 'Best Movies', desc: 'This is the first list', length: 5, status: ['Watching'] },
-            { _id: '2', title: 'Top 19 Movies', desc: 'This is the second list', length: 10, status: ['Completed'] },
-            { _id: '3', title: 'Movies to Watch', desc: '', length: 3, status: ['Watching'] },
-            { _id: '4', title: "My Favorite Movies", desc: 'A list of my favorite movies', length: 8, status: ['Watching'] },
-            { _id: '5', title: 'Action Movies', desc: 'A list of action movies', length: 12, status: ['Planning',] },
-            { _id: '6', title: 'Comedy Movies', desc: '', length: 7, status: ['Watching'] },
-            { _id: '7', title: 'Drama Movies', desc: 'A list of drama movies', length: 4, status: ['Public Lists', 'Completed'] },
-            { _id: '8', title: 'Sci-Fi Movies', desc: 'Some long description of the list that is not too long', length: 6, status: ['Completed'] },
-            { _id: '9', title: 'Horror Movies', desc: '', length: 9, status: ['Watching'] },
-            { _id: '10', title: 'Romantic Movies', desc: '', length: 11, status: ['Watching'] },
-
-        ])
+        setWatchLists(mockWatchLists)
     }, [])
 
 
     return (
-        <div className="list-page margin-auto flex-page page">
-            {create_watch_list_modal_state && <CreateWatchListPopup setStateToFalse={closeCreateWatchlistPopup()} />}
+        <div className="watchlists-page margin-auto flex-page page">
+            {create_watch_list_modal_state && <CreateWatchListPopup setStateToFalse={closeCreateWatchlistPopup} />}
             <div className="header flex">
                 <div className="texts flex fd-column">
                     <h1>My Watchlists</h1>
@@ -177,7 +166,7 @@ export default function WatchListsPage({ text }: { text: string }) {
         </div>
     )
 
-    function closeCreateWatchlistPopup(): (event: React.MouseEvent<HTMLButtonElement>) => void {
-        return () => setCreateWatchListModalState(false);
+    function closeCreateWatchlistPopup() {
+        setCreateWatchListModalState(false);
     }
 }

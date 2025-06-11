@@ -9,6 +9,8 @@ export interface IWatchList {
     desc: string;
     length: number;
     status: string[];
+    duration?: number;
+
 }
 export interface IAddToListModalData {
     state: boolean;
